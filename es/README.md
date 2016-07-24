@@ -1,1 +1,1 @@
-Apache Diana is a flexible and extensible API to connect NoSQL databases. It brings an easy interface to support key-value, column family, document oriented and graph databases as JDBC is for SQL databases.
+Apache Diana é uma API flexível e extensível para conectar os bancos não relacionais, os NoSQL. Ele traz uma interface que suporta os bancos do tipo chave-valor, família de coluna, documentos e grafos semelhante um JDBC para os bancos relacionais.
