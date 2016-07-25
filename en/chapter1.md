@@ -32,9 +32,9 @@
    
    Talking precisely in a logic tier, to split responsibility, there are layers. These layer have an overpass through presentation and data tier besides the business rules. Wherever the architecture structure chosen (MVC, HMVC, PAC, MVA, MVP, MVVM) they have basically four layers:
 
-* Application layer: Bridge between presentation tier and logic tier, this layer, for example, transforms an object to JSON.
-* Service layer: The functional layer that make business layers available. Grouping services into functional layers reduces the impact of change. Most 	changes affect only the layer in which they're made, with few side-effects that impact other layers. 	
-* Business layer: Where that has business rules and models.
+* **Application layer:** Bridge between presentation tier and logic tier, this layer, for example, transforms an object to JSON.
+* **Service layer:** The functional layer that make business layers available. Grouping services into functional layers reduces the impact of change. Most 	changes affect only the layer in which they're made, with few side-effects that impact other layers. 	
+* **Business layer:** Where that has business rules and models.
 Persistence layer: Layer that access a data, the data tier.
 
 
