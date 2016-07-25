@@ -85,19 +85,11 @@ There is a huge effort to create a common API to make the Java developers life e
 
 The solution for this case is create a specification that cover the four kind of NoSQL database. The new API should be look like the JPA, once the developer has familiarity with this API, beside add new behavior and new exceptions, when a database has not support to specific resource. Beside the API, another important point is an integration with others Java specifications such as CDI and bean validation. 
 
-Roadmap
-
-The road map to this API creation is:
-
-The apache project creation (Diana, the Greek goddess of the hunt, is possible name).
-Review in Java Community.
-Development inside an Apache project.
-A JSR proposal.
 
 
-Conclusion
+### Conclusion
 
-Many NoSQL databases are emerging and also its use by Java developers, in the last survey about Java EE developers, almost 50% of interviewers are already using NoSQL technology. Allow a standard to NoSQL will make easier the life of Java developer once will difficult the lock-in vendor and also is not necessary learn a new API to new database. 
+  Many NoSQL databases are emerging and also its use by Java developers, in the last survey about Java EE developers, almost 50% of interviewers are already using NoSQL technology. Allow a standard to NoSQL will make easier the life of Java developer once will difficult the lock-in vendor and also is not necessary learn a new API to new database. 
 
 
 
