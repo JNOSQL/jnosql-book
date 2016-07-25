@@ -1,4 +1,5 @@
-	 	 	
+## Let's talk about standard to NoSQL database in Java
+
    The NoSQL DB is a database that provides a mechanism for storage and retrieval of data which is modeled in means other than the tabular relations used in relational databases. These databases have speed and high scalability. This kind of database has becoming more popular in several applications, that include financial one. As result of increase the number of user the number of vendors are increasing too.
 
 
