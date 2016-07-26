@@ -73,3 +73,5 @@ In relational database there is two mechanisms, beyond DAO, JDBC and JPA:
 * The database vendor needs to “copy” this communication solutions to all Java vendors.
 * To a Java developer there are two lock-in types: If a developer uses an API directly in a change it will lost code, if a developer uses  a high level abstraction, this developer has lock-in in a Java solution because if  this high level hasn't support to a specific NoSQL database, the developer need to change to either Java solution or use an API NoSQL directly.
 
+
+![current solution](../images/07.png)
