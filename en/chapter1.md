@@ -54,3 +54,22 @@ In relational database there is two mechanisms, beyond DAO, JDBC and JPA:
 * **JPA:** A high layer that has communication either JDBC and JPA. This layer has 	high abstraction to Java, this place has annotations and an EntityManager. In general a JPA has integration with other specifications such as CDI and bean validation.
 	 	 	
   A huge advantage from this strategy that one change, either JDBC or JPA, can happen easily. When a developer changes a database, he just need change to a respective driver by database and done! code ready to a new database changed.
+  
+  ![JDBC tier](../images/04.png)
+  
+  
+
+### Persistence layer in NoSQL database
+
+
+  
+  ![Persistence layer in NoSQL database](../images/06.png)
+  
+  
+  In a NoSQL database, there isn't strategy to save code or low impact in a change. All APIs are different and don't follow no one standard, so one change to a new database results in a lot of work. There are some solutions such as Spring Data, Hibernate OGM, TopLink NoSQL but it's in a high level, in other words, if this high level API hasn't support to a specific database the result gonna be either change a high level API or use the API from NoSQL database directly, so lost a lot of code. This solution have several issues:
+
+* The database vendor need to be worried about the high level abstraction to Java world
+* The solution vendor needs to be worried about the low level of communication with specific database.
+* The database vendor needs to “copy” this communication solutions to all Java vendors.
+* To a Java developer there are two lock-in types: If a developer uses an API directly in a change it will lost code, if a developer uses  a high level abstraction, this developer has lock-in in a Java solution because if  this high level hasn't support to a specific NoSQL database, the developer need to change to either Java solution or use an API NoSQL directly.
+
