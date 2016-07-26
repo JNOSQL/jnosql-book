@@ -44,3 +44,11 @@ A solução para esse problema é que exista, assim como no mundo relacional, du
 
 * Uma camada de baixo nível ou camada de comunicação: que seria o driver de comunicação entre o banco e o Java. Essa camada teria quatro especializações (uma para cada tipo de banco de dados).
 * Uma camada de alto nível ou camada de abstração: Responsável pela alta abstração para o desenvolvedor Java. É nessa camada que ficar as anotações, o EntityManager, etc.
+
+Com essa abordagem temos algumas vantagens:
+
+* O distribuidor pelo banco de dados, precisa se preocupar com a comunicação e o parser para o Java.
+* O distribuidor de solução Java, precisa se preocupar apenas com a API de abstração.
+* O desenvolvedor Java não fica preso nem ao banco de dados e nem a API de abstração.
+
+Essas APIs serão opcional uma da outra, em outras palavras, um vendor só preciso me preocupar com a camada do seu interesse.
