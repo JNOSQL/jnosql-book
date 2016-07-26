@@ -92,3 +92,5 @@ So:
 * The database vendor just need to be worried with a Java communication.
 * The Java solution vendor, just need to be worried with a high abstraction level.
 
+
+![perfert solution](../images/08.png)
