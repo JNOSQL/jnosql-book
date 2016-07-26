@@ -44,3 +44,13 @@ Persistence layer: Layer that access a data, the data tier.
 ![Persistence layer in relational database](../images/03.png)
 
 
+
+  
+  Within a persistence layer, it has its own layers: A Data Access Object, DAO, this structure connect business layer and persistence layer. Inside it has an API that does database. Currently there is difference between SQL and NoSQL database:
+
+In relational database there is two mechanisms, beyond DAO, JDBC and JPA:
+
+* **JDBC:** A low layer with database that has communications, basic transactions, 	basically it's a driver to a specific database.	
+* **JPA:** A high layer that has communication either JDBC and JPA. This layer has 	high abstraction to Java, this place has annotations and an EntityManager. In general a JPA has integration with other specifications such as CDI and bean validation.
+	 	 	
+A huge advantage from this strategy that one change, either JDBC or JPA, can happen easily. When a developer changes a database, he just need change to a respective driver by database and done! code ready to a new database changed.
