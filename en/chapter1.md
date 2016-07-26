@@ -119,3 +119,9 @@ Furthermore Diana **will not** be:
 * A new API to abstraction layer
 * Just one API communication to solve all kind of NoSQL database
 * Be responsible to do integrations with other technologies such as CDI, EJB, Bean Validation, Spring, etc.
+
+ So, even Diana not been a abstraction layer, this structure will make the existents ones, abstraction layer, do its job easier, because once they support Diana they will have support to all database that implements the API. Additionally Diana isn't valuable to use  just with a high API, if a Java Developer use Diana and DAO directly the change to another data provider will easier and clear.
+ 
+ ![view diana](../images/10.png)
+ 
+
