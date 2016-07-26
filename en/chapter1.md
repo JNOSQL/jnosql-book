@@ -11,7 +11,7 @@
 ### Tier, a physical structure in software
 
 ![Tier, a physical structure in software
-](../01.png)
+](../images/01.png)
 
 
 
@@ -26,7 +26,7 @@
 ### Layer, the logic structure in a software
 
 
-![Layer, the logic structure in a software](../02.png)
+![Layer, the logic structure in a software](../images/02.png)
  
  
    
