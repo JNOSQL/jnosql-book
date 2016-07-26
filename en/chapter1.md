@@ -104,3 +104,18 @@ These APIs are optionals each other, in other words, a Java solution just need t
    The Diana project has as goal just be the low layer, in other words, just the communication layer to NoSQL database. Basically this project gonna work as a database driver. Diana will have four APIs, one for each database type, and its TCK respective. The test compatibility kit affirms if a driver implements an API correctively. So a X database of key-value implements and run all tests correctively that means this X database has support to key-value Diana API. 
 
 ![Diana ](../images/09.png)
+
+
+The main reason to Diana just works in communication layer are:
+
+* A developer doesn't want learn a new API beyond JPA.
+* The abstraction layer makes sense as a JPA extension and not a new one.
+* Be a communication API is good enough to be a project.
+
+
+Furthermore Diana **will not** be:
+
+* A new API to replace JPA
+* A new API to abstraction layer
+* Just one API communication to solve all kind of NoSQL database
+* Be responsible to do integrations with other technologies such as CDI, EJB, Bean Validation, Spring, etc.
