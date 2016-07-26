@@ -41,4 +41,6 @@ Persistence layer: Layer that access a data, the data tier.
 ###	Persistence layer in relational database
 
 
+![Persistence layer in relational database](../images/03.png)
+
 
