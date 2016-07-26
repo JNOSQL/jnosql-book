@@ -33,3 +33,9 @@
  A vantagem dessas camadas é que a mudança, seja do driver ou do JPA, acontece de forma transparente. Por exemplo, ao realizar a mudança do banco de dados, basta apenas trocar pelo seu respectivo driver e a camada de JPA e o DAO ficam intactas. Assim, caso exista um novo banco de dados, basta que o distribuidor crie apenas o respectivo JDBC sem se preocupar com as outras camadas. O mesmo acontece com o JPA, caso um destruidor de solução técnica para Java queria criar o seu próprio JPA, ele não preciso me preocupar com os detalhes de cada banco de dados, apenas focar na solução de alto nível com o JPA.
  
  No mundo dos bancos NOSQL isso, infelizmente não acontece. Como todas as APIs são diferentes toda mudança de banco resulta na troca de API, assim uma grande perda de código. A solução feita atualmente (Spring Data, Hibernate OGM, TopLink NOSQL, etc.) é que essa camada de alto nível seja responsável por realizar essa comunicação entre o banco de dados e a aplicação Java, assim temos alguns problemas:
+ 
+* O distribuidor de banco de dados, precisa se preocupar com o código de alta abstração de acesso de Java.
+* O distribuidor da solução Java, precisa se preocupar com o código de baixo nível para realizar o acesso ao banco de dados.
+* O distribuidor do banco de dados, precisa replicar a solução para todos provedores de solução Java.
+* O desenvolvedor Java, fica preso a uma solução de alto nível para facilitar o seu código.
+* Caso a camada de alto nível não tenha suporte para o banco de dados o desenvolvedor terá que ou mudar de solução Java ou mesmo fazer a chamada diretamente pela API do banco de dados, ou seja, haverá uma grande perda de código.
