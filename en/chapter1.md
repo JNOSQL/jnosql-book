@@ -75,3 +75,20 @@ In relational database there is two mechanisms, beyond DAO, JDBC and JPA:
 
 
 ![current solution](../images/07.png)
+
+
+
+### The solution
+
+
+
+The solve this problem the API should have two layers:
+
+* The communication layer: the driver from specific database that connects Java to an exactly database. This layer has four specialization, one to each NoSQL type.
+* The abstraction level: its duty is to high abstraction to Java developers, this layer has annotations and integration to other specializations.
+
+So:
+
+* The database vendor just need to be worried with a Java communication.
+* The Java solution vendor, just need to be worried with a high abstraction level.
+
