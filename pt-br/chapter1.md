@@ -21,3 +21,11 @@
 * **Camada de serviço**: A camada de serviço, a depender da tecnologia utilizada pode ser um Controller ou um Resource.
 * **Camada de negócio**: Local onde contém toda a lógica de negócio e o modelo.
 * **Camada de persistência**: A ponte entre a camada física de acesso aos dados e a camada física lógica.
+
+
+ Olhando para a camada de persistência, ela possui vez suas próprias camadas: O DAO, Data Access Object, que é a camada responsável por realizar a ligação entre a camada de persistência e a de negócio. É nela que contém a API e as chamadas para o banco de dados. Atualmente existe uma diferença entre os bancos relacionais e não relacionais:
+ 
+ No mundo relacional existe dois mecanismo, além do DAO, que são o JDBC e o JPA:
+ 
+* **JDBC:** Responsável por uma camada de baixo nível com o banco de dados. É nela que contém a transação, os parses, a comunicação com o banco de dados em si, basicamente é o “driver” do banco de dados etc.
+* **JPA:** É a camada de alto nível com o banco de dados. É nela que fica a comunicação entre o JDBC e a aplicação Java. Boa parte dessa camada é definida por anotações e é nela também que contém a integração/comunicação com as outras especificações como o CDI e o bean validation.
