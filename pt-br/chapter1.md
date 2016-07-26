@@ -39,3 +39,8 @@
 * O distribuidor do banco de dados, precisa replicar a solução para todos provedores de solução Java.
 * O desenvolvedor Java, fica preso a uma solução de alto nível para facilitar o seu código.
 * Caso a camada de alto nível não tenha suporte para o banco de dados o desenvolvedor terá que ou mudar de solução Java ou mesmo fazer a chamada diretamente pela API do banco de dados, ou seja, haverá uma grande perda de código.
+
+A solução para esse problema é que exista, assim como no mundo relacional, duas camadas de API:
+
+* Uma camada de baixo nível ou camada de comunicação: que seria o driver de comunicação entre o banco e o Java. Essa camada teria quatro especializações (uma para cada tipo de banco de dados).
+* Uma camada de alto nível ou camada de abstração: Responsável pela alta abstração para o desenvolvedor Java. É nessa camada que ficar as anotações, o EntityManager, etc.
