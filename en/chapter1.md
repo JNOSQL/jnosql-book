@@ -94,3 +94,13 @@ So:
 
 
 ![perfert solution](../images/08.png)
+
+
+These APIs are optionals each other, in other words, a Java solution just need to implement a high solution and the database vendors need to implements the connection API.
+
+
+### Diana Project was born
+
+   The Diana project has as goal just be the low layer, in other words, just the communication layer to NoSQL database. Basically this project gonna work as a database driver. Diana will have four APIs, one for each database type, and its TCK respective. The test compatibility kit affirms if a driver implements an API correctively. So a X database of key-value implements and run all tests correctively that means this X database has support to key-value Diana API. 
+
+![Diana ](../images/09.png)
