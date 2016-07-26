@@ -52,3 +52,25 @@ Com essa abordagem temos algumas vantagens:
 * O desenvolvedor Java não fica preso nem ao banco de dados e nem a API de abstração.
 
 Essas APIs serão opcional uma da outra, em outras palavras, um vendor só preciso me preocupar com a camada do seu interesse.
+
+
+### Nasce o Projeto Diana
+
+
+  O projeto Diana tem como objetivo tratar apenas da camada de baixo nível, ou seja, a camada de comunicação com os bancos não relacionais. A ideia que esse projeto funcione como um driver para os bancos de dados não relacionais. De modo geral ela possuirá quatro APIs, uma para cada tipo de banco de dados, além do seu respectivo TCK. O Kit de teste de compatibilidade tem como objetivo afirmar que um determinado banco de dados implementa uma das APIs corretamente, por exemplo, caso o banco X implemente a API de chave valor e passar nos testes de compatibilidade quer dizer que ele está compatível com o a API de chave-valor. O motivo que o projeto abrangerá apenas a API de comunicação são:
+
+* O desenvolvedor não quer aprender uma nova API além do JPA.
+* A camada de abstração, faz sentido como extensão do JPA e não criar uma nova.
+* O objetivo da camada de comunicação é um escopo bem grande uma vez que se tem diversos tipos de bancos de dados de diversas implementações.
+* Facilitar a implementação com as camadas de abstração já existentes, além de iniciar as conversas sobre esse tipo de padronização.
+
+Com isso o projeto Diana não será:
+
+* Uma nova API para substituir o JPA
+* Uma nova API para camada de abstração
+* Apenas uma única API, ignorando as especializações de cada tipo de banco
+* Camada responsável por realizar a integração entre as outras especificações como CDI, EJB, Bean Validation, Spring, etc.
+
+ Assim, mesmo com a não responsabilidade de realizar o papel das camadas de abstração, essa camada de comunicação facilitará a entrada do suporte ao banco de dados, assim, por exemplo, caso uma das APIs de abstração como Spring Data, Hibernate OGM, etc. Suporte essa API, basta que o distribuidor do banco de dados implemente o seu respectivo tipo de banco de dados e essa API terá suporte para o novo banco.
+
+ Diana não é valioso apenas utilizado em conjunto com uma camada de abstração, caso o desenvolvedor opte por não utilizar tal API de abstração, ao utilizar a camada de comunicação, a mudança entre os bancos de dados do mesmo tipo será transparente, por exemplo, a mudança de um banco de grafos para outro, será necessário apenas trocar o driver, implementação, do outro banco.
