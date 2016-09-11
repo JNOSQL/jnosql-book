@@ -2,7 +2,7 @@
 
 
 
-  Os bancos NOSQL são bancos de dados que realizam operação de inserção e recuperação de dados utilizando outro modelo que não seja o relacional. Esses tipos de bancos se caracterizam pela velocidade e alta taxa de escalabilidade. Esses tipos de bancos de dados vem sendo utilizado com maior frequência em diversos tipos de aplicações, inclusive, aplicações para as instituições financeiras. Como consequência, cresce também o número de vendors ou distribuidores para esse tipo de banco de dados.
+   Os bancos NoSQL são bancos de dados que realizam operação de inserção e recuperação de dados utilizando outro modelo que não seja o relacional. Esses tipos de bancos se caracterizam pela velocidade e alta taxa de escalabilidade e vem sendo utilizado com maior frequência em diversos tipos de aplicações, inclusive, aplicações para as instituições financeiras. Como consequência, cresce também o número de vendors ou distribuidores para esse tipo de banco de dados.
 
 
 Os bancos de dados NOSQL são definidos basicamente pelo seu modelo de armazenamento que são  quatro:
