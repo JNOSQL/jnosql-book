@@ -50,6 +50,8 @@ Possui uma estrutura muito semelhante à do java.util.Map, onde podemos armazena
 
 Alguns bancos de dados possuem a comum característica de ter suporte de um ou mais modelos apresentados anteriormente.
 
+* OrientDB
+* Couchbase
 
 ###  Comparando com as aplicações Java que utilizam bancos relacionais
   
