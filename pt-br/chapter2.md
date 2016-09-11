@@ -13,8 +13,8 @@ Com o intuito de abranger os quatro tipos de banco de dados, essa API é comport
 
 Ou seja, caso um determinado banco de dados seja multi-model, ele usará duas APIs, uma para cada tipo de banco de dados. Além de possuir cada API, para cada tipo, existe também o Technology Compatibility Kit, o TCK. Cada TCK tem como objetivo de realizar os testes para verificar se uma implementação está ou não compatível com a API. Mesmo com APIs diferentes, houve uma tentativa de se utilizar uma nomenclatura comum entre elas:
 
-Configuration
-Factory
-Manager
-Entity
-Value
+* Configuration
+* Factory
+* Manager
+* Entity
+* Value
