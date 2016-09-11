@@ -6,10 +6,10 @@ Com o intuito de separar melhor as camadas de abstração e de comunicação ent
 
 Com o intuito de abranger os quatro tipos de banco de dados, essa API é comporta por quatro domínios, cada domínio abrange um tipo de banco de dados. 
 
-* org.jnosql.diana.column
-* org.jnosql.diana.document
-* org.jnosql.diana.graph
-* org.jnosql.diana.key
+* `org.jnosql.diana.column`
+* `org.jnosql.diana.document`
+* `org.jnosql.diana.graph`
+* `org.jnosql.diana.key`
 
 Ou seja, caso um determinado banco de dados seja multi-model, ele usará duas APIs, uma para cada tipo de banco de dados. Além de possuir cada API, para cada tipo, existe também o Technology Compatibility Kit, o TCK. Cada TCK tem como objetivo de realizar os testes para verificar se uma implementação está ou não compatível com a API. Mesmo com APIs diferentes, houve uma tentativa de se utilizar uma nomenclatura comum entre elas:
 
