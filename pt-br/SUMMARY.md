@@ -11,4 +11,5 @@
   * [Entidade](chapter3_2.md)
     * [ColumnFamilyEntity](chapter3_2_1.md)
     * [DocumentCollectionEntity](chapter3_2_2.md)
+    * [KeyValueEntity](chapter3_2_3.md)
 * [Bibliografia](bibliography.md)
