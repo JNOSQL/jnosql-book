@@ -9,7 +9,7 @@ O real propósito da interface `Value`, como foi dito, é facilitar a comunicaç
 
 Ambas as interfaces são carregadas a partir do ServiceLoader do Java SE. Assim, para fazer com que o Diana basta seguir o tal padrão. Para facilitar o entendimento, criará um converter para o seguinte tipo.
 
-[code]
+```java
 public class Money { 
 
     private final String currency; 
@@ -39,7 +39,7 @@ public class Money {
         return new Money(texts[0], BigDecimal.valueOf(Double.valueOf(texts[1]))); 
     } 
 }
-[code]
+```
 
 Com o intuito é criar um simples converter foi utilizado a criação dessa simples representação Monetário. Como se sabe que não é uma boa prática reinventar a roda, em sua aplicação utiliza APIs mais maduras como o moneta que é a implementação de referência da money-api, JSR 354.
 
