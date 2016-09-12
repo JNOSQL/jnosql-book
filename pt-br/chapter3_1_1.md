@@ -41,7 +41,7 @@ public class Money {
 }
 ```
 
-Com o intuito é criar um simples converter foi utilizado a criação dessa simples representação Monetário. Como se sabe que não é uma boa prática reinventar a roda, em sua aplicação utiliza APIs mais maduras como o moneta que é a implementação de referência da money-api, JSR 354.
+Com o intuito é criar um simples converter foi utilizado a criação dessa simples representação Monetário. Como se sabe que não é uma boa prática reinventar a roda, em sua aplicação utiliza APIs mais maduras como o [moneta](https://github.com/JavaMoney) que é a implementação de referência da money-api, [JSR 354](https://jcp.org/en/jsr/detail?id=354).
 
 
 O primeiro passo é a criação da classe que realizará a conversão do tipo para o banco de dados, o ValueWriter. Ele possui dois métodos:
