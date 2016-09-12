@@ -65,7 +65,7 @@ public class MoneyValueWriter implements ValueWriter<Money, String> {
 }
 ```
 
-Uma vez o valor definido dentro do banco de dados o próximo passo é realizar a leitura dessa informação para a aplicação. Para isso é necessário ter uma especialização do ValueReader. Assim, como o ValueWriter ele possui dois métodos:
+    Uma vez o valor definido dentro do banco de dados o próximo passo é realizar a leitura dessa informação para a aplicação. Para isso é necessário ter uma especialização do ValueReader. Assim, como o `ValueWriter` ele possui dois métodos:
 
 boolean isCompatible(Class clazz); Verifica se a implementação está apta para realizar a leitura do tipo desejado.
 <T> T read(Class<T> clazz, Object value); Uma vez compatível, o próximo passo é realizar a operação de leitura para a classe algo T a partir do objeto origem.
