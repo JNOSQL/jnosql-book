@@ -4,8 +4,8 @@
 O real propósito da interface `Value`, como foi dito, é facilitar a comunicação entre o banco de dados e a aplicação. O Diana, por padrão, suporta os tipos comuns existentes na plataforma Java como os tipos primitivos, Wrappers, a nova API de time, etc. Além desses tipos nativamente suportados também é possível criar os seus próprios convetores de maneira transparente. Para isso ele possui duas interfaces:
 
 
-ValueWriter: Essa interface representa como uma instância de Value será escrita dentro do banco de dados.
-ValueReader: Essa interface representa como o valor será lido para ser lido dentro da aplicação Java. Por padrão, o método <T> T get(Class<T> clazz) e suas derivações (getList, getSet, getMap, getStream) utilizam essas implementações para realizar essa conversão.
+* `ValueWriter`: Essa interface representa como uma instância de Value será escrita dentro do banco de dados.
+* `ValueReader`: Essa interface representa como o valor será lido para ser lido dentro da aplicação Java. Por padrão, o método `<T> T get(Class<T> clazz)` e suas derivações (*getList*, *getSet*, *getMap*, *getStream*) utilizam essas implementações para realizar essa conversão.
 
 Ambas as interfaces são carregadas a partir do ServiceLoader do Java SE. Assim, para fazer com que o Diana basta seguir o tal padrão. Para facilitar o entendimento, criará um converter para o seguinte tipo.
 
