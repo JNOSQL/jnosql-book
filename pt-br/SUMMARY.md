@@ -8,4 +8,7 @@
 * [Introdução ao Diana](chapter3.md)
   * [Value](chapter3_1.md)
     * [Criando o seu próprio Writer and Reader](chapter3_1_1.md)
+  * [Entidade](chapter3_2.md)
+    * [ColumnFamilyEntity](chapter3_2_1.md)
+    * [DocumentCollectionEntity](chapter3_2_2.md)
 * [Bibliografia](bibliography.md)
