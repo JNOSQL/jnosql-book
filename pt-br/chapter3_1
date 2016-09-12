@@ -2,9 +2,9 @@
 
 Essa interface representa o valor que será armazenado no banco de dados, um simples Wrapper. Esse Wrapper tem como principal objetivo de realizar a ponte entre o banco e a aplicação. Por exemplo, ao se utilizar um tipo no qual o banco de dados não suporte, é possível realizar a conversão entre a comunicação e seu banco de dados de maneira transparente. Por padrão, o Diana suporta uma implementação default a partir da própria API.
 
-[code]
+```java
 Value value = Value.of(12);
-[/code]
+```
 
 Os métodos dentro do Value são:
 
