@@ -70,7 +70,7 @@ public class MoneyValueWriter implements ValueWriter<Money, String> {
 * `boolean isCompatible(Class clazz)`; Verifica se a implementação está apta para realizar a leitura do tipo desejado.
 * `<T> T read(Class<T> clazz, Object value)`; Uma vez compatível, o próximo passo é realizar a operação de leitura para a classe algo T a partir do objeto origem.
 
-[code]
+```java
 public class MoneyValueReader implements ValueReader { 
 
     @Override 
@@ -83,15 +83,13 @@ public class MoneyValueReader implements ValueReader {
         return (T) Money.parse(value.toString()); 
     } 
 }
-[code]
-
-
+```
 
 
 Uma vez criado as implementações o próximo passo é cadastrar as implementações de leitura e escrita. Para isso, é necessário criar dois arquivos:
 
-META-INF/services/org.jnosql.diana.api.ValueReader 
-META-INF/services/org.jnosql.diana.api.ValueWriter
+* `META-INF/services/org.jnosql.diana.api.ValueReader`
+* `META-INF/services/org.jnosql.diana.api.ValueWriter`
 
 Cada arquivo terá o caminho e a classe da respectiva implementação, Assim:
 
