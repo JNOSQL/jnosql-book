@@ -16,11 +16,11 @@ Os métodos dentro do Value são:
 * `<T> Stream<T> getStream(Class<T> clazz);` Semelhante aos métodos anteiores, porém é retornado um Stream.
 * `<K, V> Map<K, V> getMap(Class<K> keyClass, Class<V> valueClass;` Caso o valor contido dentro do Value seja uma instância do java.util.Map ele converterá a chave e o valor para o tipo desejado, do contrário, a operação não será suportada.
 
-[code]
+```java
         Value value = Value.of(12); 
         String string = value.get(String.class); 
         List<Integer> list = value.getList(Integer.class); 
         Set<Long> set = value.getSet(Long.class); 
         Stream<Integer> stream = value.getStream(Integer.class); 
         Integer integer = value.cast();
-[/code]
+```
