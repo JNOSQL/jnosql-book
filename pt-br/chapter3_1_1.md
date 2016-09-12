@@ -105,9 +105,9 @@ O arquivo `org.jnosql.diana.api.ValueWriter` terá o seguinte conteúdo:
 my.company.MoneyValueWriter
 ```
 
-[code]
+```java
 Value value = Value.of("BRL 10.0"); 
 Money money = value.get(Money.class); 
 List<Money> list = value.getList(Money.class); 
 Set<Money> set = value.getSet(Money.class);
-[/code]
+```
