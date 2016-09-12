@@ -46,8 +46,10 @@ Com o intuito é criar um simples converter foi utilizado a criação dessa simp
 
 O primeiro passo é a criação da classe que realizará a conversão do tipo para o banco de dados, o `ValueWriter`. Ele possui dois métodos:
 
-boolean isCompatible(Class clazz) : Verifica se a implementação suporta a conversão para esse tipo de classe.
-S write(T object): Uma vez definido que a implementação está apta para realizar a conversão, o próximo passo é realizar a conversão de uma instância T para o tipo desejado S.
+* `boolean isCompatible(Class clazz)`: Verifica se a implementação suporta a conversão para esse tipo de classe.
+* `S write(T object)`: Uma vez definido que a implementação está apta para realizar a conversão, o próximo passo é realizar a conversão de uma instância T para o tipo desejado S.
+
+
 [code]
 public class MoneyValueWriter implements ValueWriter<Money, String> { 
     
