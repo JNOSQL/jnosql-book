@@ -85,15 +85,11 @@ Com isso o projeto Diana **não** será:
 
 ![](/images/artemis-integration.png)
 
+O Artemis é a camada de integração, ou seja, ele será responsável por se comunicar com a camada de comunicação, o diana, e realizar a integração com outras tecnologias, como Bean Validation, por exemplo. O seu coração é composto com CDI. Assim, sua fórmula é simples:
 
+Diana mais CDI igual ao Artemis.
 
-O Artemis é a camada de integração, ou seja, ele será responsável por se comunicar com a camada de comunicação, o diana, e realizar a integração com outras tecnologias, como Bean Validation, por exemplo. O seu coração é composto com CDI. Assim, sua fórmula é simples: 
-
-Diana mais CDI igual ao Artemis. 
-
-   Assim como o Diana, ela também possui, de maneira geral, um pacote para cada tipo de banco de dados. Utilizando como base o CDI ele se caracteriza por ser compartimentalizável além de ser possível criar eventos para cada momento da persistência do objeto. Com Artemis será possível:
-
-
+Assim como o Diana, ela também possui, de maneira geral, um pacote para cada tipo de banco de dados. Utilizando como base o CDI ele se caracteriza por ser compartimentalizável além de ser possível criar eventos para cada momento da persistência do objeto. Com Artemis será possível:
 
 * Persistir seu objeto utilizando simples anotações
 
@@ -103,11 +99,11 @@ Diana mais CDI igual ao Artemis.
 
 * Criar classes interceptadoras para as classes repositório.
 
- 
 
 
 
 
+![](/images/integration-artemis.png)
 
 
 
