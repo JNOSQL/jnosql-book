@@ -35,6 +35,7 @@ No mundo relacional existe dois mecanismo, além do DAO, que são o JDBC e o JPA
 * O distribuidor do banco de dados, precisa replicar a solução para todos provedores de solução Java.
 
 * O desenvolvedor Java, fica preso a uma solução de alto nível para facilitar o seu código.
+
 * Caso a camada de alto nível não tenha suporte para o banco de dados o desenvolvedor terá que ou mudar de solução Java ou mesmo fazer a chamada diretamente pela API do banco de dados, ou seja, haverá uma grande perda de código.
 
 A solução para esse problema é que exista, assim como no mundo relacional, duas camadas de API:
@@ -54,13 +55,9 @@ Essas APIs serão opcional uma da outra, em outras palavras, um vendor só preci
 
 O JNoSQL é uma API flexível e extensiva Java cujo o objetivo é realizar comunicações entre a aplicação java e o banco de dados NoSQL. Assim, o seu foco será criar uma API comum, porém, olhando para a diversidade que existe dentro do mundo NoSQL, mesmo para os bancos do mesmo tipo. Para atacar esse problema o projeto será composto de duas camadas core:
 
-
-
 * **A camada de comunicação:** A API que realiza a comunicação com o banco de dados, em analogia, seria o que o JDBC faz para o SQL. Essa API será subcomposta de inicialmente de quatro, uma para cada tipo de banco de dados NoSQL.
 
 * **A camada de abstração:** Uma API que realiza a integração entre outras ferramentas, assim será o melhor amigo para o desenvolvedor Java. Essa API será focada em anotações e integração com outras tecnologias, por exemplo, Bean validation. O seu coração será baseado em CDI.
-
-
 
 #### Diana
 
