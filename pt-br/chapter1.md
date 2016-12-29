@@ -99,8 +99,11 @@ Assim como o Diana, ela também possui, de maneira geral, um pacote para cada ti
 
 * Criar classes interceptadoras para as classes repositório.
 
-  
 Um ponto importante sobre os eventos no CDI é a facilidade de adicionar novo recursos ou funcionalidades de maneira transparente ao código. Por exemplo, é possível injetar a validação das entidades, bean validation, sem ser necessário mudar nenhum fluxo do código atual. Por padrão, o fluxo de evento segue o seguinte fluxo:
 
 ![](/images/integration-artemis.png)
+
+
+
+Cada tipo de banco de dados, possui os seus próprios interceptors e eventos, ou seja, é possível realizar a mudança apenas dos eventos do chave-valor sem modificar escutar os eventos do tipo grafo.
 
