@@ -1,40 +1,35 @@
 ## A principal ideia atrás da API
 
-
-
-  Uma vez discutido da importância da padronização das API dos bancos não relacionais, o próximo passo é discutir mais detalhes sobre a API. Porém, para facilitar a explicação da solução da nova API, primeiro é importante falar das camadas do software seja camada física ou lógica. Essas camadas facilitam a organização, manutenção além de dividir as responsabilidades nos softwares, principalmente os mais complexos. A proposta dessa nova API seria responsável por realizar a comunicação entre a camada lógica e a de dados, para isso, será criado duas novas API uma para comunicação entre o banco e outra responsável pela alta abstração na aplicação Java.
-
+Uma vez discutido da importância da padronização das API dos bancos não relacionais, o próximo passo é discutir mais detalhes sobre a API. Porém, para facilitar a explicação da solução da nova API, primeiro é importante falar das camadas do software seja camada física ou lógica. Essas camadas facilitam a organização, manutenção além de dividir as responsabilidades nos softwares, principalmente os mais complexos. A proposta dessa nova API seria responsável por realizar a comunicação entre a camada lógica e a de dados, para isso, será criado duas novas API uma para comunicação entre o banco e outra responsável pela alta abstração na aplicação Java.
 
 ![Camada Física](../images/01.png)
 
-
-  No mundo de software é muito comum que a aplicação tenha camadas, sejam elas lógicas ou físicas. Aplicações de multi-camada física é muito comum, principalmente com três: 
+No mundo de software é muito comum que a aplicação tenha camadas, sejam elas lógicas ou físicas. Aplicações de multi-camada física é muito comum, principalmente com três:
 
 * **Camada de apresentação**: A sua principal responsabilidade é traduzir as atividades de uma forma que o usuário possa entender.
 * **Camada lógica**: A camada lógica é onde fica localizada toda a lógica de negócio e processamento, condições, salva informação, essa a camada que move e processa informações entre as camadas.
 * **Camada de dados**: Essa camada é responsável por armazenar e recuperar as informações dentro de um banco de dados ou sistema de arquivo.
 
+Falando precisamente da camada física, tier, lógica, para separar as responsabilidades, existem as camadas, layer, lógicas. Essas camadas contêm a ponte entre a camada física de apresentarão e a camada de dados além da lógica de negócio. Indiferente do seu padrão de arquitetura \(MVC, HMVC, PAC, MVA, MVP, MVVM\) eles possuem no mínimo quatro camadas:
 
- Falando precisamente da camada física, tier, lógica, para separar as responsabilidades, existem as camadas, layer, lógicas. Essas camadas contêm a ponte entre a camada física de apresentarão e a camada de dados além da lógica de negócio. Indiferente do seu padrão de arquitetura (MVC, HMVC, PAC, MVA, MVP, MVVM) eles possuem no mínimo quatro camadas:
- 
 * **Camada de aplicação**: A ponte para a camada física de apresentação, por exemplo, responsável por transformar o objeto em JSON ou XML.
 * **Camada de serviço**: A camada de serviço, a depender da tecnologia utilizada pode ser um Controller ou um Resource.
 * **Camada de negócio**: Local onde contém toda a lógica de negócio e o modelo.
 * **Camada de persistência**: A ponte entre a camada física de acesso aos dados e a camada física lógica.
 
+Olhando para a camada de persistência, ela possui vez suas próprias camadas: O DAO, Data Access Object, que é a camada responsável por realizar a ligação entre a camada de persistência e a de negócio. É nela que contém a API e as chamadas para o banco de dados. Atualmente existe uma diferença entre os bancos relacionais e não relacionais:
 
- Olhando para a camada de persistência, ela possui vez suas próprias camadas: O DAO, Data Access Object, que é a camada responsável por realizar a ligação entre a camada de persistência e a de negócio. É nela que contém a API e as chamadas para o banco de dados. Atualmente existe uma diferença entre os bancos relacionais e não relacionais:
- 
- No mundo relacional existe dois mecanismo, além do DAO, que são o JDBC e o JPA:
- 
+No mundo relacional existe dois mecanismo, além do DAO, que são o JDBC e o JPA:
+
 * **JDBC:** Responsável por uma camada de baixo nível com o banco de dados. É nela que contém a transação, os parses, a comunicação com o banco de dados em si, basicamente é o “driver” do banco de dados etc.
 * **JPA:** É a camada de alto nível com o banco de dados. É nela que fica a comunicação entre o JDBC e a aplicação Java. Boa parte dessa camada é definida por anotações e é nela também que contém a integração/comunicação com as outras especificações como o CDI e o bean validation.
 
- A vantagem dessas camadas é que a mudança, seja do driver ou do JPA, acontece de forma transparente. Por exemplo, ao realizar a mudança do banco de dados, basta apenas trocar pelo seu respectivo driver e a camada de JPA e o DAO ficam intactas. Assim, caso exista um novo banco de dados, basta que o distribuidor crie apenas o respectivo JDBC sem se preocupar com as outras camadas. O mesmo acontece com o JPA, caso um destruidor de solução técnica para Java queria criar o seu próprio JPA, ele não preciso me preocupar com os detalhes de cada banco de dados, apenas focar na solução de alto nível com o JPA.
- 
- No mundo dos bancos NOSQL isso, infelizmente não acontece. Como todas as APIs são diferentes toda mudança de banco resulta na troca de API, assim uma grande perda de código. A solução feita atualmente (Spring Data, Hibernate OGM, TopLink NOSQL, etc.) é que essa camada de alto nível seja responsável por realizar essa comunicação entre o banco de dados e a aplicação Java, assim temos alguns problemas:
- 
+  A vantagem dessas camadas é que a mudança, seja do driver ou do JPA, acontece de forma transparente. Por exemplo, ao realizar a mudança do banco de dados, basta apenas trocar pelo seu respectivo driver e a camada de JPA e o DAO ficam intactas. Assim, caso exista um novo banco de dados, basta que o distribuidor crie apenas o respectivo JDBC sem se preocupar com as outras camadas. O mesmo acontece com o JPA, caso um destruidor de solução técnica para Java queria criar o seu próprio JPA, ele não preciso me preocupar com os detalhes de cada banco de dados, apenas focar na solução de alto nível com o JPA.
+
+  No mundo dos bancos NOSQL isso, infelizmente não acontece. Como todas as APIs são diferentes toda mudança de banco resulta na troca de API, assim uma grande perda de código. A solução feita atualmente \(Spring Data, Hibernate OGM, TopLink NOSQL, etc.\) é que essa camada de alto nível seja responsável por realizar essa comunicação entre o banco de dados e a aplicação Java, assim temos alguns problemas:
+
 * O distribuidor de banco de dados, precisa se preocupar com o código de alta abstração de acesso de Java.
+
 * O distribuidor da solução Java, precisa se preocupar com o código de baixo nível para realizar o acesso ao banco de dados.
 * O distribuidor do banco de dados, precisa replicar a solução para todos provedores de solução Java.
 * O desenvolvedor Java, fica preso a uma solução de alto nível para facilitar o seu código.
@@ -42,7 +37,7 @@
 
 A solução para esse problema é que exista, assim como no mundo relacional, duas camadas de API:
 
-* Uma camada de baixo nível ou camada de comunicação: que seria o driver de comunicação entre o banco e o Java. Essa camada teria quatro especializações (uma para cada tipo de banco de dados).
+* Uma camada de baixo nível ou camada de comunicação: que seria o driver de comunicação entre o banco e o Java. Essa camada teria quatro especializações \(uma para cada tipo de banco de dados\).
 * Uma camada de alto nível ou camada de abstração: Responsável pela alta abstração para o desenvolvedor Java. É nessa camada que ficar as anotações, o EntityManager, etc.
 
 Com essa abordagem temos algumas vantagens:
@@ -53,11 +48,9 @@ Com essa abordagem temos algumas vantagens:
 
 Essas APIs serão opcional uma da outra, em outras palavras, um vendor só preciso me preocupar com a camada do seu interesse.
 
+### Nasce o Projeto JNoSQL
 
-### Nasce o Projeto Diana
-
-
-  O projeto Diana tem como objetivo tratar apenas da camada de baixo nível, ou seja, a camada de comunicação com os bancos não relacionais. A ideia que esse projeto funcione como um driver para os bancos de dados não relacionais. De modo geral ela possuirá quatro APIs, uma para cada tipo de banco de dados, além do seu respectivo TCK. O Kit de teste de compatibilidade tem como objetivo afirmar que um determinado banco de dados implementa uma das APIs corretamente, por exemplo, caso o banco X implemente a API de chave valor e passar nos testes de compatibilidade quer dizer que ele está compatível com o a API de chave-valor. O motivo que o projeto abrangerá apenas a API de comunicação são:
+O projeto JNoSQL tem como objetivo tratar apenas da camada de baixo nível, ou seja, a camada de comunicação com os bancos não relacionais. A ideia que esse projeto funcione como um driver para os bancos de dados não relacionais. De modo geral ela possuirá quatro APIs, uma para cada tipo de banco de dados, além do seu respectivo TCK. O Kit de teste de compatibilidade tem como objetivo afirmar que um determinado banco de dados implementa uma das APIs corretamente, por exemplo, caso o banco X implemente a API de chave valor e passar nos testes de compatibilidade quer dizer que ele está compatível com o a API de chave-valor. O motivo que o projeto abrangerá apenas a API de comunicação são:
 
 * O desenvolvedor não quer aprender uma nova API além do JPA.
 * A camada de abstração, faz sentido como extensão do JPA e não criar uma nova.
@@ -71,6 +64,9 @@ Com isso o projeto Diana não será:
 * Apenas uma única API, ignorando as especializações de cada tipo de banco
 * Camada responsável por realizar a integração entre as outras especificações como CDI, EJB, Bean Validation, Spring, etc.
 
- Assim, mesmo com a não responsabilidade de realizar o papel das camadas de abstração, essa camada de comunicação facilitará a entrada do suporte ao banco de dados, assim, por exemplo, caso uma das APIs de abstração como Spring Data, Hibernate OGM, etc. Suporte essa API, basta que o distribuidor do banco de dados implemente o seu respectivo tipo de banco de dados e essa API terá suporte para o novo banco.
+  Assim, mesmo com a não responsabilidade de realizar o papel das camadas de abstração, essa camada de comunicação facilitará a entrada do suporte ao banco de dados, assim, por exemplo, caso uma das APIs de abstração como Spring Data, Hibernate OGM, etc. Suporte essa API, basta que o distribuidor do banco de dados implemente o seu respectivo tipo de banco de dados e essa API terá suporte para o novo banco.
 
- Diana não é valioso apenas utilizado em conjunto com uma camada de abstração, caso o desenvolvedor opte por não utilizar tal API de abstração, ao utilizar a camada de comunicação, a mudança entre os bancos de dados do mesmo tipo será transparente, por exemplo, a mudança de um banco de grafos para outro, será necessário apenas trocar o driver, implementação, do outro banco.
+  Diana não é valioso apenas utilizado em conjunto com uma camada de abstração, caso o desenvolvedor opte por não utilizar tal API de abstração, ao utilizar a camada de comunicação, a mudança entre os bancos de dados do mesmo tipo será transparente, por exemplo, a mudança de um banco de grafos para outro, será necessário apenas trocar o driver, implementação, do outro banco.
+
+
+
