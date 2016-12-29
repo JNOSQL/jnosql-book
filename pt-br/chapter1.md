@@ -81,11 +81,11 @@ Com isso o projeto Diana **não** será:
 
   Diana não é valioso apenas utilizado em conjunto com uma camada de abstração, caso o desenvolvedor opte por não utilizar tal API de abstração, ao utilizar a camada de comunicação, a mudança entre os bancos de dados do mesmo tipo será transparente, por exemplo, a mudança de um banco de grafos para outro, será necessário apenas trocar o driver, implementação, do outro banco.
 
-
-
 #### Artemis
 
 ![](/images/artemis-integration.png)
+
+
 
 
 
