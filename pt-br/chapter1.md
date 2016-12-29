@@ -31,6 +31,7 @@ No mundo relacional existe dois mecanismo, além do DAO, que são o JDBC e o JPA
 * O distribuidor de banco de dados, precisa se preocupar com o código de alta abstração de acesso de Java.
 
 * O distribuidor da solução Java, precisa se preocupar com o código de baixo nível para realizar o acesso ao banco de dados.
+
 * O distribuidor do banco de dados, precisa replicar a solução para todos provedores de solução Java.
 * O desenvolvedor Java, fica preso a uma solução de alto nível para facilitar o seu código.
 * Caso a camada de alto nível não tenha suporte para o banco de dados o desenvolvedor terá que ou mudar de solução Java ou mesmo fazer a chamada diretamente pela API do banco de dados, ou seja, haverá uma grande perda de código.
@@ -50,7 +51,15 @@ Essas APIs serão opcional uma da outra, em outras palavras, um vendor só preci
 
 ### Nasce o Projeto JNoSQL
 
-O projeto JNoSQL tem como objetivo tratar apenas da camada de baixo nível, ou seja, a camada de comunicação com os bancos não relacionais. A ideia que esse projeto funcione como um driver para os bancos de dados não relacionais. De modo geral ela possuirá quatro APIs, uma para cada tipo de banco de dados, além do seu respectivo TCK. O Kit de teste de compatibilidade tem como objetivo afirmar que um determinado banco de dados implementa uma das APIs corretamente, por exemplo, caso o banco X implemente a API de chave valor e passar nos testes de compatibilidade quer dizer que ele está compatível com o a API de chave-valor. O motivo que o projeto abrangerá apenas a API de comunicação são:
+
+
+   O JNoSQL é uma API flexível e extensiva Java cujo o objetivo é realizar comunicações entre a aplicação java e o banco de dados NoSQL. Assim, o seu foco será criar uma API comum, porém, olhando para a diversidade que existe dentro do mundo NoSQL, mesmo para os bancos do mesmo tipo. Para atacar esse problema o projeto será composto de duas camadas core:
+
+
+
+#### Diana
+
+O projeto Diana tem como objetivo tratar apenas da camada de baixo nível, ou seja, a camada de comunicação com os bancos não relacionais. A ideia que esse projeto funcione como um driver para os bancos de dados não relacionais. De modo geral ela possuirá quatro APIs, uma para cada tipo de banco de dados, além do seu respectivo TCK. O Kit de teste de compatibilidade tem como objetivo afirmar que um determinado banco de dados implementa uma das APIs corretamente, por exemplo, caso o banco X implemente a API de chave valor e passar nos testes de compatibilidade quer dizer que ele está compatível com o a API de chave-valor. O motivo que o projeto abrangerá apenas a API de comunicação são:
 
 * O desenvolvedor não quer aprender uma nova API além do JPA.
 * A camada de abstração, faz sentido como extensão do JPA e não criar uma nova.
