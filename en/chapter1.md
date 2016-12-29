@@ -70,7 +70,7 @@ These APIs are optionals each other, in other words, a Java solution just need t
 
 ### JNoSQL
 
-These APIs are options each other, in other words, a Java solution just needs to implement a high solution and the database vendors need to implements the connection API.
+The JNoSQL is a several tools to make easy an integration between the Java Application with the NoSQL. To solve this problem the project gonna have two layers:
 
 * **Communication API:** An API just to communicate with the database, exactly what JDBC does to SQL. This API gonna have four specializations, one for each kind of database.
 
