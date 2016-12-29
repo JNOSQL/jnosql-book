@@ -129,3 +129,21 @@ Artemis is an integration layer, in other words, it has the goal to communicate 
 
 Diana plus CDI equals to Artemis
 
+
+
+Look like Diana, it has a different package to each NoSQL database. Using CDI as heart, Artemis is highly customizable also observe events on the persistence flow. Artemis has a nice feature such as:
+
+
+
+* Annotation based
+
+* Highly customizable \(reflection component, how to save the cache, persistence workflow, etc.\)
+
+* Listen to an event to each kind of persistence workflow \(it has differents kind of events to each database\).
+
+* Use interceptors
+
+
+
+Using CDI events to add a new feature on Artemis is so easy and you also can it on transparency way, you don't need to change the repositories. E.G: Using events can add bean validation on the workflow, without the DAO layer know. On default, it has the workflow bellow:
+
