@@ -98,7 +98,7 @@ The API's focus is on simplicity and ease of use. Developers should only have to
 
 #### Diana
 
-![](/images/duke-diana-min.png)
+![Diana](../images/duke-diana-min.png)
 
 The Diana project has as goal just be the low layer, in other words, just the communication layer to NoSQL database. Basically this project gonna work as a database driver. Diana will have four APIs, one for each database type, and its TCK respective. The test compatibility kit affirms if a driver implements an API correctively. So a X database of key-value implements and run all tests correctively that means this X database has support to key-value Diana API.
 
@@ -123,7 +123,7 @@ Furthermore Diana **will not** be:
 
 #### Artemis
 
-![](/images/artemis-integration.png)
+![Artemis](../images/artemis-integration.png)
 
 Artemis is an integration layer, in other words, it has the goal to communicate with the communication layer, Diana, and it does integrations with other technologies such as Bean Validation. The Artemis engine has CDI. So it formula is really simple:
 
@@ -143,5 +143,5 @@ Using CDI events to add a new feature on Artemis is so easy and you also can it 
 
 
 
-![](/images/integration-artemis.png)
+![Artemis integration](../images/integration-artemis.png)
 
