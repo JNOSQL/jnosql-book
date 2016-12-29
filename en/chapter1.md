@@ -1,6 +1,6 @@
 ## The main idea behind the API
 
-Once, we talked about the importance about the standard of a NoSQL database API, the next step is discuss, in more details, about API. However, to make an easy explanation, first gonna talk about both layer and tier. These structures level make the communication, maintenance, split the responsibility clearer. The new API proposal gonna be responsible to be bridge between the logic tier and data tier, to do this, we need to create two APIs one to communication to a database and another one to be a high abstraction to Java application.
+Once, we talked about the importance of the standard of a NoSQL database API, the next step is to discuss, in more details, about API. However, to make an easy explanation, first gonna talk about both layer and tier. These structures level make the communication, maintenance, split the responsibility clearer. The new API proposal gonna be responsible for being a bridge between the logic tier and data tier, to do this, we need to create two APIs one to communication to a database and another one to be a high abstraction to Java application.
 
 ### Tier, a physical structure in software
 
@@ -93,7 +93,6 @@ The basic building blocks hereby are:
 * Support for asynchronous write operations
 
 * An easy API to implement, so that NoSQL vendors can comply with it and test by themselves.
-
 
 The API's focus is on simplicity and ease of use. Developers should only have to know a minimal set of artifacts to work with the solution. The API is built on latest Java 8 features and therefore fit perfectly with the functional features of Java 8.
 
