@@ -121,11 +121,11 @@ Furthermore Diana **will not** be:
 
   ![view diana](../images/10.png)
 
-
-
-
-
 #### Artemis
 
+![](/images/artemis-integration.png)
 
+Artemis is an integration layer, in other words, it has the goal to communicate with the communication layer, Diana, and it does integrations with other technologies such as Bean Validation. The Artemis engine has CDI. So it formula is really simple:
+
+Diana plus CDI equals to Artemis
 
