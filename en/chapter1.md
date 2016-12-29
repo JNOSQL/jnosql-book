@@ -70,9 +70,7 @@ These APIs are optionals each other, in other words, a Java solution just need t
 
 ### JNoSQL
 
-  The JNoSQL is a several tools to make easy an integration between the Java Application with the NoSQL. To solve this problem the project gonna have two layers:
-
-
+The JNoSQL is a several tools to make easy an integration between the Java Application with the NoSQL. To solve this problem the project gonna have two layers:
 
 * **Communication API:** An API just to communicate with the database, exactly what JDBC does to SQL. This API gonna have four specializations, one for each kind of database.
 
@@ -80,26 +78,24 @@ These APIs are optionals each other, in other words, a Java solution just need t
 
 The basic building blocks hereby are:
 
+* A simple API to support Column NoSQL Database
+
+* A simple API to support Key-value NoSQL Database
+
+* A simple API to support Graph NoSQL Database
+
+* A simple API to support Document Database
+
+* Convention over configuration
+
+* Support for asynchronous queries
+
+* Support for asynchronous write operations
+
+* An easy API to implement, so that NoSQL vendors can comply with it and test by themselves.
 
 
-A simple API to support Column NoSQL Database
-
-A simple API to support Key-value NoSQL Database
-
-A simple API to support Graph NoSQL Database
-
-A simple API to support Document Database
-
-Convention over configuration
-
-Support for asynchronous queries
-
-Support for asynchronous write operations
-
-An easy API to implement, so that NoSQL vendors can comply with it and test by themselves.
-
-The API's focus is on simplicity and ease of use. Developers should only have to know a minimal set of artifacts to work with the solution. The API is built on latest Java 8 features and therefore fit perfectly with the functional features of Java 8.  
-
+The API's focus is on simplicity and ease of use. Developers should only have to know a minimal set of artifacts to work with the solution. The API is built on latest Java 8 features and therefore fit perfectly with the functional features of Java 8.
 
 #### Diana
 
