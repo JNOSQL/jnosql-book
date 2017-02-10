@@ -17,7 +17,7 @@ Falando precisamente da camada física, tier, lógica, para separar as responsab
 * **Camada de negócio**: Local onde contém toda a lógica de negócio e o modelo.
 * **Camada de persistência**: A ponte entre a camada física de acesso aos dados e a camada física lógica.
 
-Olhando para a camada de persistência, ela possui vez suas próprias camadas: O DAO, Data Access Object, que é a camada responsável por realizar a ligação entre a camada de persistência e a de negócio. É nela que contém a API e as chamadas para o banco de dados. Atualmente existe uma diferença entre os bancos relacionais e não relacionais:
+Olhando para a camada de persistência, ela possui suas próprias camadas: O DAO, Data Access Object, que é a camada responsável por realizar a ligação entre a camada de persistência e a de negócio. É nela que contém a API e as chamadas para o banco de dados. Atualmente existe uma diferença entre os bancos relacionais e não relacionais:
 
 No mundo relacional existe dois mecanismo, além do DAO, que são o JDBC e o JPA:
 
@@ -102,8 +102,6 @@ Assim como o Diana, ela também possui, de maneira geral, um pacote para cada ti
 Um ponto importante sobre os eventos no CDI é a facilidade de adicionar novo recursos ou funcionalidades de maneira transparente ao código. Por exemplo, é possível injetar a validação das entidades, bean validation, sem ser necessário mudar nenhum fluxo do código atual. Por padrão, o fluxo de evento segue o seguinte fluxo:
 
 ![](/images/integration-artemis.png)
-
-
 
 Cada tipo de banco de dados, possui os seus próprios interceptors e eventos, ou seja, é possível realizar a mudança apenas dos eventos do chave-valor sem modificar escutar os eventos do tipo grafo.
 
