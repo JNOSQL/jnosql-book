@@ -38,7 +38,7 @@ No mundo relacional existem dois mecanismo, além do DAO, que são o JDBC e o JP
 
 * Caso a camada de alto nível não tenha suporte para o banco de dados o desenvolvedor terá que ou mudar de solução Java ou mesmo fazer a chamada diretamente pela API do banco de dados, ou seja, haverá uma grande perda de código.
 
-A solução para esse problema é que exista, assim como no mundo relacional, duas camadas de API:
+A solução para esse problema é , assim como no mundo relacional, ter duas camadas de API:
 
 * Uma camada de baixo nível ou camada de comunicação: que seria o driver de comunicação entre o banco e o Java. Essa camada teria quatro especializações \(uma para cada tipo de banco de dados\).
 * Uma camada de alto nível ou camada de abstração: Responsável pela alta abstração para o desenvolvedor Java. É nessa camada que ficar as anotações, o EntityManager, etc.
