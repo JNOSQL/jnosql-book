@@ -8,17 +8,12 @@ O Document, é a menor parte de uma entidade de uma entidade de documento. Cada 
         Document document1 = Document.of("name", value);
 ```
 
-
-
 Com essa interface também é possível ter um documento dentro de outro documento, o conceito de subdocumento.
-
-
 
 ```java
 Document subDocument = Document.of("subDocument", document);
 ```
 
-
-
-
+  
+A forma de armazenar essa informação, em subdocumentos, dependerá da implementação de cada driver, assim como toda a informação.
 
