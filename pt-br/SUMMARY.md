@@ -15,4 +15,8 @@
     * [ColumnFamilyEntity](chapter3_3_1.md)
     * [DocumentCollectionEntity](chapter3_3_2.md)
     * [KeyValueEntity](chapter3_3_3.md)
+  * [Manager](chapter3_4.md)
+    * [Document Manager](chapter3_4_1.md)
+    * [Column Manager](chapter3_4_2.md)
+    * [Bucket Manager](chapter3_4_3.md)
 * [Bibliografia](bibliography.md)
