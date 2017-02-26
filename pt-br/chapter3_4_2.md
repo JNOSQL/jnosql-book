@@ -57,7 +57,7 @@ Em alguns momentos é necessário saber quando tal operação foi finalizada, me
         managerAsync.update(entity, callBack);
 ```
 
-##### Buscando as informações dentro de uma coleção de documentos:
+##### Buscando as informações dentro de uma família de coluna:
 
 ##### 
 
