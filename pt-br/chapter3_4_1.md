@@ -5,13 +5,9 @@ A interação com o banco de dados do tipo documento é dado por duas classes:
 * **DocumentCollectionManager**: Para realizar operações no banco de dados de forma síncrona
 * **DocumentCollectionManagerAsync**: Para realizar operações no banco de dados de forma assíncrona.
 
-
-
 ##### **DocumentCollectionManager**
 
-
-
- O `DocumentCollectionManager` é classe que realiza as operações de forma síncrona, com ele é possível realizar a criação, editação, remoção e a recuperação dentro dos bancos de dados do tipo documento.
+O `DocumentCollectionManager` é classe que realiza as operações de forma síncrona, com ele é possível realizar a criação, editação, remoção e a recuperação dentro dos bancos de dados do tipo documento.
 
 ```java
         DocumentEntity entity = DocumentEntity.of("collection");
@@ -30,13 +26,9 @@ A interação com o banco de dados do tipo documento é dado por duas classes:
         manager.update(entities);
 ```
 
-
-
 ##### **DocumentCollectionManagerAsync**
 
-
-
- O `DocumentCollectionManagerAsync` é classe que realiza as operações de forma assíncrona, com ele é possível realizar a criação, editação, remoção e a recuperação dentro dos bancos de dados do tipo documento.
+O `DocumentCollectionManagerAsync` é classe que realiza as operações de forma assíncrona, com ele é possível realizar a criação, editação, remoção e a recuperação dentro dos bancos de dados do tipo documento.
 
 ```java
         DocumentEntity entity = DocumentEntity.of("collection");
@@ -54,6 +46,13 @@ A interação com o banco de dados do tipo documento é dado por duas classes:
         managerAsync.update(entity);
         managerAsync.update(entities);
 ```
+
+
+
+  
+ Em alguns momentos é necessário saber quando tal operação foi finalizada, mesmo quando é utilizado de forma assíncrona. Com esse objetivo, essa classe também vem com suporte a `callBack`, assim, tão logo a operação seja finalizada.
+
+
 
 
 
