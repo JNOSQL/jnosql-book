@@ -97,3 +97,31 @@ managerAsync.find(query, callback);
 
 
 
+##### Removendo as informações dentro de uma coleção de documentos:
+
+
+
+Semelhante ao `DocumentQuery,`existe uma classe responsável por remover informações dentro da coleção de documentos: A classe `DocumentDeleteQuery`
+
+  
+Ela possui uma estrutura bem simples, sem paginação e ordenação, uma vez que o fogo será a remoção de informação dentro do banco de dados.
+
+
+
+```java
+        DocumentCollectionManager manager = //instance;
+        DocumentCollectionManagerAsync managerAsync = //instance;
+
+        DocumentDeleteQuery query = DocumentDeleteQuery.of("collection");
+        DocumentCondition ageBiggerTen = DocumentCondition.gt(Document.of("age", 10));
+        query.and(ageBiggerTen);
+
+
+        manager.delete(query);
+
+        managerAsync.delete(query);
+        managerAsync.delete(query, v -> {});
+```
+
+
+
