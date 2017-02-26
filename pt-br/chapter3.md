@@ -14,7 +14,8 @@ Ou seja, caso um determinado banco de dados seja multi-model, ele usará duas AP
 * **Configuration** 
 * **Factory** 
 * **Manager** 
-* **Entity** 
+* **Entity**
+* **Element Entity **
 * **Value** 
 
 
