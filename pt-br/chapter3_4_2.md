@@ -61,54 +61,59 @@ Em alguns momentos é necessário saber quando tal operação foi finalizada, me
 
 ##### 
 
-No diana, as buscas tanto de forma síncrona e assíncrona são realizadas a partir da classe `DocumentQuery`, com essa classe é possível definir se alguns ou todos os apenas alguns documentos serão retornados, ordenação além da condição para a informação ser recuperada.
+No diana, as buscas tanto de forma síncrona e assíncrona são realizadas a partir da classe Column`Query`, com essa classe é possível definir se alguns ou todos os apenas algumas colunas serão retornados, ordenação além da condição para a informação a ser recuperada.
 
-A condição dentro da query é formada por `DocumentCondition`, ele á composta por uma condição e um documento, por exemplo, o a condição abaixo buscará informação em que nome seja igual a “**Ada**”.
+A condição dentro da query é formada por `ColumnCondition`, ele á composta por uma condição e um documento, por exemplo, o a condição abaixo buscará informação em que nome seja igual a “**Ada**”.
 
 ```java
-DocumentCondition nameEqualsAda = DocumentCondition.eq(Document.of("name", “Ada”));
+ColumnCondition nameEqualsAda = ColumnCondition.eq(Column.of("name", “Ada”));
 ```
 
 Também possível agrupar as informações da condição com operadores **AND**, **OR** e **NOT**.
 
 ```java
-DocumentCondition nameEqualsAda = DocumentCondition.eq(Document.of("name", "Ada"));
-DocumentCondition youngerThan2Years = DocumentCondition.lt(Document.of("age", 2));
-DocumentCondition condition = nameEqualsAda.and(youngerThan2Years);
-DocumentCondition nameNotEqualsAda = nameEqualsAda.negate();
+ColumnCondition nameEqualsAda = ColumnCondition.eq(Column.of("name", "Ada"));
+ColumnCondition youngerThan2Years = ColumnCondition.lt(Column.of("age", 2));
+ColumnCondition condition = nameEqualsAda.and(youngerThan2Years);
+ColumnCondition nameNotEqualsAda = nameEqualsAda.negate();
 ```
 
 Caso não seja informado uma condição significa que ele tentará trazer todas as informações no banco de dados, semelhante ao “`select * from database`” em um banco relacional, vale salientar que nem todos os bancos possuem suporte a tal recurso.
 
-Dentro do DocumentQuery também é possível paginar as informações utilizando onde deve começar a busca e o limit máximo de retorno.
+Dentro do ColumnQuery também é possível paginar as informações utilizando onde deve começar a busca e o limit máximo de retorno.
 
 ```java
-DocumentCollectionManager manager = //instance;
-DocumentCollectionManagerAsync managerAsync = //instance;
-DocumentQuery query = DocumentQuery.of("collection");
-DocumentCondition ageBiggerTen = DocumentCondition.gt(Document.of("age", 10));
-query.and(ageBiggerTen);
-query.addSort(Sort.of("name", Sort.SortType.ASC));
-query.setLimit(10);
-query.setStart(2);
-List<DocumentEntity> entities = manager.find(query);
-Optional<DocumentEntity> entity = manager.singleResult(query);
-Consumer<List<DocumentEntity>> callback = e -> {};
-managerAsync.find(query, callback);
+        ColumnFamilyManager manager = //instance;
+
+        ColumnFamilyManagerAsync managerAsync = //instance;
+
+        ColumnQuery query = ColumnQuery.of("collection");
+        ColumnCondition ageBiggerTen = ColumnCondition.gt(Column.of("age", 10));
+        query.and(ageBiggerTen);
+        query.addSort(Sort.of("name", Sort.SortType.ASC));
+
+        query.setLimit(10);
+        query.setStart(2);
+
+        List<ColumnEntity> entities = manager.find(query);
+        Optional<ColumnEntity> entity = manager.singleResult(query);
+
+        Consumer<List<ColumnEntity>> callback = e -> {};
+        managerAsync.find(query, callback);
 ```
 
-##### Removendo as informações dentro de uma coleção de documentos:
+##### Removendo as informações dentro de uma família de colunas:
 
-Semelhante ao `DocumentQuery,`existe uma classe responsável por remover informações dentro da coleção de documentos: A classe `DocumentDeleteQuery`
+Semelhante ao `ColumnQuery,`existe uma classe responsável por remover informações dentro da coleção de documentos: A classe `ColumnDeleteQuery`
 
 Ela possui uma estrutura bem simples, sem paginação e ordenação, uma vez que o fogo será a remoção de informação dentro do banco de dados.
 
 ```java
-        DocumentCollectionManager manager = //instance;
-        DocumentCollectionManagerAsync managerAsync = //instance;
+        ColumnFamilyManager manager = //instance;
+        ColumnFamilyManagerAsync managerAsync = //instance;
 
-        DocumentDeleteQuery query = DocumentDeleteQuery.of("collection");
-        DocumentCondition ageBiggerTen = DocumentCondition.gt(Document.of("age", 10));
+        ColumnDeleteQuery query = ColumnDeleteQuery.of("collection");
+        ColumnCondition ageBiggerTen = ColumnCondition.gt(Column.of("age", 10));
         query.and(ageBiggerTen);
 
 
