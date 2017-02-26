@@ -13,9 +13,11 @@ bucketManager.put(entities, Duration.ofHours(2));//two hours TTL
 bucketManager.put(entity, Duration.ofHours(2));//two hours TTL
 ```
 
-###### Remoção e recuperação da sua informação
+###### 
 
+##### Remoção e recuperação da sua informação
 
+##### 
 
 Em sua estrutura simples, o bucket precisa apenas da chave para recuperar ou remover uma informação no banco de dados.
 
