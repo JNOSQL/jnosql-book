@@ -1,6 +1,5 @@
 ### Value
 
-
 Essa interface representa o valor que será armazenado no banco de dados, um simples Wrapper. Esse Wrapper tem como principal objetivo de realizar a ponte entre o banco e a aplicação. Por exemplo, ao se utilizar um tipo no qual o banco de dados não suporte, é possível realizar a conversão entre a comunicação e seu banco de dados de maneira transparente. Por padrão, o Diana suporta uma implementação default a partir da própria API.
 
 ```java
@@ -18,10 +17,13 @@ Os métodos dentro do Value são:
 * `<K, V> Map<K, V> getMap(Class<K> keyClass, Class<V> valueClass;` Caso o valor contido dentro do Value seja uma instância do java.util.Map ele converterá a chave e o valor para o tipo desejado, do contrário, a operação não será suportada.
 
 ```java
-        Value value = Value.of(12); 
-        String string = value.get(String.class); 
-        List<Integer> list = value.getList(Integer.class); 
-        Set<Long> set = value.getSet(Long.class); 
-        Stream<Integer> stream = value.getStream(Integer.class); 
-        Integer integer = value.cast();
+        Value value = Value.of(12);
+        String string = value.get(String.class);
+        List<Integer> list = value.get(new TypeReference<List<Integer>>() {});
+        Set<Long> set = value.get(new TypeReference<Set<Long>>() {});
+        Stream<Integer> stream = value.get(new TypeReference<Stream<Integer>>() {});
+        Object integer = value.get();
 ```
+
+
+
