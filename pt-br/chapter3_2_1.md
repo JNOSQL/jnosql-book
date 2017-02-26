@@ -16,11 +16,7 @@ Document subDocument = Document.of("subDocument", document);
 
 A forma de armazenar essa informação, em subdocumentos, dependerá da implementação de cada driver, assim como toda a informação.
 
-
-
 Para facilitar o acesso da informação, o `Document`, possui alias para os métodos do `Value`, ou seja, é possível realizar a conversão do valor diretamente na _interface_ `Document`.
-
-
 
 ```java
 Document age = Document.of("age", 29);
@@ -28,8 +24,6 @@ String ageString = age.get(String.class);
 List<Integer> ages = age.get(new TypeReference<List<Integer>>() {});
 Object ageObject = age.get();
 ```
-
-
 
 
 
