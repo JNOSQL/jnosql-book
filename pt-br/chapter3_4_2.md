@@ -10,12 +10,13 @@ A interação com o banco de dados do tipo família de coluna é dado por duas c
 O `ColumnFamilyManager` é classe que realiza as operações de forma síncrona, com ele é possível realizar a criação, editação, remoção e a recuperação dentro dos bancos de dados do tipo família de coluna.
 
 ```java
-        DocumentEntity entity = DocumentEntity.of("collection");
-        Document diana = Document.of("name", "Diana");
+       ColumnEntity entity = ColumnEntity.of("columnFamily");
+        Column diana = Column.of("name", "Diana");
         entity.add(diana);
 
-        List<DocumentEntity> entities = Collections.singletonList(entity);
-        DocumentCollectionManager manager = //instance;
+        List<ColumnEntity> entities = Collections.singletonList(entity);
+        ColumnFamilyManager manager = //instance;
+
 
         //saves operations
         manager.save(entity);
@@ -26,9 +27,9 @@ O `ColumnFamilyManager` é classe que realiza as operações de forma síncrona,
         manager.update(entities);
 ```
 
-##### **DocumentCollectionManagerAsync**
+##### ColumnFamilyManagerAsync
 
-O `DocumentCollectionManagerAsync` é classe que realiza as operações de forma assíncrona, com ele é possível realizar a criação, editação, remoção e a recuperação dentro dos bancos de dados do tipo documento.
+O `ColumnFamilyManagerAsync` é classe que realiza as operações de forma assíncrona, com ele é possível realizar a criação, editação, remoção e a recuperação dentro dos bancos de dados do tipo família de coluna.
 
 ```java
         DocumentEntity entity = DocumentEntity.of("collection");
