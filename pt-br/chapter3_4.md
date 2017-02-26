@@ -4,8 +4,6 @@ O Manager são as classes responsáveis por realizar propriamente a interação 
 
 
 
-
-
 * **DocumentCollectionManager**
 * **DocumentCollectionManagerAsync**
 * **ColumnConfiguration**
