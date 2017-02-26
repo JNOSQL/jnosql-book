@@ -47,12 +47,15 @@ O `DocumentCollectionManagerAsync` é classe que realiza as operações de forma
         managerAsync.update(entities);
 ```
 
+Em alguns momentos é necessário saber quando tal operação foi finalizada, mesmo quando é utilizado de forma assíncrona. Com esse objetivo, essa classe também vem com suporte a `callBack`, assim, tão logo a operação seja finalizada.
 
 
-  
- Em alguns momentos é necessário saber quando tal operação foi finalizada, mesmo quando é utilizado de forma assíncrona. Com esse objetivo, essa classe também vem com suporte a `callBack`, assim, tão logo a operação seja finalizada.
 
-
+```java
+        Consumer<DocumentEntity> callBack = e -> {};
+        managerAsync.save(entity, callBack);
+        managerAsync.update(entity, callBack);
+```
 
 
 
