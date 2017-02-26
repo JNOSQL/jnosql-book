@@ -32,12 +32,13 @@ O `ColumnFamilyManager` é classe que realiza as operações de forma síncrona,
 O `ColumnFamilyManagerAsync` é classe que realiza as operações de forma assíncrona, com ele é possível realizar a criação, editação, remoção e a recuperação dentro dos bancos de dados do tipo família de coluna.
 
 ```java
-        DocumentEntity entity = DocumentEntity.of("collection");
-        Document diana = Document.of("name", "Diana");
+        Column diana = Column.of("name", "Diana");
         entity.add(diana);
 
-        List<DocumentEntity> entities = Collections.singletonList(entity);
-         DocumentCollectionManagerAsync managerAsync = null;
+        List<ColumnEntity> entities = Collections.singletonList(entity);
+
+        ColumnFamilyManagerAsync managerAsync = null;
+
 
         //saves operations
         managerAsync.save(entity);
@@ -51,7 +52,7 @@ O `ColumnFamilyManagerAsync` é classe que realiza as operações de forma assí
 Em alguns momentos é necessário saber quando tal operação foi finalizada, mesmo quando é utilizado de forma assíncrona. Com esse objetivo, essa classe também vem com suporte a `callBack`, assim, tão logo a operação seja finalizada.
 
 ```java
-        Consumer<DocumentEntity> callBack = e -> {};
+        Consumer<ColumnEntity> callBack = e -> {};
         managerAsync.save(entity, callBack);
         managerAsync.update(entity, callBack);
 ```
