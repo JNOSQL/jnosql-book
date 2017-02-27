@@ -19,4 +19,13 @@
     * [Document Manager](chapter3_4_1.md)
     * [Column Manager](chapter3_4_2.md)
     * [Bucket Manager](chapter3_4_3.md)
+   * [Factory](chapter3_5.md)
+     * [Column Family Manager Factory](chapter3_5_1.md)
+     * [Document Collection Factory](chapter3_5_2.md)
+     * [Bucket Manager Factory](chapter3_5_3.md)
+  * [Configuration](chapter3_6.md)
+     * [Document Configuration](chapter3_6_1.md)
+     * [Column Configuration](chapter3_6_2.md)
+     * [Key Value Configuration](chapter3_6_3.md)
+     
 * [Bibliografia](bibliography.md)
