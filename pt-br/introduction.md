@@ -10,14 +10,17 @@ Possui uma estrutura muito semelhante à do java.util.Map, onde podemos armazena
 
 ###### Examplos:
 
-* ###### AmazonDynamo 
+* ###### AmazonDynamo
 * AmazonS3 
 * Redis 
 * Scalaris 
 * Voldemort 
 
-| Table | Bucket |
+
+
+| Estrutura relacional | Estrutura chave-valor |
 | :--- | :--- |
+| Table | Bucket |
 | Row | Key/value pair |
 | Column | ---- |
 | Relationship | ---- |
@@ -33,8 +36,11 @@ Este modelo permite armazenar qualquer documento, sem ter a necessidade de defin
 * MongoDb 
 * Riak 
 
-| Table | Collection |
+
+
+| Estrutura relacional | Estrutura de documentos |
 | :--- | :--- |
+| Table | Collection |
 | Row | Document |
 | Column | Key/value pair |
 | Relationship | Link |
@@ -52,8 +58,11 @@ Esse modelo se tornou popular através do paper BigTable do Google, com o objeti
 * SimpleDb
 * DynamoDB
 
-| Table | Column Family |
+
+
+| Estrutura relacional | Estrutura de família de colunas |
 | :--- | :--- |
+| Table | Column Family |
 | Row | Column |
 | Column | Key/value pair |
 | Relationship | not supported |
@@ -69,8 +78,9 @@ Esse modelo se tornou popular através do paper BigTable do Google, com o objeti
 * Sones 
 * HyperGraphDB
 
-| Table | Vertex and Edge |
+| Estrutura relacional | Estrutura de grafos |
 | :--- | :--- |
+| Table | Vertex and Edge |
 | Row | Vertex |
 | Column | Vertex and Edge property |
 | Relationship | Edge |
