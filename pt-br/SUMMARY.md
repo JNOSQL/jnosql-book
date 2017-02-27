@@ -33,6 +33,7 @@
      * [Document Configuration](part2/chapter2_6_1.md)
      * [Column Configuration](part2/chapter2_6_2.md)
      * [Key Value Configuration](part2/chapter2_6_3.md)
+* [Diversidade nos bancos não relacionaisDiversidade nos Bancos não relacionais](part3/README.md)
 
 ### Bibliografia
      
