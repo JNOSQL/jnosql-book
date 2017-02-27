@@ -2,7 +2,7 @@
 
 Uma vez discutido da importância da padronização das API dos bancos não relacionais, o próximo passo é discutir mais detalhes sobre a API. Porém, para facilitar a explicação da solução da nova API, primeiro é importante falar das camadas do software seja camada física ou lógica. Essas camadas facilitam a organização, manutenção além de dividir as responsabilidades nos softwares, principalmente os mais complexos. A proposta dessa nova API seria responsável por realizar a comunicação entre a camada lógica e a de dados, para isso, será criado duas novas API uma para comunicação entre o banco e outra responsável pela alta abstração na aplicação Java.
 
-![Camada Física](../images/01.png)
+![Camada Física](../../images/01.png)
 
 No mundo de software é muito comum que a aplicação tenha camadas, sejam elas lógicas ou físicas. Aplicações de multi-camada física é muito comum, principalmente com três:
 
@@ -61,7 +61,7 @@ O JNoSQL é uma API flexível e extensiva Java cujo o objetivo é realizar comun
 
 #### Diana
 
-![](/images/duke-diana-min.png)
+![](../../images/duke-diana-min.png)
 
 O projeto Diana tem como objetivo tratar apenas da camada de baixo nível, ou seja, a camada de comunicação com os bancos não relacionais. A ideia que esse projeto funcione como um driver para os bancos de dados não relacionais. De modo geral ela possuirá quatro APIs, uma para cada tipo de banco de dados, além do seu respectivo TCK. O Kit de teste de compatibilidade tem como objetivo afirmar que um determinado banco de dados implementa uma das APIs corretamente, por exemplo, caso o banco X implemente a API de chave valor e passar nos testes de compatibilidade quer dizer que ele está compatível com o a API de chave-valor. O motivo que o projeto abrangerá apenas a API de comunicação são:
 
@@ -83,7 +83,7 @@ Com isso o projeto Diana **não** será:
 
 #### Artemis
 
-![](/images/artemis-integration.png)
+![](../../images/artemis-integration.png)
 
 O Artemis é a camada de integração, ou seja, ele será responsável por se comunicar com a camada de comunicação, o diana, e realizar a integração com outras tecnologias, como Bean Validation, por exemplo. O seu coração é composto com CDI. Assim, sua fórmula é simples:
 
@@ -101,7 +101,7 @@ Assim como o Diana, ela também possui, de maneira geral, um pacote para cada ti
 
 Um ponto importante sobre os eventos no CDI é a facilidade de adicionar novo recursos ou funcionalidades de maneira transparente ao código. Por exemplo, é possível injetar a validação das entidades, bean validation, sem ser necessário mudar nenhum fluxo do código atual. Por padrão, o fluxo de evento segue o seguinte fluxo:
 
-![](/images/integration-artemis.png)
+![](../../images/integration-artemis.png)
 
 Cada tipo de banco de dados, possui os seus próprios interceptors e eventos, ou seja, é possível realizar a mudança apenas dos eventos do chave-valor sem modificar escutar os eventos do tipo grafo.
 
