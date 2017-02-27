@@ -12,8 +12,6 @@ Como mencionado anteriormente, o Artemis é orientado a anotações para que fac
 
 As anotações para o Modelo tem como objetivo transformar o modelo, orientado a objetos, para a camada de comunicação, Diana. Para mapeamento do modelo existe:
 
-
-
 * Entity
 
 * Column
@@ -22,11 +20,21 @@ As anotações para o Modelo tem como objetivo transformar o modelo, orientado a
 
 * Key
 
-
-
 ##### Entity
 
 Essa anotação tem como objetivo mapear a classe que será utilizada como entidade dentro do Artemis, ela possui um único atributo: name. Esse atributo tem como objetivo informar o nome da Família de coluna, Coleção de documentos, chave valor, etc. Caso ele não seja informado será utilizado o nome simples da classe, por exemplo, a Classe org.jnosql.demo.Person ele usará o Person como nome.
+
+```java
+@Entity
+public class Person {
+}
+```
+
+```java
+@Entity("name")
+public class Person {
+}
+```
 
 ##### Column
 
@@ -44,6 +52,10 @@ public class Person {
 //getter and setter
 }
 ```
+
+
+
+##### MappedSuperclass
 
 
 
