@@ -33,5 +33,7 @@
      * [Document Configuration](part2/chapter2_6_1.md)
      * [Column Configuration](part2/chapter2_6_2.md)
      * [Key Value Configuration](part2/chapter2_6_3.md)
+
+### Bibliografia
      
-* [Bibliografia](bibliography.md)
+* [Bibliografia](bibliography/README.md)
