@@ -8,7 +8,9 @@ Os bancos de dados NOSQL são definidos basicamente pelo seu modelo de armazenam
 
 Possui uma estrutura muito semelhante à do java.util.Map, onde podemos armazenar uma chave e seu valor. Normalmente esse valor pode ser qualquer informação.
 
-* AmazonDynamo 
+###### Examplos:
+
+* ###### AmazonDynamo 
 * AmazonS3 
 * Redis 
 * Scalaris 
@@ -24,6 +26,8 @@ Possui uma estrutura muito semelhante à do java.util.Map, onde podemos armazena
 
 Este modelo permite armazenar qualquer documento, sem ter a necessidade de definir previamente sua estrutura. O documento e composto por inúmeros campos, com tipos de dados diversos, inclusive um campo pode conter um outro documento, possui uma estrutura semelhante a um arquivo XML.
 
+###### Examplos:
+
 * AmazonSimpleDb 
 * ApacheCouchdb 
 * MongoDb 
@@ -38,6 +42,8 @@ Este modelo permite armazenar qualquer documento, sem ter a necessidade de defin
 ### Família de colunas
 
 Esse modelo se tornou popular através do paper BigTable do Google, com o objetivo de montar um sistema de armazenamento de dados distribuído, projetado para ter um alto grau de escalabilidade e de volume de dados.
+
+###### Examplos:
 
 * Hbase
 * Cassandra
@@ -56,6 +62,8 @@ Esse modelo se tornou popular através do paper BigTable do Google, com o objeti
 
 É uma estrutura de dados que conecta um conjunto de vértices através de um conjunto de arestas. Os bancos de dados de grafo modernos suportam estruturas de grafo multi-relacionais, onde existem tipos diferentes vértices \(representando pessoas, lugares, itens\) e diferentes tipos de arestas.
 
+###### Examplos:
+
 * Neo4j 
 * InfoGrid 
 * Sones 
@@ -70,6 +78,8 @@ Esse modelo se tornou popular através do paper BigTable do Google, com o objeti
 ### Muli-model database
 
 Alguns bancos de dados possuem a comum característica de ter suporte de um ou mais modelos apresentados anteriormente.
+
+###### Examplos:
 
 * OrientDB
 * Couchbase
@@ -87,6 +97,7 @@ Alguns bancos de dados possuem a comum característica de ter suporte de um ou m
 * Lock-in verdor
 
 * Para um novo banco de dados é necessário aprender uma nova API.
+
 * Para qualquer mudança de banco de dados o impacto é altíssimo, se perde praticamente toda a camada DAO uma vez que a API muda completamente. Isso acontece mesmo que a mudança seja para o mesmo tipo de banco NOSQL, família de coluna para família de coluna.
 
 Com esse problema, existe um grande esforço ao criar uma API comuns entre esses bancos de dados. É o caso do Spring Data, Hibernate ORM e o TopLink. Como a API JPA já é uma camada muito conhecida entre os desenvolvedores Java, ele é comumente utilizada para facilitar o mapeamento, porém, o seu foco é para os bancos relacionais, assim ele não é suficiente para cobrir todos os casos desses bancos, por exemplo, muitos bancos NOSQL não tem transação ou com essa API não é possível realizar a inserção de forma assíncrona. Assim, infezlimente apesar de o JPA ser uma boa Api ela não contempla todos os comportamentos existentes nos bancos não relacionais.
