@@ -57,3 +57,11 @@ public class Person {
 
 Faz com que o Artemis olhe para os atributos da classe pai, cujo os atributos sejam anotados com Column,
 
+
+
+##### Key 
+
+Apenas para o banco de dados do tipo chave-valor, ele indica qual dos atributos é a chave o valor será toda a informação restante. A forma de armazenamento da classe vai depender do driver do banco de dados.
+
+
+
