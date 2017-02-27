@@ -53,9 +53,7 @@ public class Person {
 }
 ```
 
-
-
 ##### MappedSuperclass
 
-
+Faz com que o Artemis olhe para os atributos da classe pai, cujo os atributos sejam anotados com Column,
 
