@@ -2,10 +2,10 @@
 
 As classes fábricas são as responsáveis pela criação de uma classe Manager numa coleção de documentos.
 
-* **ColumnFamilyManagerAsyncFactory**
-* **ColumnFamilyManagerFactory**
+* **DocumentCollectionManagerFactory**
+* **DocumentCollectionManagerAsyncFactory**
 
-As classes `ColumnFamilyManagerAsyncFactory` e `ColumnFamilyManagerFactory` são responsáveis pela criação das classes gerentes de forma síncrona e assíncrona respectivamente, para isso, basta passar informar o nome do banco de dados.
+As classes `DocumentCollectionManagerAsyncFactory` e `DocumentCollectionManagerFactory` são responsáveis pela criação das classes gerentes de forma síncrona e assíncrona respectivamente, para isso, basta passar informar o nome do banco de dados.
 
 ```java
 ColumnFamilyManagerFactory factory = //instance
