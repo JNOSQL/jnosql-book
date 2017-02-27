@@ -34,6 +34,7 @@
      * [Column Configuration](part2/chapter2_6_2.md)
      * [Key Value Configuration](part2/chapter2_6_3.md)
 * [Diversidade nos bancos não relacionaisDiversidade nos Bancos não relacionais](part3/README.md)
+* [Utilizando drivers para com o Diana](part3/chapter3_1.md)
 
 ### Bibliografia
      
