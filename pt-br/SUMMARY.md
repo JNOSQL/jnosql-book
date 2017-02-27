@@ -4,12 +4,12 @@
 * [Crédito](credits.md)
 * [Sobre o Autor](about_me.md)
 
-### Part I
+### Introdução ao JNOSQL
 
 * [A principal ideia atrás da API](part1/README.md)
  * [Por que Diana?](part1/chapter1_1.md)
 
-### Part II
+### Conhecendo a API de comunicação Diana
 
 * [Introdução ao Diana](part2/README.md)
   * [Value](part2/chapter2_1.md)
