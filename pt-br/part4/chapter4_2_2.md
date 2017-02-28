@@ -1,19 +1,19 @@
 ## Repositório de Família de colunas
 
-O repositório de documentos é responsável para realizar a comunicação da entidade para um banco de dados do tipo documentos. Ele é subdividido em `DocumentRepository` e `DocumentRepositoryAsync`para trabalhos síncronos e assíncronos respectivamente.
+O repositório de família de coluna é responsável para realizar a comunicação da entidade para um banco de dados do tipo família de coluna. Ele é subdividido em `ColumnRepository` e `ColumnRepositoryAsync` para trabalhos síncronos e assíncronos respectivamente.
 
-#### `DocumentRepository`
+#### ColumnRepository
 
-O `DocumentRepository` é responsável pela persistência de uma Entidade em um banco de dados do tipo documento. Ele é composto, basicamente, por três componentes:
+O ColumnRepository é responsável pela persistência de uma Entidade em um banco de dados do tipo coluna. Ele é composto, basicamente, por três componentes:
 
-* **DocumentEntityConverter**: Responsável por converter da entidade, por exemplo, Person para DocumentEntity.
+* **ColumnEntityConverter**: Responsável por converter da entidade, por exemplo, Person para ColumnEntity.
 
-* **DocumentCollectionManager**: Entidade manager de documentos do Diana.
+* **ColumnCollectionManager**: Entidade manager de documentos do Diana.
 
-* **DocumentWorkflow**: Segue o fluxo de persistência durante os métodos de save e update.
+* **ColumnWorkflow**: Segue o fluxo de persistência durante os métodos de save e update.
 
 ```java
-DocumentRepository repository = //instance
+ColumnRepository repository = //instance
 
 Person person = new Person();
 person.setAddress("Olympus");
@@ -31,78 +31,78 @@ repository.update(person);
 repository.update(people);
 ```
 
-Para a busca e a remoção da informação são utilizadas as mesmas classes do Diana para documentos, ou seja, **DocumentQuery** e **DocumentDeleteQuery** respectivamente.
+Para a busca e a remoção da informação são utilizadas as mesmas classes do Diana para documentos, ou seja, ColumnQuery e **ColumnDeleteQuery** respectivamente.
 
 ```java
-DocumentQuery query = DocumentQuery.of("Person");
-query.and(DocumentCondition.eq(Document.of("address", "Olympus")));
+ColumnQuery query = DocumentQuery.of("Person");
+query.and(ColumnCondition.eq(Column.of("address", "Olympus")));
 
 List<Person> peopleWhoLiveOnOlympus = repository.find(query);
-Optional<Person> artemis = repository.singleResult(DocumentQuery.of("Person")
-                .and(DocumentCondition.eq(Document.of("nickname", "artemis"))));
+Optional<Person> artemis = repository.singleResult(ColumnQuery.of("Person")
+                .and(ColumnCondition.eq(Column.of("nickname", "artemis"))));
 
-DocumentDeleteQuery deleteQuery = query.toDeleteQuery();
+ColumnDeleteQuery deleteQuery = query.toDeleteQuery();
 repository.delete(deleteQuery);
 ```
 
-Como o motor do Artemis é CDI para que se posso utilizar o DocumentRepository basta dar um @Inject num campo.
+Como o motor do Artemis é CDI para que se posso utilizar o ColumnRepository basta dar um @Inject num campo.
 
 ```java
 @Inject
-private DocumentRepository repository;
+private ColumnRepository repository;
 ```
 
-Para isso é necessário que a aplicação injete um **DocumentCollectionManager:**
+Para isso é necessário que a aplicação injete um ColumnFamilyManager**:**
 
 ```java
 @Produces
-public DocumentCollectionManager getManager() {
-    DocumentCollectionManager manager = //instance
+public ColumnFamilyManager getManager() {
+    ColumnFamilyManager manager = //instance
     return manager;
 }
 ```
 
-Para trabalhar com mais de um tipo de DocumentRepository existem duas opções:
+Para trabalhar com mais de um tipo de ColumnRepository existem duas opções:
 
 1\) A primeira é com a utilização dos qualificadores:
 
 ```java
     @Inject
-    @Database(value = DatabaseType.DOCUMENT, provider = "databaseA")
-    private DocumentRepository repositorA;
+    @Database(value = DatabaseType.COLUMN, provider = "databaseA")
+    private ColumnRepository repositorA;
 
     @Inject
-    @Database(value = DatabaseType.DOCUMENT, provider = "databaseB")
-    private DocumentRepository repositoryB;
+    @Database(value = DatabaseType.COLUMN, provider = "databaseB")
+    private ColumnRepository repositoryB;
 
 
     //producers methods
     @Produces
-    @Database(value = DatabaseType.DOCUMENT, provider = "databaseA")
-    public DocumentCollectionManager getManagerA() {
-        DocumentCollectionManager manager = null;
+    @Database(value = DatabaseType.COLUMN, provider = "databaseA")
+    public ColumnFamilyManager getManagerA() {
+        ColumnFamilyManager manager =//instance
         return manager;
     }
 
     @Produces
-    @Database(value = DatabaseType.DOCUMENT, provider = "databaseB")
-    public DocumentCollectionManager getManagerB() {
-        DocumentCollectionManager manager = null;
+    @Database(value = DatabaseType.COLUMN, provider = "databaseB")
+    public ColumnFamilyManager getManagerB() {
+        ColumnFamilyManager manager = //instance
         return manager;
     }
 ```
 
-2\) A segunda delas é a partir do  **DocumentRepositoryProducer**
+2\) A segunda delas é a partir do  **ColumnRepositoryProducer**
 
 ```java
 @Inject
-private DocumentRepositoryProducer producer;
+private ColumnRepositoryProducer producer;
 
 public void sample() {
-   DocumentCollectionManager managerA = //instance;
-   DocumentCollectionManager managerB = //instance
-   DocumentRepository repositorA = producer.get(managerA);
-   DocumentRepository repositoryB = producer.get(managerB);
+   ColumnFamilyManager managerA = //instance;
+   ColumnFamilyManager managerB = //instance
+   ColumnRepository repositorA = producer.get(managerA);
+   ColumnRepository repositoryB = producer.get(managerB);
 }
 ```
 
