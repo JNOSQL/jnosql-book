@@ -80,10 +80,7 @@ Com isso o artemis cuidará de implementar esses métodos.
 
 #### Utilizando o CrudRepository de forma assíncrona
 
-  
 Para trabalhar de forma assíncrona existe a interface CrudRepositoryAsync, seu funcionamento é semelhante ao CrudRepository.
-
-
 
 ```java
 @Inject
@@ -96,4 +93,19 @@ private PersonRepositoryAsync columnRepositoryAsync;
 ```
 
 Ou seja, basta injetá-lo que o Artemis cuidará de implementar os métodos.
+
+```java
+PersonRepositoryAsync repositoryAsync = //instance
+
+repositoryAsync.save(person);
+repositoryAsync.save(people);
+repositoryAsync.save(person, p -> {});
+repositoryAsync.save(people, Duration.ofHours(2));
+repositoryAsync.update(person);
+repositoryAsync.update(person, p -> {});
+repositoryAsync.update(people);
+repositoryAsync.update(people);
+```
+
+
 
