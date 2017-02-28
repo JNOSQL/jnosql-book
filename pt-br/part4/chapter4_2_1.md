@@ -12,27 +12,40 @@ O `DocumentRepository` é responsável pela persistência de uma Entidade em um 
 
 * **DocumentWorkflow**: Segue o fluxo de persistência durante os métodos de save e update.
 
+```java
+  DocumentRepository repository = //instance
+
+Person person = new Person();
+person.setAddress("Olympus");
+person.setName("Artemis Good");
+person.setPhones(Arrays.asList("55 11 94320121", "55 11 94320121"));
+person.setNickname("artemis");
+
+List<Person> persons = Collections.singletonList(person);
+
+Person personUpdated = repository.save(person);
+repository.save(persons);
+
+repository.update(person);
+repository.update(persons);
+```
+
+Para a busca e a remoção da informação são utilizadas as mesmas classes do Diana para documentos, ou seja,  
+**DocumentQuery** **DocumentDeleteQuery** respectivamente.
+
 
 
 ```java
-        DocumentRepository repository = //instance
+DocumentQuery query = DocumentQuery.of("Person");
+query.and(DocumentCondition.eq(Document.of("address", "Olympus")));
 
-        Person person = new Person();
-        person.setAddress("Olympus");
-        person.setName("Artemis Good");
-        person.setPhones(Arrays.asList("55 11 94320121", "55 11 94320121"));
-        person.setNickname("artemis");
+List<Person> peopleWhoLiveOnOlympus = repository.find(query);
+Optional<Person> artemis = repository.singleResult(DocumentQuery.of("Person")
+                .and(DocumentCondition.eq(Document.of("nickname", "artemis"))));
 
-        List<Person> persons = Collections.singletonList(person);
-
-        Person personUpdated = repository.save(person);
-        repository.save(persons);
-
-        repository.update(person);
-        repository.update(persons);
-
+DocumentDeleteQuery deleteQuery = query.toDeleteQuery();
+repository.delete(deleteQuery);
 ```
 
-Para a busca e a remoção da informação são utilizadas as mesmas classes do Diana para documentos, ou seja,   
-**DocumentQuery** **DocumentDeleteQuery** respectivamente.
+
 
