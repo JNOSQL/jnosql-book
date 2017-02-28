@@ -8,8 +8,6 @@ As classes repositórios têm como principal objetivo converter a classe entidad
 
 * **Workflow**: Ao salvar um objeto o Artemis envia 4 eventos, conforme mostra a figura abaixo, sendo que todo esse processo pode ser interceptado com o recurso oriundo do próprio CDI. Esses eventos são interessantes, por exemplo, para validar a informação da entidade antes dela ir para o banco de dados.
 
-
-
 ![](../../images/integration-artemis.png)
 
 Os quatro eventos são:
