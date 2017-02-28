@@ -42,7 +42,7 @@ Essa anotação observada os atributos dentro da classe, anotada com Entity.
 @Entity
 public class Person {
     @Column
-    private long id;
+    private long nickname;
     @Column
     private String name;
     @Column
@@ -63,7 +63,6 @@ Apenas para o banco de dados do tipo chave-valor, ele indica qual dos atributos 
 @Entity
 public class User implements Serializable {
 
-    @Column
     @Key
     private String userName;
 
@@ -73,17 +72,9 @@ public class User implements Serializable {
     }
 ```
 
-
-
 #### Anotação para qualificação
 
-
-
 Em alguns momentos é necessário trabalhar com o mesmo tipo de banco de dados, por exemplo, trabalhar com dois bancos do tipo documentos.
-
-
-
-
 
 ```java
 @Inject
@@ -92,19 +83,11 @@ private DocumentRepository repositoryA;
 private DocumentRepository repositoryB;
 ```
 
-
-
 Como nos dois casos ele implementa a mesma interface será retornado em tempo de execução pelo CDI um problema de ambiguidade de injeção. Para resolver esse problema existe o qualificador que a API já traz, o qualificador `Database`. Essa API possui dois atributos:
-
-
 
 * **DatabaseType**: O tipo de banco de dados, por exemplo, chave-valor documentos, grafo ou família de coluna
 
 * **privider**: O nome do provedor do banco de dados, por exemplo, “cassandra”, “hbase”, “mongoDB”, etc. Assim, para resolver o problema mencionado anteriormente existe é necessário anotar com o qualificador.
-
-
-
-
 
 ```java
 @Inject
