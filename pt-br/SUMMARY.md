@@ -41,6 +41,8 @@
     * [Anotações para o Modelo](part4/chapter4_1.md)
     * [Classes repositórios](part4/chapter4_2.md)
        * [Repositório de Documentos](part4/chapter4_2_1.md)
+       * [Repositório de Família de Colunas](part4/chapter4_2_2.md)
+       * [Repositório de Chave valor](part4/chapter4_2_2.md)
 
 ### Bibliografia
      
