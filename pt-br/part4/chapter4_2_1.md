@@ -25,6 +25,7 @@ List<Person> people = Collections.singletonList(person);
 
 Person personUpdated = repository.save(person);
 repository.save(people);
+repository.save(person, Duration.ofHours(1L));
 
 repository.update(person);
 repository.update(people);
@@ -105,19 +106,26 @@ public void sample() {
 }
 ```
 
-
-
 #### `DocumentRepositoryAsync`
 
-
-
 O`DocumentRepositoryAsync`é responsável pela persistência de uma Entidade em um banco de dados do tipo documento de forma assíncrona. Ele é composto, basicamente, por dois componentes:
-
-
 
 * **DocumentEntityConverter:** Responsável por converter da entidade, por exemplo, Person para DocumentEntity.
 
 * **DocumentCollectionManagerAsync:** Entidade manager de documentos do Diana de forma assíncrona.
 
+```java
+DocumentRepositoryAsync repositoryAsync = null;
+Consumer<Person> callback = p -> {};
+repositoryAsync.save(person);
+repositoryAsync.save(person, Duration.ofHours(1L));
+repositoryAsync.save(person, callback);
+repositoryAsync.save(people);
 
+repositoryAsync.update(person);
+repositoryAsync.update(person, callback);
+repositoryAsync.update(people);
+```
+
+Para a busca e a remoção da informação são utilizadas as mesmas classes do Diana para documentos, ou seja, **DocumentQuery** e **DocumentDeleteQuery** respectivamente também é possível o uso de callback.
 
