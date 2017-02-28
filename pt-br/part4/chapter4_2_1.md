@@ -62,16 +62,9 @@ public DocumentCollectionManager getManager() {
 }
 ```
 
-
-
-  
 Para trabalhar com mais de um tipo de DocumentRepository existem duas opções:
 
-
-
 1\) A primeira é com a utilização dos qualificadores:
-
-
 
 ```java
     @Inject
@@ -97,6 +90,20 @@ Para trabalhar com mais de um tipo de DocumentRepository existem duas opções:
         DocumentCollectionManager manager = null;
         return manager;
     }
+```
+
+2\) A segunda delas é a partir do  **DocumentRepositoryProducer**
+
+```java
+@Inject
+private DocumentRepositoryProducer producer;
+
+public void sample() {
+   DocumentCollectionManager managerA = null;
+   DocumentCollectionManager managerB = null;
+   DocumentRepository repositorA = producer.get(managerA);
+   DocumentRepository repositoryB = producer.get(managerB);
+}
 ```
 
 
