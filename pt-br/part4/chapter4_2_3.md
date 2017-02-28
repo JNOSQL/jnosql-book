@@ -1,7 +1,4 @@
-## Repositório de chave valor
-
-  
-
+## Repositório de Chave Valor
 
 O repositório de chave valor é responsável para realizar a comunicação da entidade para um banco de dados do tipochave valor.
 
@@ -9,13 +6,9 @@ O repositório de chave valor é responsável para realizar a comunicação da e
 
 O KeyValuRepository é responsável pela persistência de uma Entidade em um banco de dados do tipo chave valor. Ele é composto, basicamente, por dois componentes:
 
-
-
 * **KeyValueEntityConverter**: Responsável por converter uma entidade, por exemplo, User para KeyValueEntity
 
 * **BucketManager**: entidade manager de chave valor do Diana.
-
-
 
 ```java
 KeyValueRepository repository = null;
