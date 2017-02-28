@@ -106,9 +106,9 @@ public void sample() {
 }
 ```
 
-#### `DocumentRepositoryAsync`
+#### ColumnRepositoryAsync
 
-O`DocumentRepositoryAsync`é responsável pela persistência de uma Entidade em um banco de dados do tipo documento de forma assíncrona. Ele é composto, basicamente, por dois componentes:
+O `ColumnRepositoryAsync` é responsável pela persistência de uma Entidade em um banco de dados do tipo família de colunas de forma assíncrona. Ele é composto, basicamente, por dois componentes:
 
 * **DocumentEntityConverter:** Responsável por converter da entidade, por exemplo, Person para DocumentEntity.
 
