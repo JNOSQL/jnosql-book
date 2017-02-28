@@ -78,9 +78,22 @@ interface PersonRepository extends CrudRepository<Person> {
 
 Com isso o artemis cuidará de implementar esses métodos.
 
-
-
 #### Utilizando o CrudRepository de forma assíncrona
 
+  
+Para trabalhar de forma assíncrona existe a interface CrudRepositoryAsync, seu funcionamento é semelhante ao CrudRepository.
 
+
+
+```java
+@Inject
+@Database(DatabaseType.DOCUMENT)
+private PersonRepositoryAsync documentRepositoryAsync;
+
+@Inject
+@Database(DatabaseType.COLUMN)
+private PersonRepositoryAsync columnRepositoryAsync;
+```
+
+Ou seja, basta injetá-lo que o Artemis cuidará de implementar os métodos.
 
