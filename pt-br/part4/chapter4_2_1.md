@@ -116,6 +116,15 @@ O`DocumentRepositoryAsync`é responsável pela persistência de uma Entidade em 
 
 ```java
 DocumentRepositoryAsync repositoryAsync = //instance
+
+Person person = new Person();
+person.setAddress("Olympus");
+person.setName("Artemis Good");
+person.setPhones(Arrays.asList("55 11 94320121", "55 11 94320121"));
+person.setNickname("artemis");
+
+List<Person> people = Collections.singletonList(person);
+
 Consumer<Person> callback = p -> {};
 repositoryAsync.save(person);
 repositoryAsync.save(person, Duration.ofHours(1L));
