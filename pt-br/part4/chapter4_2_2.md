@@ -110,12 +110,12 @@ public void sample() {
 
 O `ColumnRepositoryAsync` é responsável pela persistência de uma Entidade em um banco de dados do tipo família de colunas de forma assíncrona. Ele é composto, basicamente, por dois componentes:
 
-* **DocumentEntityConverter:** Responsável por converter da entidade, por exemplo, Person para DocumentEntity.
+* **ColumnEntityConverter:** Responsável por converter da entidade, por exemplo, Person para ColumnEntity.
 
-* **DocumentCollectionManagerAsync:** Entidade manager de documentos do Diana de forma assíncrona.
+* **ColumnFamilyManagerAsync:** Entidade manager de documentos do Diana de forma assíncrona.
 
 ```java
-DocumentRepositoryAsync repositoryAsync = //instance
+ColumnRepositoryAsync repositoryAsync = //instance
 
 Person person = new Person();
 person.setAddress("Olympus");
@@ -136,7 +136,7 @@ repositoryAsync.update(person, callback);
 repositoryAsync.update(people);
 ```
 
-Para a busca e a remoção da informação são utilizadas as mesmas classes do Diana para documentos, ou seja, **DocumentQuery** e **DocumentDeleteQuery** respectivamente também é possível o uso de callback.
+Para a busca e a remoção da informação são utilizadas as mesmas classes do Diana para documentos, ou seja, **ColumnQuery** e **ColumnDeleteQuery** respectivamente também é possível o uso de callback.
 
 ```java
 Consumer<List<Person>> callBackPeople = p -> {};
@@ -146,65 +146,64 @@ repositoryAsync.delete(deleteQuery);
 repositoryAsync.delete(deleteQuery, voidCallBack);
 ```
 
-Como o motor do Artemis é CDI para que se posso utilizar o DocumentRepository basta dar um @Inject num campo.
+Como o motor do Artemis é CDI para que se posso utilizar o ColumnRepository basta dar um @Inject num campo.
 
 ```java
 @Inject
-private
-DocumentRepositoryAsync repository;
+private ColumnRepositoryAsync repository;
 ```
 
-Para isso é necessário que a aplicação injete um **DocumentCollectionManagerAsync:**
+Para isso é necessário que a aplicação injete um **ColumnFamilyManagerAsync:**
 
 ```
 @Produces
-public DocumentCollectionManagerAsync getManager() {
-    DocumentCollectionManagerAsync managerAsync = //instance
+public ColumnFamilyManagerAsync getManager() {
+    ColumnFamilyManagerAsync managerAsync = //instance
     return manager;
 }
 ```
 
-Para trabalhar com mais de um tipo de DocumentRepository existem duas opções:
+Para trabalhar com mais de um tipo de ColumnRepositoryAsync existem duas opções:
 
 1\) A primeira é com a utilização dos qualificadores:
 
 ```java
     @Inject
-    @Database(value = DatabaseType.DOCUMENT, provider = "databaseA")
-    private DocumentRepositoryAsync repositorA;
+    @Database(value = DatabaseType.COLUMN, provider = "databaseA")
+    private ColumnRepositoryAsync repositorA;
 
     @Inject
-    @Database(value = DatabaseType.DOCUMENT, provider = "databaseB")
-    private DocumentRepositoryAsync repositoryB;
+    @Database(value = DatabaseType.COLUMN, provider = "databaseB")
+    private ColumnRepositoryAsync repositoryB;
 
 
     //producers methods
     @Produces
-    @Database(value = DatabaseType.DOCUMENT, provider = "databaseA")
-    public DocumentCollectionManagerAsync getManagerA() {
-        DocumentCollectionManager manager = null;
+    @Database(value = DatabaseType.COLUMN, provider = "databaseA")
+    public ColumnFamilyManagerAsync getManagerA() {
+        ColumnFamilyManagerAsync manager = //instance
         return manager;
     }
 
     @Produces
-    @Database(value = DatabaseType.DOCUMENT, provider = "databaseB")
-    public DocumentCollectionManagerAsync getManagerB() {
-        DocumentCollectionManager manager = null;
+    @Database(value = DatabaseType.COLUMN, provider = "databaseB")
+    public ColumnFamilyManagerAsync getManagerB() {
+        ColumnFamilyManagerAsync manager = //instance
         return manager;
     }
 ```
 
-2\) A segunda delas é a partir do  **DocumentRepositoryAsyncProducer**
+2\) A segunda delas é a partir do  **ColumnRepositoryAsyncProducer**
 
 ```java
 @Inject
 private DocumentRepositoryAsyncProducer producer;
 
 public void sample() {
-   DocumentCollectionManagerAsync managerA = //instance;
-   DocumentCollectionManagerAsync managerB = //instance
-   DocumentRepositoryAsync repositorA = producer.get(managerA);
-   DocumentRepositoryAsync repositoryB = producer.get(managerB);
+   ColumnFamilyManagerAsync managerA = //instance;
+   ColumnFamilyManagerAsync managerB = //instance
+   ColumnRepositoryAsync repositorA = producer.get(managerA);
+   ColumnRepositoryAsync repositoryB = producer.get(managerB);
 }
 ```
 
