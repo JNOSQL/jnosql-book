@@ -30,8 +30,7 @@ repository.update(person);
 repository.update(people);
 ```
 
-Para a busca e a remoção da informação são utilizadas as mesmas classes do Diana para documentos, ou seja,  
-**DocumentQuery** e **DocumentDeleteQuery** respectivamente.
+Para a busca e a remoção da informação são utilizadas as mesmas classes do Diana para documentos, ou seja, **DocumentQuery** e **DocumentDeleteQuery** respectivamente.
 
 ```java
 DocumentQuery query = DocumentQuery.of("Person");
