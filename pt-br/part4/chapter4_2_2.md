@@ -1,4 +1,4 @@
-## Repositório de Família de colunas
+## Repositório de Família de Colunas
 
 O repositório de família de coluna é responsável para realizar a comunicação da entidade para um banco de dados do tipo família de coluna. Ele é subdividido em `ColumnRepository` e `ColumnRepositoryAsync` para trabalhos síncronos e assíncronos respectivamente.
 
