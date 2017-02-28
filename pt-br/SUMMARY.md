@@ -34,7 +34,13 @@
      * [Column Configuration](part2/chapter2_6_2.md)
      * [Key Value Configuration](part2/chapter2_6_3.md)
 * [Diversidade nos bancos não relacionaisDiversidade nos Bancos não relacionais](part3/README.md)
-* [Utilizando drivers para com o Diana](part3/chapter3_1.md)
+   * [Utilizando drivers para com o Diana](part3/chapter3_1.md)
+     
+### Conhecendo a API de comunicação do Artemis  
+* [Introdução ao Artemis](part4/README.md)
+    * [Anotações para o Modelo](part4/chapter4_1.md)
+    * [Classes repositórios](part4/chapter4_2.md)
+       * [Repositório de Documentos](part4/chapter4_2_1.md)
 
 ### Bibliografia
      
