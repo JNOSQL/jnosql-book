@@ -42,47 +42,39 @@ repository.update(people);
 
 #### Criando Queries com o CrudRepository
 
-
-
 Além de salvar e atualizar a informação também é possível recuperar e deletar a informação utilizando queries dinâmicas no método. Com esse intuito o CrudRepository vem com algumas palavras reservadas:
 
-
-
-*  **findBy**: Como prefixo para encontrar alguma informação
-*  **deleteBy**: Como prefixo, para deletar alguma informação
+* **findBy**: Como prefixo para encontrar alguma informação
+* **deleteBy**: Como prefixo, para deletar alguma informação
 
 Além dos Operadores:
 
-
-
-*  AND
-*  OR
-*  Between
-*  LessThan
-*  GreaterThan
-*  LessThanEqual
-*  GreaterThanEqual
-*  Like
-*  OrderBy
-*  OrderBy\_\_\_\_Desc
-*  OrderBy\_\_\_\_\_ASC
-
-
+* AND
+* OR
+* Between
+* LessThan
+* GreaterThan
+* LessThanEqual
+* GreaterThanEqual
+* Like
+* OrderBy
+* OrderBy\_\_\_\_Desc
+* OrderBy\_\_\_\_\_ASC
 
 ```java
 interface PersonRepository extends CrudRepository<Person> {
-        
+
     List<Person> findByAddress(String address);
 
     Stream<Person> findByName(String name);
 
     Stream<Person> findByNameOrderByNameAsc(String name);
-      
+
     Optional<Person> findByNickname(String nickname);
-     
+
     void deleteByNickName(String nickname);
 }
 ```
 
-
+Com isso o artemis cuidará de implementar esses métodos.
 
