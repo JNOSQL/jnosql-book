@@ -13,7 +13,7 @@ O `DocumentRepository` é responsável pela persistência de uma Entidade em um 
 * **DocumentWorkflow**: Segue o fluxo de persistência durante os métodos de save e update.
 
 ```java
-  DocumentRepository repository = //instance
+DocumentRepository repository = //instance
 
 Person person = new Person();
 person.setAddress("Olympus");
@@ -32,8 +32,6 @@ repository.update(persons);
 
 Para a busca e a remoção da informação são utilizadas as mesmas classes do Diana para documentos, ou seja,  
 **DocumentQuery** **DocumentDeleteQuery** respectivamente.
-
-
 
 ```java
 DocumentQuery query = DocumentQuery.of("Person");
