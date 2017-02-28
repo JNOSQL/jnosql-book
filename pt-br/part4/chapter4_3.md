@@ -24,7 +24,7 @@ private PersonRepository columnRepository;
 Com isso o Artemis se encarregará de utilizar o apropriado banco de dados e cuidará de implementar os métodos.
 
 ```java
-PersonRepository repository = null;
+PersonRepository repository = //instance
 
 Person person = new Person();
 person.setNickname("diana");
@@ -77,4 +77,10 @@ interface PersonRepository extends CrudRepository<Person> {
 ```
 
 Com isso o artemis cuidará de implementar esses métodos.
+
+
+
+#### Utilizando o CrudRepository de forma assíncrona
+
+
 
