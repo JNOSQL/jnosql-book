@@ -115,7 +115,7 @@ O`DocumentRepositoryAsync`é responsável pela persistência de uma Entidade em 
 * **DocumentCollectionManagerAsync:** Entidade manager de documentos do Diana de forma assíncrona.
 
 ```java
-DocumentRepositoryAsync repositoryAsync = null;
+DocumentRepositoryAsync repositoryAsync = //instance
 Consumer<Person> callback = p -> {};
 repositoryAsync.save(person);
 repositoryAsync.save(person, Duration.ofHours(1L));
@@ -128,4 +128,16 @@ repositoryAsync.update(people);
 ```
 
 Para a busca e a remoção da informação são utilizadas as mesmas classes do Diana para documentos, ou seja, **DocumentQuery** e **DocumentDeleteQuery** respectivamente também é possível o uso de callback.
+
+
+
+```java
+Consumer<List<Person>> callBackPeople = p -> {};
+Consumer<Void> voidCallBack = v ->{};
+repositoryAsync.find(query, callBackPeople);
+repositoryAsync.delete(deleteQuery);
+repositoryAsync.delete(deleteQuery, voidCallBack);
+```
+
+
 
