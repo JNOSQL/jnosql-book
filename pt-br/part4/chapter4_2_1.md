@@ -107,3 +107,17 @@ public void sample() {
 
 
 
+#### `DocumentRepositoryAsync`
+
+
+
+O`DocumentRepositoryAsync`é responsável pela persistência de uma Entidade em um banco de dados do tipo documento de forma assíncrona. Ele é composto, basicamente, por dois componentes:
+
+
+
+* **DocumentEntityConverter:** Responsável por converter da entidade, por exemplo, Person para DocumentEntity.
+
+* **DocumentCollectionManagerAsync:** Entidade manager de documentos do Diana de forma assíncrona.
+
+
+
