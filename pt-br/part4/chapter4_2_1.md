@@ -21,13 +21,13 @@ person.setName("Artemis Good");
 person.setPhones(Arrays.asList("55 11 94320121", "55 11 94320121"));
 person.setNickname("artemis");
 
-List<Person> persons = Collections.singletonList(person);
+List<Person> people = Collections.singletonList(person);
 
 Person personUpdated = repository.save(person);
-repository.save(persons);
+repository.save(people);
 
 repository.update(person);
-repository.update(persons);
+repository.update(people);
 ```
 
 Para a busca e a remoção da informação são utilizadas as mesmas classes do Diana para documentos, ou seja,  
