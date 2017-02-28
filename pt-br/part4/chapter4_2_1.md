@@ -129,14 +129,34 @@ repositoryAsync.update(people);
 
 Para a busca e a remoção da informação são utilizadas as mesmas classes do Diana para documentos, ou seja, **DocumentQuery** e **DocumentDeleteQuery** respectivamente também é possível o uso de callback.
 
-
-
 ```java
 Consumer<List<Person>> callBackPeople = p -> {};
 Consumer<Void> voidCallBack = v ->{};
 repositoryAsync.find(query, callBackPeople);
 repositoryAsync.delete(deleteQuery);
 repositoryAsync.delete(deleteQuery, voidCallBack);
+```
+
+
+
+Como o motor do Artemis é CDI para que se posso utilizar o DocumentRepository basta dar um @Inject num campo.
+
+```java
+@Inject
+private
+DocumentRepositoryAsync repository;
+```
+
+
+
+Para isso é necessário que a aplicação injete um **DocumentCollectionManagerAsync:**
+
+```
+@Produces
+public DocumentCollectionManagerAsync getManager() {
+    DocumentCollectionManagerAsync managerAsync = //instance
+    return manager;
+}
 ```
 
 
