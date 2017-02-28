@@ -1,3 +1,5 @@
+## 
+
 ## CrudRepisotry
 
 Além dos repositórios de família de colunas e também de documentos o Artemis também possui o CRUDRepository. Essa interface tem como objetivo auxiliar na criação de classes repositórios específicas paraas entidadesalém de facilitar na criação de uma query.
@@ -96,6 +98,13 @@ Ou seja, basta injetá-lo que o Artemis cuidará de implementar os métodos.
 
 ```java
 PersonRepositoryAsync repositoryAsync = //instance
+
+Person person = new Person();
+person.setNickname("diana");
+person.setName("Diana Goodness");
+
+List<Person> people = Collections.singletonList(person);
+
 
 repositoryAsync.save(person);
 repositoryAsync.save(people);
