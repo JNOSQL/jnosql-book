@@ -2,7 +2,7 @@
 
 
 
-![](/images/duke-artemis-min.png)
+![](../../images/duke-artemis-min.png)
 
 
 
