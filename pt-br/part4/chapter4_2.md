@@ -10,7 +10,7 @@ As classes repositórios têm como principal objetivo converter a classe entidad
 
 
 
-![](/images/integration-artemis.png)
+![](../../images/integration-artemis.png)
 
 Os quatro eventos são:
 
