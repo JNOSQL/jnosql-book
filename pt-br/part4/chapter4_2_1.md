@@ -182,14 +182,14 @@ Para trabalhar com mais de um tipo de DocumentRepository existem duas opções:
     @Produces
     @Database(value = DatabaseType.DOCUMENT, provider = "databaseA")
     public DocumentCollectionManagerAsync getManagerA() {
-        DocumentCollectionManager manager = null;
+        DocumentCollectionManager manager = //instance
         return manager;
     }
 
     @Produces
     @Database(value = DatabaseType.DOCUMENT, provider = "databaseB")
     public DocumentCollectionManagerAsync getManagerB() {
-        DocumentCollectionManager manager = null;
+        DocumentCollectionManager manager = //instance
         return manager;
     }
 ```
