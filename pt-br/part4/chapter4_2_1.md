@@ -45,5 +45,59 @@ DocumentDeleteQuery deleteQuery = query.toDeleteQuery();
 repository.delete(deleteQuery);
 ```
 
+Como o motor do Artemis é CDI para que se posso utilizar o DocumentRepository basta dar um @Inject num campo.
+
+```java
+@Inject
+private DocumentRepository repository;
+```
+
+Para isso é necessário que a aplicação injete um **DocumentCollectionManager:**
+
+```java
+@Produces
+public DocumentCollectionManager getManager() {
+    DocumentCollectionManager manager = //instance
+    return manager;
+}
+```
+
+
+
+  
+Para trabalhar com mais de um tipo de DocumentRepository existem duas opções:
+
+
+
+1\) A primeira é com a utilização dos qualificadores:
+
+
+
+```java
+    @Inject
+    @Database(value = DatabaseType.DOCUMENT, provider = "databaseA")
+    private DocumentRepository repositorA;
+
+    @Inject
+    @Database(value = DatabaseType.DOCUMENT, provider = "databaseB")
+    private DocumentRepository repositoryB;
+
+
+    //producers methods
+    @Produces
+    @Database(value = DatabaseType.DOCUMENT, provider = "databaseA")
+    public DocumentCollectionManager getManagerA() {
+        DocumentCollectionManager manager = null;
+        return manager;
+    }
+
+    @Produces
+    @Database(value = DatabaseType.DOCUMENT, provider = "databaseB")
+    public DocumentCollectionManager getManagerB() {
+        DocumentCollectionManager manager = null;
+        return manager;
+    }
+```
+
 
 
