@@ -42,11 +42,13 @@ Essa anotação observada os atributos dentro da classe, anotada com Entity.
 @Entity
 public class Person {
     @Column
-    private long nickname;
+    private String nickname;
     @Column
     private String name;
     @Column
     private List<String> phones;
+    //ignored
+    private String address;
 //getter and setter
 }
 ```
