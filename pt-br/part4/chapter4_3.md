@@ -21,10 +21,7 @@ private PersonRepository documentRepository;
 private PersonRepository columnRepository;
 ```
 
-  
 Com isso o Artemis se encarregará de utilizar o apropriado banco de dados e cuidará de implementar os métodos.
-
-
 
 ```java
 PersonRepository repository = null;
@@ -42,6 +39,10 @@ repository.update(person);
 repository.update(people);
 repository.update(people);
 ```
+
+
+
+#### Criando Queries com o CrudRepository
 
 
 
