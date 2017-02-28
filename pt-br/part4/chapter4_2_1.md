@@ -164,5 +164,51 @@ public DocumentCollectionManagerAsync getManager() {
 }
 ```
 
+Para trabalhar com mais de um tipo de DocumentRepository existem duas opções:
+
+1\) A primeira é com a utilização dos qualificadores:
+
+```java
+    @Inject
+    @Database(value = DatabaseType.DOCUMENT, provider = "databaseA")
+    private DocumentRepositoryAsync repositorA;
+
+    @Inject
+    @Database(value = DatabaseType.DOCUMENT, provider = "databaseB")
+    private DocumentRepositoryAsync repositoryB;
+
+
+    //producers methods
+    @Produces
+    @Database(value = DatabaseType.DOCUMENT, provider = "databaseA")
+    public DocumentCollectionManagerAsync getManagerA() {
+        DocumentCollectionManager manager = null;
+        return manager;
+    }
+
+    @Produces
+    @Database(value = DatabaseType.DOCUMENT, provider = "databaseB")
+    public DocumentCollectionManagerAsync getManagerB() {
+        DocumentCollectionManager manager = null;
+        return manager;
+    }
+```
+
+2\) A segunda delas é a partir do  **DocumentRepositoryAsyncProducer**
+
+```java
+@Inject
+private DocumentRepositoryAsyncProducer producer;
+
+public void sample() {
+   DocumentCollectionManagerAsync managerA = //instance;
+   DocumentCollectionManagerAsync managerB = //instance
+   DocumentRepositoryAsync repositorA = producer.get(managerA);
+   DocumentRepositoryAsync repositoryB = producer.get(managerB);
+}
+```
+
+#### 
+
 
 
