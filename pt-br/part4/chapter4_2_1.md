@@ -99,8 +99,8 @@ Para trabalhar com mais de um tipo de DocumentRepository existem duas opções:
 private DocumentRepositoryProducer producer;
 
 public void sample() {
-   DocumentCollectionManager managerA = null;
-   DocumentCollectionManager managerB = null;
+   DocumentCollectionManager managerA = //instance;
+   DocumentCollectionManager managerB = //instance
    DocumentRepository repositorA = producer.get(managerA);
    DocumentRepository repositoryB = producer.get(managerB);
 }
@@ -137,8 +137,6 @@ repositoryAsync.delete(deleteQuery);
 repositoryAsync.delete(deleteQuery, voidCallBack);
 ```
 
-
-
 Como o motor do Artemis é CDI para que se posso utilizar o DocumentRepository basta dar um @Inject num campo.
 
 ```java
@@ -146,8 +144,6 @@ Como o motor do Artemis é CDI para que se posso utilizar o DocumentRepository b
 private
 DocumentRepositoryAsync repository;
 ```
-
-
 
 Para isso é necessário que a aplicação injete um **DocumentCollectionManagerAsync:**
 
