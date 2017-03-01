@@ -2,10 +2,6 @@
 
 Como foi mencionado, o Artemis tem suporte a eventos e um ciclo de vida tanto para a inserção e a atualização dos dados. O ciclo de vida é gerenciado pela classe **WorkFlow** que por padrão tem o seguinte fluxo:
 
-
-
-
-
 1. **firePreEntity**: O objeto recebido pelo Artemis
 2. **firePreAPI**: o objeto convertido numa entidade de comunicação
 3. **firePostAPI**: A entidade de comunicação enviada como resposta do banco de dados
@@ -37,10 +33,7 @@ public class PersonEvent {
         LOGGER.info("Event to post column entity" + event.getEntity());
     }
 }
-
 ```
-
-
 
 #### DocumentWorkFlow
 
@@ -66,16 +59,9 @@ public class PersonEvent {
         LOGGER.info("Event to post document entity" + event.getEntity());
     }
 }
-
 ```
 
-
-
-
-
 #### KeyValueWorkFlow
-
-
 
 ```java
 @ApplicationScoped
@@ -99,7 +85,6 @@ public class UserEvent {
         LOGGER.info("Event to post key entity" + event.getEntity());
     }
 }
-
 ```
 
 
