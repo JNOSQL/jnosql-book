@@ -28,5 +28,20 @@ public class Person {
 }
 ```
 
+  
+Caso seja encontrado um problema na validação no projeto ele lançará uma exceção do tipo ArtemisValidationException.
+
+
+
+```java
+ Person person = Person.builder()
+                .withAge(10)
+                .withName("Ada")
+                .withSalary(BigDecimal.ONE)
+                .withPhones(singletonList("123131231"))
+                .build();
+repository.save(person);//throws an ArtemisValidationException 
+```
+
 
 
