@@ -43,6 +43,9 @@
        * [Repositório de Documentos](part4/chapter4_2_1.md)
        * [Repositório de Família de Colunas](part4/chapter4_2_2.md)
        * [Repositório de Chave valor](part4/chapter4_2_3.md)
+   * [CrudRepisotry](part4/chapter4_3.md)
+   * [Lidando com os eventos da persistência](part4/chapter4_4.md)
+   * [Bean Validation](part4/chapter4_5.md)
 
 ### Bibliografia
      
