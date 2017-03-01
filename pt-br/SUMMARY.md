@@ -37,6 +37,7 @@
    * [Utilizando drivers para com o Diana](part3/chapter3_1.md)
      
 ### Conhecendo a API de comunicação do Artemis  
+
 * [Introdução ao Artemis](part4/README.md)
     * [Anotações para o Modelo](part4/chapter4_1.md)
     * [Classes repositórios](part4/chapter4_2.md)
@@ -46,7 +47,9 @@
    * [CrudRepisotry](part4/chapter4_3.md)
    * [Lidando com os eventos da persistência](part4/chapter4_4.md)
    * [Bean Validation](part4/chapter4_5.md)
+   
 ### Estendendo o Artemis
+
 * [Componentes do Artemis](part5/README.md)
   * [Workflow](part5/chapter5_1.md)
   * [EventManager](part5/chapter5_2.md)
