@@ -69,3 +69,17 @@ Para trabalhar com mais de um tipo de KeyValueRepository existem duas opções:
         return manager;
     }
 ```
+
+2) A segunda delas é a partir do KeyValueRepositoryProducer
+
+```java
+@Inject
+private KeyValueRepositoryProducer producer;
+
+public void sample() {
+   BucketManager managerA = //instance;
+   BucketManager managerB = //instance
+   KeyValueRepository repositorA = producer.get(managerA);
+   KeyValueRepository repositoryB = producer.get(managerB);
+}
+```
