@@ -25,5 +25,18 @@ Optional<Person> ada = repository.get("ada", Person.class);
 Iterable<Person> usersFound = repository.get(Collections.singletonList("ada"), Person.class);
 ```
 
+Como o motor do Artemis é CDI para que se posso utilizar o DocumentRepository basta dar um @Inject num campo.
 
+```java
+@Inject
+private KeyValueRepository repository;
+```
 
+Para isso é necessário que a aplicação injete um BucketManager:
+```java
+@Produces
+public BucketManager getManager() {
+    BucketManager manager = //instance
+    return manager;
+}
+```
