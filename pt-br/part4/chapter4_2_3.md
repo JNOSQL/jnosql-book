@@ -40,3 +40,32 @@ public BucketManager getManager() {
     return manager;
 }
 ```
+
+Para trabalhar com mais de um tipo de KeyValueRepository existem duas opções:
+
+1) A primeira é com a utilização dos qualificadores:
+```java
+    @Inject
+    @Database(value = DatabaseType.KEY_VALUE, provider = "databaseA")
+    private KeyValueRepository repositorA;
+
+    @Inject
+    @Database(value = DatabaseType.KEY_VALUE, provider = "databaseB")
+    private KeyValueRepository repositoryB;
+
+
+    //producers methods
+    @Produces
+    @Database(value = DatabaseType.KEY_VALUE, provider = "databaseA")
+    public BucketManager getManagerA() {
+        DocumentCollectionManager manager =//instance
+        return manager;
+    }
+
+    @Produces
+    @Database(value = DatabaseType.KEY_VALUE, provider = "databaseB")
+    public DocumentCollectionManager getManagerB() {
+        BucketManager manager = //instance
+        return manager;
+    }
+```
