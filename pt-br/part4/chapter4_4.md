@@ -17,7 +17,7 @@ public class PersonEvent {
 
     private static final Logger LOGGER = Logger.getLogger(PersonEvent.class.getName());
 
-    public void preEntity(@Observes EntityPostPersit event) {
+    public void preEntity(@Observes EntityPrePersist event) {
         LOGGER.info("Event to pre persistence" + event.getValue());
     }
 
@@ -43,7 +43,7 @@ public class PersonEvent {
 
     private static final Logger LOGGER = Logger.getLogger(PersonEvent.class.getName());
 
-    public void preEntity(@Observes EntityPostPersit event) {
+    public void preEntity(@Observes EntityPrePersist event) {
         LOGGER.info("Event to pre persistence" + event.getValue());
     }
 
@@ -69,7 +69,7 @@ public class UserEvent {
 
     private static final Logger LOGGER = Logger.getLogger(UserEvent.class.getName());
 
-    public void preEntity(@Observes EntityPostPersit event) {
+    public void preEntity(@Observes EntityPrePersist event) {
         LOGGER.info("Event to pre persistence" + event.getValue());
     }
 
