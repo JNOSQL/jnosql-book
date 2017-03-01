@@ -46,6 +46,12 @@
    * [CrudRepisotry](part4/chapter4_3.md)
    * [Lidando com os eventos da persistência](part4/chapter4_4.md)
    * [Bean Validation](part4/chapter4_5.md)
+### Estendendo o Artemis
+* [Componentes do Artemis](part5/README.md)
+  * [Workflow](part5/chapter5_1.md)
+  * [EventManager](part5/chapter5_2.md)
+  * [Converter](part5/chapter5_3.md)
+  * [As classes respositórios](part5/chapter5_4.md)
 
 ### Bibliografia
      
