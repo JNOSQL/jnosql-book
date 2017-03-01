@@ -7,8 +7,7 @@ Como foi mencionado, o Artemis tem suporte a eventos e um ciclo de vida tanto pa
 3. **firePostAPI**: A entidade de comunicação enviada como resposta do banco de dados
 4. **firePostEntity**: A entidade bean convertida oriunda do firePostAPIAs classes repositórios têm como principal objetivo converter a classe entidade, por exemplo, Person para o Diana, a API de nível de comunicação.
 
-  
-Para observar esses eventos, basta utilizar o @Observes, recurso oriundo do próprio CDI.
+Para observar esses eventos, basta utilizar o @**Observes**, recurso oriundo do próprio CDI.
 
 #### ColumnWorkFlow
 
