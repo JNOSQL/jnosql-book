@@ -1,7 +1,6 @@
-# Diana
+# JNoSQL
 
-
-Diana is a flexible and extensible API to connect NoSQL databases. It brings an easy interface to support key-value, column family, document oriented and graph databases as JDBC does for SQL databases.
+JNoSQL is a flexible and extensible API to connect NoSQL databases. It brings an easy interface to support key-value, column family, document oriented and graph databases as JDBC does for SQL databases.
 
 The basic building blocks hereby are:
 
@@ -14,4 +13,5 @@ The basic building blocks hereby are:
 * Support for asynchronous write operations
 * An easy API to implement, so that NoSQL vendors can comply with it  and test by themselves.
 
-The API's focus is on simplicity and ease of use. Developers should only have to know a minimal set of artifacts to work with the solution. The API is built on latest Java 8 features and therefore fit perfectly with the functional features of Java 8. 
+The API's focus is on simplicity and ease of use. Developers should only have to know a minimal set of artifacts to work with the solution. The API is built on latest Java 8 features and therefore fit perfectly with the functional features of Java 8.
+
