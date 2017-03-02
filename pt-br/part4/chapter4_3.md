@@ -206,6 +206,17 @@ public interface UserRepository extends KeyValueCrudRepository<User> {
 }
 ```
 
+E injete o recurso.
+
+
+
+```java
+@Inject
+private UserRepository userRepository;
+```
+
+
+
 ```java
 UserRepository userRepository = //instance
 User user = new User("ada", "Ada Lovelace", 30);
