@@ -102,3 +102,5 @@ private DocumentRepository repositoryB;
 
 Obviamente será necessário a criação de métodos produtores com os mesmos qualificadores que falaremos mais a frente.
 
+Um ponto importante é da integração do Artemis com esse qualificador. Caso ele seja utilizado para a criação dos Entity Manager do Diana \(ColumnFamilyManager, DocumentCollectionManager, BucketManager, etc.\) o Artemis gerenciará todo o ciclo de vida de classes como DocumentRepository, ColumnRepository, dentro outros que será visto mais a frente.
+
