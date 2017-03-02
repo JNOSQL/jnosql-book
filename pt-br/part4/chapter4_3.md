@@ -23,6 +23,26 @@ private PersonRepository documentRepository;
 private PersonRepository columnRepository;
 ```
 
+Para isso é necessário que a aplicação injete um ColumnFamilyManager ou um DocumentCollectionManager:
+
+```java
+@Produces
+public DocumentCollectionManager getManager() {
+DocumentCollectionManager manager = //instance
+return manager;
+}
+
+@Produces
+public ColumnFamilyManager getManager() {
+ColumnFamilyManager manager = //instance
+return manager;
+}
+```
+
+
+
+
+
 Com isso o Artemis se encarregará de utilizar o apropriado banco de dados e cuidará de implementar os métodos.
 
 ```java

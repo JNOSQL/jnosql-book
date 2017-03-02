@@ -33,6 +33,7 @@ private KeyValueRepository repository;
 ```
 
 Para isso é necessário que a aplicação injete um BucketManager:
+
 ```java
 @Produces
 public BucketManager getManager() {
@@ -43,7 +44,8 @@ public BucketManager getManager() {
 
 Para trabalhar com mais de um tipo de KeyValueRepository existem duas opções:
 
-1) A primeira é com a utilização dos qualificadores:
+1\) A primeira é com a utilização dos qualificadores:
+
 ```java
     @Inject
     @Database(value = DatabaseType.KEY_VALUE, provider = "databaseA")
@@ -70,7 +72,7 @@ Para trabalhar com mais de um tipo de KeyValueRepository existem duas opções:
     }
 ```
 
-2) A segunda delas é a partir do KeyValueRepositoryProducer
+2\) A segunda delas é a partir do KeyValueRepositoryProducer
 
 ```java
 @Inject
@@ -83,3 +85,6 @@ public void sample() {
    KeyValueRepository repositoryB = producer.get(managerB);
 }
 ```
+
+
+
