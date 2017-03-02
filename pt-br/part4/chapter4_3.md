@@ -41,57 +41,53 @@ return manager;
 
 Caso seja necessário trabalhar mais de um banco de dados, basta utilizar o qualificador Database e ele será elegível para injeção.
 
-
-
 ```java
 @Inject
-@Database(value = DatabaseType.DOCUMENT , provider = "databaseA")
-private PersonRepository documentRepositoryA;
+@Database(value = DatabaseType.DOCUMENT , provider = "databaseA")
+private PersonRepository documentRepositoryA;
 
 @Inject
-@Database(value = DatabaseType.DOCUMENT , provider = "databaseB")
-private PersonRepository documentRepositoryB;
+@Database(value = DatabaseType.DOCUMENT , provider = "databaseB")
+private PersonRepository documentRepositoryB;
 
 @Inject
-@Database(value = DatabaseType.COLUMN, provider = "databaseA")
-private PersonRepository columnRepositoryA;
+@Database(value = DatabaseType.COLUMN, provider = "databaseA")
+private PersonRepository columnRepositoryA;
 
 @Inject
-@Database(value = DatabaseType.COLUMN, provider = "databaseB")
-private PersonRepository columnRepositoryB;
+@Database(value = DatabaseType.COLUMN, provider = "databaseB")
+private PersonRepository columnRepositoryB;
 
 
 //producers methods
 @Produces
-@Database(value = DatabaseType.COLUMN, provider = "databaseA")
-public ColumnFamilyManager getColumnFamilyManagerA() {
-ColumnFamilyManager manager =//instance
-return manager;
+@Database(value = DatabaseType.COLUMN, provider = "databaseA")
+public ColumnFamilyManager getColumnFamilyManagerA() {
+ColumnFamilyManager manager =//instance
+return manager;
 }
 
 @Produces
-@Database(value = DatabaseType.COLUMN, provider = "databaseB")
-public ColumnFamilyManager getColumnFamilyManagerB() {
-ColumnFamilyManager manager = //instance
-return manager;
+@Database(value = DatabaseType.COLUMN, provider = "databaseB")
+public ColumnFamilyManager getColumnFamilyManagerB() {
+ColumnFamilyManager manager = //instance
+return manager;
 }
 
 @Produces
-@Database(value = DatabaseType.DOCUMENT, provider = "databaseA")
-public DocumentCollectionManager getDocumentCollectionManagerA() {
-DocumentCollectionManager manager = //instance
-return manager;
+@Database(value = DatabaseType.DOCUMENT, provider = "databaseA")
+public DocumentCollectionManager getDocumentCollectionManagerA() {
+DocumentCollectionManager manager = //instance
+return manager;
 }
 
 @Produces
-@Database(value = DatabaseType.DOCUMENT, provider = "databaseB")
-public DocumentCollectionManager DocumentCollectionManagerB() {
-DocumentCollectionManager manager = //instance
-return manager;
+@Database(value = DatabaseType.DOCUMENT, provider = "databaseB")
+public DocumentCollectionManager DocumentCollectionManagerB() {
+DocumentCollectionManager manager = //instance
+return manager;
 }
 ```
-
-
 
 Com isso o Artemis se encarregará de utilizar o apropriado banco de dados e cuidará de implementar os métodos.
 
@@ -190,6 +186,7 @@ Também é possível recuperar e deletar a informação de forma assíncrona, a 
 
 ```java
     interface PersonRepositoryAsync extends CrudRepositoryAsync<Person> {
+    
         void findByNickname(String nickname, Consumer<List<Person>> callback);
 
         void deleteByNickName(String nickname);
