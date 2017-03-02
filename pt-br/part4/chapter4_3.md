@@ -27,19 +27,69 @@ Para isso é necessário que a aplicação injete um ColumnFamilyManager ou um D
 
 ```java
 @Produces
-public DocumentCollectionManager getManager() {
+public DocumentCollectionManager getManager() {
+DocumentCollectionManager manager = //instance
+return manager;
+}
+
+@Produces
+public ColumnFamilyManager getManager() {
+ColumnFamilyManager manager = //instance
+return manager;
+}
+```
+
+Caso seja necessário trabalhar mais de um banco de dados, basta utilizar o qualificador Database e ele será elegível para injeção.
+
+
+
+```java
+@Inject
+@Database(value = DatabaseType.DOCUMENT , provider = "databaseA")
+private PersonRepository documentRepositoryA;
+
+@Inject
+@Database(value = DatabaseType.DOCUMENT , provider = "databaseB")
+private PersonRepository documentRepositoryB;
+
+@Inject
+@Database(value = DatabaseType.COLUMN, provider = "databaseA")
+private PersonRepository columnRepositoryA;
+
+@Inject
+@Database(value = DatabaseType.COLUMN, provider = "databaseB")
+private PersonRepository columnRepositoryB;
+
+
+//producers methods
+@Produces
+@Database(value = DatabaseType.COLUMN, provider = "databaseA")
+public ColumnFamilyManager getColumnFamilyManagerA() {
+ColumnFamilyManager manager =//instance
+return manager;
+}
+
+@Produces
+@Database(value = DatabaseType.COLUMN, provider = "databaseB")
+public ColumnFamilyManager getColumnFamilyManagerB() {
+ColumnFamilyManager manager = //instance
+return manager;
+}
+
+@Produces
+@Database(value = DatabaseType.DOCUMENT, provider = "databaseA")
+public DocumentCollectionManager getDocumentCollectionManagerA() {
 DocumentCollectionManager manager = //instance
 return manager;
 }
 
 @Produces
-public ColumnFamilyManager getManager() {
-ColumnFamilyManager manager = //instance
+@Database(value = DatabaseType.DOCUMENT, provider = "databaseB")
+public DocumentCollectionManager DocumentCollectionManagerB() {
+DocumentCollectionManager manager = //instance
 return manager;
 }
 ```
-
-
 
 
 
