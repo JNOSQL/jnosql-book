@@ -197,7 +197,7 @@ Também é possível recuperar e deletar a informação de forma assíncrona, a 
 
 #### KeyValueCrudRepository
 
-Assim como a família de co lunas e coleção de documentos, chave valor tem o recurso que auxilia tem como objetivo auxiliar na criação de classes repositórios específicas para as entidades o KeyValueCrudRepository. 
+Assim como a família de co lunas e coleção de documentos, chave valor tem o recurso que auxilia tem como objetivo auxiliar na criação de classes repositórios específicas para as entidades o KeyValueCrudRepository.
 
 Para utilizar esse recurso é necessário apenas criar uma interface que extenda de **KeyValueCrudRepository**.
 
@@ -213,9 +213,17 @@ E injete o recurso.
 private UserRepository userRepository;
 ```
 
+Para isso basta produzir um BucketManager.
+
+```java
+@Produces
+public BucketManager getManager() {
+BucketManager manager =//instance
+return manager;
+}
+```
+
 Caso seja necessário trabalhar mais de um banco de dados, basta utilizar o qualificador Database e ele será elegível para injeção.
-
-
 
 ```java
 @Inject
@@ -239,11 +247,7 @@ public BucketManager getManagerB() {
 }
 ```
 
-
-
 Uma vez que a busca se dá, por padrão, pela busca da chave essa interface não suporte a geração de query, apenas a implementação dos métodos já existente.
-
-
 
 ```java
 UserRepository userRepository = null;
