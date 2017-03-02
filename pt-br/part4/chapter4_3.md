@@ -2,7 +2,7 @@
 
 ## CrudRepisotry
 
-Além dos repositórios de família de colunas e também de documentos o Artemis também possui o CRUDRepository. Essa interface tem como objetivo auxiliar na criação de classes repositórios específicas paraas entidades além de facilitar na criação de uma query.
+Além dos repositórios de família de colunas e também de documentos o Artemis também possui o CRUDRepository. Essa interface tem como objetivo auxiliar na criação de classes repositórios específicas para as entidades além de facilitar na criação de uma query.
 
 Para utilizar esse recurso é necessário apenas criar uma interface que extenda de **CrudRepository**.
 
@@ -194,8 +194,6 @@ Também é possível recuperar e deletar a informação de forma assíncrona, a 
         void deleteByNickName(String nickname, Consumer<Void> callback);
     }
 ```
-
-
 
 #### KeyValueCrudRepository
 
