@@ -197,7 +197,7 @@ Também é possível recuperar e deletar a informação de forma assíncrona, a 
 
 #### KeyValueCrudRepository
 
-Assim como a família de co lunas e coleção de documentos, chave valor tem o recurso que auxilia tem como objetivo auxiliar na criação de classes repositórios específicas para as entidades o KeyValueCrudRepository. Uma vez que a busca se dá, por padrão, pela busca da chave essa interface não suporte a geração de query, apenas a implementação dos métodos já existente.
+Assim como a família de co lunas e coleção de documentos, chave valor tem o recurso que auxilia tem como objetivo auxiliar na criação de classes repositórios específicas para as entidades o KeyValueCrudRepository. 
 
 Para utilizar esse recurso é necessário apenas criar uma interface que extenda de **KeyValueCrudRepository**.
 
@@ -208,23 +208,52 @@ public interface UserRepository extends KeyValueCrudRepository<User> {
 
 E injete o recurso.
 
-
-
 ```java
 @Inject
 private UserRepository userRepository;
 ```
 
+Caso seja necessário trabalhar mais de um banco de dados, basta utilizar o qualificador Database e ele será elegível para injeção.
+
 
 
 ```java
-UserRepository userRepository = //instance
+@Inject
+@Database(value = DatabaseType.KEY_VALUE, provider = "databaseA")
+private UserRepository userRepositoryA;
+@Inject
+@Database(value = DatabaseType.KEY_VALUE, provider = "databaseB")
+private UserRepository userRepositoryB;
+//producers methods
+@Produces
+@Database(value = DatabaseType.KEY_VALUE, provider = "databaseA")
+public BucketManager getManager() {
+    BucketManager manager =//instance
+    return manager;
+}
+@Produces
+@Database(value = DatabaseType.KEY_VALUE, provider = "databaseB")
+public BucketManager getManagerB() {
+    BucketManager manager = //instance
+    return manager;
+}
+```
+
+
+
+Uma vez que a busca se dá, por padrão, pela busca da chave essa interface não suporte a geração de query, apenas a implementação dos métodos já existente.
+
+
+
+```java
+UserRepository userRepository = null;
 User user = new User("ada", "Ada Lovelace", 30);
 List<User> users = Collections.singletonList(user);
 userRepository.put(user);
 userRepository.put(user, Duration.ofHours(1));
 userRepository.put(users);
 userRepository.put(users, Duration.ofHours(1));
+
 Optional<User> userOptional = userRepository.get("ada");
 Iterable<User> usersFound = userRepository.get(Collections.singletonList("ada"));
 ```
