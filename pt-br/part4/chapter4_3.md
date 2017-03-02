@@ -197,16 +197,18 @@ Também é possível recuperar e deletar a informação de forma assíncrona, a 
 
 #### KeyValueCrudRepository
 
+Assim como a família de co lunas e coleção de documentos, chave valor tem o recurso que auxilia tem como objetivo auxiliar na criação de classes repositórios específicas para as entidades o KeyValueCrudRepository. Uma vez que a busca se dá, por padrão, pela busca da chave essa interface não suporte a geração de query, apenas a implementação dos métodos já existente.
 
 
-Assim como a família de colunas e coleção de documentos, chave valor tem o recurso que auxilia tem como objetivo auxiliar na criação de classes repositórios específicas para as entidades o KeyValueCrudRepository. 
+
+Para utilizar esse recurso é necessário apenas criar uma interface que extenda de KeyValueCrudRepository.
 
 ```java
 public interface UserRepository extends KeyValueCrudRepository<User> {
 }
 ```
 
-Uma vez que a busca se dá, por padrão, pela busca da chave essa interface não suporte a geração de query, apenas a implementação dos métodos já existente.
+
 
 ```java
 UserRepository userRepository = //instance
@@ -219,8 +221,6 @@ userRepository.put(users, Duration.ofHours(1));
 Optional<User> userOptional = userRepository.get("ada");
 Iterable<User> usersFound = userRepository.get(Collections.singletonList("ada"));
 ```
-
-
 
 
 
