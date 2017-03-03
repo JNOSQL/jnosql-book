@@ -65,9 +65,9 @@ Diana is valuable also alone when a developer what to use just the communication
 
 ![](../../images/artemis-integration.png)
 
-O Artemis é a camada de integração, ou seja, ele será responsável por se comunicar com a camada de comunicação, o diana, e realizar a integração com outras tecnologias, como Bean Validation, por exemplo. O seu coração é composto com CDI. Assim, sua fórmula é simples:
+Artemis is the integration and abstract layer, in other words, it takes the communication level, Diana, and it does integration with others technologies such as Bean Validation and also with an entity model. It has a CDI engine; its formula is simple:
 
-Diana mais CDI igual ao Artemis.
+Diana plus CDI equals to Artemis.
 
 Assim como o Diana, ela também possui, de maneira geral, um pacote para cada tipo de banco de dados. Utilizando como base o CDI ele se caracteriza por ser compartimentalizável além de ser possível criar eventos para cada momento da persistência do objeto. Com Artemis será possível:
 
