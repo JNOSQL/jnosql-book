@@ -57,16 +57,9 @@ The JNoSQL is a several tool to make easy integration between the Java Applicati
 
 The Diana Project has a goal do the low-level API, in other words, communicate with the NoSQL databases. This project is going to work as a driver to NOSQL databases. At overall it has four APIs inside, one for each NoSQL kind, beyond it own TCK. A test compatibility kit, the TCK, are a test group that makes sure if an A NoSQL database does support a database, e.g., If A key value database wants to prove its database has Diana support.
 
-So Diana will **not** be:
+Assim, mesmo com a não responsabilidade de realizar o papel das camadas de abstração, essa camada de comunicação facilitará a entrada do suporte ao banco de dados, assim, por exemplo, caso uma das APIs de abstração como Spring Data, Hibernate OGM, etc. Suporte essa API, basta que o distribuidor do banco de dados implemente o seu respectivo tipo de banco de dados e essa API terá suporte para o novo banco.
 
-* Uma nova API para substituir o JPA
-* Uma nova API para camada de abstração
-* Apenas uma única API, ignorando as especializações de cada tipo de banco
-* Camada responsável por realizar a integração entre as outras especificações como CDI, EJB, Bean Validation, Spring, etc.
-
-  Assim, mesmo com a não responsabilidade de realizar o papel das camadas de abstração, essa camada de comunicação facilitará a entrada do suporte ao banco de dados, assim, por exemplo, caso uma das APIs de abstração como Spring Data, Hibernate OGM, etc. Suporte essa API, basta que o distribuidor do banco de dados implemente o seu respectivo tipo de banco de dados e essa API terá suporte para o novo banco.
-
-  Diana não é valioso apenas utilizado em conjunto com uma camada de abstração, caso o desenvolvedor opte por não utilizar tal API de abstração, ao utilizar a camada de comunicação, a mudança entre os bancos de dados do mesmo tipo será transparente, por exemplo, a mudança de um banco de grafos para outro, será necessário apenas trocar o driver, implementação, do outro banco.
+Diana não é valioso apenas utilizado em conjunto com uma camada de abstração, caso o desenvolvedor opte por não utilizar tal API de abstração, ao utilizar a camada de comunicação, a mudança entre os bancos de dados do mesmo tipo será transparente, por exemplo, a mudança de um banco de grafos para outro, será necessário apenas trocar o driver, implementação, do outro banco.
 
 #### Artemis
 
