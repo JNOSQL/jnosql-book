@@ -43,9 +43,9 @@ This model can storage any document, without this model be defined previously th
 
 ### Column Family
 
-   This model became popular with the BigTable's paper by Google, with the goal of being a distributed system storage, projected to have either a high scalability and volume.
+This model became popular with the BigTable's paper by Google, with the goal of being a distributed system storage, projected to have either a high scalability and volume.
 
-###### Examplos:
+###### Examples:
 
 * Hbase
 * Cassandra
@@ -54,25 +54,25 @@ This model can storage any document, without this model be defined previously th
 * SimpleDb
 * DynamoDB
 
-| Estrutura relacional | Estrutura de família de colunas |
+| Relational structure | Column Family structure |
 | :--- | :--- |
 | Table | Column Family |
 | Row | Column |
 | Column | Key/value pair |
 | Relationship | not supported |
 
-### Grafos
+### Graph
 
-É uma estrutura de dados que conecta um conjunto de vértices através de um conjunto de arestas. Os bancos de dados de grafo modernos suportam estruturas de grafo multi-relacionais, onde existem tipos diferentes vértices \(representando pessoas, lugares, itens\) e diferentes tipos de arestas.
+   In computing, a graph database is a database that uses graph structures for semantic queries with nodes, edges, and properties to represent and store data.
 
-###### Examplos:
+###### Examples:
 
 * Neo4j 
 * InfoGrid 
 * Sones 
 * HyperGraphDB
 
-| Estrutura relacional | Estrutura de grafos |
+| Relational Structure | Graph structure |
 | :--- | :--- |
 | Table | Vertex and Edge |
 | Row | Vertex |
@@ -81,9 +81,11 @@ This model can storage any document, without this model be defined previously th
 
 ### Muli-model database
 
-Alguns bancos de dados possuem a comum característica de ter suporte de um ou mais modelos apresentados anteriormente.
 
-###### Examplos:
+
+Some database has support for more than one kind of model storage this is the multi-model database.
+
+###### Examples:
 
 * OrientDB
 * Couchbase
