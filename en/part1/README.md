@@ -1,14 +1,16 @@
 ## The main idea behind the API
 
-Once, we talked about the importance of the standard of a NoSQL database API; the next step is to discuss, in more details, about API. However, to make a natural explanation, first going to talk about both layer and tier. These structures level make the communication, maintenance, split the responsibility clearer. The new API proposal going to be responsible for being a bridge between the logic tier and data tier, to do this, we need to create two APIs one to communication to a database and another one to be a high abstraction to Java application.
+Once, we talked about the importance of the standard of a NoSQL database API; the next step is to discuss, in more details, about API. However, to make a natural explanation, first going to talk about both layer and tier. These structures level make the communication, maintenance, split the responsibility clearer. The new API proposal  is going to be responsible for being a bridge between the logic tier and data tier, to do this, we need to create two APIs one to communication to a database and another one to be a high abstraction to Java application.
 
 ![Camada Física](../../images/01.png)
 
-No mundo de software é muito comum que a aplicação tenha camadas, sejam elas lógicas ou físicas. Aplicações de multi-camada física é muito comum, principalmente com três:
+In software, the world is common that application has structures: tier, physical structure, and layer, logic one. The multi-tier application has three levels:
 
-* **Camada de apresentação**: A sua principal responsabilidade é traduzir as atividades de uma forma que o usuário possa entender.
-* **Camada lógica**: A camada lógica é onde fica localizada toda a lógica de negócio e processamento, condições, salva informação, essa a camada que move e processa informações entre as camadas.
-* **Camada de dados**: Essa camada é responsável por armazenar e recuperar as informações dentro de um banco de dados ou sistema de arquivo.
+* **Presentation tier**: That has as primary duty translate the result, from below tiers, to the user a can understand. 
+
+* **Logic tier**: The tier where has all business rules, process, conditions, save the information, etc. This level moves and processes information between other levels. 
+
+* **Data tier**: Storage and retrieve information either database or a system file.
 
 Falando precisamente da camada física, tier, lógica, para separar as responsabilidades, existem as camadas, layer, lógicas. Essas camadas contêm a ponte entre a camada física de apresentarão e a camada de dados além da lógica de negócio. Indiferente do seu padrão de arquitetura \(MVC, HMVC, PAC, MVA, MVP, MVVM\) eles possuem no mínimo quatro camadas:
 
