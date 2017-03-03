@@ -71,15 +71,13 @@ Diana plus CDI equals to Artemis.
 
 As Diana have, Artemis also has an API to each database flavor. Using CDI as the engine, each component is configurable, and it has  features such as:
 
-* Persistir seu objeto utilizando simples anotações
+* Persist an object through annotation
 
-* Substituir o grande número de componentes \(reflections, a conversão da entidade para o banco de dados, como armazena o cache, ciclo de eventos ao persistir uma informação, dentre outros\).
+* Make replaceable any component \(reflections, entity conversions, cache, persistence lifecycle and more\).
 
-* Ouvir eventos para cada ciclo de persistência no banco de dados \(Diferentes eventos para cada tipo de banco de dados\).
+* Observer event a continued existence database lifecycle \(each databases kind has an individual event\).
 
-* Criar classes interceptadoras para as classes repositório.
-
-Um ponto importante sobre os eventos no CDI é a facilidade de adicionar novo recursos ou funcionalidades de maneira transparente ao código. Por exemplo, é possível injetar a validação das entidades, bean validation, sem ser necessário mudar nenhum fluxo do código atual. Por padrão, o fluxo de evento segue o seguinte fluxo:
+An important point about CDI events is how easy is create and add new functionalities without change the core code. That is easy to use bean validation just listen to an event. 
 
 ![](../../images/integration-artemis.png)
 
