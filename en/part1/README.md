@@ -37,20 +37,12 @@ In a NoSQL database, there isn't a strategy to save code or little impact for a 
 
 * To a Java developer there are two lock-in types: If a developer uses an API directly for a change, it will lose code. If a developer uses a high-level abstraction, this developer has lock-in in a Java solution because if this high level hasn't support to a particular NoSQL database, the developer needs to change to either Java solution or use an API NoSQL directly.
 
-The solve this problem the API should have two layers: 
+The solve this problem the API should have two layers:
 
 * The communication layer: the driver from a particular database that connects Java to an accurate database. This layer has four specializations, one to each NoSQL type. 
-*  The abstraction level: its duty is to high concept to Java developers, this layer has annotations and integration to other specializations.
+* The abstraction level: its duty is to high concept to Java developers, this layer has annotations and integration to other specializations.
 
-
-
-Com essa abordagem temos algumas vantagens:
-
-* O distribuidor pelo banco de dados, precisa se preocupar com a comunicação e o parser para o Java.
-* O distribuidor de solução Java, precisa se preocupar apenas com a API de abstração.
-* O desenvolvedor Java não fica preso nem ao banco de dados e nem a API de abstração.
-
-Essas APIs serão opcional uma da outra, em outras palavras, um vendor só precisa se preocupar com a camada do seu interesse.
+These APIs are optional each other, in other words, a Java solution just needs to implement a great solution, and the database vendors need to implements the connection API.
 
 ### Nasce o Projeto JNoSQL
 
