@@ -23,15 +23,11 @@ Within a persistence layer, it has its layers: A Data Access Object, DAO, this s
 
 In the relational database there are two mechanisms, beyond DAO, JDBC, and JPA:
 
-
-
 * **JDBC**: a deep layer with a database that has communications, basic transactions, basically it's a driver to a particular database.
 
 * **JPA**: A high layer that has communication either JDBC and JPA. This layer has high abstraction to Java; this place has annotations and an EntityManager. In general, a JPA has integration with other specifications such as CDI and Bean Validation.
 
-
-
-A vantagem dessas camadas é que a mudança, seja do driver ou do JPA, acontece de forma transparente. Por exemplo, ao realizar a mudança do banco de dados, basta apenas trocar pelo seu respectivo driver e a camada de JPA e o DAO ficam intactas. Assim, caso exista um novo banco de dados, basta que o distribuidor crie apenas o respectivo JDBC sem se preocupar com as outras camadas. O mesmo acontece com o JPA, caso um destruidor de solução técnica para Java queria criar o seu próprio JPA, ele não precisa se preocupar com os detalhes de cada banco de dados, apenas focar na solução de alto nível com o JPA.
+A huge advantage of this strategy that one change, either JDBC or JPA, can happen quickly. When a developer changes a database, he just needs the switch to a respective driver by a database and done! Code ready to a new database changed.
 
 No mundo dos bancos NoSQL, infelizmente, isso não acontece. Como todas as APIs são diferentes toda mudança de banco resulta na troca de API, assim uma grande perda de código. A solução feita atualmente \(Spring Data, Hibernate OGM, TopLink NOSQL, etc.\) é que essa camada de alto nível seja responsável por realizar essa comunicação entre o banco de dados e a aplicação Java, assim temos alguns problemas:
 
