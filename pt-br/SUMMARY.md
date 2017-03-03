@@ -36,7 +36,7 @@
 * [Diversidade nos bancos não relacionaisDiversidade nos Bancos não relacionais](part3/README.md)
    * [Utilizando drivers para com o Diana](part3/chapter3_1.md)
      
-### Conhecendo a API de comunicação do Artemis  
+### Conhecendo a API de abstração do Artemis
 
 * [Introdução ao Artemis](part4/README.md)
     * [Anotações para o Modelo](part4/chapter4_1.md)
