@@ -51,5 +51,5 @@ Look like Diana; it has a different package to each NoSQL database. Using CDI as
 * Listen to an event to each kind of persistence workflow \\(it has differents kind of events to each database\\).
 * Use interceptors
 
-Using CDI events to add a new feature on Artemis is easy and you also can it on transparency way, you don't need to change the repositories. E.g: Using events can add bean validation on the workflow, without the DAO layer know.
+Using CDI events to add a new feature on Artemis is easy and you also can it on transparency way, you don't need to change the repositories. e.g: Using events can add bean validation on the workflow, without the DAO layer know.
 
