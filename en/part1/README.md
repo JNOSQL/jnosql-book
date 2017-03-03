@@ -6,9 +6,9 @@ Once, we talked about the importance of the standard of a NoSQL database API; th
 
 In software, the world is common that application has structures: tier, physical structure, and layer, logic one. The multi-tier application has three levels:
 
-* **Presentation tier**: That has as primary duty translate the result, from below tiers, to the user a can understand. 
+* **Presentation tier**: That has as primary duty translate the result, from below tiers, to the user a can understand.
 
-* **Logic tier**: The tier where has all business rules, process, conditions, save the information, etc. This level moves and processes information between other levels. 
+* **Logic tier**: The tier where has all business rules, process, conditions, save the information, etc. This level moves and processes information between other levels.
 
 * **Data tier**: Storage and retrieve information either database or a system file.
 
@@ -19,16 +19,21 @@ Falando precisamente da camada física, tier, lógica, para separar as responsab
 * **Camada de negócio**: Local onde contém toda a lógica de negócio e o modelo.
 * **Camada de persistência**: A ponte entre a camada física de acesso aos dados e a camada física lógica.
 
-Olhando para a camada de persistência, ela possui suas próprias camadas: O DAO, Data Access Object, que é a camada responsável por realizar a ligação entre a camada de persistência e a de negócio. É nela que contém a API e as chamadas para o banco de dados. Atualmente existe uma diferença entre os bancos relacionais e não relacionais:
+Within a persistence layer, it has its layers: A Data Access Object, DAO, this structure connect business layer and persistence layer. Inside it has an API that does database. Currently, there is a difference between SQL and NoSQL database:
 
-No mundo relacional existem dois mecanismo, além do DAO, que são o JDBC e o JPA:
+In the relational database there are two mechanisms, beyond DAO, JDBC, and JPA:
 
-* **JDBC:** Responsável por uma camada de baixo nível com o banco de dados. É nela que contém a transação, os parses, a comunicação com o banco de dados em si, basicamente é o “driver” do banco de dados etc.
-* **JPA:** É a camada de alto nível com o banco de dados. É nela que fica a comunicação entre o JDBC e a aplicação Java. Boa parte dessa camada é definida por anotações e é nela também que contém a integração/comunicação com as outras especificações como o CDI e o bean validation.
 
-  A vantagem dessas camadas é que a mudança, seja do driver ou do JPA, acontece de forma transparente. Por exemplo, ao realizar a mudança do banco de dados, basta apenas trocar pelo seu respectivo driver e a camada de JPA e o DAO ficam intactas. Assim, caso exista um novo banco de dados, basta que o distribuidor crie apenas o respectivo JDBC sem se preocupar com as outras camadas. O mesmo acontece com o JPA, caso um destruidor de solução técnica para Java queria criar o seu próprio JPA, ele não precisa se preocupar com os detalhes de cada banco de dados, apenas focar na solução de alto nível com o JPA.
 
-  No mundo dos bancos NoSQL, infelizmente, isso não acontece. Como todas as APIs são diferentes toda mudança de banco resulta na troca de API, assim uma grande perda de código. A solução feita atualmente \(Spring Data, Hibernate OGM, TopLink NOSQL, etc.\) é que essa camada de alto nível seja responsável por realizar essa comunicação entre o banco de dados e a aplicação Java, assim temos alguns problemas:
+* **JDBC**: a deep layer with a database that has communications, basic transactions, basically it's a driver to a particular database.
+
+* **JPA**: A high layer that has communication either JDBC and JPA. This layer has high abstraction to Java; this place has annotations and an EntityManager. In general, a JPA has integration with other specifications such as CDI and Bean Validation.
+
+
+
+A vantagem dessas camadas é que a mudança, seja do driver ou do JPA, acontece de forma transparente. Por exemplo, ao realizar a mudança do banco de dados, basta apenas trocar pelo seu respectivo driver e a camada de JPA e o DAO ficam intactas. Assim, caso exista um novo banco de dados, basta que o distribuidor crie apenas o respectivo JDBC sem se preocupar com as outras camadas. O mesmo acontece com o JPA, caso um destruidor de solução técnica para Java queria criar o seu próprio JPA, ele não precisa se preocupar com os detalhes de cada banco de dados, apenas focar na solução de alto nível com o JPA.
+
+No mundo dos bancos NoSQL, infelizmente, isso não acontece. Como todas as APIs são diferentes toda mudança de banco resulta na troca de API, assim uma grande perda de código. A solução feita atualmente \(Spring Data, Hibernate OGM, TopLink NOSQL, etc.\) é que essa camada de alto nível seja responsável por realizar essa comunicação entre o banco de dados e a aplicação Java, assim temos alguns problemas:
 
 * O distribuidor de banco de dados, precisa se preocupar com o código de alta abstração de acesso de Java.
 
