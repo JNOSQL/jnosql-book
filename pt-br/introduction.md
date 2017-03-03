@@ -1,14 +1,14 @@
 ## Está na hora de falar de padrões para o NOSQL em Java
 
-Os bancos NoSQL são bancos de dados que realizam operação de inserção e recuperação de dados utilizando outro modelo que não seja o relacional. Esses tipos de bancos se caracterizam pela velocidade e alta taxa de escalabilidade e vem sendo utilizado com maior frequência em diversos tipos de aplicações, inclusive, aplicações para as instituições financeiras. Como consequência, cresce também o número de vendors ou distribuidores para esse tipo de banco de dados.
+Os bancos de dados NoSQL realizam operação de inserção e recuperação de dados utilizando outro modelo que não seja o relacional. Esses bancos tem como principais características velocidade e alta taxa de escalabilidade, eles estão sendo adotados com maior frequência em diversos tipos de aplicações, inclusive, aplicações para as instituições financeiras. Como consequência, cresce também o número de vendors ou distribuidores para esse tipo de banco de dados.
 
-Os bancos de dados NOSQL são definidos basicamente pelo seu modelo de armazenamento que são  quatro:
+Basicamente os bancos de dados NOSQL são classificados em quatro grupos que são definidos pelo seu modelo de armazenamento:
 
 ### Chave-valor
 
 Possui uma estrutura muito semelhante à do java.util.Map, onde podemos armazenar uma chave e seu valor. Normalmente esse valor pode ser qualquer informação.
 
-###### Examplos:
+###### Exemplos:
 
 * ###### AmazonDynamo
 * AmazonS3 
