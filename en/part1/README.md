@@ -69,7 +69,7 @@ Artemis is the integration and abstract layer, in other words, it takes the comm
 
 Diana plus CDI equals to Artemis.
 
-Assim como o Diana, ela também possui, de maneira geral, um pacote para cada tipo de banco de dados. Utilizando como base o CDI ele se caracteriza por ser compartimentalizável além de ser possível criar eventos para cada momento da persistência do objeto. Com Artemis será possível:
+As Diana have, Artemis also has an API to each database flavor. Using CDI as the engine, each component is configurable, and it has  features such as:
 
 * Persistir seu objeto utilizando simples anotações
 
