@@ -59,7 +59,7 @@ The Diana Project has a goal do the low-level API, in other words, communicate w
 
 So even Diana does not do the abstraction level, supports to make the developer life easier, it makes easier integration with frameworks that do this.
 
-Diana não é valioso apenas utilizado em conjunto com uma camada de abstração, caso o desenvolvedor opte por não utilizar tal API de abstração, ao utilizar a camada de comunicação, a mudança entre os bancos de dados do mesmo tipo será transparente, por exemplo, a mudança de um banco de grafos para outro, será necessário apenas trocar o driver, implementação, do outro banco.
+Diana is valuable also alone when a developer what to use just the communication layer, that is going to easier to change to another database of the same type.
 
 #### Artemis
 
