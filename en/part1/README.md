@@ -33,14 +33,16 @@ In a NoSQL database, there isn't a strategy to save code or little impact for a 
 
 * The database vendor need to be worried about the high-level abstraction to Java world
 
-* The solution provider needs to be concerned about the low level of communication with a particular database. \* The database vendor needs to “copy” this communication solutions to all Java vendors. 
+* The solution provider needs to be concerned about the low level of communication with a particular database. \* The database vendor needs to “copy” this communication solutions to all Java vendors.
 
 * To a Java developer there are two lock-in types: If a developer uses an API directly for a change, it will lose code. If a developer uses a high-level abstraction, this developer has lock-in in a Java solution because if this high level hasn't support to a particular NoSQL database, the developer needs to change to either Java solution or use an API NoSQL directly.
 
-A solução para esse problema é , assim como no mundo relacional, ter duas camadas de API:
+The solve this problem the API should have two layers: 
 
-* Uma camada de baixo nível ou camada de comunicação: que seria o driver de comunicação entre o banco e o Java. Essa camada teria quatro especializações \(uma para cada tipo de banco de dados\).
-* Uma camada de alto nível ou camada de abstração: Responsável pela alta abstração para o desenvolvedor Java. É nessa camada que ficar as anotações, o EntityManager, etc.
+* The communication layer: the driver from a particular database that connects Java to an accurate database. This layer has four specializations, one to each NoSQL type. 
+*  The abstraction level: its duty is to high concept to Java developers, this layer has annotations and integration to other specializations.
+
+
 
 Com essa abordagem temos algumas vantagens:
 
