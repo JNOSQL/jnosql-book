@@ -1,16 +1,15 @@
 ## Let's talk about standard to NoSQL database in Java
 
+  
+The NoSQL DB is a database that provides a mechanism for storage and retrieval of data which is modeled by means other than the tabular relations used in relational databases. These databases have speed and high scalability. This kind of database has becoming more popular in several applications, that include financial one. As result of the increase, the number of a user the number of vendors is increasing too. 
 
+The NoSQL database is defined basically by its model of storage, those have four kinds:
 
-The NoSQL DB is a database that provides a mechanism for storage and retrieval of data which is modeled in means other than the tabular relations used in relational databases. These databases have speed and high scalability. This kind of database has becoming more popular in several applications, that include financial one. As result of increase the number of user the number of vendors are increasing too.
+### Key-value
 
-  The NoSQL database is defined basically by the its model of storage, those has four kind:
+This database has a structure look like a java.util.Map API, where we can storage any value from a key.
 
-### Chave-valor
-
-Possui uma estrutura muito semelhante à do java.util.Map, onde podemos armazenar uma chave e seu valor. Normalmente esse valor pode ser qualquer informação.
-
-###### Examplos:
+###### Examples:
 
 * ###### AmazonDynamo
 * AmazonS3 
@@ -18,7 +17,7 @@ Possui uma estrutura muito semelhante à do java.util.Map, onde podemos armazena
 * Scalaris 
 * Voldemort 
 
-| Estrutura relacional | Estrutura chave-valor |
+| Relational structurel | Key-value structure |
 | :--- | :--- |
 | Table | Bucket |
 | Row | Key/value pair |
