@@ -27,9 +27,9 @@ Possui uma estrutura muito semelhante à do java.util.Map, onde podemos armazena
 
 ### Orientado a documentos
 
-Este modelo permite armazenar qualquer documento, sem ter a necessidade de definir previamente sua estrutura. O documento e composto por inúmeros campos, com tipos de dados diversos, inclusive um campo pode conter um outro documento, possui uma estrutura semelhante a um arquivo XML.
+Este modelo permite armazenar qualquer documento, sem ter a necessidade de definir previamente sua estrutura. O documento é composto por inúmeros campos, com tipos de dados diversos, inclusive um campo pode conter um outro documento, um banco de dados NoSQL orientado a documentos possui uma estrutura semelhante a de um arquivo XML.
 
-###### Examplos:
+###### Exemplos:
 
 * AmazonSimpleDb 
 * ApacheCouchdb 
