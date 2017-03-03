@@ -31,15 +31,11 @@ A huge advantage of this strategy that one change, either JDBC or JPA, can happe
 
 In a NoSQL database, there isn't a strategy to save code or little impact for a change. All APIs are different and don't follow any one standard, so one change to new database results in a lot of work. There are some solutions such as Spring Data, Hibernate OGM, TopLink NoSQL but it's at a high level. In other words, if this high-level API hasn't support to a particular database the result going to be either changing a high-level API or use the API from NoSQL database directly, so lost a lot of code. This solution has several issues:
 
-* O distribuidor de banco de dados, precisa se preocupar com o código de alta abstração de acesso de Java.
+* The database vendor need to be worried about the high-level abstraction to Java world
 
-* O distribuidor da solução Java, precisa se preocupar com o código de baixo nível para realizar o acesso ao banco de dados.
+* The solution provider needs to be concerned about the low level of communication with a particular database. \* The database vendor needs to “copy” this communication solutions to all Java vendors. 
 
-* O distribuidor do banco de dados, precisa replicar a solução para todos provedores de solução Java.
-
-* O desenvolvedor Java, fica preso a uma solução de alto nível para facilitar o seu código.
-
-* Caso a camada de alto nível não tenha suporte para o banco de dados o desenvolvedor terá que ou mudar de solução Java ou mesmo fazer a chamada diretamente pela API do banco de dados, ou seja, haverá uma grande perda de código.
+* To a Java developer there are two lock-in types: If a developer uses an API directly for a change, it will lose code. If a developer uses a high-level abstraction, this developer has lock-in in a Java solution because if this high level hasn't support to a particular NoSQL database, the developer needs to change to either Java solution or use an API NoSQL directly.
 
 A solução para esse problema é , assim como no mundo relacional, ter duas camadas de API:
 
