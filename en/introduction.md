@@ -1,7 +1,6 @@
 ## Let's talk about standard to NoSQL database in Java
 
-  
-The NoSQL DB is a database that provides a mechanism for storage and retrieval of data which is modeled by means other than the tabular relations used in relational databases. These databases have speed and high scalability. This kind of database has becoming more popular in several applications, that include financial one. As result of the increase, the number of a user the number of vendors is increasing too. 
+The NoSQL DB is a database that provides a mechanism for storage and retrieval of data which is modeled by means other than the tabular relations used in relational databases. These databases have speed and high scalability. This kind of database has becoming more popular in several applications, that include financial one. As result of the increase, the number of a user the number of vendors is increasing too.
 
 The NoSQL database is defined basically by its model of storage, those have four kinds:
 
@@ -17,34 +16,34 @@ This database has a structure look like a java.util.Map API, where we can storag
 * Scalaris 
 * Voldemort 
 
-| Relational structurel | Key-value structure |
+| Relational structure | Key-value structure |
 | :--- | :--- |
 | Table | Bucket |
 | Row | Key/value pair |
 | Column | ---- |
 | Relationship | ---- |
 
-### Orientado a documentos
+### Document collection
 
-Este modelo permite armazenar qualquer documento, sem ter a necessidade de definir previamente sua estrutura. O documento e composto por inúmeros campos, com tipos de dados diversos, inclusive um campo pode conter um outro documento, possui uma estrutura semelhante a um arquivo XML.
+This model can storage any document, without this model be defined previously their structure. This document may be composed of numerous fields, with many kinds of data, that include a document inside another document. This model looks like either XML or JSON file.
 
-###### Examplos:
+###### Examples:
 
 * AmazonSimpleDb 
 * ApacheCouchdb 
 * MongoDb 
 * Riak 
 
-| Estrutura relacional | Estrutura de documentos |
+| Relational structure | Document Collection structure |
 | :--- | :--- |
 | Table | Collection |
 | Row | Document |
 | Column | Key/value pair |
 | Relationship | Link |
 
-### Família de colunas
+### Column Family
 
-Esse modelo se tornou popular através do paper BigTable do Google, com o objetivo de montar um sistema de armazenamento de dados distribuído, projetado para ter um alto grau de escalabilidade e de volume de dados.
+   This model became popular with the BigTable's paper by Google, with the goal of being a distributed system storage, projected to have either a high scalability and volume.
 
 ###### Examplos:
 
