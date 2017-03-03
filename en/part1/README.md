@@ -77,9 +77,7 @@ As Diana have, Artemis also has an API to each database flavor. Using CDI as the
 
 * Observer event a continued existence database lifecycle \(each databases kind has an individual event\).
 
-An important point about CDI events is how easy is create and add new functionalities without change the core code. That is easy to use bean validation just listen to an event. 
+An important point about CDI events is how easy is create and add new functionalities without change the core code. That is easy to use bean validation just listen to an event.
 
 ![](../../images/integration-artemis.png)
-
-Cada tipo de banco de dados, possui os seus próprios interceptors e eventos, ou seja, é possível realizar a mudança apenas dos eventos do chave-valor sem modificar escutar os eventos do tipo grafo.
 
