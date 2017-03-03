@@ -90,7 +90,7 @@ Some database has support for more than one kind of model storage this is the mu
 
 ### Standard in SQL
 
- Looking to Java application that uses a relational database. It's a good practice have a layer to be a bridge between a Java application and relationship database: a DAO, the data access object. Talking more about relational database there are APIs such as JPA and JDBC that have some advantages to a Java developer:
+Looking to Java application that uses a relational database. It's a good practice have a layer to be a bridge between a Java application and relationship database: a DAO, the data access object. Talking more about relational database there are APIs such as JPA and JDBC that have some advantages to a Java developer:
 
 * There isn't a lock-in vendor, in other words, with the standard, a database change gonna happen easier and transparency because we just need to change a simple driver.
 
@@ -98,17 +98,13 @@ Some database has support for more than one kind of model storage this is the mu
 
 * There isn't impact in that change.
 
-
-
- Currently in NoSQL database hasn't standard so a Java developer has some issues:
+Currently in NoSQL database hasn't standard so a Java developer has some issues:
 
 * Lock-in vendor
 
 * To each new database is necessary to learn a new API, any change to another database there is a high impact, once all the communication layer gonna be lost once there isn't a standard API. This happens even with the same kind of NoSQL database, for example, a change in a column to another column.
 
-
-
 There is a massive effort to create a common API to make the Java developers life easier, such as Spring Data, Hibernate ORM, and TopLink. The JPA is an API popular in Java world, this is why all solutions try to use it, however, this API is created to SQL and not to NoSQL, and it doesn't support all behavior in NoSQL database, many NoSQL hasn't a transaction, and many NoSQL database hasn't support to asynchronous insertion.
 
-The solution for this case creates a specification that covers the four kinds of NoSQL database. The new API should look like the JPA, once the developer has familiarity with this API, besides adding new behavior and new exceptions, when a database has not support to a specific resource. Besides the API, another important point is an integration with others Java specifications such as CDI and bean validation. 
+The solution for this case creates a specification that covers the four kinds of NoSQL database. The new API should look like the JPA, once the developer has familiarity with this API, besides adding new behavior and new exceptions, when a database has not support to a specific resource. Besides the API, another important point is integration with others Java specifications such as CDI and Bean Validation. 
 
