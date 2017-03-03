@@ -57,11 +57,6 @@ The JNoSQL is a several tool to make easy integration between the Java Applicati
 
 The Diana Project has a goal do the low-level API, in other words, communicate with the NoSQL databases. This project is going to work as a driver to NOSQL databases. At overall it has four APIs inside, one for each NoSQL kind, beyond it own TCK. A test compatibility kit, the TCK, are a test group that makes sure if an A NoSQL database does support a database, e.g., If A key value database wants to prove its database has Diana support.
 
-* O desenvolvedor não quer aprender uma nova API além do JPA.
-* A camada de abstração, faz sentido como extensão do JPA e não criar uma nova.
-* O objetivo da camada de comunicação é um escopo bem grande uma vez que se tem diversos tipos de bancos de dados de diversas implementações.
-* Facilitar a implementação com as camadas de abstração já existentes, além de iniciar as conversas sobre esse tipo de padronização.
-
 Com isso o projeto Diana **não** será:
 
 * Uma nova API para substituir o JPA
