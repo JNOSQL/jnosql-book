@@ -1,8 +1,10 @@
-## Está na hora de falar de padrões para o NOSQL em Java
+## Let's talk about standard to NoSQL database in Java
 
-Os bancos NoSQL são bancos de dados que realizam operação de inserção e recuperação de dados utilizando outro modelo que não seja o relacional. Esses tipos de bancos se caracterizam pela velocidade e alta taxa de escalabilidade e vem sendo utilizado com maior frequência em diversos tipos de aplicações, inclusive, aplicações para as instituições financeiras. Como consequência, cresce também o número de vendors ou distribuidores para esse tipo de banco de dados.
 
-Os bancos de dados NOSQL são definidos basicamente pelo seu modelo de armazenamento que são  quatro:
+
+The NoSQL DB is a database that provides a mechanism for storage and retrieval of data which is modeled in means other than the tabular relations used in relational databases. These databases have speed and high scalability. This kind of database has becoming more popular in several applications, that include financial one. As result of increase the number of user the number of vendors are increasing too.
+
+  The NoSQL database is defined basically by the its model of storage, those has four kind:
 
 ### Chave-valor
 
@@ -15,8 +17,6 @@ Possui uma estrutura muito semelhante à do java.util.Map, onde podemos armazena
 * Redis 
 * Scalaris 
 * Voldemort 
-
-
 
 | Estrutura relacional | Estrutura chave-valor |
 | :--- | :--- |
@@ -35,8 +35,6 @@ Este modelo permite armazenar qualquer documento, sem ter a necessidade de defin
 * ApacheCouchdb 
 * MongoDb 
 * Riak 
-
-
 
 | Estrutura relacional | Estrutura de documentos |
 | :--- | :--- |
@@ -57,8 +55,6 @@ Esse modelo se tornou popular através do paper BigTable do Google, com o objeti
 * Clouddata
 * SimpleDb
 * DynamoDB
-
-
 
 | Estrutura relacional | Estrutura de família de colunas |
 | :--- | :--- |
