@@ -1,8 +1,9 @@
 ### JNoSQL
 
+The JNoSQL is a several tools to make easy an integration between the Java Application with the NoSQL. To solve this problem the project gonna have two layers:
 
-
-JNoSQL é uma API flexível e extensível para conectar os bancos não relacionais, os NoSQL. Seu projeto é dividivo em duas camadas, uma para a comunicação entre o banco de dados e a aplicação e outro para abstração e a integração com outras tecnologias. Ambas as camdas são subdividias em quatro tipos, uma para cada tipo de banco de dados.
+* **Communication API: **An API just to communicate with the database, exactly what JDBC does to SQL. This API gonna have four specializations, one for each kind of database.
+* **Abstraction API: **An API to do integration and do the best integration with the Java developer. That gonna be annotation drive and gonna have integration with other technologies like Bean Validation, etc. To solve it this layer gonna be a CDI based.
 
 
 
