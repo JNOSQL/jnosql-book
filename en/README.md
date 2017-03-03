@@ -1,19 +1,8 @@
-
-### Apache Diana
-
-Diana is a flexible and extensible API to connect NoSQL databases. It brings an easy interface to support key-value, column family, document oriented and graph databases as JDBC is for SQL databases.
+### JNoSQL
 
 
-The basic building blocks hereby are:
 
-* A simple API to support Column NoSQL Database
-* A simple API to support Key-value NoSQL Database
-* A simple API to support Graph NoSQL Database
-* A simple API to support Document Database
-* Convention over configuration
-* Support for asynchronous queries
-* Support for asynchronous write operations
-* An easy API to implement, so that NoSQL vendors can comply with it  and test by themselves.
+JNoSQL é uma API flexível e extensível para conectar os bancos não relacionais, os NoSQL. Seu projeto é dividivo em duas camadas, uma para a comunicação entre o banco de dados e a aplicação e outro para abstração e a integração com outras tecnologias. Ambas as camdas são subdividias em quatro tipos, uma para cada tipo de banco de dados.
 
 
-The API's focus is on simplicity and ease of use. Developers should only have to know a minimal set of artifacts to work with the solution. The API is built on latest Java 8 features and therefore fit perfectly with the functional features of Java 8. 
+

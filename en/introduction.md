@@ -1,96 +1,116 @@
-## Let's talk about standard to NoSQL database in Java
+## Está na hora de falar de padrões para o NOSQL em Java
 
-   The NoSQL DB is a database that provides a mechanism for storage and retrieval of data which is modeled in means other than the tabular relations used in relational databases. These databases have speed and high scalability. This kind of database has becoming more popular in several applications, that include financial one. As result of increase the number of user the number of vendors are increasing too.
+Os bancos NoSQL são bancos de dados que realizam operação de inserção e recuperação de dados utilizando outro modelo que não seja o relacional. Esses tipos de bancos se caracterizam pela velocidade e alta taxa de escalabilidade e vem sendo utilizado com maior frequência em diversos tipos de aplicações, inclusive, aplicações para as instituições financeiras. Como consequência, cresce também o número de vendors ou distribuidores para esse tipo de banco de dados.
+
+Os bancos de dados NOSQL são definidos basicamente pelo seu modelo de armazenamento que são  quatro:
+
+### Chave-valor
+
+Possui uma estrutura muito semelhante à do java.util.Map, onde podemos armazenar uma chave e seu valor. Normalmente esse valor pode ser qualquer informação.
+
+###### Examplos:
+
+* ###### AmazonDynamo
+* AmazonS3 
+* Redis 
+* Scalaris 
+* Voldemort 
 
 
-   The NoSQL database is defined basically by the its model of storage, those has four kind:
- 	
 
-### Key-value
-   This database has a structure look like an java.util.Map API, where we can storage any value from a key.
+| Estrutura relacional | Estrutura chave-valor |
+| :--- | :--- |
+| Table | Bucket |
+| Row | Key/value pair |
+| Column | ---- |
+| Relationship | ---- |
 
-* AmazonDynamo
-* AmazonS3
-* Redis
-* Scalaris
-* Voldemort  
-* Couchbase
+### Orientado a documentos
 
-	 	 	
-### Document
+Este modelo permite armazenar qualquer documento, sem ter a necessidade de definir previamente sua estrutura. O documento e composto por inúmeros campos, com tipos de dados diversos, inclusive um campo pode conter um outro documento, possui uma estrutura semelhante a um arquivo XML.
 
-   This model can storage any document, without this model be defined previously their structure. This document may be composed by inumerous fields, with many kinds of data, that include a document inside another document. This model is look like either XML or JSON file.
+###### Examplos:
 
-* AmazonSimpleDb
-* ApacheCouchdb
-* MongoDb
-* Riak
-* Couchbase
-* OrientDB
+* AmazonSimpleDb 
+* ApacheCouchdb 
+* MongoDb 
+* Riak 
 
-	 	 	
-### Column
-   This model became popular with the BigTable's paper by Google, with the goal of be a distributed system storage, projected to have either a high scalability and volume.
 
-* Hbase	
+
+| Estrutura relacional | Estrutura de documentos |
+| :--- | :--- |
+| Table | Collection |
+| Row | Document |
+| Column | Key/value pair |
+| Relationship | Link |
+
+### Família de colunas
+
+Esse modelo se tornou popular através do paper BigTable do Google, com o objetivo de montar um sistema de armazenamento de dados distribuído, projetado para ter um alto grau de escalabilidade e de volume de dados.
+
+###### Examplos:
+
+* Hbase
 * Cassandra
 * Scylla
 * Clouddata
 * SimpleDb
 * DynamoDB
 
-	 	 	
-### Graph
 
-   In computing, a graph database is a database that uses graph structures for semantic queries with nodes, edges and properties to represent and store data.
 
-* Neo4j
-* InfoGrid
-* Sones
+| Estrutura relacional | Estrutura de família de colunas |
+| :--- | :--- |
+| Table | Column Family |
+| Row | Column |
+| Column | Key/value pair |
+| Relationship | not supported |
+
+### Grafos
+
+É uma estrutura de dados que conecta um conjunto de vértices através de um conjunto de arestas. Os bancos de dados de grafo modernos suportam estruturas de grafo multi-relacionais, onde existem tipos diferentes vértices \(representando pessoas, lugares, itens\) e diferentes tipos de arestas.
+
+###### Examplos:
+
+* Neo4j 
+* InfoGrid 
+* Sones 
 * HyperGraphDB
-* OrientDB
 
+| Estrutura relacional | Estrutura de grafos |
+| :--- | :--- |
+| Table | Vertex and Edge |
+| Row | Vertex |
+| Column | Vertex and Edge property |
+| Relationship | Edge |
 
-### Multi-model database
+### Muli-model database
 
-   Some database has support to more than one kind of model storage this is the multi model database.
-   
+Alguns bancos de dados possuem a comum característica de ter suporte de um ou mais modelos apresentados anteriormente.
+
+###### Examplos:
+
 * OrientDB
 * Couchbase
 
+### Comparando com as aplicações Java que utilizam bancos relacionais
 
+É uma boa prática ter uma camada que é responsável por realizar a comunicação entre o banco de dados e o modelo, o bom e velho Data Acess Object ou DAO. Essa camada contém toda a API de comunicação com o banco de dados, olhando no mundo relacional, existem diversos vendors desse tipo de banco de dados, porém, com o padrão JPA o desenvolvedor Java tem algumas vantagens:
 
+* Não existe lock-in vendor, ou seja, com o padrão a mudança acontece de maneira bem simples e transparente, apenas é necessário trocar o driver.
+* Não é necessário aprender uma nova API para um novo banco de dados uma vez que a API é comum entre todos os bancos de dados.
+* Impacto praticamente zero em realizar a mudança de banco de dados, em alguns momentos é necessário utilizar um recurso específico de um banco de dados.
 
-Standard in SQL
-	 	 	
-   Looking to Java application that uses relational database. It's a good practice have a layer to be a bridge between a Java application and relationship database: a DAO, the data access object. Talking more about relational database there are APIs such as JPA and JDBC that have some advantages to a Java developer:
+  Nos bancos de dados NOSQL como não existe nenhum padrão pré estabelecido atualmente, assim os desenvolvedores Java enfrentam os seguintes problemas:
 
-	 	 	
-There isn't a lock-in vendor, in other words, with the standard, a database change gonna happen easier and transparency, because we 	just need to change a simple driver.
-There isn't necessary to learn a new API for each new database, 	once there is a common database communication.	
-There isn't impact in that change.
+* Lock-in verdor
 
+* Para um novo banco de dados é necessário aprender uma nova API.
 
+* Para qualquer mudança de banco de dados o impacto é altíssimo, se perde praticamente toda a camada DAO uma vez que a API muda completamente. Isso acontece mesmo que a mudança seja para o mesmo tipo de banco NOSQL, família de coluna para família de coluna.
 
+Com esse problema, existe um grande esforço ao criar uma API comuns entre esses bancos de dados. É o caso do Spring Data, Hibernate ORM e o TopLink. Como a API JPA já é uma camada muito conhecida entre os desenvolvedores Java, ele é comumente utilizada para facilitar o mapeamento, porém, o seu foco é para os bancos relacionais, assim ele não é suficiente para cobrir todos os casos desses bancos, por exemplo, muitos bancos NOSQL não tem transação ou com essa API não é possível realizar a inserção de forma assíncrona. Assim, infezlimente apesar de o JPA ser uma boa Api ela não contempla todos os comportamentos existentes nos bancos não relacionais.
 
-
-NoSQL Issues:	
- 	 	
- Currently in NoSQL database hasn't standard so a Java developer has some issues:
-
-Lock-in vendor
-To each new database is necessary learn a new API.
-Any change to another database there is a high impact, once all the communication layer gonna be lost once there isn't a common API. This happen even with the same kind of NoSQL database, for example, a change between a column to another column.
-
-There is a huge effort to create a common API to make the Java developers life easier, such as Spring Data, Hibernate ORM and TopLink. The JPA is an API popular in Java world, this is why all solutions try to use it, however this API was not made to NoSQL and it doesn't support all behavior in NoSQL database, many NoSQL haven't transaction and many NoSQL database haven’t support to asynchronous insertion.
-
-The solution for this case is create a specification that cover the four kind of NoSQL database. The new API should be look like the JPA, once the developer has familiarity with this API, beside add new behavior and new exceptions, when a database has not support to specific resource. Beside the API, another important point is an integration with others Java specifications such as CDI and bean validation. 
-
-
-
-### Conclusion
-
-  Many NoSQL databases are emerging and also its use by Java developers, in the last survey about Java EE developers, almost 50% of interviewers are already using NoSQL technology. Allow a standard to NoSQL will make easier the life of Java developer once will difficult the lock-in vendor and also is not necessary learn a new API to new database. 
-
-
+Muitos bancos não relacionais vem surgindo no mundo do desenvolvimento de software, além do seu uso no mudno Java, por exemplo, na última pesquisa sobre Java EE o número de aplicações que usavam essa tecnolgia para armazenamento chegava a quase 50%. Permitir a criação do padrão facilitará a visa do desenvolvedor Java, uma vez que não será necessário aprender uma nova API ou a facilitar em realizar a mudança do banco de dados sem ser necessário aprender uma nova API. Porém, assim como nos bancos relacionais, utilizar recursos específicos dos bancos de dados não trará suporte para API, mas o que acontece nas aplicações normais é que boa parte do código é padronizável, ou seja, mesmo que o custo da migração não seja zero, será um número bem menor comparado o atualmente.
 
