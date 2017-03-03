@@ -1,23 +1,23 @@
-# Sumário
+# Summary
 
 * [Let's talk about standard to NoSQL database in Java](introduction.md)
-* [Crédito](credits.md)
-* [Sobre o Autor](about_me.md)
+* [Credits](credits.md)
+* [About the author](about_me.md)
 
-### Introdução ao JNOSQL
+### Introduction to JNoSQL
 
-* [A principal ideia atrás da API](part1/README.md)
- * [Por que Diana?](part1/chapter1_1.md)
+* [The main idea behind the API](part1/README.md)
+ * [Why Diana?](part1/chapter1_1.md)
 
-### Conhecendo a API de comunicação Diana
+### Talking about the communication layer, aka Diana
 
-* [Introdução ao Diana](part2/README.md)
+* [Diana Introduction](part2/README.md)
   * [Value](part2/chapter2_1.md)
-    * [Criando o seu próprio Writer and Reader](part2/chapter2_1_1.md)
+    * [Make custom Writer and Reader](part2/chapter2_1_1.md)
   * [Element Entity ](part2/chapter2_2.md)
     * [Document](part2/chapter2_2_1.md)
     * [Column](part2/chapter2_2_2.md)
-  * [Entidade](part2/chapter2_3.md)
+  * [Entity](part2/chapter2_3.md)
     * [ColumnFamilyEntity](part2/chapter2_3_1.md)
     * [DocumentCollectionEntity](part2/chapter2_3_2.md)
     * [KeyValueEntity](part2/chapter2_3_3.md)
@@ -33,10 +33,10 @@
      * [Document Configuration](part2/chapter2_6_1.md)
      * [Column Configuration](part2/chapter2_6_2.md)
      * [Key Value Configuration](part2/chapter2_6_3.md)
-* [Diversidade nos bancos não relacionaisDiversidade nos Bancos não relacionais](part3/README.md)
-   * [Utilizando drivers para com o Diana](part3/chapter3_1.md)
+* [The diversity on NoSQL databases](part3/README.md)
+   * [Using Diana drivers](part3/chapter3_1.md)
      
-### Conhecendo a API de comunicação do Artemis  
+### Talking about the abstraction layer, aka Artemis
 
 * [Introdução ao Artemis](part4/README.md)
     * [Anotações para o Modelo](part4/chapter4_1.md)
