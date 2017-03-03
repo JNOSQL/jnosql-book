@@ -96,20 +96,20 @@ Alguns bancos de dados possuem a comum característica de ter suporte de um ou m
 
 ### Comparando com as aplicações Java que utilizam bancos relacionais
 
-É uma boa prática ter uma camada que é responsável por realizar a comunicação entre o banco de dados e o modelo, o bom e velho Data Acess Object ou DAO. Essa camada contém toda a API de comunicação com o banco de dados, olhando para o paradigma dos bancos relacionais, existem diversos vendors, porém, com o padrão JPA o desenvolvedor Java tem algumas vantagens:
+É uma boa prática ter uma camada que é responsável por realizar a comunicação entre o banco de dados e o modelo, o bom e velho Data Acess Object ou DAO. Essa camada contém toda a API de comunicação com o banco de dados, olhando para o paradigma dos bancos relacionais, existem diversos fornecedores, porém, com o padrão JPA o desenvolvedor Java tem algumas vantagens:
 
-* Não existe lock-in vendor, ou seja, com o padrão a mudança acontece de maneira bem simples e transparente, apenas é necessário trocar o driver.
+* Não existe lock-in com um fornecedor, ou seja, com o padrão a mudança acontece de maneira bem simples e transparente, sendo apenas necessário realizar a troca do driver.
 * Não é necessário aprender uma nova API para um novo banco de dados uma vez que a API é comum entre todos os bancos de dados.
-* Impacto praticamente zero ao mudar de vendor para outro, em alguns momentos é necessário utilizar um recurso específico de um banco de dados, mas mesmo nesses casos não se perte toda a camada DAO.
+* Impacto praticamente zero ao mudar de fornecedor para outro, em alguns momentos é necessário utilizar um recurso específico de um banco de dados, mas mesmo nesses casos não se perte toda a camada DAO.
 
   Nos bancos de dados NOSQL não existe nenhum padrão pré estabelecido atualmente, assim os desenvolvedores Java enfrentam os seguintes problemas:
 
-* Lock-in verdor
+* Lock-in com um fornecedor
 
 * Para um novo banco de dados é necessário aprender uma nova API.
 
-* Para qualquer mudança de banco de dados o impacto é altíssimo, se perde praticamente toda a camada DAO uma vez que a API muda completamente. Isso acontece mesmo que a mudança ocorra no mesmo grupo de banco NOSQL, família de coluna para família de coluna.
+* Para qualquer mudança de banco de dados o impacto é altíssimo, se perde praticamente toda a camada DAO uma vez que a API muda completamente. Isso acontece mesmo que a mudança ocorra dentro do mesmo grupo do banco NOSQL inicial, por exemplo mudar de um banco família de coluna para outro banco família de coluna.
 
-Com esse problema, existe um grande esforço ao criar uma API comuns entre esses bancos de dados. É o caso do Spring Data, Hibernate ORM e o TopLink. Como a API JPA já é uma camada muito conhecida entre os desenvolvedores Java, ela é comumente utilizada para facilitar o mapeamento, porém, o seu foco é para os bancos relacionais, por este motivo a JPA não é suficiente para cobrir todas as necessidades dos bancos NOSQL, por exemplo, muitos bancos NOSQL não possuem transação e com a API JPA não é possível realizar a inserção de forma assíncrona. Assim, infelizmente apesar de a JPA ser uma boa API ela não contempla todos os comportamentos existentes nos bancos não relacionais.
+Com esse problema, existe um grande esforço ao criar uma API comuns entre esses bancos de dados. É o caso do Spring Data, Hibernate ORM e o TopLink. Como a API JPA já é uma camada muito conhecida entre os desenvolvedores Java, ela é comumente utilizada para facilitar o mapeamento, porém, o seu foco é para os bancos relacionais, por este motivo a JPA não é suficiente para cobrir todas as necessidades dos bancos NOSQL, por exemplo, muitos bancos NOSQL não possuem transação e também não é possível realizar uma inserção de forma assíncrona com a API JPA. Assim, infelizmente apesar de a JPA ser uma boa API ela não contempla todos os comportamentos existentes nos bancos não relacionais.
 
-Muitos bancos não relacionais vem surgindo no mundo do desenvolvimento de software, além do seu uso no mundo Java, por exemplo, na última pesquisa sobre Java EE o número de aplicações que usavam essa tecnolgia para armazenamento chegava a quase 50%. Permitir a criação do padrão facilitará o trabalho do desenvolvedor Java, uma vez que não será necessário aprender uma nova API ou irá facilitar na mudança de vendor para outro porque não sera necessário aprender uma nova API. Porém, assim como nos bancos relacionais, utilizar recursos específicos de um banco de dados não trará suporte para API, mas geralmente as aplicações costumam utilizar código padronizável, ou seja, mesmo que o custo da migração não seja zero, será em uma escala bem menor comparado o atualmente.
+Muitos bancos não relacionais vem surgindo no mundo do desenvolvimento de software e estão sendo adotados em larga escala no mundo Java, por exemplo, na última pesquisa sobre Java EE o número de aplicações que usavam essa tecnolgia para armazenamento chegava a quase 50%. Permitir a criação do padrão facilitará o trabalho do desenvolvedor Java, uma vez que não será necessário aprender uma nova API caso se deseje trocar de fornecedor. Porém, assim como nos bancos relacionais, utilizar recursos específicos de um banco de dados fará com que você perca o suporte da API, mas geralmente a maioria das aplicações tem o costume de utilizar a API padrão, ou seja, mesmo que o custo da migração não seja zero, será em uma escala bem menor comparado o atualmente.
