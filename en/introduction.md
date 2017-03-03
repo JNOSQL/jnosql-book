@@ -63,7 +63,7 @@ This model became popular with the BigTable's paper by Google, with the goal of 
 
 ### Graph
 
-   In computing, a graph database is a database that uses graph structures for semantic queries with nodes, edges, and properties to represent and store data.
+In computing, a graph database is a database that uses graph structures for semantic queries with nodes, edges, and properties to represent and store data.
 
 ###### Examples:
 
@@ -81,8 +81,6 @@ This model became popular with the BigTable's paper by Google, with the goal of 
 
 ### Muli-model database
 
-
-
 Some database has support for more than one kind of model storage this is the multi-model database.
 
 ###### Examples:
@@ -90,7 +88,7 @@ Some database has support for more than one kind of model storage this is the mu
 * OrientDB
 * Couchbase
 
-### Comparando com as aplicações Java que utilizam bancos relacionais
+### Standard in SQL
 
 É uma boa prática ter uma camada que é responsável por realizar a comunicação entre o banco de dados e o modelo, o bom e velho Data Acess Object ou DAO. Essa camada contém toda a API de comunicação com o banco de dados, olhando no mundo relacional, existem diversos vendors desse tipo de banco de dados, porém, com o padrão JPA o desenvolvedor Java tem algumas vantagens:
 
