@@ -63,12 +63,7 @@ O JNoSQL é uma API flexível e extensiva Java cujo o objetivo é realizar comun
 
 ![](../../images/duke-diana-min.png)
 
-O projeto Diana tem como objetivo tratar apenas da camada de baixo nível, ou seja, a camada de comunicação com os bancos não relacionais. A ideia que esse projeto funcione como um driver para os bancos de dados não relacionais. De modo geral ela possuirá quatro APIs, uma para cada tipo de banco de dados, além do seu respectivo TCK. O Kit de teste de compatibilidade tem como objetivo afirmar que um determinado banco de dados implementa uma das APIs corretamente, por exemplo, caso o banco X implemente a API de chave valor e passar nos testes de compatibilidade quer dizer que ele está compatível com o a API de chave-valor. O motivo que o projeto abrangerá apenas a API de comunicação são:
-
-* O desenvolvedor não quer aprender uma nova API além do JPA.
-* A camada de abstração, faz sentido como extensão do JPA e não criar uma nova.
-* O objetivo da camada de comunicação é um escopo bem grande uma vez que se tem diversos tipos de bancos de dados de diversas implementações.
-* Facilitar a implementação com as camadas de abstração já existentes, além de iniciar as conversas sobre esse tipo de padronização.
+O projeto Diana tem como objetivo tratar apenas da camada de baixo nível, ou seja, a camada de comunicação com os bancos não relacionais. A ideia que esse projeto funcione como um driver para os bancos de dados não relacionais. De modo geral ela possuirá quatro APIs, uma para cada tipo de banco de dados, além do seu respectivo TCK. O Kit de teste de compatibilidade tem como objetivo afirmar que um determinado banco de dados implementa uma das APIs corretamente, por exemplo, caso o banco X implemente a API de chave valor e passar nos testes de compatibilidade quer dizer que ele está compatível com o a API de chave-valor. 
 
 Com isso o projeto Diana **não** será:
 
