@@ -1,16 +1,15 @@
-## Utilizando drivers para com o Diana
+## Using Diana drivers
 
-Um importante ponto sobre o Diana é que ele é apenas uma API subdivida em quatro, uma para cada banco de dados NoSQL. Ou seja, sem uma implementação essa API não é útil, Uma vez o um banco de dados implemente uma dessas APIs, e aprovado no TCK, é dito que o Diana possui o driver daquele banco de dados para um determinado tipo, por exemplo, o Cassandra possui o driver para colunas.
+An important feature on Diana beyond it has four subtypes, on to each database flavor. So, just the API is useless without an implementation. Once the database implements Diana and passes on TCK, it calls him a database driver from a type.
 
-Caso o banco de dados seja multi-model, ou seja, suporte mais de um banco de dados, é necessário que ele implemente e rode os testes do TCK para cada banco que ele suporte, por exemplo, um provedor suporta chave-valor e também documentos, assim, é necessário que ele implemente a API de chave-valor e de documentos.
+In a multi-model database, that has support for more than one NoSQL kind; the provider must implement more than one API, one to each database that it supports.
 
-Dentro do diana-driver tem alguns drivers prontos para uso:
+There are database drivers ready to test:
 
 [https://github.com/JNOSQL/diana-driver](https://github.com/JNOSQL/diana-driver)
 
 
-
-Dentro do diana-demo se tem alguns exemplos do seu uso:
+Some sample: 
 
 [https://github.com/JNOSQL/diana-demos](https://github.com/JNOSQL/diana-demos)
 
