@@ -9,7 +9,7 @@ To cover the four kinds of database, this API has four packages, one for each da
 * `org.jnosql.diana.graph`
 * `org.jnosql.diana.key`
 
-Ou seja, caso um determinado banco de dados seja multi-model, ele usará duas APIs, uma para cada tipo de banco de dados. Além de possuir cada API, para cada tipo, existe também o Technology Compatibility Kit, o TCK. Cada TCK tem como objetivo de realizar os testes para verificar se uma implementação está ou não compatível com a API. Mesmo com APIs diferentes, houve uma tentativa de se utilizar uma nomenclatura comum entre elas:
+So, if a database is multi-model, has support to more than one database, it will implement an API to each database which it supports. Also, each API has the TCK to prove if the database is compatible with the API. Even from differents JSR it tries to use the same nomenclature:
 
 * Configuration
 * Factory
