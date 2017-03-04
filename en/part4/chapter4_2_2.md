@@ -1,16 +1,16 @@
-## Repositório de Família de Colunas
+## Column Family Repository
 
-O repositório de família de coluna é responsável para realizar a comunicação da entidade para um banco de dados do tipo família de coluna. Ele é subdividido em `ColumnRepository` e `ColumnRepositoryAsync` para trabalhos síncronos e assíncronos respectivamente.
+This repository has the duty to be a bridge between the entity model and Diana to a column family. It has two classes `ColumnRepository` and `ColumnRepositoryAsync` to synchronous and asynchronous works.
 
 #### ColumnRepository
 
-O ColumnRepository é responsável pela persistência de uma Entidade em um banco de dados do tipo coluna. Ele é composto, basicamente, por três componentes:
+The `ColumnRepository` is the column repository to synchronous tasks. It has three components:
 
-* **ColumnEntityConverter**: Responsável por converter da entidade, por exemplo, Person para ColumnEntity.
+* **ColumnEntityConverter**: That converts an entity to communication API, e.g., The Person to ColumnFamilyEntity.
 
-* **ColumnCollectionManager**: Entidade manager de documentos do Diana.
+* **ColumnCollectionManager**: The Diana column famiy entity manager.
 
-* **ColumnWorkflow**: Segue o fluxo de persistência durante os métodos de save e update.
+* **ColumnWorkflow**: The workflow to update and save methods.
 
 ```java
 ColumnRepository repository = //instance
@@ -30,8 +30,7 @@ repository.save(person, Duration.ofHours(1L));
 repository.update(person);
 repository.update(people);
 ```
-
-Para a busca e a remoção da informação são utilizadas as mesmas classes do Diana para documentos, ou seja, ColumnQuery e **ColumnDeleteQuery** respectivamente.
+To do both remove and retrieve information from column family that uses the same Diana classes, namely,  **ColumnQuery** and **ColumnDeleteQuery**.
 
 ```java
 ColumnQuery query = DocumentQuery.of("Person");
@@ -45,14 +44,14 @@ ColumnDeleteQuery deleteQuery = query.toDeleteQuery();
 repository.delete(deleteQuery);
 ```
 
-Como o motor do Artemis é CDI para que se posso utilizar o ColumnRepository basta dar um @Inject num campo.
+To use a column repository just follow the CDI style and put an `@Inject` on the field.
 
 ```java
 @Inject
 private ColumnRepository repository;
 ```
 
-Para isso é necessário que a aplicação injete um ColumnFamilyManager**:**
+The next step is produced a **ColumnFamilyManager**:
 
 ```java
 @Produces
@@ -62,9 +61,9 @@ public ColumnFamilyManager getManager() {
 }
 ```
 
-Para trabalhar com mais de um tipo de ColumnRepository existem duas opções:
+To work with more than one Column Repository, there are two approaches:
 
-1\) A primeira é com a utilização dos qualificadores:
+1\) Using qualifieres:
 
 ```java
     @Inject
@@ -92,7 +91,7 @@ Para trabalhar com mais de um tipo de ColumnRepository existem duas opções:
     }
 ```
 
-2\) A segunda delas é a partir do  **ColumnRepositoryProducer**
+2\)  Using the **ColumnRepositoryProducer** class
 
 ```java
 @Inject
@@ -108,11 +107,13 @@ public void sample() {
 
 #### ColumnRepositoryAsync
 
-O `ColumnRepositoryAsync` é responsável pela persistência de uma Entidade em um banco de dados do tipo família de colunas de forma assíncrona. Ele é composto, basicamente, por dois componentes:
 
-* **ColumnEntityConverter:** Responsável por converter da entidade, por exemplo, Person para ColumnEntity.
+The `ColumnRepositoryAsync` is the document repository to asynchronous tasks. It has two components:
 
-* **ColumnFamilyManagerAsync:** Entidade manager de documentos do Diana de forma assíncrona.
+* **ColumnEntityConverter:** That converts an entity to communication API, e.g., The Person to ColumnFamilyEntity.
+
+* **ColumnFamilyManagerAsync:** The Diana column family entity manager asynchronous.
+
 
 ```java
 ColumnRepositoryAsync repositoryAsync = //instance
@@ -136,7 +137,7 @@ repositoryAsync.update(person, callback);
 repositoryAsync.update(people);
 ```
 
-Para a busca e a remoção da informação são utilizadas as mesmas classes do Diana para documentos, ou seja, **ColumnQuery** e **ColumnDeleteQuery** respectivamente também é possível o uso de callback.
+To do both remove and retrieve information from column family that uses the same Diana classes, namely,  **ColumnQuery** and **ColumnDeleteQuery**, also there is a callback method.
 
 ```java
 Consumer<List<Person>> callBackPeople = p -> {};
@@ -146,14 +147,15 @@ repositoryAsync.delete(deleteQuery);
 repositoryAsync.delete(deleteQuery, voidCallBack);
 ```
 
-Como o motor do Artemis é CDI para que se posso utilizar o ColumnRepository basta dar um @Inject num campo.
+To use a column repository just follow the CDI style and put an `@Inject` on the field.
 
 ```java
 @Inject
 private ColumnRepositoryAsync repository;
 ```
 
-Para isso é necessário que a aplicação injete um **ColumnFamilyManagerAsync:**
+
+The next step is produced a **ColumnFamilyManagerAsync:**
 
 ```
 @Produces
@@ -163,9 +165,9 @@ public ColumnFamilyManagerAsync getManager() {
 }
 ```
 
-Para trabalhar com mais de um tipo de ColumnRepositoryAsync existem duas opções:
+To work with more than one Column Repository, there are two approaches:
 
-1\) A primeira é com a utilização dos qualificadores:
+1\) Using qualifieres:
 
 ```java
     @Inject
@@ -193,7 +195,7 @@ Para trabalhar com mais de um tipo de ColumnRepositoryAsync existem duas opçõe
     }
 ```
 
-2\) A segunda delas é a partir do  **ColumnRepositoryAsyncProducer**
+2\) Using the  **ColumnRepositoryAsyncProducer**
 
 ```java
 @Inject
