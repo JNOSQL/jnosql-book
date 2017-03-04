@@ -1,10 +1,10 @@
-## Diversidade nos bancos não relacionaisDiversidade nos Bancos não relacionais
+## The diversity on NoSQL database
 
-Dentro dos bancos não relacionais além das divisões dos tipos, já mencionado anteriormente. É muito comum que cada banco tenha comportamentos específicos e único, que muitas vezes, esse comportamento específico é o que faz com que escolha um banco dentro outro banco.
+On NoSQL world beyond the several types, it's trivial a particular database has features that do exist on this provider.
 
-Uma mudança entre tipo de banco de dados, por exemplo, documentos para famílias de colunas exigirá algumas mudanças, dentre elas, a modelagem dos seus objetos, uma vez que cada tipo tem comportamento específico para resolver propósitos específicos. Porém, mesmo olhando entre os bancos do mesmo tipo, família de coluna, por exemplo, Cassandra e Hbase cada provedor tem alguns comportamentos específicos \(Cassandra Query Language, nível de consistência, dentre outros que apenas o Cassandra possuí\).
+When there is a change among the types, column family, and document collection, there is a considerable change. Notably, with there a switch to the same kind such as column family to column family, e.g., Cassandra to HBase, there is the same problem once Cassandra has featured such as Cassandra query language and consistency level.
 
-Com esse intuito a API do Diana tem como foco também permitir a diversidade nos bancos de dados não relacionais. As classes de configurações, fábricas de entidades retornam classes que especialistas, ou seja, eles tem métodos mínimos, mas não um limite de métodos ou mesmo uma quantidade que essas classes especialistas podem ter.
+The Diana allows looking the variety on NoSQL database. The configurations classes, and entity factory return specialist class from a provider.
 
 ```java
 public interface ColumnFamilyManagerFactory<SYNC extends ColumnFamilyManager> extends AutoCloseable {
@@ -12,9 +12,9 @@ SYNC get(String database);
 }
 ```
 
-Uma implementação do `ColumnFamilyManagerFactory` pode retornar uma classe desde que ela implemente `ColumnFamilyManager`.
+A `ColumnFamilyManagerFactory` return a class the implements `ColumnFamilyManager`.
 
-Por exemplo, utilizando recursos específicos do Cassandra.
+E.g: Using a particular resource from Cassandra driver.
 
 ```java
 CassandraConfiguration condition = new CassandraConfiguration();
