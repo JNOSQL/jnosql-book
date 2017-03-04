@@ -1,6 +1,6 @@
 ## Factory
 
-As classes fábricas são as responsáveis pela criação de uma classe Manager:
+The factory class is who create the **Managers**.
 
 * **ColumnFamilyManagerAsyncFactory**
 * **ColumnFamilyManagerFactory**
