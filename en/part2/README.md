@@ -2,7 +2,7 @@
 
 With the strategy to divide and conquer on JNoSQL. The Diana was born, it has the goal to be the communication layer easy and extensible. The extensibility is more than important, that is entirely necessary once the API must support specific feature at each database. Nonetheless, the advantage of a common API is a change to another database provider has lesser than using the specific API.
 
-Com o intuito de abranger os quatro tipos de banco de dados, essa API é comporta por quatro domínios, cada domínio abrange um tipo de banco de dados.
+To cover the four kinds of database, this API has four packages, one for each data bank.
 
 * `org.jnosql.diana.column`
 * `org.jnosql.diana.document`
