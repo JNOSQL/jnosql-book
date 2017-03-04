@@ -1,6 +1,6 @@
 ## Converter
 
-Responsável por converter uma entidade, Person, para as classes do domínio do Diana e vise e versa. Ela é tem especializações a partir do tipo de banco de dados:
+ That converts the Entity to a communication level API and vice versa.
 
 * ColumnEntityConverter
 
@@ -8,9 +8,7 @@ Responsável por converter uma entidade, Person, para as classes do domínio do 
 
 * KeyValueEntityConverter
 
-
-
-Esse recurso é muito importante, por exemplo, como extensão para um banco de dados específico. É possível imaginar a criação de uma anotação \(índice, UDT para o Cassandra, para indicar que um determinado campo será criptografado, etc.\) e levá-lo em consideração durante a conversão e a desconversão.
+This resource is valuable to be replaceable when a database creates a particular annotation such as UDT to Cassandra, to define a field will persist with a cipher.
 
 
 
