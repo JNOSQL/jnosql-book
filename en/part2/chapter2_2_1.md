@@ -1,6 +1,6 @@
 #### Document
 
-O Document, é a menor parte de uma entidade de uma entidade de documento. Cada documento possui uma tupla em que a chave é o nome do documento e o valor é a informação representado pela classe `Value`.
+The `Document` is a small piece of a Document entity. Each document has a tuple where the key is the document name, and the value is the information itself as `Value`.
 
 ```java
         Document document = Document.of("name", "value");
@@ -8,15 +8,15 @@ O Document, é a menor parte de uma entidade de uma entidade de documento. Cada 
         String name = document.getName();
 ```
 
-Com essa interface também é possível ter um documento dentro de outro documento, o conceito de subdocumento.
+The document might an another document inside, the subdocument concept.
 
 ```java
 Document subDocument = Document.of("subDocument", document);
 ```
 
-A forma de armazenar essa informação, em subdocumentos, dependerá da implementação de cada driver, assim como toda a informação.
+The way to storage subdocuments will also depend on each driver implementation as all information as well.
 
-Para facilitar o acesso da informação, o `Document`, possui alias para os métodos do `Value`, ou seja, é possível realizar a conversão do valor diretamente na _interface_ `Document`.
+To access the information from `Document` it has alias method to `Value`, in other words,  do a conversion directly from `Document` _interface_.
 
 ```java
 Document age = Document.of("age", 29);
