@@ -1,13 +1,13 @@
-## Lidando com os eventos da persistência
+## Persistence events
 
-Como foi mencionado, o Artemis tem suporte a eventos e um ciclo de vida tanto para a inserção e a atualização dos dados. O ciclo de vida é gerenciado pela classe **WorkFlow** que por padrão tem o seguinte fluxo:
+As mentioned previously, Artemis has support to persistence lifecycle to update and save an Entity. This lifecycle order is managed by a **WorkFlow** class. The default workflow is:
 
-1. **firePreEntity**: O objeto recebido pelo Artemis
-2. **firePreAPI**: o objeto convertido numa entidade de comunicação
-3. **firePostAPI**: A entidade de comunicação enviada como resposta do banco de dados
-4. **firePostEntity**: A entidade bean convertida oriunda do firePostAPIAs classes repositórios têm como principal objetivo converter a classe entidade, por exemplo, Person para o Diana, a API de nível de comunicação.
+* **firePreEntity**: The Object received from Artemis.
+* **firePreAPI**: The object converted to a communication layer.
+* **firePostAPI**: The entity connection as a response from the database.
+* **firePostEntity**: The entity model from the API low level from the firePostAPI.
 
-Para observar esses eventos, basta utilizar o @**Observes**, recurso oriundo do próprio CDI.
+Tha watches this event, just need to use an @**Observes**, a form of CDI itself.
 
 #### ColumnWorkFlow
 
