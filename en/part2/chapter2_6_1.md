@@ -6,7 +6,7 @@
 
 
 
-Dentro da configuração para os bancos de dados do tipo documentos existem o `DocumentConfiguration` e `DocumentConfigurationAsync` para a criação do Manager factory síncrono e assíncrono respectivamente.
+On the document collection configuration, there are `DocumentConfiguration` and `DocumentConfigurationAsync` to `DocumentCollectionManagerFactory` and `DocumentCollectionManagerAsyncFactory` respective.
 
 
 
@@ -19,7 +19,7 @@ DocumentCollectionManagerAsyncFactory managerAsyncFactory = configurationAsync.g
 
 
 
-O motivo da separação de duas configurações é que nem todos os bancos de dados suportam as operações síncronas e assíncronas. Caso o banco de dados suporte as duas operações o provedor pode optar por utilizar o `UnaryDocumentConfiguration` no qual é uma configuração que implementa as duas classes anteriores.
+If a database has support to both synchronous and asynchronous, it may use `UnaryDocumentConfiguration` that implement both document configuration.
 
 
 
