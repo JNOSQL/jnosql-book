@@ -1,6 +1,6 @@
 #### BucketManager
 
-O `BucketManager` é responsável por realizar as operações de forma síncrona dentro do banco de dados de chave-valor. Com ele é possível realizar as operações de criação, edição, remação e recuperação dentro desse tipo de banco de dados.
+The `BucketManager`is the class who save the KeyValueEntity on the synchronous way on a key-value database.
 
 ```java
 BucketManager bucketManager= null;
@@ -15,11 +15,11 @@ bucketManager.put(entity, Duration.ofHours(2));//two hours TTL
 
 ###### 
 
-##### Remoção e recuperação da sua informação
+##### Removing and retrieve information from a key-value database
 
 ##### 
 
-Em sua estrutura simples, o bucket precisa apenas da chave para recuperar ou remover uma informação no banco de dados.
+With an effortless structure, the bucket needs a key to both retrieve and delete information from the database.
 
 ```java
 Optional<Value> value = bucketManager.get("key");
