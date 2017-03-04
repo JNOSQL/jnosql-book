@@ -1,6 +1,6 @@
 #### KeyValueEntity
 
-O `KeyValueEntity` é a estrutura mais simples, uma vez que ele representa uma tupla, uma chave para o seu respectivo valor. Sendo que o tipo não se restringe apenas para String.
+The `KeyValueEntity` is the simplest structure; it has a tuple, a key-value structure.  As the previous entity, it has direct access to information using alias method to `Value`
 
 ```java
 KeyValueEntity<String> entity = KeyValueEntity.of("key", Value.of(123));
