@@ -4,8 +4,7 @@
 
 
 
-O Bucket Manager Factory é a classe responsável pela criação do BucketManager.
-
+The factory classe have the duty to create the bucket manager.
 
 
 ```java
@@ -15,7 +14,7 @@ BucketManager bucket = bucketManager.getBucketManager("bucket");
 
 
 
-Além da criação do BucketManager, dentro dos bancos chave valor é possível também a crianção de estruturas de dados especiais que serão representados no mundo Java com `List`, `Set`, `Queue` e `Map`.
+Beyond the BucketManager, some databases have support for particular structure represented in the Java world such as `List`, `Set`, `Queue` e `Map`.
 
 
 
@@ -31,7 +30,4 @@ Map<String, String> map = bucketManager.getMap("map", String.class, String.class
 
 ```
 
-
-
-Vale salientar que todas essas operações de que retornam estrutura de dados especiais podem retornar um `UnsupportedoperationException`, caso o banco de dados não suporte um ou mais tipos de dados.
-
+These methods may return an `UnsupportedoperationException` if the database does not support any structure.
