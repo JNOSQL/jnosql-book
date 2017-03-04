@@ -1,6 +1,6 @@
 #### DocumentCollectionEntity
 
-O `DocumentCollectionEntity` é a representação da entidade que será presentado dentro de um banco de dados do tipo documentos. Ela é composta por um ou mais documentos, o documento por sua vez, assim como a coluna, é composta por um valor, representado Value, e o seu respectivo nome.
+The `DocumentCollectionEntity` is an entity to document collection database type. It is composed of one or more document. As a result, the Document is a tuple of name and value.
 
 ```java
         ColumnEntity entity = ColumnEntity.of("columnFamily");
