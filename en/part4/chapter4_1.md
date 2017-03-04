@@ -1,14 +1,14 @@
-## Anotações para o Modelo
+## Models Annotation
 
-Como mencionado anteriormente, o Artemis é orientado a anotações para que facilite a vida do desenvolvedor Java. Essas anotações têm algumas categorias:
+As mentioned previously, Artemis has annotations that make the Java developer life easier; this annotation has two categories:
 
-* Anotação para modelo
+* Annotations Models
 
-* Anotação para qualificação
+* Qualifier annotation
 
-#### Anotações para o Modelo
+#### Annotations Models
 
-As anotações para o Modelo tem como objetivo transformar o modelo, orientado a objetos, para a camada de comunicação, Diana. Para mapeamento do modelo existe:
+The annotation Models is to converts the entity model to the entity on communication, the Diana entity:
 
 * Entity
 
