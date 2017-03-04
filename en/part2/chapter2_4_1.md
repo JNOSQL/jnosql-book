@@ -59,15 +59,15 @@ Sometimes on an asynchronous process, is important to know when this process is 
 
 ##### 
 
-No diana, as buscas tanto de forma síncrona e assíncrona são realizadas a partir da classe `DocumentQuery`, com essa classe é possível definir se alguns ou todos os apenas alguns documentos serão retornados, ordenação além da condição para a informação ser recuperada.
+Diana has support to retrieve information from both ways synchronous and asynchronous from the `DocumentQuery` class. The `DocumentQuery`  has information such as sort type, document and also the condition to retrieve information.
 
-A condição dentro da query é formada por `DocumentCondition`, ele á composta por uma condição e um documento, por exemplo, o a condição abaixo buscará informação em que nome seja igual a “**Ada**”.
+The condition on `DocumentQuery` is given from `DocumentCondition`, whose it has the status and the document. Eg. The condition behind is to find a name equal "**Ada**".
 
 ```java
 DocumentCondition nameEqualsAda = DocumentCondition.eq(Document.of("name", “Ada”));
 ```
 
-Também possível agrupar as informações da condição com operadores **AND**, **OR** e **NOT**.
+Also, the developer can use the aggregators such as **AND**, **OR** e **NOT**.
 
 ```java
 DocumentCondition nameEqualsAda = DocumentCondition.eq(Document.of("name", "Ada"));
@@ -76,9 +76,9 @@ DocumentCondition condition = nameEqualsAda.and(youngerThan2Years);
 DocumentCondition nameNotEqualsAda = nameEqualsAda.negate();
 ```
 
-Caso não seja informado uma condição significa que ele tentará trazer todas as informações no banco de dados, semelhante ao “`select * from database`” em um banco relacional, vale salientar que nem todos os bancos possuem suporte a tal recurso.
+If there isn't condition at the query that means the query will try to retrieve all information from the database, look like a “`select * from database`” in a relational database, just to remember the return depends on from driver. Once the NoSQL with extensive data that is not recommended.
 
-Dentro do DocumentQuery também é possível paginar as informações utilizando onde deve começar a busca e o limit máximo de retorno.
+DocumentQuery also has pagination feature to define where the data start, and it limits.
 
 ```java
 DocumentCollectionManager manager = //instance;
@@ -97,14 +97,12 @@ managerAsync.find(query, callback);
 
 
 
-##### Removendo as informações dentro de uma coleção de documentos:
+##### Removing information from Document Collection
 
 
-
-Semelhante ao `DocumentQuery,`existe uma classe responsável por remover informações dentro da coleção de documentos: A classe `DocumentDeleteQuery`
-
+Such as `DocumentQuery` there is a class to remove information from the document database type: A `DocumentDeleteQuery` type.
   
-Ela possui uma estrutura bem simples, sem paginação e ordenação, uma vez que o fogo será a remoção de informação dentro do banco de dados.
+It is smoother than `DocumentQuery` because there isn't pagination and sort feature, once this information is unnecessary to remove information from database.
 
 
 
