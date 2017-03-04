@@ -1,11 +1,11 @@
-#### Criando o seu próprio Writer and Reader
+#### Make custom Writer and Reader
 
-O real propósito da interface `Value`, como foi dito, é facilitar a comunicação entre o banco de dados e a aplicação. O Diana, por padrão, suporta os tipos comuns existentes na plataforma Java como os tipos primitivos, Wrappers, a nova API de time, etc. Além desses tipos nativamente suportados também é possível criar os seus próprios convetores de maneira transparente. Para isso ele possui duas interfaces:
+As mentioned before, the `Value` interface is to storage the cost information into a database. Diana already has support to the Java type such as primitives types, wrappers types, new Java 8 date time. Furthermore, the developer can create custom converter easily and quickly. It has two interfaces:
 
-* `ValueWriter`: Essa interface representa como uma instância de Value será escrita dentro do banco de dados.
-* `ValueReader`: Essa interface representa como o valor será lido para ser lido dentro da aplicação Java. Por padrão, o método `<T> T get(Class<T> clazz)` e suas derivações \(_getList_, _getSet_, _getMap_, _getStream_\) utilizam essas implementações para realizar essa conversão.
+* `ValueWriter`: This interface represents a `Value` instance to write in a database.
+* `ValueReader`: This interface represents how the `Value` will convert to Java application. This interface will use on the `<T> T get(Class<T> clazz)` and `<T> T get(TypeSupplier<T> typeSupplier)`.
 
-Ambas as interfaces são carregadas a partir do ServiceLoader do Java SE. Assim, para fazer com que o Diana basta seguir o tal padrão. Para facilitar o entendimento, criará um converter para o seguinte tipo.
+Both class implementations load from  Java SE ServiceLoader resource. So, to Diana learn a new type just register on ServiceLoader, e.g., Given a Money type:
 
 ```java
 public class Money { 
@@ -39,9 +39,9 @@ public class Money {
 }
 ```
 
-Com o intuito é criar um simples converter foi utilizado a criação dessa simples representação Monetário. Como se sabe que não é uma boa prática reinventar a roda, em sua aplicação utiliza APIs mais maduras como o [moneta](https://github.com/JavaMoney) que é a implementação de referência da money-api, [JSR 354](https://jcp.org/en/jsr/detail?id=354).
+Just to be more didactic the book creates a simple money representation. As everyone knows that is not a good practice reinventing the wheel, so in production the Java Developer must use mature Money APIS such as [moneta](https://github.com/JavaMoney) that is the reference implementation of [JSR 354](https://jcp.org/en/jsr/detail?id=354).
 
-O primeiro passo é a criação da classe que realizará a conversão do tipo para o banco de dados, o `ValueWriter`. Ele possui dois métodos:
+The first step is to create the converter to a custom type to a database, the `ValueWriter`. It has two methods:
 
 * `boolean isCompatible(Class clazz)`: Verifica se a implementação suporta a conversão para esse tipo de classe.
 * `S write(T object)`: Uma vez definido que a implementação está apta para realizar a conversão, o próximo passo é realizar a conversão de uma instância `T` para o tipo desejado `S`.
