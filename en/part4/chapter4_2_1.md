@@ -1,16 +1,16 @@
-## Repositório de Documentos
+## Document Repository
 
-O repositório de documentos é responsável para realizar a comunicação da entidade para um banco de dados do tipo documentos. Ele é subdividido em `DocumentRepository` e `DocumentRepositoryAsync`para trabalhos síncronos e assíncronos respectivamente.
+This repository has the duty to be a bridge between the entity model and Diana to document collection. It has two classes `DocumentRepository` and `DocumentRepositoryAsync` to synchronous and asynchronous works.
 
 #### `DocumentRepository`
 
-O `DocumentRepository` é responsável pela persistência de uma Entidade em um banco de dados do tipo documento. Ele é composto, basicamente, por três componentes:
+The `DocumentRepository` is the document repository to synchronous tasks. It has three components:
 
-* **DocumentEntityConverter**: Responsável por converter da entidade, por exemplo, Person para DocumentEntity.
+* **DocumentEntityConverter**: That converts an entity to communication API, e.g., The Person to DocumentEntity.
 
-* **DocumentCollectionManager**: Entidade manager de documentos do Diana.
+* **DocumentCollectionManager**: The Diana document collection entity manager.
 
-* **DocumentWorkflow**: Segue o fluxo de persistência durante os métodos de save e update.
+* **DocumentWorkflow**: The workflow to update and save methods.
 
 ```java
 DocumentRepository repository = //instance
@@ -31,7 +31,7 @@ repository.update(person);
 repository.update(people);
 ```
 
-Para a busca e a remoção da informação são utilizadas as mesmas classes do Diana para documentos, ou seja, **DocumentQuery** e **DocumentDeleteQuery** respectivamente.
+To do both remove and retrieve information from document collection that uses the same Diana classes, namely,  **DocumentQuery** and **DocumentDeleteQuery**.
 
 ```java
 DocumentQuery query = DocumentQuery.of("Person");
@@ -45,14 +45,14 @@ DocumentDeleteQuery deleteQuery = query.toDeleteQuery();
 repository.delete(deleteQuery);
 ```
 
-Como o motor do Artemis é CDI para que se posso utilizar o DocumentRepository basta dar um @Inject num campo.
+To use a document repository just follow the CDI style and put an `@Inject` on the field.
 
 ```java
 @Inject
 private DocumentRepository repository;
 ```
 
-Para isso é necessário que a aplicação injete um **DocumentCollectionManager:**
+The next step is produced a **DocumentCollectionManager:**
 
 ```java
 @Produces
@@ -62,9 +62,9 @@ public DocumentCollectionManager getManager() {
 }
 ```
 
-Para trabalhar com mais de um tipo de DocumentRepository existem duas opções:
+To work with more than one Document Repository, there are two approaches:
 
-1\) A primeira é com a utilização dos qualificadores:
+1\) Using qualifieres:
 
 ```java
     @Inject
@@ -92,7 +92,7 @@ Para trabalhar com mais de um tipo de DocumentRepository existem duas opções:
     }
 ```
 
-2\) A segunda delas é a partir do  **DocumentRepositoryProducer**
+2\) Using the **DocumentRepositoryProducer** class
 
 ```java
 @Inject
@@ -108,11 +108,11 @@ public void sample() {
 
 #### `DocumentRepositoryAsync`
 
-O`DocumentRepositoryAsync`é responsável pela persistência de uma Entidade em um banco de dados do tipo documento de forma assíncrona. Ele é composto, basicamente, por dois componentes:
+The `DocumentRepositoryAsync` is the document repository to asynchronous tasks. It has two components:
 
-* **DocumentEntityConverter:** Responsável por converter da entidade, por exemplo, Person para DocumentEntity.
+* **DocumentEntityConverter:** That converts an entity to communication API, e.g., The Person to DocumentEntity.
 
-* **DocumentCollectionManagerAsync:** Entidade manager de documentos do Diana de forma assíncrona.
+* **DocumentCollectionManagerAsync:** The Diana document collection entity manager asynchronous.
 
 ```java
 DocumentRepositoryAsync repositoryAsync = //instance
@@ -136,7 +136,7 @@ repositoryAsync.update(person, callback);
 repositoryAsync.update(people);
 ```
 
-Para a busca e a remoção da informação são utilizadas as mesmas classes do Diana para documentos, ou seja, **DocumentQuery** e **DocumentDeleteQuery** respectivamente também é possível o uso de callback.
+To do both remove and retrieve information from document collection that uses the same Diana classes, namely,  **DocumentQuery** and **DocumentDeleteQuery**, also there is a callback method.
 
 ```java
 Consumer<List<Person>> callBackPeople = p -> {};
@@ -146,7 +146,7 @@ repositoryAsync.delete(deleteQuery);
 repositoryAsync.delete(deleteQuery, voidCallBack);
 ```
 
-Como o motor do Artemis é CDI para que se posso utilizar o DocumentRepository basta dar um @Inject num campo.
+To use a document repository just follow the CDI style and put an `@Inject` on the field.
 
 ```java
 @Inject
@@ -154,7 +154,7 @@ private
 DocumentRepositoryAsync repository;
 ```
 
-Para isso é necessário que a aplicação injete um **DocumentCollectionManagerAsync:**
+The next step is produced a **DocumentCollectionManagerAsync:**
 
 ```
 @Produces
@@ -164,9 +164,9 @@ public DocumentCollectionManagerAsync getManager() {
 }
 ```
 
-Para trabalhar com mais de um tipo de DocumentRepository existem duas opções:
+To work with more than one Document Repository, there are two approaches:
 
-1\) A primeira é com a utilização dos qualificadores:
+1\) Using qualifieres:
 
 ```java
     @Inject
@@ -194,7 +194,7 @@ Para trabalhar com mais de um tipo de DocumentRepository existem duas opções:
     }
 ```
 
-2\) A segunda delas é a partir do  **DocumentRepositoryAsyncProducer**
+2\) Using the **DocumentRepositoryAsyncProducer**
 
 ```java
 @Inject
