@@ -19,7 +19,7 @@ bucketManager.put(entity, Duration.ofHours(2));//two hours TTL
 
 ##### 
 
-With an effortless structure, the bucket needs a key to both retrieve and delete information from the database.
+With a simple structure, the bucket needs a key to both retrieve and delete information from the database.
 
 ```java
 Optional<Value> value = bucketManager.get("key");
