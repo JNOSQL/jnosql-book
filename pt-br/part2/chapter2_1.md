@@ -1,6 +1,6 @@
 ### Value
 
-Essa interface representa o valor que será armazenado no banco de dados, um simples Wrapper. Esse Wrapper tem como principal objetivo de realizar a ponte entre o banco e a aplicação. Por exemplo, ao se utilizar um tipo no qual o banco de dados não suporte, é possível realizar a conversão entre a comunicação e seu banco de dados de maneira transparente. 
+This interface represents the value that will store, that is a wrapper to be a bridge between the database and the application. Eg. If a database does not support a Java type, it may do the conversion with easily. 
 
 ```java
 Value value = Value.of(12);
