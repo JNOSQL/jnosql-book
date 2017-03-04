@@ -1,6 +1,6 @@
-### Entidade
+### Entity
 
-A entidade é a representação de um objeto que será persistido dentro do banco de dados, essa entidade varia de acordo com o tipo de banco de dados:
+The Entity is the body of the information that goes to database, each database has an Entity:
 
 * ColumnFamilyEntity
 * DocumentCollectionEntity
