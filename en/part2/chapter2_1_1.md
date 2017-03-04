@@ -43,8 +43,8 @@ Just to be more didactic the book creates a simple money representation. As ever
 
 The first step is to create the converter to a custom type to a database, the `ValueWriter`. It has two methods:
 
-* `boolean isCompatible(Class clazz)`: Verifica se a implementação suporta a conversão para esse tipo de classe.
-* `S write(T object)`: Uma vez definido que a implementação está apta para realizar a conversão, o próximo passo é realizar a conversão de uma instância `T` para o tipo desejado `S`.
+* `boolean isCompatible(Class clazz)`: Check if the given class has support for this implementation.
+* `S write(T object)`: Once the implementation supports the type, the next step converts a `T` instance to `S` type.
 
 ```java
 public class MoneyValueWriter implements ValueWriter<Money, String> { 
@@ -55,16 +55,16 @@ public class MoneyValueWriter implements ValueWriter<Money, String> {
     } 
 
     @Override 
-    public String write(Money object) { 
-        return object.toString(); 
+    public String write(Money money) { 
+        return money.toString(); 
     } 
 }
 ```
 
-Uma vez o valor definido dentro do banco de dados o próximo passo é realizar a leitura dessa informação para a aplicação. Para isso é necessário ter uma especialização do ValueReader. Assim, como o `ValueWriter` ele possui dois métodos:
+With the `MoneyValueWriter` created and the Money type will save as `String`, then the next step is read information to Java application. As can be seen, a `ValueReader` implementation. This interface has two methods:
 
-* `boolean isCompatible(Class clazz)`; Verifica se a implementação está apta para realizar a leitura do tipo desejado.
-* `<T> T read(Class<T> clazz, Object value)`; Uma vez compatível, o próximo passo é realizar a operação de leitura para a classe algo T a partir do objeto origem.
+* `boolean isCompatible(Class clazz)`; Check if the given class has support for this implementation.
+* `<T> T read(Class<T> clazz, Object value)`; Converts to the `T` type from Object instance.
 
 ```java
 public class MoneyValueReader implements ValueReader { 
@@ -81,20 +81,20 @@ public class MoneyValueReader implements ValueReader {
 }
 ```
 
-Uma vez criado as implementações o próximo passo é cadastrar as implementações de leitura e escrita. Para isso, é necessário criar dois arquivos:
+After all, the both implementation was done, the last step is register into two files:
 
 * `META-INF/services/org.jnosql.diana.api.ValueReader`
 * `META-INF/services/org.jnosql.diana.api.ValueWriter`
 
-Cada arquivo terá o caminho e a classe da respectiva implementação, Assim:
+Each file will have the qualified of this respective implementation:
 
-O arquivo `org.jnosql.diana.api.ValueReader` terá o seguinte conteúdo:
+The file `org.jnosql.diana.api.ValueReader` will have:
 
 ```
 my.company.MoneyValueReader
 ```
 
-O arquivo `org.jnosql.diana.api.ValueWriter` terá o seguinte conteúdo:
+The file `org.jnosql.diana.api.ValueWriter` will have:
 
 ```
 my.company.MoneyValueWriter
