@@ -9,6 +9,7 @@ O KeyValuRepository é responsável pela persistência de uma Entidade em um ban
 * **KeyValueEntityConverter**: Responsável por converter uma entidade, por exemplo, User para KeyValueEntity
 
 * **BucketManager**: entidade manager de chave valor do Diana.
+* **KeyVaalueWorkflow**: O workflow para os bancos do tipo chave valor.
 
 ```java
 KeyValueRepository repository = null;
@@ -25,7 +26,7 @@ Optional<Person> ada = repository.get("ada", Person.class);
 Iterable<Person> usersFound = repository.get(Collections.singletonList("ada"), Person.class);
 ```
 
-Como o motor do Artemis é CDI para que se posso utilizar o DocumentRepository basta dar um @Inject num campo.
+Como o motor do Artemis é CDI para que se posso utilizar o KeyValueRepository basta dar um @Inject num campo.
 
 ```java
 @Inject
