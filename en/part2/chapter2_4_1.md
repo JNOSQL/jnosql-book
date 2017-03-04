@@ -1,13 +1,13 @@
 #### Document Manager
 
-A interação com o banco de dados do tipo documento é dado por duas classes:
+The Manager class to document type, it has two kinds:
 
-* **DocumentCollectionManager**: Para realizar operações no banco de dados de forma síncrona
-* **DocumentCollectionManagerAsync**: Para realizar operações no banco de dados de forma assíncrona.
+* **DocumentCollectionManager**: To do synchronous operations.
+* **DocumentCollectionManagerAsync**: To do asynchronous operations.
 
 ##### **DocumentCollectionManager**
 
-O `DocumentCollectionManager` é classe que realiza as operações de forma síncrona, com ele é possível realizar a criação, editação, remoção e a recuperação dentro dos bancos de dados do tipo documento.
+The `DocumentCollectionManager` is the class that manages the persistence on the synchronous way to document collection.
 
 ```java
         DocumentEntity entity = DocumentEntity.of("collection");
@@ -28,7 +28,7 @@ O `DocumentCollectionManager` é classe que realiza as operações de forma sín
 
 ##### **DocumentCollectionManagerAsync**
 
-O `DocumentCollectionManagerAsync` é classe que realiza as operações de forma assíncrona, com ele é possível realizar a criação, editação, remoção e a recuperação dentro dos bancos de dados do tipo documento.
+The `DocumentCollectionManagerAsync` is the class that manages the persistence on the asynchronous way to document collection.
 
 ```java
         DocumentEntity entity = DocumentEntity.of("collection");
@@ -47,7 +47,7 @@ O `DocumentCollectionManagerAsync` é classe que realiza as operações de forma
         managerAsync.update(entities);
 ```
 
-Em alguns momentos é necessário saber quando tal operação foi finalizada, mesmo quando é utilizado de forma assíncrona. Com esse objetivo, essa classe também vem com suporte a `callBack`, assim, tão logo a operação seja finalizada.
+Sometimes on an asynchronous process, is important to know when this process is over, so the `DocumentCollectionManagerAsync` also has callback support.
 
 ```java
         Consumer<DocumentEntity> callBack = e -> {};
@@ -55,7 +55,7 @@ Em alguns momentos é necessário saber quando tal operação foi finalizada, me
         managerAsync.update(entity, callBack);
 ```
 
-##### Buscando as informações dentro de uma coleção de documentos:
+##### Search information on a document collection
 
 ##### 
 
