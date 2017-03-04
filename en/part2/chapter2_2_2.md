@@ -1,6 +1,6 @@
 #### Column
 
-O Column, é a menor parte de uma entidade de uma entidade de família de coluna. Cada coluna possui uma tupla em que a chave é o nome do documento e o valor é a informação representado pela classe `Value`.
+The Column is a small piece of the column family entity. Each column has a tuple where the name as key and the value itself as a `Value` implementation.
 
 ```java
         Column document = Column.of("name", "value");
@@ -8,15 +8,15 @@ O Column, é a menor parte de uma entidade de uma entidade de família de coluna
         String name = document.getName();
 ```
 
-Com essa interface também é possível ter uma coluna dentro de outro de outra coluna.
+The column might an another column inside.
 
 ```java
 Column subColumn = Column.of("subColumn", column);
 ```
 
-A forma de armazenar essa informação, em subcolunas, dependerá da implementação de cada driver, assim como toda a informação.
+The way to storage subcolumn will also depend on each driver implementation as all information as well.
 
-Para facilitar o acesso da informação, o Column, possui alias para os métodos do `Value`, ou seja, é possível realizar a conversão do valor diretamente na _interface_ `Document`.
+To access the information from `Column` it has alias method to `Value`, in other words,  do a conversion directly from `Column` _interface_.
 
 ```java
 Column age = Column.of("age", 29);
