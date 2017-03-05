@@ -71,4 +71,3 @@ public class CassandraColumnRepository extends AbstractColumnRepository {
 ```
 
 To conclude, extending the AbstractColumnRepository the CassandraColumnRepository will have support to the methods on Artemis interface and also append the Cassandra resources.
-

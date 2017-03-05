@@ -35,7 +35,7 @@
      * [Key Value Configuration](part2/chapter2_6_3.md)
 * [The diversity on NoSQL databases](part3/README.md)
    * [Using Diana drivers](part3/chapter3_1.md)
-     
+
 ### Talking about the abstraction layer, aka Artemis
 
 * [Artemis introduction](part4/README.md)
@@ -47,7 +47,7 @@
    * [CrudRepisotry](part4/chapter4_3.md)
    * [Persistence events](part4/chapter4_4.md)
    * [Bean Validation](part4/chapter4_5.md)
-   
+
 ### Extending Artemis
 
 * [Artemis components](part5/README.md)
@@ -57,5 +57,5 @@
   * [The repository class](part5/chapter5_4.md)
 
 ### Bibliography
-     
-* [Bibliografia](bibliography/README.md)
+
+* [Bibliography](bibliography/README.md)

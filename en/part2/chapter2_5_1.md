@@ -1,11 +1,11 @@
 #### Column Family Manager Factory
 
-The factories classes have the duty to create the column family manager.
+The factory classes have the duty to create the column family manager.
 
 * **ColumnFamilyManagerAsyncFactory**
 * **ColumnFamilyManagerFactory**
 
-The `ColumnFamilyManagerAsyncFactory` and `ColumnFamilyManagerFactory` is who create the manager synchronous and asynchronous respective.
+The `ColumnFamilyManagerAsyncFactory` and `ColumnFamilyManagerFactory` creates the manager synchronously and asynchronously respectively.
 
 ```java
 ColumnFamilyManagerFactory factory = //instance
@@ -14,5 +14,4 @@ ColumnFamilyManager manager = factory.get("database");
 ColumnFamilyManagerAsync managerAsync = asyncFactory.getAsync("database");
 ```
 
-There are two factories because there is a database that just supports either synchronous or asynchronous.
-
+The factories were separated intentionally, as not all databases support synchronous and asynchronous operations.

@@ -9,6 +9,3 @@ The Workflow has specializations:
 * **DocumentWorkflow**: to document collection persistence.
 
 * **KeyValueWorkflow**: to key-value persistence.
-
-
-

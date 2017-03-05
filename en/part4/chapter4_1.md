@@ -1,14 +1,14 @@
 ## Models Annotation
 
-As mentioned previously, Artemis has annotations that make the Java developer life easier; this annotation has two categories:
+As mentioned previously, Artemis has annotations that make the Java developer life easier; these annotations have two categories:
 
-* Annotations Models
+* Annotation Models
 
 * Qualifier annotation
 
-#### Annotations Models
+#### Annotation Models
 
-The annotation Models is to converts the entity model to the entity on communication, the Diana entity:
+The annotation Models is to convert the entity model to the entity on communication, the Diana entity:
 
 * Entity
 
@@ -20,7 +20,7 @@ The annotation Models is to converts the entity model to the entity on communica
 
 ##### Entity
 
-This annotation maps the class to Artemis. It has a unique attribute: name. This attribute is to inform either the column family name or the document collection name, etc.. The default value is the simple name class, for example, given the org.jnosql.demo.Person class the default name will `Person`.
+This annotation maps the class to Artemis. It has an unique attribute called `name` . This attribute is to inform either the column family name or the document collection name, etc. The default value is the simple name of a class, for example, given the org.jnosql.demo.Person class the default name will `Person`.
 
 ```java
 @Entity
@@ -59,7 +59,7 @@ If this annotation puts on a Parent class, the Artemis will persist its informat
 
 ##### Key
 
-Just to Key-value database, that shows on the key-value database with a field is a key.
+Just to Key-value database, that shows on the key-value database with a field is the key.
 
 ```java
 @Entity
@@ -85,11 +85,11 @@ private DocumentRepository repositoryA;
 private DocumentRepository repositoryB;
 ```
 
-With the same two injections to the same interface, CDI throws an ambiguous exception. There is the `Database` qualifier to fixes problem like this. It has two attributes:
+Two injections with the same interface, CDI throws an ambiguous exception. There is the `Database` qualifier to fix this problem. It has two attributes:
 
 * **DatabaseType**: The database type, key-value, document, column, graph.
 
-* **privider**: The provider database name, eg. "cassandra, "hbase", "mongodb". So using the `Database` qualifier:
+* **provider**: The provider database name, eg. "cassandra, "hbase", "mongodb". So using the `Database` qualifier:
 
 
 ```java
@@ -103,5 +103,4 @@ private DocumentRepository repositoryB;
 
 Beyond this annotation, the producer method with the entity manager is required.
 
-The benefits of use this qualifier instead of creating a new one. If the Manager Entity be produced using `Database` as a qualifier, Artemis will create classes such as DocumentRepository, ColumnRepository, etc. automatically.
-
+The benefits using this qualifier instead of creating a new one is that if the Manager Entity is produced using `Database` as a qualifier, Artemis will create classes such as DocumentRepository, ColumnRepository, etc. automatically.

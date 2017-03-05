@@ -30,7 +30,9 @@ repository.save(person, Duration.ofHours(1L));
 repository.update(person);
 repository.update(people);
 ```
-To do both remove and retrieve information from column family that uses the same Diana classes, namely,  **ColumnQuery** and **ColumnDeleteQuery**.
+
+For information removal and retrieval are used the same classes from Diana for documents,  **DocumentQuery** and **DocumentDeleteQuery**, respectively, also the callback method can be used.
+
 
 ```java
 ColumnQuery query = DocumentQuery.of("Person");
@@ -137,7 +139,8 @@ repositoryAsync.update(person, callback);
 repositoryAsync.update(people);
 ```
 
-To do both remove and retrieve information from column family that uses the same Diana classes, namely,  **ColumnQuery** and **ColumnDeleteQuery**, also there is a callback method.
+For information removal and retrieval are used the same classes from Diana for documents,  **DocumentQuery** and **DocumentDeleteQuery**, respectively, also the callback method can be used.
+
 
 ```java
 Consumer<List<Person>> callBackPeople = p -> {};
@@ -155,7 +158,7 @@ private ColumnRepositoryAsync repository;
 ```
 
 
-The next step is produced a **ColumnFamilyManagerAsync:**
+The next step is to produce a **ColumnFamilyManagerAsync:**
 
 ```
 @Produces
@@ -209,7 +212,4 @@ public void sample() {
 }
 ```
 
-#### 
-
-
-
+####

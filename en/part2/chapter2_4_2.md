@@ -1,6 +1,6 @@
 #### Column Manager
 
-The Manager class to column family type, it has two kinds:
+The Manager class for the column family type can be synchronous or asynchronous:
 
 * **ColumnFamilyManager**: To do synchronous operations.
 * **ColumnFamilyManagerAsync**: To do asynchronous operations.
@@ -60,7 +60,7 @@ Sometimes on an asynchronous process, is important to know when this process is 
 
 ##### Search information on a column family
 
-##### 
+#####
 
 
 Diana has support to retrieve information from both ways synchronous and asynchronous from the `ColumnQuery` class. The `ColumnQuery`  has information such as sort type, document and also the condition to retrieve information.
@@ -81,7 +81,7 @@ ColumnCondition condition = nameEqualsAda.and(youngerThan2Years);
 ColumnCondition nameNotEqualsAda = nameEqualsAda.negate();
 ```
 
-If there isn't condition at the query that means the query will try to retrieve all information from the database, look like a “`select * from database`” in a relational database, just to remember the return depends on from driver. Once the NoSQL with extensive data that is not recommended.
+If there isn't condition at the query that means the query will try to retrieve all information from the database, look like a “`select * from database`” in a relational database, just to remember the return depends on from driver. It is important to say that not all NoSQL databases have support for this resource.
 
 ColumnQuery also has pagination feature to define where the data start, and it limits.
 
@@ -108,7 +108,7 @@ ColumnQuery also has pagination feature to define where the data start, and it l
 ##### Removing information from Column Family
 
 Such as `ColumnQuery` there is a class to remove information from the column database type: A `ColumnDeleteQuery` type.
-  
+
 It is smoother than `ColumnQuery` because there isn't pagination and sort feature, once this information is unnecessary to remove information from database.
 
 ```java
@@ -125,6 +125,3 @@ It is smoother than `ColumnQuery` because there isn't pagination and sort featur
         managerAsync.delete(query);
         managerAsync.delete(query, v -> {});
 ```
-
-
-

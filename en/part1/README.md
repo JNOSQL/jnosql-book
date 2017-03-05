@@ -12,6 +12,8 @@ In software, the world is common that application has structures: tier, physical
 
 * **Data tier**: Storage and retrieve information either database or a system file.
 
+Talking more precisely about the physical layer, logic to separate responsibilities, there are layers  
+
 Falando precisamente da camada física, tier, lógica, para separar as responsabilidades, existem as camadas, layer, lógicas. Essas camadas contêm a ponte entre a camada física de apresentarão e a camada de dados além da lógica de negócio. Indiferente do seu padrão de arquitetura \(MVC, HMVC, PAC, MVA, MVP, MVVM\) eles possuem no mínimo quatro camadas:
 
 * **Camada de aplicação**: A ponte para a camada física de apresentação, por exemplo, responsável por transformar o objeto em JSON ou XML.
@@ -39,7 +41,7 @@ In a NoSQL database, there isn't a strategy to save code or little impact for a 
 
 The solve this problem the API should have two layers:
 
-* The communication layer: the driver from a particular database that connects Java to an accurate database. This layer has four specializations, one to each NoSQL type. 
+* The communication layer: the driver from a particular database that connects Java to an accurate database. This layer has four specializations, one to each NoSQL type.
 * The abstraction level: its duty is to high concept to Java developers, this layer has annotations and integration to other specializations.
 
 These APIs are optional each other, in other words, a Java solution just needs to implement a great solution, and the database vendors need to implements the connection API.
@@ -80,4 +82,3 @@ As Diana have, Artemis also has an API to each database flavor. Using CDI as the
 An important point about CDI events is how easy is create and add new functionalities without change the core code. That is easy to use bean validation just listen to an event.
 
 ![](../../images/integration-artemis.png)
-

@@ -6,7 +6,7 @@
 
 
 
-On the document collection configuration, there are `DocumentConfiguration` and `DocumentConfigurationAsync` to `DocumentCollectionManagerFactory` and `DocumentCollectionManagerAsyncFactory` respective.
+On the document collection configuration, there are two classes, `DocumentConfiguration` and `DocumentConfigurationAsync` to `DocumentCollectionManagerFactory` and `DocumentCollectionManagerAsyncFactory` respectively.
 
 
 
@@ -28,8 +28,3 @@ UnaryDocumentConfiguration unaryDocumentConfiguration = //instance
 DocumentCollectionManagerFactory managerFactory = unaryDocumentConfiguration.get();
 DocumentCollectionManagerAsyncFactory managerAsyncFactory = unaryDocumentConfiguration.getAsync();
 ```
-
-
-
-
-

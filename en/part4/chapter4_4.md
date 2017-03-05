@@ -7,7 +7,7 @@ As mentioned previously, Artemis has support to persistence lifecycle to update 
 * **firePostAPI**: The entity connection as a response from the database.
 * **firePostEntity**: The entity model from the API low level from the firePostAPI.
 
-Tha watches this event, just need to use an @**Observes**, a form of CDI itself.
+Tha watch this event, just need to use an @**Observes**, a form of CDI itself.
 
 #### ColumnWorkFlow
 
@@ -86,6 +86,3 @@ public class UserEvent {
     }
 }
 ```
-
-
-

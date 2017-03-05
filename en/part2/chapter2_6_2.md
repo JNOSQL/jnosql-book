@@ -1,6 +1,6 @@
 ## Column Configuration
 
-On the column family configuration, there are ColumnConfiguration and ColumnConfigurationAsync to ColumnFamilyManagerFactory and ColumnFamilyManagerAsyncFactory respective.
+On the column family configuration, there are two classes, ColumnConfiguration and ColumnConfigurationAsync to ColumnFamilyManagerFactory and ColumnFamilyManagerAsyncFactory respective.
 
 
 
@@ -19,6 +19,3 @@ UnaryColumnConfiguration unaryDocumentConfiguration = //instance
 ColumnFamilyManagerFactory managerFactory = unaryDocumentConfiguration.get();
 ColumnFamilyManagerAsyncFactory managerAsyncFactory = unaryDocumentConfiguration.getAsync();
 ```
-
-
-

@@ -13,6 +13,3 @@ Everything is configurable on Artemis, to solve the massive number of databases 
 * **Repository**: The "regent" of the synchronous persistence
 
 * **RepositoryAsync**: The regent of the asynchronous persistence
-
-
-

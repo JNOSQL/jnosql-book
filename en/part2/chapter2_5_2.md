@@ -1,11 +1,11 @@
 #### Document Collection Factory
 
-The factories classes have the duty to create the document collection manager.
+The factory classes have the duty to create the document collection manager.
 
 * **DocumentCollectionManagerFactory**
 * **DocumentCollectionManagerAsyncFactory**
 
-The `DocumentCollectionManagerAsyncFactory` and `DocumentCollectionManagerFactory` is who create the manager synchronous and asynchronous respective.
+The `DocumentCollectionManagerAsyncFactory` and `DocumentCollectionManagerFactory` creates the manager synchronously and asynchronously respectively.
 
 ```java
 DocumentCollectionManagerFactory factory = //instance
@@ -15,4 +15,4 @@ DocumentCollectionManagerAsync managerAsync = asyncFactory.getAsync("database");
 
 ```
 
-There are two factories because there is a database that just supports either synchronous or asynchronous.
+The factories were separated intentionally, as not all databases support synchronous and asynchronous operations.

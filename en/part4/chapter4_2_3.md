@@ -5,7 +5,8 @@ The key value is a bridge between the entity and the key-value database.
 #### `KeyValueRepository`
 
 The `KeyValuRepository` is the column repository to synchronous tasks. It has three components:
-O KeyValuRepository é responsável pela persistência de uma Entidade em um banco de dados do tipo chave valor. Ele é composto, basicamente, por dois componentes:
+
+The KeyValuRepository is responsible for persistency of an entity in a key-value database. It is composed basically for three components.
 
 * **KeyValueEntityConverter**: That converts an entity to communication API, e.g., The Person to KeyValueEntity.
 
@@ -27,7 +28,7 @@ repository.put(users);
 Optional<Person> ada = repository.get("ada", Person.class);
 Iterable<Person> usersFound = repository.get(Collections.singletonList("ada"), Person.class);
 ```
-To use a key-value repository just follow the CDI style and put an `@Inject` on the field.
+To use a key-value repository just follows the CDI style and put an `@Inject` on the field.
 
 
 ```java
@@ -35,7 +36,7 @@ To use a key-value repository just follow the CDI style and put an `@Inject` on 
 private KeyValueRepository repository;
 ```
 
-The next step is produced a **BucketManager**:
+The next step is to produce a **BucketManager**:
 
 ```java
 @Produces
@@ -88,6 +89,3 @@ public void sample() {
    KeyValueRepository repositoryB = producer.get(managerB);
 }
 ```
-
-
-

@@ -1,6 +1,6 @@
 #### Document Manager
 
-The Manager class to document type, it has two kinds:
+The manager class to a document type can be synchronous or asynchronous:
 
 * **DocumentCollectionManager**: To do synchronous operations.
 * **DocumentCollectionManagerAsync**: To do asynchronous operations.
@@ -28,7 +28,7 @@ The `DocumentCollectionManager` is the class that manages the persistence on the
 
 ##### **DocumentCollectionManagerAsync**
 
-The `DocumentCollectionManagerAsync` is the class that manages the persistence on the asynchronous way to document collection.
+The `DocumentCollectionManagerAsync` is the class that manages the persistence on an asynchronous way to document collection.
 
 ```java
         DocumentEntity entity = DocumentEntity.of("collection");
@@ -57,11 +57,11 @@ Sometimes on an asynchronous process, is important to know when this process is 
 
 ##### Search information on a document collection
 
-##### 
+#####
 
 Diana has support to retrieve information from both ways synchronous and asynchronous from the `DocumentQuery` class. The `DocumentQuery`  has information such as sort type, document and also the condition to retrieve information.
 
-The condition on `DocumentQuery` is given from `DocumentCondition`, whose it has the status and the document. Eg. The condition behind is to find a name equal "**Ada**".
+The condition on `DocumentQuery` is given from `DocumentCondition`, which has the status and the document. Eg. The condition behind is to find a name equal "**Ada**".
 
 ```java
 DocumentCondition nameEqualsAda = DocumentCondition.eq(Document.of("name", “Ada”));
@@ -76,7 +76,7 @@ DocumentCondition condition = nameEqualsAda.and(youngerThan2Years);
 DocumentCondition nameNotEqualsAda = nameEqualsAda.negate();
 ```
 
-If there isn't condition at the query that means the query will try to retrieve all information from the database, look like a “`select * from database`” in a relational database, just to remember the return depends on from driver. Once the NoSQL with extensive data that is not recommended.
+If there isn't a condition in the query that means the query will try to retrieve all information from the database, similar to a “`select * from database`” in a relational database, just remembering that the return depends on the driver. It is important to say that not all NoSQL databases have support for this resource.
 
 DocumentQuery also has pagination feature to define where the data start, and it limits.
 
@@ -101,7 +101,7 @@ managerAsync.find(query, callback);
 
 
 Such as `DocumentQuery` there is a class to remove information from the document database type: A `DocumentDeleteQuery` type.
-  
+
 It is smoother than `DocumentQuery` because there isn't pagination and sort feature, once this information is unnecessary to remove information from database.
 
 
@@ -120,6 +120,3 @@ It is smoother than `DocumentQuery` because there isn't pagination and sort feat
         managerAsync.delete(query);
         managerAsync.delete(query, v -> {});
 ```
-
-
-
