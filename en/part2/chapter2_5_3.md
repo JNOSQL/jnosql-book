@@ -4,7 +4,7 @@
 
 
 
-The factory classe have the duty to create the bucket manager.
+The factory classes have the duty to create the bucket manager.
 
 
 ```java
@@ -30,4 +30,4 @@ Map<String, String> map = bucketManager.getMap("map", String.class, String.class
 
 ```
 
-These methods may return an `UnsupportedoperationException` if the database does not support any structure.
+These methods may return an `UnsupportedoperationException` if the database does not support any of structures.

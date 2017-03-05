@@ -1,12 +1,12 @@
 ### Classes repositórios
 
-The repositories class has a goal to persist an Entity Model through Diana API. It has three components:
+The repository classes have the goal to persist an Entity Model through Diana API. It has three components:
 
 * **Converter**: That converts the Entity to a communication level API.
 
 * **EntityManager**: The EntityManager from Diana.
 
-* **Workflow**: That defines the workflow when either save or update an entity. As show the picture bellow. These events are useful when you, eg., want to validate data before be saved.
+* **Workflow**: That defines the workflow when either save or update an entity  These events are useful when you, eg., want to validate data before be saved. See the following picture:
 
 ![](../../images/integration-artemis.png)
 

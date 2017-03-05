@@ -52,7 +52,7 @@ To use a document repository just follow the CDI style and put an `@Inject` on t
 private DocumentRepository repository;
 ```
 
-The next step is produced a **DocumentCollectionManager:**
+The next step is to produce a **DocumentCollectionManager:**
 
 ```java
 @Produces
@@ -136,7 +136,7 @@ repositoryAsync.update(person, callback);
 repositoryAsync.update(people);
 ```
 
-To do both remove and retrieve information from document collection that uses the same Diana classes, namely,  **DocumentQuery** and **DocumentDeleteQuery**, also there is a callback method.
+For information removal and retrieval are used the same classes from Diana for documents,  **DocumentQuery** and **DocumentDeleteQuery**, respectively, also the callback method can be used.
 
 ```java
 Consumer<List<Person>> callBackPeople = p -> {};
@@ -208,7 +208,4 @@ public void sample() {
 }
 ```
 
-#### 
-
-
-
+####

@@ -8,7 +8,7 @@ O Column, é a menor parte de uma entidade de uma entidade de família de coluna
         String name = document.getName();
 ```
 
-Com essa interface também é possível ter uma coluna dentro de outro de outra coluna.
+Com essa interface também é possível ter uma coluna dentro de outra coluna.
 
 ```java
 Column subColumn = Column.of("subColumn", column);

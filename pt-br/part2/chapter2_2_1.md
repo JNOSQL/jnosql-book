@@ -14,7 +14,7 @@ Com essa interface também é possível ter um documento dentro de outro documen
 Document subDocument = Document.of("subDocument", document);
 ```
 
-A forma de armazenar essa informação, em subdocumentos, dependerá da implementação de cada driver, assim como toda a informação.
+A forma de armazenar essa informação, em subdocumentos, dependerá da implementação de cada driver.
 
 Para facilitar o acesso da informação, o `Document`, possui alias para os métodos do `Value`, ou seja, é possível realizar a conversão do valor diretamente na _interface_ `Document`.
 

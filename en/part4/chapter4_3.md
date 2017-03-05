@@ -1,4 +1,4 @@
-## 
+##
 
 ## CrudRepisotry
 
@@ -39,7 +39,7 @@ return manager;
 }
 ```
 
-To work with more than one database you can use qualifiers:
+To work with multiple database you can use qualifiers:
 
 ```java
 @Inject
@@ -110,7 +110,7 @@ repository.update(people);
 
 #### Search information from CrudRepository
 
-The CRUDRepository also has a dynamic query from the method name. There are keywords:
+The CRUDRepository also has a dynamic query from the method name. These are the keywords:
 
 * **findBy**: The prefix to find some information
 * **deleteBy**: The prefix to delete some information
@@ -262,6 +262,3 @@ userRepository.put(users, Duration.ofHours(1));
 Optional<User> userOptional = userRepository.get("ada");
 Iterable<User> usersFound = userRepository.get(Collections.singletonList("ada"));
 ```
-
-
-

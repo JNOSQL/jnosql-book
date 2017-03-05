@@ -5,6 +5,3 @@ The component that **Workflow** uses to send an event, so this element does not 
 * DocumentEventPersistManager
 * ColumnEventPersistManager
 * KeyValueEventPersistManager
-
-
-

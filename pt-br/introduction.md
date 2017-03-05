@@ -100,7 +100,7 @@ Alguns bancos de dados possuem a comum característica de ter suporte de um ou m
 
 * Não existe lock-in com um fornecedor, ou seja, com o padrão a mudança acontece de maneira bem simples e transparente, sendo apenas necessário realizar a troca do driver.
 * Não é necessário aprender uma nova API para um novo banco de dados uma vez que a API é comum entre todos os bancos de dados.
-* Impacto praticamente zero ao mudar de fornecedor para outro, em alguns momentos é necessário utilizar um recurso específico de um banco de dados, mas mesmo nesses casos não se perte toda a camada DAO.
+* Impacto praticamente zero ao mudar de fornecedor para outro, em alguns momentos é necessário utilizar um recurso específico de um banco de dados, mas mesmo nesses casos não se perde toda a camada DAO.
 
   Nos bancos de dados NOSQL não existe nenhum padrão pré estabelecido atualmente, assim os desenvolvedores Java enfrentam os seguintes problemas:
 

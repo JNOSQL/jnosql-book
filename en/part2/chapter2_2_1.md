@@ -14,9 +14,9 @@ The document might an another document inside, the subdocument concept.
 Document subDocument = Document.of("subDocument", document);
 ```
 
-The way to storage subdocuments will also depend on each driver implementation as all information as well.
+The way to storage information in subdocuments will also depend on each driver's implementation.
 
-To access the information from `Document` it has alias method to `Value`, in other words,  do a conversion directly from `Document` _interface_.
+To access the information from `Document` it has an alias method to `Value`, in other words, it does a conversion directly from `Document` _interface_.
 
 ```java
 Document age = Document.of("age", 29);
@@ -24,6 +24,3 @@ String ageString = age.get(String.class);
 List<Integer> ages = age.get(new TypeReference<List<Integer>>() {});
 Object ageObject = age.get();
 ```
-
-
-
