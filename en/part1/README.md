@@ -12,14 +12,14 @@ In software, the world is common that application has structures: tier, physical
 
 * **Data tier**: Storage and retrieve information either database or a system file.
 
-Talking more precisely about the physical layer, logic to separate responsibilities, there are layers  
+Talking more precisely about the physical layer, logic to separate responsibilities, there are layers
 
-Falando precisamente da camada física, tier, lógica, para separar as responsabilidades, existem as camadas, layer, lógicas. Essas camadas contêm a ponte entre a camada física de apresentarão e a camada de dados além da lógica de negócio. Indiferente do seu padrão de arquitetura \(MVC, HMVC, PAC, MVA, MVP, MVVM\) eles possuem no mínimo quatro camadas:
+The logic tier, where the application and the business rule stay, it has layers:
 
-* **Camada de aplicação**: A ponte para a camada física de apresentação, por exemplo, responsável por transformar o objeto em JSON ou XML.
-* **Camada de serviço**: A camada de serviço, a depender da tecnologia utilizada pode ser um Controller ou um Resource.
-* **Camada de negócio**: Local onde contém toda a lógica de negócio e o modelo.
-* **Camada de persistência**: A ponte entre a camada física de acesso aos dados e a camada física lógica.
+* **Application layer:** The bridge between the view tier and logic tier, e.g., Convert an object into either JSON or HTML.
+* **Service layer:** The service layer, this can be either Controller or a Resource.
+* **Business Layer:** where the whole business and the model be.
+* **Persistence Layer:** The platform between the logic tier and data tier. The layer has an integration such as DAO or repository.
 
 Within a persistence layer, it has its layers: A Data Access Object, DAO, this structure connect business layer and persistence layer. Inside it has an API that does database. Currently, there is a difference between SQL and NoSQL database:
 
@@ -82,3 +82,4 @@ As Diana have, Artemis also has an API to each database flavor. Using CDI as the
 An important point about CDI events is how easy is create and add new functionalities without change the core code. That is easy to use bean validation just listen to an event.
 
 ![](../../images/integration-artemis.png)
+
