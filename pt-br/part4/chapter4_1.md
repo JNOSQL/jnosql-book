@@ -57,6 +57,39 @@ public class Person {
 
 Faz com que o Artemis olhe para os atributos da classe pai, cujo os atributos sejam anotados com Column,
 
+
+
+```java
+@Entity
+public class Dog extends Animal {
+
+    @Column
+    private String name;
+    //getter and setter
+    
+}
+
+@MappedSuperclass
+public class Animal {
+
+    @Column
+    private String race;
+
+    @Column
+    private Integer age;
+    
+    //getter and setter
+
+}
+```
+
+  
+		@page { margin: 0.79in }  
+		p { margin-bottom: 0.1in; line-height: 120% }  
+	
+
+No exemplo citado, ao salvar a classe `Dog` será levado em consideração também os campos da classe `Animal`, ou seja, serão persistidos três campos, `name`, `race` e `age`.
+
 ##### Key
 
 Apenas para o banco de dados do tipo chave-valor, ele indica qual dos atributos é a chave o valor será toda a informação restante. A forma de armazenamento da classe vai depender do driver do banco de dados.
