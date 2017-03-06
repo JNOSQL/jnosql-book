@@ -10,13 +10,13 @@ As mentioned previously, Artemis has annotations that make the Java developer li
 
 The annotation Models is to convert the entity model to the entity on communication, the Diana entity:
 
+
 * Entity
-
 * Column
-
 * MappedSuperclass
-
 * Key
+* Embeddable
+* Convert
 
 ##### Entity
 
@@ -167,7 +167,7 @@ public class Money {
 
 //....
 }
-
+```
 
 #### Qualifier annotation
 
