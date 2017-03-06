@@ -113,7 +113,6 @@ public class User implements Serializable {
 Indica que as classes anotadas com essa anotação serão persistidas de forma embarcada, ou seja, na conversão de uma entidade para o tipo documentos o tipo embarcado será um suddocumento.
 
 ```java
-
 @Entity
 public class Book {
 
@@ -141,6 +140,49 @@ public class Author {
 }
 ```
 
+
+
+##### Convert
+
+
+
+Assim como o Diana, o Artemis também possui o recurso para realizar conversão de tipos. Esse tipo de recurso é interessante também para, por exemplo, criptografar uma informação texto, de String para String. Como parâmetro essa anotação precisa de uma classe que implemente AttributeConverter. No exemplo abaixo, foi criado a classe salário com um converter para a classe criada Money.
+
+```java
+@Entity
+public class Worker {
+    @Column
+    private String name;
+    @Column
+    private Job job;
+    @Column("money")
+    @Convert(MoneyConverter.class)
+    private Money salary;
+//getter and setter
+}
+
+public class MoneyConverter implements AttributeConverter<Money, String>{
+    @Override
+    public String convertToDatabaseColumn(Money attribute) {
+        return attribute.toString();
+    }
+    @Override
+    public Money convertToEntityAttribute(String dbData) {
+        return Money.parse(dbData);
+    }
+}
+public class Money {
+    private final String currency;
+
+    private final BigDecimal value;
+
+//....
+}
+
+```
+
+
+
 #### Anotação para qualificação
 
 Em alguns momentos é necessário trabalhar com o mesmo tipo de banco de dados, por exemplo, trabalhar com dois bancos do tipo documentos.
@@ -156,7 +198,7 @@ Como nos dois casos ele implementa a mesma interface será retornado em tempo de
 
 * **DatabaseType**: O tipo de banco de dados, por exemplo, chave-valor documentos, grafo ou família de coluna
 
-* **privider**: O nome do provedor do banco de dados, por exemplo, “cassandra”, “hbase”, “mongoDB”, etc. Assim, para resolver o problema mencionado anteriormente existe é necessário anotar com o qualificador.
+* **provider**: O nome do provedor do banco de dados, por exemplo, “cassandra”, “hbase”, “mongoDB”, etc. Assim, para resolver o problema mencionado anteriormente existe é necessário anotar com o qualificador.
 
 ```java
 @Inject
