@@ -57,6 +57,34 @@ public class Person {
 
 If this annotation puts on a Parent class, the Artemis will persist its information as well. So beyond the son class, Artemis will store any field that is in Parent class with Column annotation.
 
+
+```java
+@Entity
+public class Dog extends Animal {
+
+    @Column
+    private String name;
+    //getter and setter
+
+}
+
+@MappedSuperclass
+public class Animal {
+
+    @Column
+    private String race;
+
+    @Column
+    private Integer age;
+
+    //getter and setter
+
+}
+```
+
+On this sample above, when saves a `Dog` instance, it saves the `Animal` case too, explicitly will save the fields `name`, `race` and `age`.
+
+
 ##### Key
 
 Just to Key-value database, that shows on the key-value database with a field is the key.
