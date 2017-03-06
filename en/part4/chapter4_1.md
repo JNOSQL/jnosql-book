@@ -101,6 +101,73 @@ public class User implements Serializable {
     private List<String> phones;
     }
 ```
+##### Embeddable
+
+Defines a class whose instances are stored as an intrinsic part of an owning entity and share the identity of the object. So when converts an Embeddable instance to either save or update this is going to be either subdocument or subcolumn.
+
+```java
+@Entity
+public class Book {
+
+    @Column
+    private String name;
+
+    @Column
+    private Author author;
+
+//getter and setter
+
+}
+
+@Embeddable
+public class Author {
+
+    @Column
+    private String name;
+
+    @Column
+    private Integer age;
+
+//getter and setter
+
+}
+```
+
+##### Convert
+
+As Diana, Artemis has a converter at abstraction level. This feature is useful, e.g., To cipher a field, String to String, or just to do a converter to a custom type using annotation. The `Converter` annotation has a parameter, an AttributeConverter implementation class. Eg. The sample bellow to create a converter to a custom Money class.
+
+```java
+@Entity
+public class Worker {
+    @Column
+    private String name;
+    @Column
+    private Job job;
+    @Column("money")
+    @Convert(MoneyConverter.class)
+    private Money salary;
+//getter and setter
+}
+
+public class MoneyConverter implements AttributeConverter<Money, String>{
+    @Override
+    public String convertToDatabaseColumn(Money attribute) {
+        return attribute.toString();
+    }
+    @Override
+    public Money convertToEntityAttribute(String dbData) {
+        return Money.parse(dbData);
+    }
+}
+public class Money {
+    private final String currency;
+
+    private final BigDecimal value;
+
+//....
+}
+
 
 #### Qualifier annotation
 
