@@ -112,7 +112,34 @@ public class User implements Serializable {
 
 Indica que as classes anotadas com essa anotação serão persistidas de forma embarcada, ou seja, na conversão de uma entidade para o tipo documentos o tipo embarcado será um suddocumento.
 
+```java
 
+@Entity
+public class Book {
+
+    @Column
+    private String name;
+
+    @Column
+    private Author author;
+
+//getter and setter
+
+}
+
+@Embeddable
+public class Author {
+
+    @Column
+    private String name;
+
+    @Column
+    private Integer age;
+
+//getter and setter
+
+}
+```
 
 #### Anotação para qualificação
 
