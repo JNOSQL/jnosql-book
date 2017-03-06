@@ -57,8 +57,6 @@ public class Person {
 
 Faz com que o Artemis olhe para os atributos da classe pai, cujo os atributos sejam anotados com Column,
 
-
-
 ```java
 @Entity
 public class Dog extends Animal {
@@ -66,7 +64,7 @@ public class Dog extends Animal {
     @Column
     private String name;
     //getter and setter
-    
+
 }
 
 @MappedSuperclass
@@ -77,16 +75,16 @@ public class Animal {
 
     @Column
     private Integer age;
-    
+
     //getter and setter
 
 }
 ```
 
-  
-		@page { margin: 0.79in }  
-		p { margin-bottom: 0.1in; line-height: 120% }  
-	
+```
+    @page { margin: 0.79in }  
+    p { margin-bottom: 0.1in; line-height: 120% }  
+```
 
 No exemplo citado, ao salvar a classe `Dog` será levado em consideração também os campos da classe `Animal`, ou seja, serão persistidos três campos, `name`, `race` e `age`.
 
@@ -104,8 +102,17 @@ public class User implements Serializable {
     private String name;
 
     private List<String> phones;
-    }
+
+        }
 ```
+
+##### 
+
+##### Embeddable
+
+Indica que as classes anotadas com essa anotação serão persistidas de forma embarcada, ou seja, na conversão de uma entidade para o tipo documentos o tipo embarcado será um suddocumento.
+
+
 
 #### Anotação para qualificação
 
