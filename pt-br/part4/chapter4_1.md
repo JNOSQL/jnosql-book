@@ -11,12 +11,11 @@ Como mencionado anteriormente, o Artemis é orientado a anotações para que fac
 As anotações para o Modelo tem como objetivo transformar o modelo, orientado a objetos, para a camada de comunicação, Diana. Para mapeamento do modelo existe:
 
 * Entity
-
 * Column
-
 * MappedSuperclass
-
 * Key
+* Embeddable
+* Convert
 
 ##### Entity
 
@@ -81,10 +80,7 @@ public class Animal {
 }
 ```
 
-```
-    @page { margin: 0.79in }  
-    p { margin-bottom: 0.1in; line-height: 120% }  
-```
+
 
 No exemplo citado, ao salvar a classe `Dog` será levado em consideração também os campos da classe `Animal`, ou seja, serão persistidos três campos, `name`, `race` e `age`.
 
@@ -106,7 +102,7 @@ public class User implements Serializable {
         }
 ```
 
-##### 
+
 
 ##### Embeddable
 
