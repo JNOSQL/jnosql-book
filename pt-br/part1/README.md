@@ -1,6 +1,8 @@
 ## A principal ideia atrás da API
 
-Uma vez discutido da importância da padronização das API dos bancos não relacionais, o próximo passo é discutir mais detalhes sobre a API. Porém, para facilitar a explicação da solução da nova API, primeiro é importante falar das camadas do software seja camada física ou lógica. Essas camadas facilitam a organização, manutenção além de dividir as responsabilidades nos softwares, principalmente os mais complexos. A proposta dessa nova API seria responsável por realizar a comunicação entre a camada lógica e a de dados, para isso, será criado duas novas API uma para comunicação entre o banco e outra responsável pela alta abstração na aplicação Java.
+Uma vez discutido da importância da padronização das API dos bancos não relacionais, o próximo passo é discutir mais detalhes sobre elas. Porém, para facilitar a explicação da solução deste projeto, primeiro é importante entender as camadas de uma aplicação. Essas camadas geralmente facilitam a organização, manutenção e dividi as responsabilidades da aplicação, é muito comum encontrar uma aplicação dividida em camadas quando ela é muito complexa. 
+
+Está nova API será responsável por realizar a comunicação entre a camada lógica e a de dados, para isso, ela será dividida em duas partes, uma para comunicação entre o banco e outra responsável pela alta abstração na aplicação Java.
 
 ![Camada Física](../../images/01.png)
 
