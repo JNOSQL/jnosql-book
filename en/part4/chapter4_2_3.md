@@ -1,15 +1,18 @@
-## Repositório de Chave Valor
+## Key-Value repository
 
-O repositório de chave valor é responsável para realizar a comunicação da entidade para um banco de dados do tipochave valor.
+The key value is a bridge between the entity and the key-value database.
 
 #### `KeyValueRepository`
 
-O KeyValuRepository é responsável pela persistência de uma Entidade em um banco de dados do tipo chave valor. Ele é composto, basicamente, por três componentes:
+The `KeyValuRepository` is the column repository to synchronous tasks. It has three components:
 
-* **KeyValueEntityConverter**: Responsável por converter uma entidade, por exemplo, User para KeyValueEntity
+The KeyValuRepository is responsible for persistency of an entity in a key-value database. It is composed basically for three components.
 
-* **BucketManager**: entidade manager de chave valor do Diana.
-* **KeyValueWorkflow**: O workflow para os bancos do tipo chave valor.
+* **KeyValueEntityConverter**: That converts an entity to communication API, e.g., The Person to KeyValueEntity.
+
+* **BucketManager**: The Diana column key-value entity manager.
+
+* **KeyValueWorkflow**: The workflow to update and save methods.
 
 ```java
 KeyValueRepository repository = null;
@@ -25,15 +28,15 @@ repository.put(users);
 Optional<Person> ada = repository.get("ada", Person.class);
 Iterable<Person> usersFound = repository.get(Collections.singletonList("ada"), Person.class);
 ```
+To use a key-value repository just follows the CDI style and put an `@Inject` on the field.
 
-Como o motor do Artemis é CDI para que se posso utilizar o KeyValueRepository basta dar um @Inject num campo.
 
 ```java
 @Inject
 private KeyValueRepository repository;
 ```
 
-Para isso é necessário que a aplicação injete um BucketManager:
+The next step is to produce a **BucketManager**:
 
 ```java
 @Produces
@@ -43,9 +46,9 @@ public BucketManager getManager() {
 }
 ```
 
-Para trabalhar com mais de um tipo de KeyValueRepository existem duas opções:
+To work with more than one key-value Repository, there are two approaches:
 
-1\) A primeira é com a utilização dos qualificadores:
+1\) Using qualifieres:
 
 ```java
     @Inject
@@ -73,7 +76,7 @@ Para trabalhar com mais de um tipo de KeyValueRepository existem duas opções:
     }
 ```
 
-2\) A segunda delas é a partir do KeyValueRepositoryProducer
+2\)  Using the **KeyValueRepositoryProducer** class
 
 ```java
 @Inject
@@ -86,6 +89,3 @@ public void sample() {
    KeyValueRepository repositoryB = producer.get(managerB);
 }
 ```
-
-
-

@@ -1,19 +1,6 @@
+### JNoSQL
 
-### Apache Diana
+The JNoSQL has several tools to make an easy integration between the Java Applications and NoSQL databases. To solve this problem the project will have two layers:
 
-Diana is a flexible and extensible API to connect NoSQL databases. It brings an easy interface to support key-value, column family, document oriented and graph databases as JDBC is for SQL databases.
-
-
-The basic building blocks hereby are:
-
-* A simple API to support Column NoSQL Database
-* A simple API to support Key-value NoSQL Database
-* A simple API to support Graph NoSQL Database
-* A simple API to support Document Database
-* Convention over configuration
-* Support for asynchronous queries
-* Support for asynchronous write operations
-* An easy API to implement, so that NoSQL vendors can comply with it  and test by themselves.
-
-
-The API's focus is on simplicity and ease of use. Developers should only have to know a minimal set of artifacts to work with the solution. The API is built on latest Java 8 features and therefore fit perfectly with the functional features of Java 8. 
+* **Communication API: **An API just to communicate with the database, exactly what JDBC does to SQL. This API will have four specializations, one for each kind of database.
+* **Abstraction API: **An API to do integration and do the best integration with the Java developer. That will be annotation driven and will have integration with other technologies like Bean Validation, etc, and to solve it this layer will be CDI based.

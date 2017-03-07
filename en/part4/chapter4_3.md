@@ -1,10 +1,10 @@
-## 
+##
 
 ## CrudRepisotry
 
-Além dos repositórios de família de colunas e também de documentos o Artemis também possui o CRUDRepository. Essa interface tem como objetivo auxiliar na criação de classes repositórios específicas para as entidades além de facilitar na criação de uma query.
+In addition to repositories class, Artemis has the CRUDRepository. This interface helps the Entity repository to save, update, delete and retrieve information.
 
-Para utilizar esse recurso é necessário apenas criar uma interface que extenda de **CrudRepository**.
+To use CrudRepository, just need to create a new interface that extends the **CrudRepository**.
 
 ```java
     interface PersonRepository extends CrudRepository<Person> {
@@ -12,7 +12,7 @@ Para utilizar esse recurso é necessário apenas criar uma interface que extenda
     }
 ```
 
-E injete o recurso, é necessário definir também o qualificador Database que será responsável por dizer para qual tipo de banco a informação será enviada.
+The qualifier is mandatory to define the database type whose will use at the injection point moment.
 
 ```java
 @Inject
@@ -23,7 +23,7 @@ private PersonRepository documentRepository;
 private PersonRepository columnRepository;
 ```
 
-Para isso é necessário que a aplicação injete um ColumnFamilyManager ou um DocumentCollectionManager:
+And then, as the repository class, create either a **ColumnFamilyManager** or a **DocumentCollectionManager** with produces method:
 
 ```java
 @Produces
@@ -39,7 +39,7 @@ return manager;
 }
 ```
 
-Caso seja necessário trabalhar mais de um banco de dados, basta utilizar o qualificador Database e ele será elegível para injeção.
+To work with multiple database you can use qualifiers:
 
 ```java
 @Inject
@@ -89,7 +89,7 @@ return manager;
 }
 ```
 
-Com isso o Artemis se encarregará de utilizar o apropriado banco de dados e cuidará de implementar os métodos.
+So, Artemis will inject automatically.
 
 ```java
 PersonRepository repository = //instance
@@ -108,14 +108,14 @@ repository.update(people);
 repository.update(people);
 ```
 
-#### Criando Queries com o CrudRepository
+#### Search information from CrudRepository
 
-Além de salvar e atualizar a informação também é possível recuperar e deletar a informação utilizando queries dinâmicas no método. Com esse intuito o CrudRepository vem com algumas palavras reservadas:
+The CRUDRepository also has a dynamic query from the method name. These are the keywords:
 
-* **findBy**: Como prefixo para encontrar alguma informação
-* **deleteBy**: Como prefixo, para deletar alguma informação
+* **findBy**: The prefix to find some information
+* **deleteBy**: The prefix to delete some information
 
-Além dos Operadores:
+Also the operators:
 
 * AND
 * OR
@@ -144,11 +144,12 @@ interface PersonRepository extends CrudRepository<Person> {
 }
 ```
 
-Com isso o artemis cuidará de implementar esses métodos.
+Using these keywords, Artemis will create the queries.
 
-#### Utilizando o CrudRepository de forma assíncrona
+#### Using CrudRepository as asynchronous way
 
-Para trabalhar de forma assíncrona existe a interface CrudRepositoryAsync, seu funcionamento é semelhante ao CrudRepository.
+The CrudRepositoryAsync interface works similarly as CrudRepository but with asynchronous work.
+
 
 ```java
 @Inject
@@ -160,7 +161,7 @@ private PersonRepositoryAsync documentRepositoryAsync;
 private PersonRepositoryAsync columnRepositoryAsync;
 ```
 
-Ou seja, basta injetá-lo que o Artemis cuidará de implementar os métodos.
+In other words, just inject and then create an Entity Manager async with producers method.
 
 ```java
 PersonRepositoryAsync repositoryAsync = //instance
@@ -182,7 +183,7 @@ repositoryAsync.update(people);
 repositoryAsync.update(people);
 ```
 
-Também é possível recuperar e deletar a informação de forma assíncrona, a diferença é que na recuperação um callback é obrigatório no fim do método enquanto para deletar ou remover informação o callback é opcional.
+Also, delete and retrieve information with a callback.
 
 ```java
     interface PersonRepositoryAsync extends CrudRepositoryAsync<Person> {
@@ -197,23 +198,23 @@ Também é possível recuperar e deletar a informação de forma assíncrona, a 
 
 #### KeyValueCrudRepository
 
-Assim como a família de colunas e coleção de documentos, chave valor tem o recurso que auxilia tem como objetivo auxiliar na criação de classes repositórios específicas para as entidades o KeyValueCrudRepository.
+The KeyValueCrudRepository is a CRUDRepository to key-value type.
 
-Para utilizar esse recurso é necessário apenas criar uma interface que extenda de **KeyValueCrudRepository**.
+If the same way of CrudRepository, just extends **KeyValueCrudRepository**.
 
 ```java
 public interface UserRepository extends KeyValueCrudRepository<User> {
 }
 ```
 
-E injete o recurso.
+And inject the resource.
 
 ```java
 @Inject
 private UserRepository userRepository;
 ```
 
-Para isso basta produzir um BucketManager.
+Then use a producer to BucketManager
 
 ```java
 @Produces
@@ -223,7 +224,7 @@ return manager;
 }
 ```
 
-Caso seja necessário trabalhar mais de um banco de dados, basta utilizar o qualificador Database e ele será elegível para injeção.
+You can use qualifier when you want to use a different database in the same application.
 
 ```java
 @Inject
@@ -247,7 +248,7 @@ public BucketManager getManagerB() {
 }
 ```
 
-Uma vez que a busca se dá, por padrão, pela busca da chave essa interface não suporte a geração de query, apenas a implementação dos métodos já existente.
+Once there is not another to both delete and find information, there isn't dynamic query.
 
 ```java
 UserRepository userRepository = null;
@@ -261,6 +262,3 @@ userRepository.put(users, Duration.ofHours(1));
 Optional<User> userOptional = userRepository.get("ada");
 Iterable<User> usersFound = userRepository.get(Collections.singletonList("ada"));
 ```
-
-
-

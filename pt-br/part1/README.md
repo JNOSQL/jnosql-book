@@ -72,6 +72,7 @@ O projeto Diana tem como objetivo tratar apenas da camada de baixo nível, ou se
 * O objetivo da camada de comunicação é um escopo bem grande uma vez que se tem diversos tipos de bancos de dados e diversas implementações.
 * Facilitar a implementação com as camadas de abstração já existentes, além de iniciar as conversas sobre esse tipo de padronização.
 
+
 Com isso o projeto Diana **não** será:
 
 * Uma nova API para substituir o JPA
