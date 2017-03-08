@@ -16,8 +16,6 @@ To go straight and cover the four NoSQL types, this API has four domains:
 
 * `org.jnosql.artemis.key`
 
-
-
 #### The Artemis project
 
 Artemis has three parts:
@@ -26,4 +24,7 @@ Artemis has three parts:
 
 * **Artemis-validation**: That is the Bean Validation integration as artemis-core plugin.
 
-* **Artemis-driver**: Like Diana, there is a support for database diversity. This project has extensions to the each database type on the database abstraction level.
+* **Artemis-extension**: Like Diana, there is a support for database diversity. This project has extensions to the each database type on the database abstraction level.
+
+
+
