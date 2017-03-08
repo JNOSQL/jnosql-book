@@ -16,23 +16,15 @@ Com o intuito de abranger os quatro tipos de banco de dados, essa API é comport
 
 * `org.jnosql.artemis.key`
 
-
-
 #### Projetos do Artemis
 
 O Artemis é composto por três partes:
 
 * **Artemis-core**: É o coração do artemis é onde fica as anotações, eventos básicos  a comunicação com o Diana.
 
-* **Artemis-validation**: É onde fica o suporte com o Bean validation, ele funciona como plugin ao artemis-core. 
+* **Artemis-validation**: É onde fica o suporte com o Bean validation, ele funciona como plugin ao artemis-core.
 
-* **Artemis-driver**: Assim como o Diana, existe uma grande importância em ter suporte a diversidade dentro do mundo dos bancos de dados não relacionais. A ideia do artemis-driver é criar extensões para que suporte a específico comportamentos de um banco e dados.
-
-
-
-
-
-
+* **Artemis-extension**: Assim como o Diana, existe uma grande importância em ter suporte a diversidade dentro do mundo dos bancos de dados não relacionais. A ideia do artemis-extension é criar extensões para que suporte a específico comportamentos de um banco e dados.
 
 
 
