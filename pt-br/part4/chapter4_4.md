@@ -117,3 +117,47 @@ public class UserEvent {
 
 
 
+### Eventos para buscar e deletar informações
+
+
+
+Além dos eventos de inserção de atualização, dentro do das APIs de colunas e documentos, o Artemis tem um evento específico para quando uma query de busca ou para remover é lançada.
+
+
+
+```java
+
+public class ColumnQueryEvent {
+
+    private static final Logger LOGGER = Logger.getLogger(ColumnQueryEvent.class.getName());
+
+    public void observer(@Observes ColumnQueryExecute event) {
+        ColumnQuery query = event.getQuery();
+        LOGGER.info("Event to pre persistence" + query);
+    }
+
+    public void observer(@Observes ColumnDeleteQueryExecute event) {
+        ColumnDeleteQuery query = event.getQuery();
+        LOGGER.info("Event to pre persistence" + query);
+    }
+}
+
+
+public class DocumentQueryEvent {
+
+    private static final Logger LOGGER = Logger.getLogger(DocumentQueryEvent.class.getName());
+
+    public void observer(@Observes DocumentQueryExecute event) {
+        DocumentQuery query = event.getQuery();
+        LOGGER.info("Event to pre persistence" + query);
+    }
+
+    public void observer(@Observes DocumentDeleteQueryExecute event) {
+        DocumentDeleteQuery query = event.getQuery();
+        LOGGER.info("Event to pre persistence" + query);
+    }
+}
+```
+
+
+
