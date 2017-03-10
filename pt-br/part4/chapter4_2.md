@@ -10,12 +10,14 @@ As classes repositórios têm como principal objetivo converter a classe entidad
 
 ![](../../images/integration-artemis.png)
 
-Os quatro eventos são:
+Os seis eventos são:
 
 1. **firePreEntity**: O objeto recebido pelo Artemis
-2. **firePreAPI**: o objeto convertido numa entidade de comunicação
-3. **firePostAPI**: A entidade de comunicação enviada como resposta do banco de dados
-4. **firePostEntity**: A entidade bean convertida oriunda do firePostAPIAs classes repositórios têm como principal objetivo converter a classe entidade, por exemplo, Person para o Diana, a API de nível de comunicação.
+2. **firePreEntityDataBaseType**: Semelhante ao anterior, porém, específico para o tipo de banco de dados, ou seja, cada banco terão seu tipo específico de evento.
+3. **firePreAPI**: o objeto convertido numa entidade de comunicação
+4. **firePostAPI**: A entidade de comunicação enviada como resposta do banco de dados
+5. **firePostEntity**: A entidade bean convertida oriunda do firePostAPIAs classes repositórios têm como principal objetivo converter a classe entidade, por exemplo, Person para o Diana, a API de nível de comunicação.
+6. **firePostEntityDataBaseType**: Semelhante ao anterior, porém, específico para o tipo de banco de dados, ou seja, cada banco terão seu tipo específico de evento.
 
 
 
