@@ -14,17 +14,20 @@ The "maestro" persistence class has synchronous and asynchronous. These interfac
 
 To demonstrate, it will create a `ColumnRepository` extension to supports a Cassandra methods that do exists on diana-driver: Cassandra Query Language and consistency level.
 
-
-
 ```java
 public class CassandraColumnRepository extends AbstractColumnRepository {
 
     @Inject
     private ColumnEntityConverter converter;
+    
     @Inject
     private CassandraColumnFamilyManager manager;
+    
     @Inject
     private ColumnWorkflow workflow;
+    
+    @Inject
+    private ColumnEventPersistManager eventManager;
 
     @Override
     protected ColumnEntityConverter getConverter() {
@@ -39,6 +42,11 @@ public class CassandraColumnRepository extends AbstractColumnRepository {
     @Override
     protected ColumnWorkflow getFlow() {
         return workflow;
+    }
+    
+    @Override
+    protected ColumnEventPersistManager getEventManager() {
+        return eventManager;
     }
 
     public <T> T save(T entity, ConsistencyLevel level) {
@@ -67,7 +75,7 @@ public class CassandraColumnRepository extends AbstractColumnRepository {
     }
 
 }
-
 ```
 
 To conclude, extending the AbstractColumnRepository the CassandraColumnRepository will have support to the methods on Artemis interface and also append the Cassandra resources.
+
