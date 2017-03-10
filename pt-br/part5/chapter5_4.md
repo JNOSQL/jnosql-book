@@ -14,17 +14,20 @@ Os “maestros” da persistência é dividida em forma síncrona e assíncrona 
 
 Para exemplificar, será criado uma extensão do ColumnRepository para suportar alguns recursos específicos que tem apenas no Cassandra: O Cassandra Query Language e a persistência com nível de consistência.
 
-
-
 ```java
 public class CassandraColumnRepository extends AbstractColumnRepository {
 
     @Inject
     private ColumnEntityConverter converter;
+
     @Inject
     private CassandraColumnFamilyManager manager;
+
     @Inject
     private ColumnWorkflow workflow;
+
+    @Inject
+    private ColumnEventPersistManager eventManager;
 
     @Override
     protected ColumnEntityConverter getConverter() {
@@ -39,6 +42,11 @@ public class CassandraColumnRepository extends AbstractColumnRepository {
     @Override
     protected ColumnWorkflow getFlow() {
         return workflow;
+    }
+
+    @Override
+    protected ColumnEventPersistManager getEventManager() {
+        return eventManager;
     }
 
     public <T> T save(T entity, ConsistencyLevel level) {
@@ -67,10 +75,7 @@ public class CassandraColumnRepository extends AbstractColumnRepository {
     }
 
 }
-
 ```
-
-
 
 Assim, herdando a classe AbstractColumnRepository o CassandraColumnRepository terá suporte a todos os recursos já existentes na API do Artemis e pode adicionar os recursos específicos do Cassandra.
 
