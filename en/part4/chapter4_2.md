@@ -13,6 +13,10 @@ The repository classes have the goal to persist an Entity Model through Diana AP
 The default workflow has four events:
 
 1. **firePreEntity**: The Object received from Artemis.
-2. **firePreAPI**: The object converted to a communication layer.
-3. **firePostAPI**: The entity connection as a response from the database.
-4. **firePostEntity**: The entity model from the API low level from the `firePostAPI`.
+2. **firePreEntityDataBaseType**: Semelhante ao anterior, porém, específico para o tipo de banco de dados, ou seja, cada banco terão seu tipo específico de evento.
+3. **firePreAPI**: The object converted to a communication layer.
+4. **firePostAPI**: The entity connection as a response from the database.
+5. **firePostEntity**: The entity model from the API low level from the `firePostAPI`.
+
+
+
