@@ -116,3 +116,48 @@ public class UserEvent {
 
 
 
+### Events to search and remove from database
+
+
+
+Also, there are functions to query to both retrieve and remove, at the document and column API, Artemis supports, when a query to both delete and retrieve an event is fired.
+
+
+
+```java
+
+public class ColumnQueryEvent {
+
+    private static final Logger LOGGER = Logger.getLogger(ColumnQueryEvent.class.getName());
+
+    public void observer(@Observes ColumnQueryExecute event) {
+        ColumnQuery query = event.getQuery();
+        LOGGER.info("Event to pre persistence" + query);
+    }
+
+    public void observer(@Observes ColumnDeleteQueryExecute event) {
+        ColumnDeleteQuery query = event.getQuery();
+        LOGGER.info("Event to pre persistence" + query);
+    }
+}
+
+
+public class DocumentQueryEvent {
+
+    private static final Logger LOGGER = Logger.getLogger(DocumentQueryEvent.class.getName());
+
+    public void observer(@Observes DocumentQueryExecute event) {
+        DocumentQuery query = event.getQuery();
+        LOGGER.info("Event to pre persistence" + query);
+    }
+
+    public void observer(@Observes DocumentDeleteQueryExecute event) {
+        DocumentDeleteQuery query = event.getQuery();
+        LOGGER.info("Event to pre persistence" + query);
+    }
+}
+
+```
+
+
+
