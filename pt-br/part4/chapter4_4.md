@@ -2,10 +2,12 @@
 
 Como foi mencionado, o Artemis tem suporte a eventos e um ciclo de vida tanto para a inserção e a atualização dos dados. O ciclo de vida é gerenciado pela classe **WorkFlow** que por padrão tem o seguinte fluxo:
 
-1. **firePreEntity**: O objeto recebido pelo Artemis
-2. **firePreAPI**: o objeto convertido numa entidade de comunicação
-3. **firePostAPI**: A entidade de comunicação enviada como resposta do banco de dados
-4. **firePostEntity**: A entidade bean convertida oriunda do firePostAPIAs classes repositórios têm como principal objetivo converter a classe entidade, por exemplo, Person para o Diana, a API de nível de comunicação.
+1. **firePreEntity**: O objeto recebido pelo Artemis.
+2. **firePreEntityDataBaseType**: Semelhante ao anterior, porém, específico para o tipo de banco de dados, ou seja, cada banco terão seu tipo específico de evento.
+3. **firePreAPI**: o objeto convertido numa entidade de comunicação.
+4. **firePostAPI**: A entidade de comunicação enviada como resposta do banco de dados.
+5. **firePostEntity**: A entidade bean convertida oriunda do firePostAPIAs classes repositórios têm como principal objetivo converter a classe entidade, por exemplo, Person para o Diana, a API de nível de comunicação.
+6. **firePostEntityDataBaseType**: Semelhante ao anterior, porém, específico para o tipo de banco de dados, ou seja, cada banco terão seu tipo específico de evento.
 
 Para observar esses eventos, basta utilizar o @**Observes**, recurso oriundo do próprio CDI.
 
