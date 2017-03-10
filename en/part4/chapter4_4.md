@@ -42,21 +42,29 @@ public class PersonEvent {
 public class PersonEvent {
 
     private static final Logger LOGGER = Logger.getLogger(PersonEvent.class.getName());
-
-    public void preEntity(@Observes EntityPrePersist event) {
+    
+    public void observer(@Observes EntityPrePersist event) {
         LOGGER.info("Event to pre persistence" + event.getValue());
     }
-
-    public void postEntity(@Observes EntityPostPersit event) {
-        LOGGER.info("Event to post persistence" + event.getValue());
+    
+    public void observer(@Observes EntityDocumentPrePersist event) {
+        LOGGER.info("Event to pre document persistence" + event.getValue());
     }
 
-    public void preColumn(@Observes DocumentEntityPrePersist event) {
+    public void observer(@Observes DocumentEntityPrePersist event) {
         LOGGER.info("Event to pre document entity" + event.getEntity());
     }
 
-    public void postColumn(@Observes DocumentEntityPostPersist event) {
+    public void observer(@Observes DocumentEntityPostPersist event) {
         LOGGER.info("Event to post document entity" + event.getEntity());
+    }
+    
+    public void observer(@Observes EntityPostPersit event) {
+        LOGGER.info("Event to post persistence" + event.getValue());
+    }
+
+    public void observer(@Observes EntityDocumentPostPersist event) {
+        LOGGER.info("Event to post document entity" + event.getValue());
     }
 }
 ```
@@ -86,3 +94,6 @@ public class UserEvent {
     }
 }
 ```
+
+
+
