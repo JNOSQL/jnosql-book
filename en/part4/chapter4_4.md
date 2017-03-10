@@ -3,9 +3,11 @@
 As mentioned previously, Artemis has support to persistence lifecycle to update and save an Entity. This lifecycle order is managed by a **WorkFlow** class. The default workflow is:
 
 * **firePreEntity**: The Object received from Artemis.
+* **firePreEntityDataBaseType**: As the previous event, however, to a specified database, in other words, each database has a particular database.
 * **firePreAPI**: The object converted to a communication layer.
 * **firePostAPI**: The entity connection as a response from the database.
 * **firePostEntity**: The entity model from the API low level from the firePostAPI.
+* **firePostEntityDataBaseType**: As the previous event, however, to a specified database, in other words, each database has a particular database.
 
 Tha watch this event, just need to use an @**Observes**, a form of CDI itself.
 
