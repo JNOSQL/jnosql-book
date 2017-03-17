@@ -13,11 +13,11 @@ bucketManager.put(entities, Duration.ofHours(2));//two hours TTL
 bucketManager.put(entity, Duration.ofHours(2));//two hours TTL
 ```
 
-######
+##### 
 
 ##### Removing and retrieve information from a key-value database
 
-#####
+#### 
 
 With a simple structure, the bucket needs a key to both retrieve and delete information from the database.
 
@@ -27,3 +27,6 @@ Iterable<Value> values = bucketManager.get(Collections.singletonList("key"));
 bucketManager.remove("key");
 bucketManager.remove(Collections.singletonList("key"));
 ```
+
+
+
