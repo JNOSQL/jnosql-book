@@ -36,7 +36,7 @@ O `DocumentCollectionManagerAsync` é classe que realiza as operações de forma
         entity.add(diana);
 
         List<DocumentEntity> entities = Collections.singletonList(entity);
-         DocumentCollectionManagerAsync managerAsync = null;
+         DocumentCollectionManagerAsync managerAsync = //instance
 
         //saves operations
         managerAsync.save(entity);
@@ -95,18 +95,11 @@ Consumer<List<DocumentEntity>> callback = e -> {};
 managerAsync.find(query, callback);
 ```
 
-
-
 ##### Removendo as informações dentro de uma coleção de documentos:
-
-
 
 Semelhante ao `DocumentQuery,`existe uma classe responsável por remover informações dentro da coleção de documentos: A classe `DocumentDeleteQuery`
 
-  
 Ela possui uma estrutura bem simples, sem paginação e ordenação, uma vez que o fogo será a remoção de informação dentro do banco de dados.
-
-
 
 ```java
         DocumentCollectionManager manager = //instance;
