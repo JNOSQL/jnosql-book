@@ -36,7 +36,7 @@ The `DocumentCollectionManagerAsync` is the class that manages the persistence o
         entity.add(diana);
 
         List<DocumentEntity> entities = Collections.singletonList(entity);
-         DocumentCollectionManagerAsync managerAsync = null;
+         DocumentCollectionManagerAsync managerAsync = //instance
 
         //saves operations
         managerAsync.save(entity);
@@ -57,7 +57,7 @@ Sometimes on an asynchronous process, is important to know when this process is 
 
 ##### Search information on a document collection
 
-#####
+#### \#
 
 Diana has support to retrieve information from both ways synchronous and asynchronous from the `DocumentQuery` class. The `DocumentQuery`  has information such as sort type, document and also the condition to retrieve information.
 
@@ -95,16 +95,11 @@ Consumer<List<DocumentEntity>> callback = e -> {};
 managerAsync.find(query, callback);
 ```
 
-
-
 ##### Removing information from Document Collection
-
 
 Such as `DocumentQuery` there is a class to remove information from the document database type: A `DocumentDeleteQuery` type.
 
 It is smoother than `DocumentQuery` because there isn't pagination and sort feature, once this information is unnecessary to remove information from database.
-
-
 
 ```java
         DocumentCollectionManager manager = //instance;
@@ -120,3 +115,6 @@ It is smoother than `DocumentQuery` because there isn't pagination and sort feat
         managerAsync.delete(query);
         managerAsync.delete(query, v -> {});
 ```
+
+
+
