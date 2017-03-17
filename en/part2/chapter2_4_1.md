@@ -57,7 +57,7 @@ Sometimes on an asynchronous process, is important to know when this process is 
 
 ##### Search information on a document collection
 
-#### \#
+#### 
 
 Diana has support to retrieve information from both ways synchronous and asynchronous from the `DocumentQuery` class. The `DocumentQuery`  has information such as sort type, document and also the condition to retrieve information.
 
