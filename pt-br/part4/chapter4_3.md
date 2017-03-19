@@ -217,9 +217,9 @@ Para isso basta produzir um BucketManager.
 
 ```java
 @Produces
-public BucketManager getManager() {
-BucketManager manager =//instance
-return manager;
+public BucketManager getManager() {
+BucketManager manager =//instance
+return manager;
 }
 ```
 
@@ -250,7 +250,7 @@ public BucketManager getManagerB() {
 Uma vez que a busca se dá, por padrão, pela busca da chave essa interface não suporte a geração de query, apenas a implementação dos métodos já existente.
 
 ```java
-UserRepository userRepository = null;
+UserRepository userRepository = //instance
 User user = new User("ada", "Ada Lovelace", 30);
 List<User> users = Collections.singletonList(user);
 userRepository.put(user);
