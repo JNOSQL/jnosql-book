@@ -1,4 +1,4 @@
-# \#CrudRepisotry
+# CrudRepisotry
 
 In addition to repositories class, Artemis has the CRUDRepository. This interface helps the Entity repository to save, update, delete and retrieve information.
 
