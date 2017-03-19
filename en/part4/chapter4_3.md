@@ -248,7 +248,7 @@ public BucketManager getManagerB() {
 Once there is not another to both delete and find information, there isn't dynamic query.
 
 ```java
-UserRepository userRepository = null;
+UserRepository userRepository = //instance
 User user = new User("ada", "Ada Lovelace", 30);
 List<User> users = Collections.singletonList(user);
 userRepository.put(user);
