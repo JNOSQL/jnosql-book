@@ -1,6 +1,4 @@
-##
-
-## CrudRepisotry
+# \#CrudRepisotry
 
 In addition to repositories class, Artemis has the CRUDRepository. This interface helps the Entity repository to save, update, delete and retrieve information.
 
@@ -150,7 +148,6 @@ Using these keywords, Artemis will create the queries.
 
 The CrudRepositoryAsync interface works similarly as CrudRepository but with asynchronous work.
 
-
 ```java
 @Inject
 @Database(DatabaseType.DOCUMENT)
@@ -218,9 +215,9 @@ Then use a producer to BucketManager
 
 ```java
 @Produces
-public BucketManager getManager() {
-BucketManager manager =//instance
-return manager;
+public BucketManager getManager() {
+BucketManager manager =//instance
+return manager;
 }
 ```
 
@@ -262,3 +259,6 @@ userRepository.put(users, Duration.ofHours(1));
 Optional<User> userOptional = userRepository.get("ada");
 Iterable<User> usersFound = userRepository.get(Collections.singletonList("ada"));
 ```
+
+
+
