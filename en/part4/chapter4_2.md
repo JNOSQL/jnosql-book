@@ -1,4 +1,4 @@
-### Classes repositórios
+### Repository classes
 
 The repository classes have the goal to persist an Entity Model through Diana API. It has three components:
 
