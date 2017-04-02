@@ -5,7 +5,7 @@
 The JNoSQL is a several tools to make easy integration between the Java Application with the NoSQL. The project going to have two layers:
 
 * **Communication API**: An API just to communicate with the database, exactly what JDBC does to SQL. This API is going to have four specializations, one for each kind of database.
-* **Abstraction API**: An API to do integration and do the best integration with the Java developer. That is going to be annotation drive and going to have integration with other technologies like Bean Validation, etc. 
+* **Mapping API**: An API to do integration and do the best integration with the Java developer. That is going to be annotation drive and going to have integration with other technologies like Bean Validation, etc. 
 
 The basic building blocks hereby are:
 
@@ -24,16 +24,11 @@ The API's focus is on simplicity and ease of use. Developers should only have to
 
 The Diana Project has as the goal just be the flat layer, in other words, just the communication layer to NoSQL database. This project is going to work as a database driver. Diana will have four APIs, one for each database type, and its TCK respective. The test compatibility kit affirms if a driver implements an API correctively. So an X database of key-value implements and run all tests correctively that means this X database has support to key-value Diana API.
 
-The main reason to Diana just works in communication layer are:
-
-* A developer doesn't want to learn a new API beyond JPA.
-* The abstraction layer makes sense as a JPA extension and not a new one.
-* Be a communication API is good enough to be a project.
 
 Furthermore Diana **will not**be:
 
 * A new API to replace JPA
-* A new API to abstraction layer
+* A new API to mapping layer
 * Just one API communication to solve all kind of NoSQL database
 * Be responsible for doing integrations with other technologies such as CDI, EJB, Bean Validation, Spring, etc.
 
