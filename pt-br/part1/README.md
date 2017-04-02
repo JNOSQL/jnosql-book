@@ -1,6 +1,6 @@
 ## A principal ideia atrás da API
 
-Uma vez discutido da importância da padronização das APIs dos bancos não relacionais, o próximo passo é discutir mais detalhes sobre elas. Porém, para facilitar a explicação da solução deste projeto, primeiro é importante entender que geralmente uma aplicação é divida em camadas para facilitar a sua organização, manutenção e divisão das responsabilidades da aplicação, é muito comum encontrar uma aplicação dividida em camadas quando ela é muito complexa. 
+Uma vez discutido da importância da padronização das APIs dos bancos não relacionais, o próximo passo é discutir mais detalhes sobre elas. Porém, para facilitar a explicação da solução deste projeto, primeiro é importante entender que geralmente uma aplicação é divida em camadas para facilitar a sua organização, manutenção e divisão das responsabilidades da aplicação, é muito comum encontrar uma aplicação dividida em camadas quando ela é muito complexa.
 
 Está nova API Java será responsável por realizar a comunicação entre a camada lógica e a de dados, para isso, ela será dividida em duas partes, uma para comunicação entre o banco e outra responsável pela alta abstração na aplicação.
 
@@ -30,7 +30,7 @@ No mundo relacional existem dois mecanismo, além do DAO, que são o JDBC e o JP
 
   No mundo dos bancos NoSQL, infelizmente, isso não acontece. Como todas as APIs são diferentes toda mudança de banco resulta na troca de API e assim temos uma grande perda de código. As soluções de hoje em dia \(Spring Data, Hibernate OGM, TopLink NOSQL, etc.\) estão atuando em uma camada de alto nível, logo elas são responsáveis por realizar a comunicação entre o banco de dados e a aplicação Java, por isso temos alguns problemas:
 
-* O distribuidor de banco de dados, precisa se preocupar com o código de alta abstração de acesso de Java.
+* O distribuidor de banco de dados, precisa se preocupar com o código de alta mapeamento de acesso de Java.
 
 * O distribuidor da solução Java, precisa se preocupar com o código de baixo nível para realizar o acesso ao banco de dados.
 
@@ -43,13 +43,13 @@ No mundo relacional existem dois mecanismo, além do DAO, que são o JDBC e o JP
 A solução para esse problema é , assim como no mundo relacional, ter duas camadas de API:
 
 * Uma camada de baixo nível ou camada de comunicação: que seria o driver de comunicação entre o banco e o Java. Essa camada teria quatro especializações \(uma para cada tipo de banco de dados\).
-* Uma camada de alto nível ou camada de abstração: Responsável pela alta abstração para o desenvolvedor Java. É nessa camada que ficar as anotações, o EntityManager, etc.
+* Uma camada de alto nível ou camada de mapeamento: Responsável pelo mapeamento para o desenvolvedor Java. É nessa camada que ficar as anotações, o EntityManager, etc.
 
 Com essa abordagem temos algumas vantagens:
 
 * O distribuidor do banco de dados, precisa se preocupar com a comunicação e o parser para o Java.
-* O distribuidor da solução Java, precisa se preocupar apenas com a API de abstração.
-* O desenvolvedor Java não fica preso nem ao banco de dados e nem a API de abstração.
+* O distribuidor da solução Java, precisa se preocupar apenas com a API de mapeamento.
+* O desenvolvedor Java não fica preso nem ao banco de dados e nem a API de mapeamento.
 
 Essas APIs serão opcionais uma da outra, em outras palavras, um distribuidor só precisa se preocupar com a camada do seu interesse.
 
@@ -59,7 +59,7 @@ O JNoSQL é uma API Java flexível e extensiva cujo o objetivo é realizar comun
 
 * **A camada de comunicação:** A API que realiza a comunicação com o banco de dados, em analogia, seria o que o JDBC faz para o SQL. Essa API será subcomposta inicialmente de quatro partes, uma para cada tipo de banco de dados NoSQL.
 
-* **A camada de abstração:** Uma API que realiza a integração entre outras ferramentas, assim será o melhor amigo para o desenvolvedor Java. Essa API será focada em anotações e integração com outras tecnologias, por exemplo, Bean validation. O seu coração será baseado em CDI.
+* **A camada de mapeamento:** Uma API que realiza a integração entre outras ferramentas, assim será o melhor amigo para o desenvolvedor Java. Essa API será focada em anotações e integração com outras tecnologias, por exemplo, Bean validation. O seu coração será baseado em CDI.
 
 #### Diana
 
@@ -71,7 +71,6 @@ O projeto Diana tem como objetivo tratar apenas da camada de baixo nível, ou se
 * A camada de abstração, faz sentido como extensão do JPA e não criar uma nova.
 * O objetivo da camada de comunicação é um escopo bem grande uma vez que se tem diversos tipos de bancos de dados e diversas implementações.
 * Facilitar a implementação com as camadas de abstração já existentes, além de iniciar as conversas sobre esse tipo de padronização.
-
 
 Com isso o projeto Diana **não** será:
 
