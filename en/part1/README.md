@@ -51,7 +51,7 @@ These APIs are optional each other, in other words, a Java solution just needs t
 The JNoSQL is a several tool to make easy integration between the Java Application with the NoSQL. JNoSQL has a standard API. However, NoSQL has a diversity even when both are the same type. Eg. two column family databases, HBase and Cassandra, they have particular behavior and resource that make their individual such as Cassandra Query Language and consistency level that just does exist on Cassandra. So the API must be extensive and configurable to have support also to a specific database. To solve this problem the project gonna have two layers:
 
 * **Communication API**: An API just to communicate with the database, exactly what JDBC does to SQL. This API is going to have four specializations, one for each kind of database.
-* **Abstraction API**: An API to do integration and do the best integration with the Java developer. That is going to be annotation drive and going to have integration with other technologies like Bean Validation, etc.
+* **Mapping API**: An API to do integration and do the best integration with the Java developer. That is going to be annotation drive and going to have integration with other technologies like Bean Validation, etc.
 
 #### Diana
 
@@ -67,7 +67,7 @@ Diana is valuable also alone when a developer what to use just the communication
 
 ![](../../images/artemis-integration.png)
 
-Artemis is the integration and abstract layer, in other words, it takes the communication level, Diana, and it does integration with others technologies such as Bean Validation and also with an entity model. It has a CDI engine; its formula is simple:
+Artemis is the integration and mapping layer, in other words, it takes the communication level, Diana, and it does integration with others technologies such as Bean Validation and also with an entity model. It has a CDI engine; its formula is simple:
 
 Diana plus CDI equals to Artemis.
 
