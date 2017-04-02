@@ -27,22 +27,22 @@ In the relational database there are two mechanisms, beyond DAO, JDBC, and JPA:
 
 * **JDBC**: a deep layer with a database that has communications, basic transactions, basically it's a driver to a particular database.
 
-* **JPA**: A high layer that has communication either JDBC and JPA. This layer has high abstraction to Java; this place has annotations and an EntityManager. In general, a JPA has integration with other specifications such as CDI and Bean Validation.
+* **JPA**: A high layer that has communication either JDBC and JPA. This layer has high mapping to Java; this place has annotations and an EntityManager. In general, a JPA has integration with other specifications such as CDI and Bean Validation.
 
 A huge advantage of this strategy that one change, either JDBC or JPA, can happen quickly. When a developer changes a database, he just needs the switch to a respective driver by a database and done! Code ready to a new database changed.
 
 In a NoSQL database, there isn't a strategy to save code or little impact for a change. All APIs are different and don't follow any one standard, so one change to new database results in a lot of work. There are some solutions such as Spring Data, Hibernate OGM, TopLink NoSQL but it's at a high level. In other words, if this high-level API hasn't support to a particular database the result going to be either changing a high-level API or use the API from NoSQL database directly, so lost a lot of code. This solution has several issues:
 
-* The database vendor need to be worried about the high-level abstraction to Java world
+* The database vendor need to be worried about the high-level mapping to Java world
 
 * The solution provider needs to be concerned about the low level of communication with a particular database. \* The database vendor needs to “copy” this communication solutions to all Java vendors.
 
-* To a Java developer there are two lock-in types: If a developer uses an API directly for a change, it will lose code. If a developer uses a high-level abstraction, this developer has lock-in in a Java solution because if this high level hasn't support to a particular NoSQL database, the developer needs to change to either Java solution or use an API NoSQL directly.
+* To a Java developer there are two lock-in types: If a developer uses an API directly for a change, it will lose code. If a developer uses a high-level mapping, this developer has lock-in in a Java solution because if this high level hasn't support to a particular NoSQL database, the developer needs to change to either Java solution or use an API NoSQL directly.
 
 The solve this problem the API should have two layers:
 
 * The communication layer: the driver from a particular database that connects Java to an accurate database. This layer has four specializations, one to each NoSQL type.
-* The abstraction level: its duty is to high concept to Java developers, this layer has annotations and integration to other specializations.
+* The mapping level: its duty is to high concept to Java developers, this layer has annotations and integration to other specializations.
 
 These APIs are optional each other, in other words, a Java solution just needs to implement a great solution, and the database vendors need to implements the connection API.
 
@@ -59,7 +59,7 @@ The JNoSQL is a several tool to make easy integration between the Java Applicati
 
 The Diana Project has a goal do the low-level API, in other words, communicate with the NoSQL databases. This project is going to work as a driver to NOSQL databases. At overall it has four APIs inside, one for each NoSQL kind, beyond it own TCK. A test compatibility kit, the TCK, are a test group that makes sure if an A NoSQL database does support a database, e.g., If A key value database wants to prove its database has Diana support.
 
-So even Diana does not do the abstraction level, supports to make the developer life easier, it makes easier integration with frameworks that do this.
+So even Diana does not do the mappinng level, supports to make the developer life easier, it makes easier integration with frameworks that do this.
 
 Diana is valuable also alone when a developer what to use just the communication layer, that is going to easier to change to another database of the same type.
 
