@@ -106,7 +106,7 @@ public class User implements Serializable {
 
 ##### Embeddable
 
-Indica que as classes anotadas com essa anotação serão persistidas de forma embarcada, ou seja, na conversão de uma entidade para o tipo documentos o tipo embarcado será um suddocumento.
+Indica que as classes com essa anotação serão persistidas de forma embarcada, ou seja, na conversão de uma entidade para o tipo documentos o tipo embarcado será um suddocumento.
 
 ```java
 @Entity

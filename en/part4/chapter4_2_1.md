@@ -1,10 +1,10 @@
 ## Document Repository
 
-This repository has the duty to be a bridge between the entity model and Diana to document collection. It has two classes `DocumentRepository` and `DocumentRepositoryAsync` to synchronous and asynchronous works.
+This repository has the duty to be a bridge between the entity model and Diana to document collection. It has two classes `DocumentRepository` and `DocumentRepositoryAsync`, one for the synchronous and the other for the asynchronous work.
 
 #### `DocumentRepository`
 
-The `DocumentRepository` is the document repository to synchronous tasks. It has three components:
+The `DocumentRepository` is the document repository for the synchronous tasks. It has three components:
 
 * **DocumentEntityConverter**: That converts an entity to communication API, e.g., The Person to DocumentEntity.
 
@@ -108,7 +108,7 @@ public void sample() {
 
 #### `DocumentRepositoryAsync`
 
-The `DocumentRepositoryAsync` is the document repository to asynchronous tasks. It has two components:
+The `DocumentRepositoryAsync` is the document repository for the asynchronous tasks. It has two components:
 
 * **DocumentEntityConverter:** That converts an entity to communication API, e.g., The Person to DocumentEntity.
 

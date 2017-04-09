@@ -117,7 +117,7 @@ public class UserEvent {
 
 ### Eventos para buscar e deletar informações
 
-Além dos eventos de inserção de atualização, dentro do das APIs de colunas e documentos, o Artemis tem um evento específico para quando uma query de busca ou para remover é lançada.
+Além dos eventos de inserção e atualização, dentro do das APIs de colunas e documentos, o Artemis tem um evento específico para quando uma query de busca ou uma remoção é efetuada.
 
 ```java
 public class ColumnQueryEvent {

@@ -1,10 +1,10 @@
 ## Column Family Repository
 
-This repository has the duty to be a bridge between the entity model and Diana to a column family. It has two classes `ColumnRepository` and `ColumnRepositoryAsync` to synchronous and asynchronous works.
+This repository has the duty to be a bridge between the entity model and Diana to a column family. It has two classes `ColumnRepository` and `ColumnRepositoryAsync`, one for the synchronous and the other for the asynchronous work.
 
 #### ColumnRepository
 
-The `ColumnRepository` is the column repository to synchronous tasks. It has three components:
+The `ColumnRepository` is the column repository for the synchronous tasks. It has three components:
 
 * **ColumnEntityConverter**: That converts an entity to communication API, e.g., The Person to ColumnFamilyEntity.
 
@@ -110,7 +110,7 @@ public void sample() {
 #### ColumnRepositoryAsync
 
 
-The `ColumnRepositoryAsync` is the document repository to asynchronous tasks. It has two components:
+The `ColumnRepositoryAsync` is the document repository for the asynchronous tasks. It has two components:
 
 * **ColumnEntityConverter:** That converts an entity to communication API, e.g., The Person to ColumnFamilyEntity.
 
