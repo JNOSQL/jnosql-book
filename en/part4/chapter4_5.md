@@ -28,7 +28,7 @@ public class Person {
 }
 ```
 
-In case of a validation problem in the project, an ConstraintViolationException will be thrown.
+In case of a validation problem in the project, a ConstraintViolationException will be thrown.
 
 ```java
  Person person = Person.builder()
@@ -37,7 +37,7 @@ In case of a validation problem in the project, an ConstraintViolationException 
                 .withSalary(BigDecimal.ONE)
                 .withPhones(singletonList("123131231"))
                 .build();
-repository.save(person);//throws an ConstraintViolationException
+repository.save(person);//throws a ConstraintViolationException
 ```
 
 
