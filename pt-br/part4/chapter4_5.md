@@ -37,7 +37,7 @@ Caso seja encontrado um problema na validação no projeto ele lançará uma exc
                 .withSalary(BigDecimal.ONE)
                 .withPhones(singletonList("123131231"))
                 .build();
-repository.save(person);//throws an ConstraintViolationException
+repository.save(person);//throws a ConstraintViolationException
 ```
 
 
