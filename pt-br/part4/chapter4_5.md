@@ -28,10 +28,7 @@ public class Person {
 }
 ```
 
-  
-Caso seja encontrado um problema na validação no projeto ele lançará uma exceção do tipo ArtemisValidationException.
-
-
+Caso seja encontrado um problema na validação no projeto ele lançará uma exceção do tipo ConstraintViolationException.
 
 ```java
  Person person = Person.builder()
@@ -40,7 +37,7 @@ Caso seja encontrado um problema na validação no projeto ele lançará uma exc
                 .withSalary(BigDecimal.ONE)
                 .withPhones(singletonList("123131231"))
                 .build();
-repository.save(person);//throws an ArtemisValidationException 
+repository.save(person);//throws an ConstraintViolationException
 ```
 
 
