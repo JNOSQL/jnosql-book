@@ -1,6 +1,6 @@
 ## Bean Validation
 
-Artemis has support to use Bean Validation (BV), which supports a plugin that, basically, listens an event from preEntity and executes the BV. The artemis-validation has the support for BV, but does not implement it, thus, is necessary to add either the API and an implementation of BV in the project.
+Artemis has support to use Bean Validation \(BV\), which supports a plugin that, basically, listens an event from preEntity and executes the BV. The artemis-validation has the support for BV, but does not implement it, thus, is necessary to add either the API and an implementation of BV in the project.
 
 ```java
 @Entity
@@ -28,9 +28,7 @@ public class Person {
 }
 ```
 
-
-In case of a validation problem in the project, an ArtemisValidationException will be thrown.
-
+In case of a validation problem in the project, an ConstraintViolationException will be thrown.
 
 ```java
  Person person = Person.builder()
@@ -39,5 +37,8 @@ In case of a validation problem in the project, an ArtemisValidationException wi
                 .withSalary(BigDecimal.ONE)
                 .withPhones(singletonList("123131231"))
                 .build();
-repository.save(person);//throws an ArtemisValidationException
+repository.save(person);//throws an ConstraintViolationException
 ```
+
+
+
