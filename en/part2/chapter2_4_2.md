@@ -9,7 +9,6 @@ The Manager class for the column family type can be synchronous or asynchronous:
 
 The `ColumnFamilyManager` is the class that manages the persistence on the synchronous way to column family.
 
-
 ```java
        ColumnEntity entity = ColumnEntity.of("columnFamily");
         Column diana = Column.of("name", "Diana");
@@ -60,8 +59,7 @@ Sometimes on an asynchronous process, is important to know when this process is 
 
 ##### Search information on a column family
 
-#####
-
+#### 
 
 Diana has support to retrieve information from both ways synchronous and asynchronous from the `ColumnQuery` class. The `ColumnQuery`  has information such as sort type, document and also the condition to retrieve information.
 
@@ -72,7 +70,6 @@ ColumnCondition nameEqualsAda = ColumnCondition.eq(Column.of("name", “Ada”))
 ```
 
 Also, the developer can use the aggregators such as **AND**, **OR** e **NOT**.
-
 
 ```java
 ColumnCondition nameEqualsAda = ColumnCondition.eq(Column.of("name", "Ada"));
@@ -95,8 +92,8 @@ ColumnQuery also has pagination feature to define where the data start, and it l
         query.and(ageBiggerTen);
         query.addSort(Sort.of("name", Sort.SortType.ASC));
 
-        query.setLimit(10);
-        query.setStart(2);
+        query.withMaxResults(10);
+        query.withFirstResult(2);
 
         List<ColumnEntity> entities = manager.find(query);
         Optional<ColumnEntity> entity = manager.singleResult(query);
@@ -125,3 +122,6 @@ It is smoother than `ColumnQuery` because there isn't pagination and sort featur
         managerAsync.delete(query);
         managerAsync.delete(query, v -> {});
 ```
+
+
+
