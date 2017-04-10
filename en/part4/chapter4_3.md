@@ -10,7 +10,7 @@ To use CrudRepository, just need to create a new interface that extends the **Cr
     }
 ```
 
-The qualifier is mandatory to define the database type whose will use at the injection point moment.
+The qualifier is mandatory to define the database type that will be used at the injection point moment.
 
 ```java
 @Inject

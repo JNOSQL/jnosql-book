@@ -3,11 +3,11 @@
 As mentioned previously, Artemis has support to persistence lifecycle to update and save an Entity. This lifecycle order is managed by a **WorkFlow** class. The default workflow is:
 
 * **firePreEntity**: The Object received from Artemis.
-* **firePreEntityDataBaseType**: As the previous event, however, to a specified database, in other words, each database has a particular database.
+* **firePreEntityDataBaseType**: Just like the previous event, however, to a specific database, in other words, each database has a particular event.
 * **firePreAPI**: The object converted to a communication layer.
 * **firePostAPI**: The entity connection as a response from the database.
 * **firePostEntity**: The entity model from the API low level from the firePostAPI.
-* **firePostEntityDataBaseType**: As the previous event, however, to a specified database, in other words, each database has a particular database.
+* **firePostEntityDataBaseType**:  Just like the previous event, however, to a specific database, in other words, each database has a particular event.
 
 Tha watch this event, just need to use an @**Observes**, a form of CDI itself.
 
@@ -116,11 +116,11 @@ public class UserEvent {
 
 
 
-### Events to search and remove from database
+### Events to search and remove information
 
 
 
-Also, there are functions to query to both retrieve and remove, at the document and column API, Artemis supports, when a query to both delete and retrieve an event is fired.
+Beyond the events for insert and update, in the document and column APIs, Artemis has also a specific event for search queries and deletions.
 
 
 

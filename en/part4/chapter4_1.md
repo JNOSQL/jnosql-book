@@ -8,7 +8,7 @@ As mentioned previously, Artemis has annotations that make the Java developer li
 
 #### Annotation Models
 
-The annotation Models is to convert the entity model to the entity on communication, the Diana entity:
+The annotation model is to convert the entity model to the entity on communication, the Diana entity:
 
 
 * Entity
@@ -55,7 +55,7 @@ public class Person {
 
 ##### MappedSuperclass
 
-If this annotation puts on a Parent class, the Artemis will persist its information as well. So beyond the son class, Artemis will store any field that is in Parent class with Column annotation.
+If this annotation is on the parent class, Artemis will persist its information as well. So beyond the son class, Artemis will store any field that is in Parent class with Column annotation.
 
 
 ```java
@@ -87,7 +87,7 @@ On this sample above, when saves a `Dog` instance, it saves the `Animal` case to
 
 ##### Key
 
-Just to Key-value database, that shows on the key-value database with a field is the key.
+Just for the key-value database, it shows which attribute is the key, thus the value will be the remaining information. The way of storing the class will depend on the database driver.
 
 ```java
 @Entity
@@ -135,7 +135,7 @@ public class Author {
 
 ##### Convert
 
-As Diana, Artemis has a converter at abstraction level. This feature is useful, e.g., To cipher a field, String to String, or just to do a converter to a custom type using annotation. The `Converter` annotation has a parameter, an AttributeConverter implementation class. Eg. The sample bellow to create a converter to a custom Money class.
+As Diana, Artemis has a converter at abstraction level. This feature is useful, e.g., to cipher a field, String to String, or just to do a converter to a custom type using annotation. The `Converter` annotation has a parameter, and an AttributeConverter implementation class can be used. Eg. The sample bellow shows how to create a converter to a custom Money class.
 
 ```java
 @Entity

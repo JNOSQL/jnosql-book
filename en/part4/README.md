@@ -20,9 +20,9 @@ To go straight and cover the four NoSQL types, this API has four domains:
 
 Artemis has three parts:
 
-* **Artemis-core**: That is the Artemis engine where there are the events, annotations and the Diana integration.
+* **Artemis-core**: This is the Artemis engine where there are events, annotations and the Diana integration.
 
-* **Artemis-validation**: That is the Bean Validation integration as artemis-core plugin.
+* **Artemis-validation**: This is the Bean Validation integration as artemis-core plugin.
 
 * **Artemis-extension**: Like Diana, there is a support for database diversity. This project has extensions to the each database type on the database mapping level.
 
