@@ -110,15 +110,15 @@ repository.update(people);
 
 #### Criando Queries com o CrudRepository
 
-Além de salvar e atualizar a informação também é possível recuperar e deletar a informação utilizando queries dinâmicas no método. Com esse intuito o CrudRepository vem com algumas palavras reservadas:
+Além de salvar e atualizar a informação também é possível recuperar e deletar a informação utilizando methods queries. Com esse intuito o CrudRepository vem com algumas palavras reservadas:
 
 * **findBy**: Como prefixo para encontrar alguma informação
 * **deleteBy**: Como prefixo, para deletar alguma informação
 
 Além dos Operadores:
 
-* AND
-* OR
+* And
+* Or
 * Between
 * LessThan
 * GreaterThan
