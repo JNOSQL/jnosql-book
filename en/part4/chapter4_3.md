@@ -108,15 +108,15 @@ repository.update(people);
 
 #### Search information from CrudRepository
 
-The CRUDRepository also has a dynamic query from the method name. These are the keywords:
+The CRUDRepository also has a method query from the method name. These are the keywords:
 
 * **findBy**: The prefix to find some information
 * **deleteBy**: The prefix to delete some information
 
 Also the operators:
 
-* AND
-* OR
+* And
+* Or
 * Between
 * LessThan
 * GreaterThan
