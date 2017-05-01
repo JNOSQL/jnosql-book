@@ -1,13 +1,11 @@
-## 
+## Repisotry
 
-## CrudRepisotry
+Além dos repositórios de família de colunas e também de documentos o Artemis também possui o Repository. Essa interface tem como objetivo auxiliar na criação de classes repositórios específicas para as entidades além de facilitar na criação de uma query.
 
-Além dos repositórios de família de colunas e também de documentos o Artemis também possui o CRUDRepository. Essa interface tem como objetivo auxiliar na criação de classes repositórios específicas para as entidades além de facilitar na criação de uma query.
-
-Para utilizar esse recurso é necessário apenas criar uma interface que extenda de **CrudRepository**.
+Para utilizar esse recurso é necessário apenas criar uma interface que extenda de **Repository**.
 
 ```java
-    interface PersonRepository extends CrudRepository<Person> {
+    interface PersonRepository extends Repository<Person> {
 
     }
 ```
@@ -108,9 +106,9 @@ repository.update(people);
 repository.update(people);
 ```
 
-#### Criando Queries com o CrudRepository
+#### Criando Queries com o Repository
 
-Além de salvar e atualizar a informação também é possível recuperar e deletar a informação utilizando methods queries. Com esse intuito o CrudRepository vem com algumas palavras reservadas:
+Além de salvar e atualizar a informação também é possível recuperar e deletar a informação utilizando methods queries. Com esse intuito o Repository vem com algumas palavras reservadas:
 
 * **findBy**: Como prefixo para encontrar alguma informação
 * **deleteBy**: Como prefixo, para deletar alguma informação
@@ -130,7 +128,7 @@ Além dos Operadores:
 * OrderBy\_\_\_\_\_ASC
 
 ```java
-interface PersonRepository extends CrudRepository<Person> {
+interface PersonRepository extends Repository<Person> {
 
     List<Person> findByAddress(String address);
 
@@ -146,9 +144,9 @@ interface PersonRepository extends CrudRepository<Person> {
 
 Com isso o artemis cuidará de implementar esses métodos.
 
-#### Utilizando o CrudRepository de forma assíncrona
+#### Utilizando o Repository de forma assíncrona
 
-Para trabalhar de forma assíncrona existe a interface CrudRepositoryAsync, seu funcionamento é semelhante ao CrudRepository.
+Para trabalhar de forma assíncrona existe a interface RepositoryAsync, seu funcionamento é semelhante ao Repository.
 
 ```java
 @Inject
@@ -185,7 +183,7 @@ repositoryAsync.update(people);
 Também é possível recuperar e deletar a informação de forma assíncrona, a diferença é que na recuperação um callback é obrigatório no fim do método enquanto para deletar ou remover informação o callback é opcional.
 
 ```java
-    interface PersonRepositoryAsync extends CrudRepositoryAsync<Person> {
+    interface PersonRepositoryAsync extends RepositoryAsync<Person> {
 
         void findByNickname(String nickname, Consumer<List<Person>> callback);
 
@@ -195,14 +193,14 @@ Também é possível recuperar e deletar a informação de forma assíncrona, a 
     }
 ```
 
-#### KeyValueCrudRepository
+#### KeyValueRepository
 
 Assim como a família de colunas e coleção de documentos, chave valor tem o recurso que auxilia tem como objetivo auxiliar na criação de classes repositórios específicas para as entidades o KeyValueCrudRepository.
 
-Para utilizar esse recurso é necessário apenas criar uma interface que extenda de **KeyValueCrudRepository**.
+Para utilizar esse recurso é necessário apenas criar uma interface que extenda de **KeyValueRepository**.
 
 ```java
-public interface UserRepository extends KeyValueCrudRepository<User> {
+public interface UserRepository extends KeyValueRepository<User> {
 }
 ```
 
