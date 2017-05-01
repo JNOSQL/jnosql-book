@@ -4,7 +4,7 @@ The key value is a bridge between the entity and the key-value database.
 
 #### `KeyValueTemplate`
 
-The `KeyValuTemplate` is the column repository to synchronous tasks. It has three components:
+The `KeyValuTemplate` is the column template to synchronous tasks. It has three components:
 
 The KeyValuTemplate is responsible for persistency of an entity in a key-value database. It is composed basically for three components.
 
@@ -28,7 +28,7 @@ template.put(users);
 Optional<Person> ada = template.get("ada", Person.class);
 Iterable<Person> usersFound = template.get(Collections.singletonList("ada"), Person.class);
 ```
-To use a key-value repository just follows the CDI style and put an `@Inject` on the field.
+To use a key-value template just follows the CDI style and put an `@Inject` on the field.
 
 
 ```java
@@ -80,7 +80,7 @@ To work with more than one key-value Template, there are two approaches:
 
 ```java
 @Inject
-private KeyValueRepositoryProducer producer;
+private KeyValueTemplateProducer producer;
 
 public void sample() {
    BucketManager managerA = //instance;
