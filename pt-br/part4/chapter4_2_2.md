@@ -1,10 +1,10 @@
-## Repositório de Família de Colunas
+## Template de Família de Colunas
 
-O repositório de família de coluna é responsável para realizar a comunicação da entidade para um banco de dados do tipo família de coluna. Ele é subdividido em `ColumnRepository` e `ColumnRepositoryAsync` para trabalhos síncronos e assíncronos respectivamente.
+O template de família de coluna é responsável para realizar a comunicação da entidade para um banco de dados do tipo família de coluna. Ele é subdividido em `ColumnTemplate` e `ColumnTemplateAsync` para trabalhos síncronos e assíncronos respectivamente.
 
-#### ColumnRepository
+#### ColumnTemplate
 
-O ColumnRepository é responsável pela persistência de uma Entidade em um banco de dados do tipo coluna. Ele é composto, basicamente, por três componentes:
+O ColumnTemplate é responsável pela persistência de uma Entidade em um banco de dados do tipo coluna. Ele é composto, basicamente, por três componentes:
 
 * **ColumnEntityConverter**: Responsável por converter da entidade, por exemplo, Person para ColumnEntity.
 
@@ -13,7 +13,7 @@ O ColumnRepository é responsável pela persistência de uma Entidade em um banc
 * **ColumnWorkflow**: Segue o fluxo de persistência durante os métodos de save e update.
 
 ```java
-ColumnRepository repository = //instance
+ColumnTemplate template = //instance
 
 Person person = new Person();
 person.setAddress("Olympus");
@@ -23,12 +23,12 @@ person.setNickname("artemis");
 
 List<Person> people = Collections.singletonList(person);
 
-Person personUpdated = repository.save(person);
-repository.save(people);
-repository.save(person, Duration.ofHours(1L));
+Person personUpdated = template.save(person);
+template.save(people);
+template.save(person, Duration.ofHours(1L));
 
-repository.update(person);
-repository.update(people);
+template.update(person);
+template.update(people);
 ```
 
 Para a busca e a remoção da informação são utilizadas as mesmas classes do Diana para documentos, ou seja, ColumnQuery e **ColumnDeleteQuery** respectivamente.
@@ -38,18 +38,18 @@ ColumnQuery query = DocumentQuery.of("Person");
 query.and(ColumnCondition.eq(Column.of("address", "Olympus")));
 
 List<Person> peopleWhoLiveOnOlympus = repository.find(query);
-Optional<Person> artemis = repository.singleResult(ColumnQuery.of("Person")
+Optional<Person> artemis = template.singleResult(ColumnQuery.of("Person")
                 .and(ColumnCondition.eq(Column.of("nickname", "artemis"))));
 
 ColumnDeleteQuery deleteQuery = query.toDeleteQuery();
 repository.delete(deleteQuery);
 ```
 
-Como o motor do Artemis é CDI para que se posso utilizar o ColumnRepository basta dar um @Inject num campo.
+Como o motor do Artemis é CDI para que se posso utilizar o ColumnTemplate basta dar um @Inject num campo.
 
 ```java
 @Inject
-private ColumnRepository repository;
+private ColumnTemplate template;
 ```
 
 Para isso é necessário que a aplicação injete um ColumnFamilyManager**:**
@@ -62,18 +62,18 @@ public ColumnFamilyManager getManager() {
 }
 ```
 
-Para trabalhar com mais de um tipo de ColumnRepository existem duas opções:
+Para trabalhar com mais de um tipo de ColumnTemplate existem duas opções:
 
 1\) A primeira é com a utilização dos qualificadores:
 
 ```java
     @Inject
     @Database(value = DatabaseType.COLUMN, provider = "databaseA")
-    private ColumnRepository repositorA;
+    private ColumnTemplate templateA;
 
     @Inject
     @Database(value = DatabaseType.COLUMN, provider = "databaseB")
-    private ColumnRepository repositoryB;
+    private ColumnTemplate templateB;
 
 
     //producers methods
@@ -92,30 +92,30 @@ Para trabalhar com mais de um tipo de ColumnRepository existem duas opções:
     }
 ```
 
-2\) A segunda delas é a partir do  **ColumnRepositoryProducer**
+2\) A segunda delas é a partir do  **ColumnTemplateProducer**
 
 ```java
 @Inject
-private ColumnRepositoryProducer producer;
+private ColumnTemplateProducer producer;
 
 public void sample() {
    ColumnFamilyManager managerA = //instance;
    ColumnFamilyManager managerB = //instance
-   ColumnRepository repositorA = producer.get(managerA);
-   ColumnRepository repositoryB = producer.get(managerB);
+   ColumnTemplate templateA = producer.get(managerA);
+   ColumnTemplate templateB = producer.get(managerB);
 }
 ```
 
-#### ColumnRepositoryAsync
+#### ColumnTemplateAsync
 
-O `ColumnRepositoryAsync` é responsável pela persistência de uma Entidade em um banco de dados do tipo família de colunas de forma assíncrona. Ele é composto, basicamente, por dois componentes:
+O `ColumnTemplateAsync` é responsável pela persistência de uma Entidade em um banco de dados do tipo família de colunas de forma assíncrona. Ele é composto, basicamente, por dois componentes:
 
 * **ColumnEntityConverter:** Responsável por converter da entidade, por exemplo, Person para ColumnEntity.
 
 * **ColumnFamilyManagerAsync:** Entidade manager de documentos do Diana de forma assíncrona.
 
 ```java
-ColumnRepositoryAsync repositoryAsync = //instance
+ColumnTemplateAsync templateAsync = //instance
 
 Person person = new Person();
 person.setAddress("Olympus");
@@ -126,14 +126,14 @@ person.setNickname("artemis");
 List<Person> people = Collections.singletonList(person);
 
 Consumer<Person> callback = p -> {};
-repositoryAsync.save(person);
-repositoryAsync.save(person, Duration.ofHours(1L));
-repositoryAsync.save(person, callback);
-repositoryAsync.save(people);
+templateAsync.save(person);
+templateAsync.save(person, Duration.ofHours(1L));
+templateAsync.save(person, callback);
+templateAsync.save(people);
 
-repositoryAsync.update(person);
-repositoryAsync.update(person, callback);
-repositoryAsync.update(people);
+templateAsync.update(person);
+templateAsync.update(person, callback);
+templateAsync.update(people);
 ```
 
 Para a busca e a remoção da informação são utilizadas as mesmas classes do Diana para documentos, ou seja, **ColumnQuery** e **ColumnDeleteQuery** respectivamente também é possível o uso de callback.
@@ -146,11 +146,11 @@ repositoryAsync.delete(deleteQuery);
 repositoryAsync.delete(deleteQuery, voidCallBack);
 ```
 
-Como o motor do Artemis é CDI para que se posso utilizar o ColumnRepository basta dar um @Inject num campo.
+Como o motor do Artemis é CDI para que se posso utilizar o ColumnTemplate basta dar um @Inject num campo.
 
 ```java
 @Inject
-private ColumnRepositoryAsync repository;
+private ColumnTemplateAsync template;
 ```
 
 Para isso é necessário que a aplicação injete um **ColumnFamilyManagerAsync:**
@@ -163,18 +163,18 @@ public ColumnFamilyManagerAsync getManager() {
 }
 ```
 
-Para trabalhar com mais de um tipo de ColumnRepositoryAsync existem duas opções:
+Para trabalhar com mais de um tipo de ColumnTemplateAsync existem duas opções:
 
 1\) A primeira é com a utilização dos qualificadores:
 
 ```java
     @Inject
     @Database(value = DatabaseType.COLUMN, provider = "databaseA")
-    private ColumnRepositoryAsync repositorA;
+    private ColumnTemplateAsync repositorA;
 
     @Inject
     @Database(value = DatabaseType.COLUMN, provider = "databaseB")
-    private ColumnRepositoryAsync repositoryB;
+    private ColumnTemplateAsync repositoryB;
 
 
     //producers methods
@@ -193,21 +193,19 @@ Para trabalhar com mais de um tipo de ColumnRepositoryAsync existem duas opçõe
     }
 ```
 
-2\) A segunda delas é a partir do  **ColumnRepositoryAsyncProducer**
+2\) A segunda delas é a partir do  **ColumnTemplateAsyncProducer**
 
 ```java
 @Inject
-private DocumentRepositoryAsyncProducer producer;
+private DocumentTemplateAsyncProducer producer;
 
 public void sample() {
    ColumnFamilyManagerAsync managerA = //instance;
    ColumnFamilyManagerAsync managerB = //instance
-   ColumnRepositoryAsync repositorA = producer.get(managerA);
-   ColumnRepositoryAsync repositoryB = producer.get(managerB);
+   ColumnTemplateAsync repositorA = producer.get(managerA);
+   ColumnTemplateAsync repositoryB = producer.get(managerB);
 }
 ```
-
-#### 
 
 
 
