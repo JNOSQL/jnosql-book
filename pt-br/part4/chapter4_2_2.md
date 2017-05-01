@@ -37,12 +37,12 @@ Para a busca e a remoção da informação são utilizadas as mesmas classes do 
 ColumnQuery query = DocumentQuery.of("Person");
 query.and(ColumnCondition.eq(Column.of("address", "Olympus")));
 
-List<Person> peopleWhoLiveOnOlympus = repository.find(query);
+List<Person> peopleWhoLiveOnOlympus = template.find(query);
 Optional<Person> artemis = template.singleResult(ColumnQuery.of("Person")
                 .and(ColumnCondition.eq(Column.of("nickname", "artemis"))));
 
 ColumnDeleteQuery deleteQuery = query.toDeleteQuery();
-repository.delete(deleteQuery);
+template.delete(deleteQuery);
 ```
 
 Como o motor do Artemis é CDI para que se posso utilizar o ColumnTemplate basta dar um @Inject num campo.
