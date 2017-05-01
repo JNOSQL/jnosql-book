@@ -1,10 +1,10 @@
 ## Template de Documentos
 
-O template de documentos é responsável para realizar a comunicação da entidade para um banco de dados do tipo documentos. Ele é subdividido em `TemplateRepository` e `TemplateRepositoryAsync`para trabalhos síncronos e assíncronos respectivamente.
+O template de documentos é responsável para realizar a comunicação da entidade para um banco de dados do tipo documentos. Ele é subdividido em `DocumentTemplate` e `DocumentTemplateAsync`para trabalhos síncronos e assíncronos respectivamente.
 
-#### `TemplateRepository`
+#### `DocumentTemplate`
 
-O `TemplateRepository` é responsável pela persistência de uma Entidade em um banco de dados do tipo documento. Ele é composto, basicamente, por três componentes:
+O `DocumentTemplate` é responsável pela persistência de uma Entidade em um banco de dados do tipo documento. Ele é composto, basicamente, por três componentes:
 
 * **DocumentEntityConverter**: Responsável por converter da entidade, por exemplo, Person para DocumentEntity.
 
@@ -13,7 +13,7 @@ O `TemplateRepository` é responsável pela persistência de uma Entidade em um 
 * **DocumentWorkflow**: Segue o fluxo de persistência durante os métodos de save e update.
 
 ```java
-DocumentRepository template = //instance
+DocumentTemplate template = //instance
 
 Person person = new Person();
 person.setAddress("Olympus");
