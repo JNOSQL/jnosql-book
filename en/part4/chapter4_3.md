@@ -1,11 +1,11 @@
-# CrudRepisotry
+# Repisotry
 
 In addition to repositories class, Artemis has the CRUDRepository. This interface helps the Entity repository to save, update, delete and retrieve information.
 
-To use CrudRepository, just need to create a new interface that extends the **CrudRepository**.
+To use Repository, just need to create a new interface that extends the **Repository**.
 
 ```java
-    interface PersonRepository extends CrudRepository<Person> {
+    interface PersonRepository extends Repository<Person> {
 
     }
 ```
@@ -106,7 +106,7 @@ repository.update(people);
 repository.update(people);
 ```
 
-#### Search information from CrudRepository
+#### Search information from Repository
 
 The CRUDRepository also has a method query from the method name. These are the keywords:
 
@@ -128,7 +128,7 @@ Also the operators:
 * OrderBy\_\_\_\_\_ASC
 
 ```java
-interface PersonRepository extends CrudRepository<Person> {
+interface PersonRepository extends Repository<Person> {
 
     List<Person> findByAddress(String address);
 
@@ -144,9 +144,9 @@ interface PersonRepository extends CrudRepository<Person> {
 
 Using these keywords, Artemis will create the queries.
 
-#### Using CrudRepository as asynchronous way
+#### Using Repository as asynchronous way
 
-The CrudRepositoryAsync interface works similarly as CrudRepository but with asynchronous work.
+The RepositoryAsync interface works similarly as CrudRepository but with asynchronous work.
 
 ```java
 @Inject
@@ -183,7 +183,7 @@ repositoryAsync.update(people);
 Also, delete and retrieve information with a callback.
 
 ```java
-    interface PersonRepositoryAsync extends CrudRepositoryAsync<Person> {
+    interface PersonRepositoryAsync extends RepositoryAsync<Person> {
 
         void findByNickname(String nickname, Consumer<List<Person>> callback);
 
@@ -193,14 +193,14 @@ Also, delete and retrieve information with a callback.
     }
 ```
 
-#### KeyValueCrudRepository
+#### KeyValueRepository
 
 The KeyValueCrudRepository is a CRUDRepository to key-value type.
 
-If the same way of CrudRepository, just extends **KeyValueCrudRepository**.
+If the same way of CrudRepository, just extends **KeyValueRepository**.
 
 ```java
-public interface UserRepository extends KeyValueCrudRepository<User> {
+public interface UserRepository extends KeyValueRepository<User> {
 }
 ```
 
