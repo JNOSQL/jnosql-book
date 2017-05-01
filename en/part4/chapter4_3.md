@@ -146,7 +146,7 @@ Using these keywords, Artemis will create the queries.
 
 #### Using Repository as asynchronous way
 
-The RepositoryAsync interface works similarly as CrudRepository but with asynchronous work.
+The RepositoryAsync interface works similarly as Repository but with asynchronous work.
 
 ```java
 @Inject
