@@ -26,7 +26,7 @@ Optional<Person> ada = template.get("ada", Person.class);
 Iterable<Person> usersFound = template.get(Collections.singletonList("ada"), Person.class);
 ```
 
-Como o motor do Artemis é CDI para que se posso utilizar o KeyValueRepository basta dar um @Inject num campo.
+Como o motor do Artemis é CDI para que se posso utilizar o KeyValueTemplate basta dar um @Inject num campo.
 
 ```java
 @Inject
