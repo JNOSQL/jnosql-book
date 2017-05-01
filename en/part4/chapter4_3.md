@@ -1,6 +1,6 @@
 # Repository
 
-In addition to repositories class, Artemis has the CRUDRepository. This interface helps the Entity repository to save, update, delete and retrieve information.
+In addition to repositories class, Artemis has the Repository. This interface helps the Entity repository to save, update, delete and retrieve information.
 
 To use Repository, just need to create a new interface that extends the **Repository**.
 
@@ -108,7 +108,7 @@ repository.update(people);
 
 #### Search information from Repository
 
-The CRUDRepository also has a method query from the method name. These are the keywords:
+The Repository also has a method query from the method name. These are the keywords:
 
 * **findBy**: The prefix to find some information
 * **deleteBy**: The prefix to delete some information
@@ -195,7 +195,7 @@ Also, delete and retrieve information with a callback.
 
 #### KeyValueRepository
 
-The KeyValueCrudRepository is a CRUDRepository to key-value type.
+The KeyValueRepository is a Repository to key-value type.
 
 If the same way of CrudRepository, just extends **KeyValueRepository**.
 
@@ -259,6 +259,3 @@ userRepository.put(users, Duration.ofHours(1));
 Optional<User> userOptional = userRepository.get("ada");
 Iterable<User> usersFound = userRepository.get(Collections.singletonList("ada"));
 ```
-
-
-
