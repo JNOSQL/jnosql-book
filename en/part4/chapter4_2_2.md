@@ -1,10 +1,10 @@
 ## Column Family Template
 
-This repository has the duty to be a bridge between the entity model and Diana to a column family. It has two classes `ColumnTemplate` and `ColumnTemplateAsync`, one for the synchronous and the other for the asynchronous work.
+This template has the duty to be a bridge between the entity model and Diana to a column family. It has two classes `ColumnTemplate` and `ColumnTemplateAsync`, one for the synchronous and the other for the asynchronous work.
 
 #### ColumnTemplate
 
-The `ColumnTemplate` is the column repository for the synchronous tasks. It has three components:
+The `ColumnTemplate` is the column template for the synchronous tasks. It has three components:
 
 * **ColumnEntityConverter**: That converts an entity to communication API, e.g., The Person to ColumnFamilyEntity.
 
@@ -24,8 +24,8 @@ person.setNickname("artemis");
 List<Person> people = Collections.singletonList(person);
 
 Person personUpdated = template.save(person);
-repository.save(people);
-repository.save(person, Duration.ofHours(1L));
+template.save(people);
+template.save(person, Duration.ofHours(1L));
 
 template.update(person);
 template.update(people);
@@ -39,14 +39,14 @@ ColumnQuery query = DocumentQuery.of("Person");
 query.and(ColumnCondition.eq(Column.of("address", "Olympus")));
 
 List<Person> peopleWhoLiveOnOlympus = template.find(query);
-Optional<Person> artemis = repository.singleResult(ColumnQuery.of("Person")
+Optional<Person> artemis = template.singleResult(ColumnQuery.of("Person")
                 .and(ColumnCondition.eq(Column.of("nickname", "artemis"))));
 
 ColumnDeleteQuery deleteQuery = query.toDeleteQuery();
 template.delete(deleteQuery);
 ```
 
-To use a column repository just follow the CDI style and put an `@Inject` on the field.
+To use a column template just follow the CDI style and put an `@Inject` on the field.
 
 ```java
 @Inject
@@ -63,7 +63,7 @@ public ColumnFamilyManager getManager() {
 }
 ```
 
-To work with more than one Column Repository, there are two approaches:
+To work with more than one Column Template, there are two approaches:
 
 1\) Using qualifieres:
 
@@ -110,7 +110,7 @@ public void sample() {
 #### ColumnTemplateAsync
 
 
-The `ColumnTemplateAsync` is the document repository for the asynchronous tasks. It has two components:
+The `ColumnTemplateAsync` is the document template for the asynchronous tasks. It has two components:
 
 * **ColumnEntityConverter:** That converts an entity to communication API, e.g., The Person to ColumnFamilyEntity.
 
@@ -168,7 +168,7 @@ public ColumnFamilyManagerAsync getManager() {
 }
 ```
 
-To work with more than one Column Repository, there are two approaches:
+To work with more than one Column Template, there are two approaches:
 
 1\) Using qualifieres:
 
@@ -211,5 +211,3 @@ public void sample() {
    ColumnTemplateAsync templateB = producer.get(managerB);
 }
 ```
-
-####
