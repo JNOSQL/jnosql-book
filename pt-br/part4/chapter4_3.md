@@ -1,4 +1,4 @@
-## Repisotry
+## Repository
 
 Além dos repositórios de família de colunas e também de documentos o Artemis também possui o Repository. Essa interface tem como objetivo auxiliar na criação de classes repositórios específicas para as entidades além de facilitar na criação de uma query.
 
