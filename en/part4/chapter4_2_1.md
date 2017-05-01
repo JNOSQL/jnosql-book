@@ -1,10 +1,10 @@
-## Document Repository
+## Document Template
 
-This repository has the duty to be a bridge between the entity model and Diana to document collection. It has two classes `DocumentRepository` and `DocumentRepositoryAsync`, one for the synchronous and the other for the asynchronous work.
+This template has the duty to be a bridge between the entity model and Diana to document collection. It has two classes `TemplateRepository` and `TemplateRepositoryAsync`, one for the synchronous and the other for the asynchronous work.
 
-#### `DocumentRepository`
+#### `TemplateRepository`
 
-The `DocumentRepository` is the document repository for the synchronous tasks. It has three components:
+The `TemplateRepository` is the document repository for the synchronous tasks. It has three components:
 
 * **DocumentEntityConverter**: That converts an entity to communication API, e.g., The Person to DocumentEntity.
 
@@ -13,7 +13,7 @@ The `DocumentRepository` is the document repository for the synchronous tasks. I
 * **DocumentWorkflow**: The workflow to update and save methods.
 
 ```java
-DocumentRepository repository = //instance
+DocumentTemplate template = //instance
 
 Person person = new Person();
 person.setAddress("Olympus");
@@ -23,12 +23,12 @@ person.setNickname("artemis");
 
 List<Person> people = Collections.singletonList(person);
 
-Person personUpdated = repository.save(person);
-repository.save(people);
-repository.save(person, Duration.ofHours(1L));
+Person personUpdated = template.save(person);
+template.save(people);
+template.save(person, Duration.ofHours(1L));
 
-repository.update(person);
-repository.update(people);
+template.update(person);
+template.update(people);
 ```
 
 To do both remove and retrieve information from document collection that uses the same Diana classes, namely,  **DocumentQuery** and **DocumentDeleteQuery**.
@@ -37,19 +37,19 @@ To do both remove and retrieve information from document collection that uses th
 DocumentQuery query = DocumentQuery.of("Person");
 query.and(DocumentCondition.eq(Document.of("address", "Olympus")));
 
-List<Person> peopleWhoLiveOnOlympus = repository.find(query);
-Optional<Person> artemis = repository.singleResult(DocumentQuery.of("Person")
+List<Person> peopleWhoLiveOnOlympus = template.find(query);
+Optional<Person> artemis = template.singleResult(DocumentQuery.of("Person")
                 .and(DocumentCondition.eq(Document.of("nickname", "artemis"))));
 
 DocumentDeleteQuery deleteQuery = query.toDeleteQuery();
-repository.delete(deleteQuery);
+template.delete(deleteQuery);
 ```
 
 To use a document repository just follow the CDI style and put an `@Inject` on the field.
 
 ```java
 @Inject
-private DocumentRepository repository;
+private DocumentTemplate template;
 ```
 
 The next step is to produce a **DocumentCollectionManager:**
@@ -69,11 +69,11 @@ To work with more than one Document Repository, there are two approaches:
 ```java
     @Inject
     @Database(value = DatabaseType.DOCUMENT, provider = "databaseA")
-    private DocumentRepository repositorA;
+    private DocumentTemplate templateA;
 
     @Inject
     @Database(value = DatabaseType.DOCUMENT, provider = "databaseB")
-    private DocumentRepository repositoryB;
+    private DocumentTemplate templateB;
 
 
     //producers methods
@@ -92,30 +92,30 @@ To work with more than one Document Repository, there are two approaches:
     }
 ```
 
-2\) Using the **DocumentRepositoryProducer** class
+2\) Using the **DocumentTemplateProducer** class
 
 ```java
 @Inject
-private DocumentRepositoryProducer producer;
+private DocumentTemplateProducer producer;
 
 public void sample() {
    DocumentCollectionManager managerA = //instance;
    DocumentCollectionManager managerB = //instance
-   DocumentRepository repositorA = producer.get(managerA);
-   DocumentRepository repositoryB = producer.get(managerB);
+   DocumentTemplate templateA = producer.get(managerA);
+   DocumentTemplate templateB = producer.get(managerB);
 }
 ```
 
-#### `DocumentRepositoryAsync`
+#### `DocumentTemplateAsync`
 
-The `DocumentRepositoryAsync` is the document repository for the asynchronous tasks. It has two components:
+The `DocumentTemplateAsync` is the document repository for the asynchronous tasks. It has two components:
 
 * **DocumentEntityConverter:** That converts an entity to communication API, e.g., The Person to DocumentEntity.
 
 * **DocumentCollectionManagerAsync:** The Diana document collection entity manager asynchronous.
 
 ```java
-DocumentRepositoryAsync repositoryAsync = //instance
+DocumentTemplateAsync templateAsync = //instance
 
 Person person = new Person();
 person.setAddress("Olympus");
@@ -126,14 +126,14 @@ person.setNickname("artemis");
 List<Person> people = Collections.singletonList(person);
 
 Consumer<Person> callback = p -> {};
-repositoryAsync.save(person);
-repositoryAsync.save(person, Duration.ofHours(1L));
-repositoryAsync.save(person, callback);
-repositoryAsync.save(people);
+templateAsync.save(person);
+templateAsync.save(person, Duration.ofHours(1L));
+templateAsync.save(person, callback);
+templateAsync.save(people);
 
-repositoryAsync.update(person);
-repositoryAsync.update(person, callback);
-repositoryAsync.update(people);
+templateAsync.update(person);
+templateAsync.update(person, callback);
+templateAsync.update(people);
 ```
 
 For information removal and retrieval are used the same classes from Diana for documents,  **DocumentQuery** and **DocumentDeleteQuery**, respectively, also the callback method can be used.
@@ -141,9 +141,9 @@ For information removal and retrieval are used the same classes from Diana for d
 ```java
 Consumer<List<Person>> callBackPeople = p -> {};
 Consumer<Void> voidCallBack = v ->{};
-repositoryAsync.find(query, callBackPeople);
-repositoryAsync.delete(deleteQuery);
-repositoryAsync.delete(deleteQuery, voidCallBack);
+templateAsync.find(query, callBackPeople);
+templateAsync.delete(deleteQuery);
+templateAsync.delete(deleteQuery, voidCallBack);
 ```
 
 To use a document repository just follow the CDI style and put an `@Inject` on the field.
@@ -151,7 +151,7 @@ To use a document repository just follow the CDI style and put an `@Inject` on t
 ```java
 @Inject
 private
-DocumentRepositoryAsync repository;
+DocumentTemplateAsync repository;
 ```
 
 The next step is produced a **DocumentCollectionManagerAsync:**
@@ -171,11 +171,11 @@ To work with more than one Document Repository, there are two approaches:
 ```java
     @Inject
     @Database(value = DatabaseType.DOCUMENT, provider = "databaseA")
-    private DocumentRepositoryAsync repositorA;
+    private DocumentTemplateAsync templateA;
 
     @Inject
     @Database(value = DatabaseType.DOCUMENT, provider = "databaseB")
-    private DocumentRepositoryAsync repositoryB;
+    private DocumentTemplateAsync templateB;
 
 
     //producers methods
@@ -194,17 +194,17 @@ To work with more than one Document Repository, there are two approaches:
     }
 ```
 
-2\) Using the **DocumentRepositoryAsyncProducer**
+2\) Using the **DocumentTemplateAsyncProducer**
 
 ```java
 @Inject
-private DocumentRepositoryAsyncProducer producer;
+private DocumentTemplateAsyncProducer producer;
 
 public void sample() {
    DocumentCollectionManagerAsync managerA = //instance;
    DocumentCollectionManagerAsync managerB = //instance
-   DocumentRepositoryAsync repositorA = producer.get(managerA);
-   DocumentRepositoryAsync repositoryB = producer.get(managerB);
+   DocumentTemplateAsync templateA = producer.get(managerA);
+   DocumentTemplateAsync templateB = producer.get(managerB);
 }
 ```
 
