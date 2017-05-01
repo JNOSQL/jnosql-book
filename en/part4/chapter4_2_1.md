@@ -1,10 +1,10 @@
 ## Document Template
 
-This template has the duty to be a bridge between the entity model and Diana to document collection. It has two classes `TemplateRepository` and `TemplateRepositoryAsync`, one for the synchronous and the other for the asynchronous work.
+This template has the duty to be a bridge between the entity model and Diana to document collection. It has two classes `DocumentTemplate` and `DocumentTemplateAsync`, one for the synchronous and the other for the asynchronous work.
 
-#### `TemplateRepository`
+#### `DocumentTemplate`
 
-The `TemplateRepository` is the document repository for the synchronous tasks. It has three components:
+The `DocumentTemplate` is the document repository for the synchronous tasks. It has three components:
 
 * **DocumentEntityConverter**: That converts an entity to communication API, e.g., The Person to DocumentEntity.
 
