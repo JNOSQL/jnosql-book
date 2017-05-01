@@ -141,9 +141,9 @@ Para a busca e a remoção da informação são utilizadas as mesmas classes do 
 ```java
 Consumer<List<Person>> callBackPeople = p -> {};
 Consumer<Void> voidCallBack = v ->{};
-repositoryAsync.find(query, callBackPeople);
-repositoryAsync.delete(deleteQuery);
-repositoryAsync.delete(deleteQuery, voidCallBack);
+templateAsync.find(query, callBackPeople);
+templateAsync.delete(deleteQuery);
+templateAsync.delete(deleteQuery, voidCallBack);
 ```
 
 Como o motor do Artemis é CDI para que se posso utilizar o ColumnTemplate basta dar um @Inject num campo.
@@ -170,11 +170,11 @@ Para trabalhar com mais de um tipo de ColumnTemplateAsync existem duas opções:
 ```java
     @Inject
     @Database(value = DatabaseType.COLUMN, provider = "databaseA")
-    private ColumnTemplateAsync repositorA;
+    private ColumnTemplateAsync templateA;
 
     @Inject
     @Database(value = DatabaseType.COLUMN, provider = "databaseB")
-    private ColumnTemplateAsync repositoryB;
+    private ColumnTemplateAsync templateB;
 
 
     //producers methods
@@ -202,8 +202,8 @@ private DocumentTemplateAsyncProducer producer;
 public void sample() {
    ColumnFamilyManagerAsync managerA = //instance;
    ColumnFamilyManagerAsync managerB = //instance
-   ColumnTemplateAsync repositorA = producer.get(managerA);
-   ColumnTemplateAsync repositoryB = producer.get(managerB);
+   ColumnTemplateAsync templateA = producer.get(managerA);
+   ColumnTemplateAsync templateB = producer.get(managerB);
 }
 ```
 
