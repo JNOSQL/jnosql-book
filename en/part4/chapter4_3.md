@@ -197,7 +197,7 @@ Also, delete and retrieve information with a callback.
 
 The KeyValueRepository is a Repository to key-value type.
 
-If the same way of CrudRepository, just extends **KeyValueRepository**.
+If the same way of Repository, just extends **KeyValueRepository**.
 
 ```java
 public interface UserRepository extends KeyValueRepository<User> {
