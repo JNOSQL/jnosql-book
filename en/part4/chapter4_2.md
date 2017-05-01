@@ -1,6 +1,6 @@
-### Repository classes
+### Templates classes
 
-The repository classes have the goal to persist an Entity Model through Diana API. It has three components:
+The templates classes have the goal to persist an Entity Model through Diana API. It has three components:
 
 * **Converter**: That converts the Entity to a communication level API.
 
