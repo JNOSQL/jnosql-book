@@ -1,12 +1,12 @@
-## Key-Value repository
+## Key-Value template
 
 The key value is a bridge between the entity and the key-value database.
 
-#### `KeyValueRepository`
+#### `KeyValueTemplate`
 
-The `KeyValuRepository` is the column repository to synchronous tasks. It has three components:
+The `KeyValuTemplate` is the column repository to synchronous tasks. It has three components:
 
-The KeyValuRepository is responsible for persistency of an entity in a key-value database. It is composed basically for three components.
+The KeyValuTemplate is responsible for persistency of an entity in a key-value database. It is composed basically for three components.
 
 * **KeyValueEntityConverter**: That converts an entity to communication API, e.g., The Person to KeyValueEntity.
 
@@ -15,25 +15,25 @@ The KeyValuRepository is responsible for persistency of an entity in a key-value
 * **KeyValueWorkflow**: The workflow to update and save methods.
 
 ```java
-KeyValueRepository repository = null;
+KeyValuTemplate template = null;
 User user = new User();
 user.setNickname("ada");
 user.setAge(10);
 user.setName("Ada Lovelace");
 List<User> users = Collections.singletonList(user);
 
-repository.put(user);
-repository.put(users);
+template.put(user);
+template.put(users);
 
-Optional<Person> ada = repository.get("ada", Person.class);
-Iterable<Person> usersFound = repository.get(Collections.singletonList("ada"), Person.class);
+Optional<Person> ada = template.get("ada", Person.class);
+Iterable<Person> usersFound = template.get(Collections.singletonList("ada"), Person.class);
 ```
 To use a key-value repository just follows the CDI style and put an `@Inject` on the field.
 
 
 ```java
 @Inject
-private KeyValueRepository repository;
+private KeyValuTemplate template;
 ```
 
 The next step is to produce a **BucketManager**:
@@ -46,18 +46,18 @@ public BucketManager getManager() {
 }
 ```
 
-To work with more than one key-value Repository, there are two approaches:
+To work with more than one key-value Template, there are two approaches:
 
 1\) Using qualifieres:
 
 ```java
     @Inject
     @Database(value = DatabaseType.KEY_VALUE, provider = "databaseA")
-    private KeyValueRepository repositorA;
+    private KeyValueTemplate templateA;
 
     @Inject
     @Database(value = DatabaseType.KEY_VALUE, provider = "databaseB")
-    private KeyValueRepository repositoryB;
+    private KeyValueTemplate templateB;
 
 
     //producers methods
@@ -76,7 +76,7 @@ To work with more than one key-value Repository, there are two approaches:
     }
 ```
 
-2\)  Using the **KeyValueRepositoryProducer** class
+2\)  Using the **KeyValueTemplateProducer** class
 
 ```java
 @Inject
@@ -85,7 +85,7 @@ private KeyValueRepositoryProducer producer;
 public void sample() {
    BucketManager managerA = //instance;
    BucketManager managerB = //instance
-   KeyValueRepository repositorA = producer.get(managerA);
-   KeyValueRepository repositoryB = producer.get(managerB);
+   KeyValueTemplate templateA = producer.get(managerA);
+   KeyValueTemplate templateB = producer.get(managerB);
 }
 ```
