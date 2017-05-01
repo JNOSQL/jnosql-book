@@ -44,7 +44,7 @@
        * [Document Repository](part4/chapter4_2_1.md)
        * [Column Family Repository](part4/chapter4_2_2.md)
        * [Key-value Repository](part4/chapter4_2_3.md)
-   * [CrudRepository](part4/chapter4_3.md)
+   * [Repository](part4/chapter4_3.md)
    * [Persistence events](part4/chapter4_4.md)
    * [Bean Validation](part4/chapter4_5.md)
 
