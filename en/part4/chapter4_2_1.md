@@ -4,7 +4,7 @@ This template has the duty to be a bridge between the entity model and Diana to 
 
 #### `DocumentTemplate`
 
-The `DocumentTemplate` is the document repository for the synchronous tasks. It has three components:
+The `DocumentTemplate` is the document template for the synchronous tasks. It has three components:
 
 * **DocumentEntityConverter**: That converts an entity to communication API, e.g., The Person to DocumentEntity.
 
@@ -45,7 +45,7 @@ DocumentDeleteQuery deleteQuery = query.toDeleteQuery();
 template.delete(deleteQuery);
 ```
 
-To use a document repository just follow the CDI style and put an `@Inject` on the field.
+To use a document template just follow the CDI style and put an `@Inject` on the field.
 
 ```java
 @Inject
@@ -62,7 +62,7 @@ public DocumentCollectionManager getManager() {
 }
 ```
 
-To work with more than one Document Repository, there are two approaches:
+To work with more than one Document Template, there are two approaches:
 
 1\) Using qualifieres:
 
@@ -108,7 +108,7 @@ public void sample() {
 
 #### `DocumentTemplateAsync`
 
-The `DocumentTemplateAsync` is the document repository for the asynchronous tasks. It has two components:
+The `DocumentTemplateAsync` is the document template for the asynchronous tasks. It has two components:
 
 * **DocumentEntityConverter:** That converts an entity to communication API, e.g., The Person to DocumentEntity.
 
@@ -146,12 +146,12 @@ templateAsync.delete(deleteQuery);
 templateAsync.delete(deleteQuery, voidCallBack);
 ```
 
-To use a document repository just follow the CDI style and put an `@Inject` on the field.
+To use a document template just follow the CDI style and put an `@Inject` on the field.
 
 ```java
 @Inject
 private
-DocumentTemplateAsync repository;
+DocumentTemplateAsync template;
 ```
 
 The next step is produced a **DocumentCollectionManagerAsync:**
@@ -164,7 +164,7 @@ public DocumentCollectionManagerAsync getManager() {
 }
 ```
 
-To work with more than one Document Repository, there are two approaches:
+To work with more than one Document Template, there are two approaches:
 
 1\) Using qualifieres:
 
@@ -207,5 +207,3 @@ public void sample() {
    DocumentTemplateAsync templateB = producer.get(managerB);
 }
 ```
-
-####
