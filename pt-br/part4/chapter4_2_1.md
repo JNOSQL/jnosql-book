@@ -24,7 +24,7 @@ person.setNickname("artemis");
 List<Person> people = Collections.singletonList(person);
 
 Person personUpdated = template.save(person);
-repository.save(people);
+template.save(people);
 template.save(person, Duration.ofHours(1L));
 
 template.update(person);
@@ -38,14 +38,14 @@ DocumentQuery query = DocumentQuery.of("Person");
 query.and(DocumentCondition.eq(Document.of("address", "Olympus")));
 
 List<Person> peopleWhoLiveOnOlympus = template.find(query);
-Optional<Person> artemis = repository.singleResult(DocumentQuery.of("Person")
+Optional<Person> artemis = template.singleResult(DocumentQuery.of("Person")
                 .and(DocumentCondition.eq(Document.of("nickname", "artemis"))));
 
 DocumentDeleteQuery deleteQuery = query.toDeleteQuery();
 template.delete(deleteQuery);
 ```
 
-Como o motor do Artemis é CDI para que se posso utilizar o DocumentRepository basta dar um @Inject num campo.
+Como o motor do Artemis é CDI para que se posso utilizar o DocumentTemplate basta dar um @Inject num campo.
 
 ```java
 @Inject
@@ -62,7 +62,7 @@ public DocumentCollectionManager getManager() {
 }
 ```
 
-Para trabalhar com mais de um tipo de TemplateRepository existem duas opções:
+Para trabalhar com mais de um tipo de TemplateTemplate existem duas opções:
 
 1\) A primeira é com a utilização dos qualificadores:
 
@@ -92,7 +92,7 @@ Para trabalhar com mais de um tipo de TemplateRepository existem duas opções:
     }
 ```
 
-2\) A segunda delas é a partir do  **DocumentRepositoryProducer**
+2\) A segunda delas é a partir do  **DocumentTemplateProducer**
 
 ```java
 @Inject
@@ -146,12 +146,12 @@ templateAsync.delete(deleteQuery);
 templateAsync.delete(deleteQuery, voidCallBack);
 ```
 
-Como o motor do Artemis é CDI para que se posso utilizar o DocumentRepository basta dar um @Inject num campo.
+Como o motor do Artemis é CDI para que se posso utilizar o DocumentTemplate basta dar um @Inject num campo.
 
 ```java
 @Inject
 private
-DocumentTemplateAsync repository;
+DocumentTemplateAsync template;
 ```
 
 Para isso é necessário que a aplicação injete um **DocumentCollectionManagerAsync:**
@@ -164,18 +164,18 @@ public DocumentCollectionManagerAsync getManager() {
 }
 ```
 
-Para trabalhar com mais de um tipo de DocumentRepository existem duas opções:
+Para trabalhar com mais de um tipo de DocumentTemplate existem duas opções:
 
 1\) A primeira é com a utilização dos qualificadores:
 
 ```java
     @Inject
     @Database(value = DatabaseType.DOCUMENT, provider = "databaseA")
-    private DocumentTemplateAsync repositorA;
+    private DocumentTemplateAsync templateA;
 
     @Inject
     @Database(value = DatabaseType.DOCUMENT, provider = "databaseB")
-    private DocumentTemplateAsync repositoryB;
+    private DocumentTemplateAsync templateB;
 
 
     //producers methods
@@ -203,12 +203,10 @@ private DocumentTemplateAsyncProducer producer;
 public void sample() {
    DocumentCollectionManagerAsync managerA = //instance;
    DocumentCollectionManagerAsync managerB = //instance
-   DocumentTemplateAsync repositorA = producer.get(managerA);
-   DocumentTemplateAsync repositoryB = producer.get(managerB);
+   DocumentTemplateAsync templateA = producer.get(managerA);
+   DocumentTemplateAsync templateB = producer.get(managerB);
 }
 ```
-
-#### 
 
 
 
