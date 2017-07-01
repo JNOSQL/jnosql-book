@@ -141,7 +141,7 @@ Para a busca e a remoção da informação são utilizadas as mesmas classes do 
 ```java
 Consumer<List<Person>> callBackPeople = p -> {};
 Consumer<Void> voidCallBack = v ->{};
-templateAsync.find(query, callBackPeople);
+templateAsync.select(query, callBackPeople);
 templateAsync.delete(deleteQuery);
 templateAsync.delete(deleteQuery, voidCallBack);
 ```
