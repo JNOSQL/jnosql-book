@@ -19,8 +19,8 @@ O `DocumentCollectionManager` é classe que realiza as operações de forma sín
 
         //insert operations
         manager.insert(entity);
-        manager.insert(entity, Duration.ofHours(2L));//saves with 2 hours of TTL
-        manager.insert(entities, Duration.ofHours(2L));//saves with 2 hours of TTL
+        manager.insert(entity, Duration.ofHours(2L));//inserts with 2 hours of TTL
+        manager.insert(entities, Duration.ofHours(2L));//inserts with 2 hours of TTL
         //updates operations
         manager.update(entity);
         manager.update(entities);
@@ -40,8 +40,8 @@ O `DocumentCollectionManagerAsync` é classe que realiza as operações de forma
 
         //insert operations
         managerAsync.insert(entity);
-        managerAsync.insert(entity, Duration.ofHours(2L));//saves with 2 hours of TTL
-        managerAsync.insert(entities, Duration.ofHours(2L));//saves with 2 hours of TTL
+        managerAsync.insert(entity, Duration.ofHours(2L));//inserts with 2 hours of TTL
+        managerAsync.insert(entities, Duration.ofHours(2L));//inserts with 2 hours of TTL
         //updates operations
         managerAsync.update(entity);
         managerAsync.update(entities);
