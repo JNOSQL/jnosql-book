@@ -93,7 +93,7 @@ Just for the key-value database, it shows which attribute is the key, thus the v
 @Entity
 public class User implements Serializable {
 
-    @Key
+    @Id
     private String userName;
 
     private String name;
