@@ -17,10 +17,10 @@ The `DocumentCollectionManager` is the class that manages the persistence on the
         List<DocumentEntity> entities = Collections.singletonList(entity);
         DocumentCollectionManager manager = //instance;
 
-        //saves operations
-        manager.save(entity);
-        manager.save(entity, Duration.ofHours(2L));//saves with 2 hours of TTL
-        manager.save(entities, Duration.ofHours(2L));//saves with 2 hours of TTL
+        //insert operations
+        manager.insert(entity);
+        manager.insert(entity, Duration.ofHours(2L));//inserts with 2 hours of TTL
+        manager.insert(entities, Duration.ofHours(2L));//inserts with 2 hours of TTL
         //updates operations
         manager.update(entity);
         manager.update(entities);
@@ -38,10 +38,10 @@ The `DocumentCollectionManagerAsync` is the class that manages the persistence o
         List<DocumentEntity> entities = Collections.singletonList(entity);
          DocumentCollectionManagerAsync managerAsync = //instance
 
-        //saves operations
-        managerAsync.save(entity);
-        managerAsync.save(entity, Duration.ofHours(2L));//saves with 2 hours of TTL
-        managerAsync.save(entities, Duration.ofHours(2L));//saves with 2 hours of TTL
+        //insert operations
+        managerAsync.insert(entity);
+        managerAsync.insert(entity, Duration.ofHours(2L));//inserts with 2 hours of TTL
+        managerAsync.insert(entities, Duration.ofHours(2L));//inserts with 2 hours of TTL
         //updates operations
         managerAsync.update(entity);
         managerAsync.update(entities);
@@ -51,7 +51,7 @@ Sometimes on an asynchronous process, is important to know when this process is 
 
 ```java
         Consumer<DocumentEntity> callBack = e -> {};
-        managerAsync.save(entity, callBack);
+        managerAsync.insert(entity, callBack);
         managerAsync.update(entity, callBack);
 ```
 
@@ -89,10 +89,10 @@ query.and(ageBiggerTen);
 query.addSort(Sort.of("name", Sort.SortType.ASC));
 query.withMaxResults(10);
 query.withFirstResult(2);
-List<DocumentEntity> entities = manager.find(query);
+List<DocumentEntity> entities = manager.select(query);
 Optional<DocumentEntity> entity = manager.singleResult(query);
 Consumer<List<DocumentEntity>> callback = e -> {};
-managerAsync.find(query, callback);
+managerAsync.select(query, callback);
 ```
 
 ##### Removing information from Document Collection
