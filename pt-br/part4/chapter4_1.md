@@ -92,7 +92,7 @@ Apenas para o banco de dados do tipo chave-valor, ele indica qual dos atributos 
 @Entity
 public class User implements Serializable {
 
-    @Key
+    @Id
     private String userName;
 
     private String name;
