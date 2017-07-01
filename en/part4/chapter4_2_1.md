@@ -23,9 +23,9 @@ person.setNickname("artemis");
 
 List<Person> people = Collections.singletonList(person);
 
-Person personUpdated = template.save(person);
-template.save(people);
-template.save(person, Duration.ofHours(1L));
+Person personUpdated = template.insert(person);
+template.insert(people);
+template.insert(person, Duration.ofHours(1L));
 
 template.update(person);
 template.update(people);
@@ -126,10 +126,10 @@ person.setNickname("artemis");
 List<Person> people = Collections.singletonList(person);
 
 Consumer<Person> callback = p -> {};
-templateAsync.save(person);
-templateAsync.save(person, Duration.ofHours(1L));
-templateAsync.save(person, callback);
-templateAsync.save(people);
+templateAsync.insert(person);
+templateAsync.insert(person, Duration.ofHours(1L));
+templateAsync.insert(person, callback);
+templateAsync.insert(people);
 
 templateAsync.update(person);
 templateAsync.update(person, callback);
