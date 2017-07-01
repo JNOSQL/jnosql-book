@@ -23,9 +23,9 @@ person.setNickname("artemis");
 
 List<Person> people = Collections.singletonList(person);
 
-Person personUpdated = template.save(person);
-template.save(people);
-template.save(person, Duration.ofHours(1L));
+Person personUpdated = template.insert(person);
+template.insert(people);
+template.insert(person, Duration.ofHours(1L));
 
 template.update(person);
 template.update(people);
@@ -38,7 +38,7 @@ For information removal and retrieval are used the same classes from Diana for d
 ColumnQuery query = DocumentQuery.of("Person");
 query.and(ColumnCondition.eq(Column.of("address", "Olympus")));
 
-List<Person> peopleWhoLiveOnOlympus = template.find(query);
+List<Person> peopleWhoLiveOnOlympus = template.select(query);
 Optional<Person> artemis = template.singleResult(ColumnQuery.of("Person")
                 .and(ColumnCondition.eq(Column.of("nickname", "artemis"))));
 
@@ -129,10 +129,10 @@ person.setNickname("artemis");
 List<Person> people = Collections.singletonList(person);
 
 Consumer<Person> callback = p -> {};
-templateAsync.save(person);
-templateAsync.save(person, Duration.ofHours(1L));
-templateAsync.save(person, callback);
-templateAsync.save(people);
+templateAsync.insert(person);
+templateAsync.insert(person, Duration.ofHours(1L));
+templateAsync.insert(person, callback);
+templateAsync.insert(people);
 
 templateAsync.update(person);
 templateAsync.update(person, callback);
@@ -145,7 +145,7 @@ For information removal and retrieval are used the same classes from Diana for d
 ```java
 Consumer<List<Person>> callBackPeople = p -> {};
 Consumer<Void> voidCallBack = v ->{};
-templateAsync.find(query, callBackPeople);
+templateAsync.select(query, callBackPeople);
 templateAsync.delete(deleteQuery);
 templateAsync.delete(deleteQuery, voidCallBack);
 ```
