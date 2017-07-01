@@ -5,7 +5,7 @@ In addition to repositories class, Artemis has the Repository. This interface he
 To use Repository, just need to create a new interface that extends the **Repository**.
 
 ```java
-    interface PersonRepository extends Repository<Person> {
+    interface PersonRepository extends Repository<Person, String> {
 
     }
 ```
@@ -100,10 +100,6 @@ List<Person> people = Collections.singletonList(person);
 
 repository.save(person);
 repository.save(people);
-repository.save(people, Duration.ofHours(2));
-repository.update(person);
-repository.update(people);
-repository.update(people);
 ```
 
 #### Search information from Repository
@@ -172,12 +168,6 @@ List<Person> people = Collections.singletonList(person);
 
 repositoryAsync.save(person);
 repositoryAsync.save(people);
-repositoryAsync.save(person, p -> {});
-repositoryAsync.save(people, Duration.ofHours(2));
-repositoryAsync.update(person);
-repositoryAsync.update(person, p -> {});
-repositoryAsync.update(people);
-repositoryAsync.update(people);
 ```
 
 Also, delete and retrieve information with a callback.
