@@ -5,7 +5,7 @@ Além dos repositórios de família de colunas e também de documentos o Artemis
 Para utilizar esse recurso é necessário apenas criar uma interface que extenda de **Repository**.
 
 ```java
-    interface PersonRepository extends Repository<Person> {
+    interface PersonRepository extends Repository<Person, String> {
 
     }
 ```
@@ -100,10 +100,6 @@ List<Person> people = Collections.singletonList(person);
 
 repository.save(person);
 repository.save(people);
-repository.save(people, Duration.ofHours(2));
-repository.update(person);
-repository.update(people);
-repository.update(people);
 ```
 
 #### Criando Queries com o Repository
@@ -172,12 +168,7 @@ List<Person> people = Collections.singletonList(person);
 
 repositoryAsync.save(person);
 repositoryAsync.save(people);
-repositoryAsync.save(person, p -> {});
-repositoryAsync.save(people, Duration.ofHours(2));
-repositoryAsync.update(person);
-repositoryAsync.update(person, p -> {});
-repositoryAsync.update(people);
-repositoryAsync.update(people);
+
 ```
 
 Também é possível recuperar e deletar a informação de forma assíncrona, a diferença é que na recuperação um callback é obrigatório no fim do método enquanto para deletar ou remover informação o callback é opcional.
