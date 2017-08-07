@@ -174,7 +174,7 @@ repositoryAsync.save(people);
 Também é possível recuperar e deletar a informação de forma assíncrona, a diferença é que na recuperação um callback é obrigatório no fim do método enquanto para deletar ou remover informação o callback é opcional.
 
 ```java
-    interface PersonRepositoryAsync extends RepositoryAsync<Person> {
+    interface PersonRepositoryAsync extends RepositoryAsync<Person, Long> {
 
         void findByNickname(String nickname, Consumer<List<Person>> callback);
 
