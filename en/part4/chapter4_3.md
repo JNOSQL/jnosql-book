@@ -173,7 +173,7 @@ repositoryAsync.save(people);
 Also, delete and retrieve information with a callback.
 
 ```java
-    interface PersonRepositoryAsync extends RepositoryAsync<Person> {
+    interface PersonRepositoryAsync extends RepositoryAsync<Person, Long> {
 
         void findByNickname(String nickname, Consumer<List<Person>> callback);
 
