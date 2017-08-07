@@ -1,6 +1,6 @@
 # Repository
 
-In addition to repositories class, Artemis has the Repository. This interface helps the Entity repository to save, update, delete and retrieve information.
+In addition to template class, Artemis has the Repository. This interface helps the Entity repository to save, update, delete and retrieve information.
 
 To use Repository, just need to create a new interface that extends the **Repository**.
 
@@ -249,3 +249,6 @@ userRepository.put(users, Duration.ofHours(1));
 Optional<User> userOptional = userRepository.get("ada");
 Iterable<User> usersFound = userRepository.get(Collections.singletonList("ada"));
 ```
+
+
+
