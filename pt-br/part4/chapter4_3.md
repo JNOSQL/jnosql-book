@@ -124,7 +124,7 @@ Além dos Operadores:
 * OrderBy\_\_\_\_\_ASC
 
 ```java
-interface PersonRepository extends Repository<Person> {
+interface PersonRepository extends Repository<Person, Long> {
 
     List<Person> findByAddress(String address);
 
