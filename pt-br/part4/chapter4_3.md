@@ -184,14 +184,14 @@ Também é possível recuperar e deletar a informação de forma assíncrona, a 
     }
 ```
 
-#### KeyValueRepository
+#### Repository no KeyValue
 
-Assim como a família de colunas e coleção de documentos, chave valor tem o recurso que auxilia tem como objetivo auxiliar na criação de classes repositórios específicas para as entidades o KeyValueRepository.
+Assim como a família de colunas e coleção de documentos, chave valor tem o recurso que auxilia tem como objetivo auxiliar na criação de classes repositórios.
 
-Para utilizar esse recurso é necessário apenas criar uma interface que extenda de **KeyValueRepository**.
+Para utilizar esse recurso é necessário apenas criar uma interface que extenda de **Repository**.
 
 ```java
-public interface UserRepository extends KeyValueRepository<User> {
+public interface UserRepository extends Repository<User> {
 }
 ```
 
