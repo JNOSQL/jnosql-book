@@ -241,13 +241,12 @@ Once there is not another to both delete and find information, there isn't dynam
 UserRepository userRepository = //instance
 User user = new User("ada", "Ada Lovelace", 30);
 List<User> users = Collections.singletonList(user);
-userRepository.put(user);
-userRepository.put(user, Duration.ofHours(1));
-userRepository.put(users);
-userRepository.put(users, Duration.ofHours(1));
+userRepository.save(user);
+userRepository.save(users);
 
-Optional<User> userOptional = userRepository.get("ada");
-Iterable<User> usersFound = userRepository.get(Collections.singletonList("ada"));
+
+Optional<User> userOptional = userRepository.findById("ada");
+Iterable<User> usersFound = userRepository.findById(Collections.singletonList("ada"));
 ```
 
 
