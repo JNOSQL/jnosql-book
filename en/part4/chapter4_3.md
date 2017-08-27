@@ -183,14 +183,12 @@ Also, delete and retrieve information with a callback.
     }
 ```
 
-#### KeyValueRepository
+#### Repository at KeyValue
 
-The KeyValueRepository is a Repository to key-value type.
-
-If the same way of Repository, just extends **KeyValueRepository**.
+Key-value database has support to **Repository**.
 
 ```java
-public interface UserRepository extends KeyValueRepository<User> {
+public interface UserRepository extends Repository<User> {
 }
 ```
 
@@ -249,5 +247,5 @@ Optional<User> userOptional = userRepository.findById("ada");
 Iterable<User> usersFound = userRepository.findById(Collections.singletonList("ada"));
 ```
 
-
+In the key-value resource, the **Repository** does not support method query resource.
 
