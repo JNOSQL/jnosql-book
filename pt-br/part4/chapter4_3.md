@@ -250,5 +250,7 @@ Optional<User> userOptional = userRepository.findById("ada");
 Iterable<User> usersFound = userRepository.findById(Collections.singletonList("ada"));
 ```
 
+O recurso do dynamic query não  suportado para o banco de dados do tipo Key-value.
+
 
 
