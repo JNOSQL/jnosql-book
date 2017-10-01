@@ -19,7 +19,7 @@
     * [Column](part2/chapter2_2_2.md)
   * [Entidade](part2/chapter2_3.md)
     * [ColumnFamilyEntity](part2/chapter2_3_1.md)
-    * [DocumentCollectionEntity](part2/chapter2_3_2.md)
+    * [DocumentEntity](part2/chapter2_3_2.md)
     * [KeyValueEntity](part2/chapter2_3_3.md)
   * [Manager](part2/chapter2_4.md)
     * [Document Manager](part2/chapter2_4_1.md)
@@ -35,7 +35,7 @@
      * [Key Value Configuration](part2/chapter2_6_3.md)
 * [Diversidade nos bancos não relacionaisDiversidade nos Bancos não relacionais](part3/README.md)
    * [Utilizando drivers para com o Diana](part3/chapter3_1.md)
-     
+
 ### Conhecendo a API de abstração do Artemis
 
 * [Introdução ao Artemis](part4/README.md)
@@ -47,7 +47,7 @@
    * [CrudRepository](part4/chapter4_3.md)
    * [Lidando com os eventos da persistência](part4/chapter4_4.md)
    * [Bean Validation](part4/chapter4_5.md)
-   
+
 ### Estendendo o Artemis
 
 * [Componentes do Artemis](part5/README.md)
@@ -57,5 +57,5 @@
   * [As classes respositórios](part5/chapter5_4.md)
 
 ### Bibliografia
-     
+
 * [Bibliografia](bibliography/README.md)
