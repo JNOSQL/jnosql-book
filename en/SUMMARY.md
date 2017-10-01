@@ -19,7 +19,7 @@
     * [Column](part2/chapter2_2_2.md)
   * [Entity](part2/chapter2_3.md)
     * [ColumnFamilyEntity](part2/chapter2_3_1.md)
-    * [DocumentCollectionEntity](part2/chapter2_3_2.md)
+    * [DocumentEntity](part2/chapter2_3_2.md)
     * [KeyValueEntity](part2/chapter2_3_3.md)
   * [Manager](part2/chapter2_4.md)
     * [Document Manager](part2/chapter2_4_1.md)
