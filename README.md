@@ -2,7 +2,7 @@
 
 ## 
 
-The JNoSQL is a several tools to make easy integration between the Java Application with the NoSQL. The project has two layers:
+The JNoSQL is a framework whose has the goal to help Java developers to create Java EE applications with NoSQL, whereby they can make scalable application beyond enjoy the polyglot persistence.
 
 * **Communication API**: An API just to communicate with the database, exactly what JDBC does to SQL. This API has four specializations, one for each kind of database.
 * **Mapping API**: An API to do integration and do the best integration with the Java developer. It's annotation driven and integrated with other technologies like Bean Validation, etc. 
