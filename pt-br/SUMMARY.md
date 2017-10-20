@@ -1,7 +1,7 @@
 # Sumário
 
-* [Let's talk about standard to NoSQL database in Java](introduction.md)
-* [Crédito](credits.md)
+* [Está na hora de falar de padrões para o NOSQL em Java](introduction.md)
+* [Créditos](credits.md)
 * [Sobre o Autor](about_me.md)
 
 ### Introdução ao JNOSQL
@@ -19,7 +19,7 @@
     * [Column](part2/chapter2_2_2.md)
   * [Entidade](part2/chapter2_3.md)
     * [ColumnFamilyEntity](part2/chapter2_3_1.md)
-    * [DocumentCollectionEntity](part2/chapter2_3_2.md)
+    * [DocumentEntity](part2/chapter2_3_2.md)
     * [KeyValueEntity](part2/chapter2_3_3.md)
   * [Manager](part2/chapter2_4.md)
     * [Document Manager](part2/chapter2_4_1.md)
@@ -33,21 +33,21 @@
      * [Document Configuration](part2/chapter2_6_1.md)
      * [Column Configuration](part2/chapter2_6_2.md)
      * [Key Value Configuration](part2/chapter2_6_3.md)
-* [Diversidade nos bancos não relacionaisDiversidade nos Bancos não relacionais](part3/README.md)
+* [Diversidade nos Bancos não relacionais](part3/README.md)
    * [Utilizando drivers para com o Diana](part3/chapter3_1.md)
-     
-### Conhecendo a API de comunicação do Artemis  
+
+### Conhecendo a API de abstração do Artemis
 
 * [Introdução ao Artemis](part4/README.md)
     * [Anotações para o Modelo](part4/chapter4_1.md)
-    * [Classes repositórios](part4/chapter4_2.md)
-       * [Repositório de Documentos](part4/chapter4_2_1.md)
-       * [Repositório de Família de Colunas](part4/chapter4_2_2.md)
-       * [Repositório de Chave valor](part4/chapter4_2_3.md)
-   * [CrudRepisotry](part4/chapter4_3.md)
+    * [Classes templates](part4/chapter4_2.md)
+       * [Template de Documentos](part4/chapter4_2_1.md)
+       * [Template de Família de Colunas](part4/chapter4_2_2.md)
+       * [Template de Chave valor](part4/chapter4_2_3.md)
+   * [CrudRepository](part4/chapter4_3.md)
    * [Lidando com os eventos da persistência](part4/chapter4_4.md)
    * [Bean Validation](part4/chapter4_5.md)
-   
+
 ### Estendendo o Artemis
 
 * [Componentes do Artemis](part5/README.md)
@@ -57,5 +57,5 @@
   * [As classes respositórios](part5/chapter5_4.md)
 
 ### Bibliografia
-     
+
 * [Bibliografia](bibliography/README.md)

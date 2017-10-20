@@ -2,11 +2,8 @@
 
 
 
-As classes de configurações são as responsáveis pela criação das fábricas de Manager. É dentro dessa classe que ficará toda a configuração inicial para a conexão com o banco de dados.
+The configuration classes create a Manager Factory. This class has all the configuration to build the database connection.
 
-Uma vez que as informações a e comunicação entre os bancos variam bastante, P2P ou master/slave número de clientes necessários, query inicial, configuração via thrift ou http dentre outras possíveis configurações. O número de métodos e configurações necessárias variarão bastante, porém, eles terão um método responsável pela criação do Manager Factory.
+Once there are a large diversity configuration flavors on such as P2P, master/slave, thrift communication, HTTP, etc. The implementation may be different, however, they have a method to return a Manager Factory.
 
-Uma recomendação para os provedores de banco de dados é que essas informações de configuração sejam totalmente ou parcialmente realizadas também via um arquivo properties dentro do resource. Com o formato: diana-provider.properties
-
-
-
+It is recommended that all database driver providers have a properties file to read this startup information. With the following pattern: diana-provider.properties

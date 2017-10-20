@@ -1,14 +1,11 @@
 ## Workflow
 
-Define a ordem quando uma entidade será salva ou atualizada.
+That defines the workflow when either save or update an entity. As show the picture bellow. These events are useful when you, eg., want to validate data before be saved.
 
-O workflow tem especializações:
+The Workflow has specializations:
 
-* **ColumnWorkflow**: Define o fluxo para salvar e atualizar de uma entidade para família de colunas.
+* **ColumnWorkflow**: to column family persistence.
 
-* **DocumentWorkflow**: Define o fluxo para salvar e atualizar de uma entidade para coleção de documentos.
+* **DocumentWorkflow**: to document collection persistence.
 
-* **KeyValueWorkflow**: Define o fluxo para salvar e atualizar de uma entidade para chave de valor.
-
-
-
+* **KeyValueWorkflow**: to key-value persistence.

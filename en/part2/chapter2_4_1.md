@@ -1,13 +1,13 @@
 #### Document Manager
 
-A interação com o banco de dados do tipo documento é dado por duas classes:
+The manager class to a document type can be synchronous or asynchronous:
 
-* **DocumentCollectionManager**: Para realizar operações no banco de dados de forma síncrona
-* **DocumentCollectionManagerAsync**: Para realizar operações no banco de dados de forma assíncrona.
+* **DocumentCollectionManager**: To do synchronous operations.
+* **DocumentCollectionManagerAsync**: To do asynchronous operations.
 
 ##### **DocumentCollectionManager**
 
-O `DocumentCollectionManager` é classe que realiza as operações de forma síncrona, com ele é possível realizar a criação, editação, remoção e a recuperação dentro dos bancos de dados do tipo documento.
+The `DocumentCollectionManager` is the class that manages the persistence on the synchronous way to document collection.
 
 ```java
         DocumentEntity entity = DocumentEntity.of("collection");
@@ -17,10 +17,10 @@ O `DocumentCollectionManager` é classe que realiza as operações de forma sín
         List<DocumentEntity> entities = Collections.singletonList(entity);
         DocumentCollectionManager manager = //instance;
 
-        //saves operations
-        manager.save(entity);
-        manager.save(entity, Duration.ofHours(2L));//saves with 2 hours of TTL
-        manager.save(entities, Duration.ofHours(2L));//saves with 2 hours of TTL
+        //insert operations
+        manager.insert(entity);
+        manager.insert(entity, Duration.ofHours(2L));//inserts with 2 hours of TTL
+        manager.insert(entities, Duration.ofHours(2L));//inserts with 2 hours of TTL
         //updates operations
         manager.update(entity);
         manager.update(entities);
@@ -28,7 +28,7 @@ O `DocumentCollectionManager` é classe que realiza as operações de forma sín
 
 ##### **DocumentCollectionManagerAsync**
 
-O `DocumentCollectionManagerAsync` é classe que realiza as operações de forma assíncrona, com ele é possível realizar a criação, editação, remoção e a recuperação dentro dos bancos de dados do tipo documento.
+The `DocumentCollectionManagerAsync` is the class that manages the persistence on an asynchronous way to document collection.
 
 ```java
         DocumentEntity entity = DocumentEntity.of("collection");
@@ -36,38 +36,38 @@ O `DocumentCollectionManagerAsync` é classe que realiza as operações de forma
         entity.add(diana);
 
         List<DocumentEntity> entities = Collections.singletonList(entity);
-         DocumentCollectionManagerAsync managerAsync = null;
+         DocumentCollectionManagerAsync managerAsync = //instance
 
-        //saves operations
-        managerAsync.save(entity);
-        managerAsync.save(entity, Duration.ofHours(2L));//saves with 2 hours of TTL
-        managerAsync.save(entities, Duration.ofHours(2L));//saves with 2 hours of TTL
+        //insert operations
+        managerAsync.insert(entity);
+        managerAsync.insert(entity, Duration.ofHours(2L));//inserts with 2 hours of TTL
+        managerAsync.insert(entities, Duration.ofHours(2L));//inserts with 2 hours of TTL
         //updates operations
         managerAsync.update(entity);
         managerAsync.update(entities);
 ```
 
-Em alguns momentos é necessário saber quando tal operação foi finalizada, mesmo quando é utilizado de forma assíncrona. Com esse objetivo, essa classe também vem com suporte a `callBack`, assim, tão logo a operação seja finalizada.
+Sometimes on an asynchronous process, is important to know when this process is over, so the `DocumentCollectionManagerAsync` also has callback support.
 
 ```java
         Consumer<DocumentEntity> callBack = e -> {};
-        managerAsync.save(entity, callBack);
+        managerAsync.insert(entity, callBack);
         managerAsync.update(entity, callBack);
 ```
 
-##### Buscando as informações dentro de uma coleção de documentos:
+##### Search information on a document collection
 
-##### 
+#### 
 
-No diana, as buscas tanto de forma síncrona e assíncrona são realizadas a partir da classe `DocumentQuery`, com essa classe é possível definir se alguns ou todos os apenas alguns documentos serão retornados, ordenação além da condição para a informação ser recuperada.
+Diana has support to retrieve information from both ways synchronous and asynchronous from the `DocumentQuery` class. The `DocumentQuery`  has information such as sort type, document and also the condition to retrieve information.
 
-A condição dentro da query é formada por `DocumentCondition`, ele á composta por uma condição e um documento, por exemplo, o a condição abaixo buscará informação em que nome seja igual a “**Ada**”.
+The condition on `DocumentQuery` is given from `DocumentCondition`, which has the status and the document. Eg. The condition behind is to find a name equal "**Ada**".
 
 ```java
 DocumentCondition nameEqualsAda = DocumentCondition.eq(Document.of("name", “Ada”));
 ```
 
-Também possível agrupar as informações da condição com operadores **AND**, **OR** e **NOT**.
+Also, the developer can use the aggregators such as **AND**, **OR** e **NOT**.
 
 ```java
 DocumentCondition nameEqualsAda = DocumentCondition.eq(Document.of("name", "Ada"));
@@ -76,9 +76,9 @@ DocumentCondition condition = nameEqualsAda.and(youngerThan2Years);
 DocumentCondition nameNotEqualsAda = nameEqualsAda.negate();
 ```
 
-Caso não seja informado uma condição significa que ele tentará trazer todas as informações no banco de dados, semelhante ao “`select * from database`” em um banco relacional, vale salientar que nem todos os bancos possuem suporte a tal recurso.
+If there isn't a condition in the query that means the query will try to retrieve all information from the database, similar to a “`select * from database`” in a relational database, just remembering that the return depends on the driver. It is important to say that not all NoSQL databases have support for this resource.
 
-Dentro do DocumentQuery também é possível paginar as informações utilizando onde deve começar a busca e o limit máximo de retorno.
+DocumentQuery also has pagination feature to define where the data start, and it limits.
 
 ```java
 DocumentCollectionManager manager = //instance;
@@ -87,26 +87,19 @@ DocumentQuery query = DocumentQuery.of("collection");
 DocumentCondition ageBiggerTen = DocumentCondition.gt(Document.of("age", 10));
 query.and(ageBiggerTen);
 query.addSort(Sort.of("name", Sort.SortType.ASC));
-query.setLimit(10);
-query.setStart(2);
-List<DocumentEntity> entities = manager.find(query);
+query.withMaxResults(10);
+query.withFirstResult(2);
+List<DocumentEntity> entities = manager.select(query);
 Optional<DocumentEntity> entity = manager.singleResult(query);
 Consumer<List<DocumentEntity>> callback = e -> {};
-managerAsync.find(query, callback);
+managerAsync.select(query, callback);
 ```
 
+##### Removing information from Document Collection
 
+Such as `DocumentQuery` there is a class to remove information from the document database type: A `DocumentDeleteQuery` type.
 
-##### Removendo as informações dentro de uma coleção de documentos:
-
-
-
-Semelhante ao `DocumentQuery,`existe uma classe responsável por remover informações dentro da coleção de documentos: A classe `DocumentDeleteQuery`
-
-  
-Ela possui uma estrutura bem simples, sem paginação e ordenação, uma vez que o fogo será a remoção de informação dentro do banco de dados.
-
-
+It is smoother than `DocumentQuery` because there isn't pagination and sort feature, once this information is unnecessary to remove information from database.
 
 ```java
         DocumentCollectionManager manager = //instance;

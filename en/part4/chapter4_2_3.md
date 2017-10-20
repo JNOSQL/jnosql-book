@@ -1,38 +1,42 @@
-## Repositório de Chave Valor
+## Key-Value template
 
-O repositório de chave valor é responsável para realizar a comunicação da entidade para um banco de dados do tipochave valor.
+The key value is a bridge between the entity and the key-value database.
 
-#### `KeyValueRepository`
+#### `KeyValueTemplate`
 
-O KeyValuRepository é responsável pela persistência de uma Entidade em um banco de dados do tipo chave valor. Ele é composto, basicamente, por dois componentes:
+The `KeyValuTemplate` is the column template to synchronous tasks. It has three components:
 
-* **KeyValueEntityConverter**: Responsável por converter uma entidade, por exemplo, User para KeyValueEntity
+The KeyValuTemplate is responsible for persistency of an entity in a key-value database. It is composed basically for three components.
 
-* **BucketManager**: entidade manager de chave valor do Diana.
+* **KeyValueEntityConverter**: That converts an entity to communication API, e.g., The Person to KeyValueEntity.
+
+* **BucketManager**: The Diana column key-value entity manager.
+
+* **KeyValueWorkflow**: The workflow to update and save methods.
 
 ```java
-KeyValueRepository repository = null;
+KeyValuTemplate template = null;
 User user = new User();
 user.setNickname("ada");
 user.setAge(10);
 user.setName("Ada Lovelace");
 List<User> users = Collections.singletonList(user);
 
-repository.put(user);
-repository.put(users);
+template.put(user);
+template.put(users);
 
-Optional<Person> ada = repository.get("ada", Person.class);
-Iterable<Person> usersFound = repository.get(Collections.singletonList("ada"), Person.class);
+Optional<Person> ada = template.get("ada", Person.class);
+Iterable<Person> usersFound = template.get(Collections.singletonList("ada"), Person.class);
 ```
+To use a key-value template just follows the CDI style and put an `@Inject` on the field.
 
-Como o motor do Artemis é CDI para que se posso utilizar o DocumentRepository basta dar um @Inject num campo.
 
 ```java
 @Inject
-private KeyValueRepository repository;
+private KeyValuTemplate template;
 ```
 
-Para isso é necessário que a aplicação injete um BucketManager:
+The next step is to produce a **BucketManager**:
 
 ```java
 @Produces
@@ -42,18 +46,18 @@ public BucketManager getManager() {
 }
 ```
 
-Para trabalhar com mais de um tipo de KeyValueRepository existem duas opções:
+To work with more than one key-value Template, there are two approaches:
 
-1\) A primeira é com a utilização dos qualificadores:
+1\) Using qualifieres:
 
 ```java
     @Inject
     @Database(value = DatabaseType.KEY_VALUE, provider = "databaseA")
-    private KeyValueRepository repositorA;
+    private KeyValueTemplate templateA;
 
     @Inject
     @Database(value = DatabaseType.KEY_VALUE, provider = "databaseB")
-    private KeyValueRepository repositoryB;
+    private KeyValueTemplate templateB;
 
 
     //producers methods
@@ -72,19 +76,16 @@ Para trabalhar com mais de um tipo de KeyValueRepository existem duas opções:
     }
 ```
 
-2\) A segunda delas é a partir do KeyValueRepositoryProducer
+2\)  Using the **KeyValueTemplateProducer** class
 
 ```java
 @Inject
-private KeyValueRepositoryProducer producer;
+private KeyValueTemplateProducer producer;
 
 public void sample() {
    BucketManager managerA = //instance;
    BucketManager managerB = //instance
-   KeyValueRepository repositorA = producer.get(managerA);
-   KeyValueRepository repositoryB = producer.get(managerB);
+   KeyValueTemplate templateA = producer.get(managerA);
+   KeyValueTemplate templateB = producer.get(managerB);
 }
 ```
-
-
-

@@ -1,11 +1,11 @@
 #### Column Family Manager Factory
 
-As classes fábricas são as responsáveis pela criação de uma classe Manager numa família de colunas.
+The factory classes have the duty to create the column family manager.
 
 * **ColumnFamilyManagerAsyncFactory**
 * **ColumnFamilyManagerFactory**
 
-As classes `ColumnFamilyManagerAsyncFactory` e `ColumnFamilyManagerFactory` são responsáveis pela criação das classes gerentes de forma síncrona e assíncrona respectivamente, para isso, basta passar informar o nome do banco de dados.
+The `ColumnFamilyManagerAsyncFactory` and `ColumnFamilyManagerFactory` creates the manager synchronously and asynchronously respectively.
 
 ```java
 ColumnFamilyManagerFactory factory = //instance
@@ -14,5 +14,4 @@ ColumnFamilyManager manager = factory.get("database");
 ColumnFamilyManagerAsync managerAsync = asyncFactory.getAsync("database");
 ```
 
-As fábricas foram separadas itencionamente, uma vez, que nem todos os bancos de dados suportam operações síncronas ou assíncronas.
-
+The factories were separated intentionally, as not all databases support synchronous and asynchronous operations.

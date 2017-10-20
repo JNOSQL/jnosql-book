@@ -11,12 +11,11 @@ Como mencionado anteriormente, o Artemis é orientado a anotações para que fac
 As anotações para o Modelo tem como objetivo transformar o modelo, orientado a objetos, para a camada de comunicação, Diana. Para mapeamento do modelo existe:
 
 * Entity
-
 * Column
-
 * MappedSuperclass
-
 * Key
+* Embeddable
+* Convert
 
 ##### Entity
 
@@ -57,6 +56,34 @@ public class Person {
 
 Faz com que o Artemis olhe para os atributos da classe pai, cujo os atributos sejam anotados com Column,
 
+```java
+@Entity
+public class Dog extends Animal {
+
+    @Column
+    private String name;
+    //getter and setter
+
+}
+
+@MappedSuperclass
+public class Animal {
+
+    @Column
+    private String race;
+
+    @Column
+    private Integer age;
+
+    //getter and setter
+
+}
+```
+
+
+
+No exemplo citado, ao salvar a classe `Dog` será levado em consideração também os campos da classe `Animal`, ou seja, serão persistidos três campos, `name`, `race` e `age`.
+
 ##### Key
 
 Apenas para o banco de dados do tipo chave-valor, ele indica qual dos atributos é a chave o valor será toda a informação restante. A forma de armazenamento da classe vai depender do driver do banco de dados.
@@ -65,14 +92,92 @@ Apenas para o banco de dados do tipo chave-valor, ele indica qual dos atributos 
 @Entity
 public class User implements Serializable {
 
-    @Key
+    @Id
     private String userName;
 
     private String name;
 
     private List<String> phones;
-    }
+
+        }
 ```
+
+
+
+##### Embeddable
+
+Indica que as classes com essa anotação serão persistidas de forma embarcada, ou seja, na conversão de uma entidade para o tipo documentos o tipo embarcado será um suddocumento.
+
+```java
+@Entity
+public class Book {
+
+    @Column
+    private String name;
+
+    @Column
+    private Author author;
+
+//getter and setter
+
+}
+
+@Embeddable
+public class Author {
+
+    @Column
+    private String name;
+
+    @Column
+    private Integer age;
+
+//getter and setter
+
+}
+```
+
+
+
+##### Convert
+
+
+
+Assim como o Diana, o Artemis também possui o recurso para realizar conversão de tipos. Esse tipo de recurso é interessante também para, por exemplo, criptografar uma informação texto, de String para String. Como parâmetro essa anotação precisa de uma classe que implemente AttributeConverter. No exemplo abaixo, foi criado a classe salário com um converter para a classe criada Money.
+
+```java
+@Entity
+public class Worker {
+    @Column
+    private String name;
+    @Column
+    private Job job;
+    @Column("money")
+    @Convert(MoneyConverter.class)
+    private Money salary;
+//getter and setter
+}
+
+public class MoneyConverter implements AttributeConverter<Money, String>{
+    @Override
+    public String convertToDatabaseColumn(Money attribute) {
+        return attribute.toString();
+    }
+    @Override
+    public Money convertToEntityAttribute(String dbData) {
+        return Money.parse(dbData);
+    }
+}
+public class Money {
+    private final String currency;
+
+    private final BigDecimal value;
+
+//....
+}
+
+```
+
+
 
 #### Anotação para qualificação
 
@@ -89,7 +194,7 @@ Como nos dois casos ele implementa a mesma interface será retornado em tempo de
 
 * **DatabaseType**: O tipo de banco de dados, por exemplo, chave-valor documentos, grafo ou família de coluna
 
-* **privider**: O nome do provedor do banco de dados, por exemplo, “cassandra”, “hbase”, “mongoDB”, etc. Assim, para resolver o problema mencionado anteriormente existe é necessário anotar com o qualificador.
+* **provider**: O nome do provedor do banco de dados, por exemplo, “cassandra”, “hbase”, “mongoDB”, etc. Assim, para resolver o problema mencionado anteriormente existe é necessário anotar com o qualificador.
 
 ```java
 @Inject

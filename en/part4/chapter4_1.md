@@ -1,26 +1,26 @@
-## Anotações para o Modelo
+## Models Annotation
 
-Como mencionado anteriormente, o Artemis é orientado a anotações para que facilite a vida do desenvolvedor Java. Essas anotações têm algumas categorias:
+As mentioned previously, Artemis has annotations that make the Java developer life easier; these annotations have two categories:
 
-* Anotação para modelo
+* Annotation Models
 
-* Anotação para qualificação
+* Qualifier annotation
 
-#### Anotações para o Modelo
+#### Annotation Models
 
-As anotações para o Modelo tem como objetivo transformar o modelo, orientado a objetos, para a camada de comunicação, Diana. Para mapeamento do modelo existe:
+The annotation model is to convert the entity model to the entity on communication, the Diana entity:
+
 
 * Entity
-
 * Column
-
 * MappedSuperclass
-
 * Key
+* Embeddable
+* Convert
 
 ##### Entity
 
-Essa anotação tem como objetivo mapear a classe que será utilizada como entidade dentro do Artemis, ela possui um único atributo: name. Esse atributo tem como objetivo informar o nome da Família de coluna, Coleção de documentos, chave valor, etc. Caso ele não seja informado será utilizado o nome simples da classe, por exemplo, a Classe org.jnosql.demo.Person ele usará o Person como nome.
+This annotation maps the class to Artemis. It has an unique attribute called `name` . This attribute is to inform either the column family name or the document collection name, etc. The default value is the simple name of a class, for example, given the org.jnosql.demo.Person class the default name will `Person`.
 
 ```java
 @Entity
@@ -36,7 +36,7 @@ public class Person {
 
 ##### Column
 
-Essa anotação observada os atributos dentro da classe, anotada com Entity.
+This annotation it to define which fields on an Entity will be persisted. It also has a unique attribute name to specify that name on Database, and the default value is the field name.
 
 ```java
 @Entity
@@ -55,17 +55,45 @@ public class Person {
 
 ##### MappedSuperclass
 
-Faz com que o Artemis olhe para os atributos da classe pai, cujo os atributos sejam anotados com Column,
+If this annotation is on the parent class, Artemis will persist its information as well. So beyond the son class, Artemis will store any field that is in Parent class with Column annotation.
+
+
+```java
+@Entity
+public class Dog extends Animal {
+
+    @Column
+    private String name;
+    //getter and setter
+
+}
+
+@MappedSuperclass
+public class Animal {
+
+    @Column
+    private String race;
+
+    @Column
+    private Integer age;
+
+    //getter and setter
+
+}
+```
+
+On this sample above, when saves a `Dog` instance, it saves the `Animal` case too, explicitly will save the fields `name`, `race` and `age`.
+
 
 ##### Key
 
-Apenas para o banco de dados do tipo chave-valor, ele indica qual dos atributos é a chave o valor será toda a informação restante. A forma de armazenamento da classe vai depender do driver do banco de dados.
+Just for the key-value database, it shows which attribute is the key, thus the value will be the remaining information. The way of storing the class will depend on the database driver.
 
 ```java
 @Entity
 public class User implements Serializable {
 
-    @Key
+    @Id
     private String userName;
 
     private String name;
@@ -73,10 +101,77 @@ public class User implements Serializable {
     private List<String> phones;
     }
 ```
+##### Embeddable
 
-#### Anotação para qualificação
+Defines a class whose instances are stored as an intrinsic part of an owning entity and share the identity of the object. So when converts an Embeddable instance to either save or update this is going to be either subdocument or subcolumn.
 
-Em alguns momentos é necessário trabalhar com o mesmo tipo de banco de dados, por exemplo, trabalhar com dois bancos do tipo documentos.
+```java
+@Entity
+public class Book {
+
+    @Column
+    private String name;
+
+    @Column
+    private Author author;
+
+//getter and setter
+
+}
+
+@Embeddable
+public class Author {
+
+    @Column
+    private String name;
+
+    @Column
+    private Integer age;
+
+//getter and setter
+
+}
+```
+
+##### Convert
+
+As Diana, Artemis has a converter at abstraction level. This feature is useful, e.g., to cipher a field, String to String, or just to do a converter to a custom type using annotation. The `Converter` annotation has a parameter, and an AttributeConverter implementation class can be used. Eg. The sample bellow shows how to create a converter to a custom Money class.
+
+```java
+@Entity
+public class Worker {
+    @Column
+    private String name;
+    @Column
+    private Job job;
+    @Column("money")
+    @Convert(MoneyConverter.class)
+    private Money salary;
+//getter and setter
+}
+
+public class MoneyConverter implements AttributeConverter<Money, String>{
+    @Override
+    public String convertToDatabaseColumn(Money attribute) {
+        return attribute.toString();
+    }
+    @Override
+    public Money convertToEntityAttribute(String dbData) {
+        return Money.parse(dbData);
+    }
+}
+public class Money {
+    private final String currency;
+
+    private final BigDecimal value;
+
+//....
+}
+```
+
+#### Qualifier annotation
+
+That is important to work with more than one type of the same application.
 
 ```java
 @Inject
@@ -85,11 +180,12 @@ private DocumentRepository repositoryA;
 private DocumentRepository repositoryB;
 ```
 
-Como nos dois casos ele implementa a mesma interface será retornado em tempo de execução pelo CDI um problema de ambiguidade de injeção. Para resolver esse problema existe o qualificador que a API já traz, o qualificador `Database`. Essa API possui dois atributos:
+Two injections with the same interface, CDI throws an ambiguous exception. There is the `Database` qualifier to fix this problem. It has two attributes:
 
-* **DatabaseType**: O tipo de banco de dados, por exemplo, chave-valor documentos, grafo ou família de coluna
+* **DatabaseType**: The database type, key-value, document, column, graph.
 
-* **privider**: O nome do provedor do banco de dados, por exemplo, “cassandra”, “hbase”, “mongoDB”, etc. Assim, para resolver o problema mencionado anteriormente existe é necessário anotar com o qualificador.
+* **provider**: The provider database name, eg. "cassandra, "hbase", "mongodb". So using the `Database` qualifier:
+
 
 ```java
 @Inject
@@ -100,7 +196,6 @@ private DocumentRepository repositoryA;
 private DocumentRepository repositoryB;
 ```
 
-Obviamente será necessário a criação de métodos produtores com os mesmos qualificadores que falaremos mais a frente.
+Beyond this annotation, the producer method with the entity manager is required.
 
-Um ponto importante é da integração do Artemis com esse qualificador. Caso ele seja utilizado para a criação dos Entity Manager do Diana \(ColumnFamilyManager, DocumentCollectionManager, BucketManager, etc.\) o Artemis gerenciará todo o ciclo de vida de classes como DocumentRepository, ColumnRepository, dentro outros que será visto mais a frente.
-
+The benefits using this qualifier instead of creating a new one is that if the Manager Entity is produced using `Database` as a qualifier, Artemis will create classes such as DocumentRepository, ColumnRepository, etc. automatically.

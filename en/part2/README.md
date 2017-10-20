@@ -1,20 +1,21 @@
-## Introdução ao Diana.
+## Diana Introduction
 
+With the strategy to divide and conquer on JNoSQL. The Diana was born, it has the goal to be the communication layer easy and extensible. The extensibility is more than important, that is entirely necessary once the API must support specific feature at each database. Nonetheless, the advantage of a common API is a change to another database provider has lesser than using the specific API.
 
-Com o intuito de separar melhor as camadas de abstração e de comunicação entre os bancos não relacionais. Nasceu a API Diana, o seu objetivo é criar essa tal camada de comunicação de uma maneira simples, além de ser extensível. A extensibilidade é algo muito importante para os bancos não relacionais uma vez que, apesar de terem alguns comportamentos comuns, é muito importante que seja possível utilizar recurso específicos do banco de dados. A sua vantagem se encontra em ser uma API comum, assim caso seja necessário realizar a mudança o banco de dados o impacto em aprender uma nova API é muito menor.
-
-
-Com o intuito de abranger os quatro tipos de banco de dados, essa API é comporta por quatro domínios, cada domínio abrange um tipo de banco de dados. 
+To cover the four kinds of database, this API has four packages, one for each data bank.
 
 * `org.jnosql.diana.column`
 * `org.jnosql.diana.document`
 * `org.jnosql.diana.graph`
 * `org.jnosql.diana.key`
 
-Ou seja, caso um determinado banco de dados seja multi-model, ele usará duas APIs, uma para cada tipo de banco de dados. Além de possuir cada API, para cada tipo, existe também o Technology Compatibility Kit, o TCK. Cada TCK tem como objetivo de realizar os testes para verificar se uma implementação está ou não compatível com a API. Mesmo com APIs diferentes, houve uma tentativa de se utilizar uma nomenclatura comum entre elas:
+So, if a database is multi-model, has support to more than one database, it will implement an API to each database which it supports. Also, each API has the TCK to prove if the database is compatible with the API. Even from differents JSR it tries to use the same nomenclature:
 
 * Configuration
 * Factory
 * Manager
 * Entity
 * Value
+
+
+

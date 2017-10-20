@@ -18,10 +18,10 @@ O `ColumnFamilyManager` é classe que realiza as operações de forma síncrona,
         ColumnFamilyManager manager = //instance;
 
 
-        //saves operations
-        manager.save(entity);
-        manager.save(entity, Duration.ofHours(2L));//saves with 2 hours of TTL
-        manager.save(entities, Duration.ofHours(2L));//saves with 2 hours of TTL
+        //inserts operations
+        manager.insert(entity);
+        manager.insert(entity, Duration.ofHours(2L));//inserts with 2 hours of TTL
+        manager.insert(entities, Duration.ofHours(2L));//inserts with 2 hours of TTL
         //updates operations
         manager.update(entity);
         manager.update(entities);
@@ -40,10 +40,10 @@ O `ColumnFamilyManagerAsync` é classe que realiza as operações de forma assí
         ColumnFamilyManagerAsync managerAsync = null;
 
 
-        //saves operations
-        managerAsync.save(entity);
-        managerAsync.save(entity, Duration.ofHours(2L));//saves with 2 hours of TTL
-        managerAsync.save(entities, Duration.ofHours(2L));//saves with 2 hours of TTL
+        //inserts operations
+        managerAsync.insert(entity);
+        managerAsync.insert(entity, Duration.ofHours(2L));//inserts with 2 hours of TTL
+        managerAsync.insert(entities, Duration.ofHours(2L));//inserts with 2 hours of TTL
         //updates operations
         managerAsync.update(entity);
         managerAsync.update(entities);
@@ -53,7 +53,7 @@ Em alguns momentos é necessário saber quando tal operação foi finalizada, me
 
 ```java
         Consumer<ColumnEntity> callBack = e -> {};
-        managerAsync.save(entity, callBack);
+        managerAsync.insert(entity, callBack);
         managerAsync.update(entity, callBack);
 ```
 
@@ -92,14 +92,14 @@ Dentro do ColumnQuery também é possível paginar as informações utilizando o
         query.and(ageBiggerTen);
         query.addSort(Sort.of("name", Sort.SortType.ASC));
 
-        query.setLimit(10);
-        query.setStart(2);
+        query.withMaxResults(10);
+        query.withFirstResult(2);
 
-        List<ColumnEntity> entities = manager.find(query);
+        List<ColumnEntity> entities = manager.select(query);
         Optional<ColumnEntity> entity = manager.singleResult(query);
 
         Consumer<List<ColumnEntity>> callback = e -> {};
-        managerAsync.find(query, callback);
+        managerAsync.select(query, callback);
 ```
 
 ##### Removendo as informações dentro de uma família de colunas:

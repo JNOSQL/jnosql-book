@@ -1,100 +1,100 @@
-#### Criando o seu próprio Writer and Reader
+#### Make custom Writer and Reader
 
-O real propósito da interface `Value`, como foi dito, é facilitar a comunicação entre o banco de dados e a aplicação. O Diana, por padrão, suporta os tipos comuns existentes na plataforma Java como os tipos primitivos, Wrappers, a nova API de time, etc. Além desses tipos nativamente suportados também é possível criar os seus próprios convetores de maneira transparente. Para isso ele possui duas interfaces:
+As mentioned before, the `Value` interface is to storage the cost information into a database. Diana already has support to the Java type such as primitives types, wrappers types, new Java 8 date time. Furthermore, the developer can create custom converter easily and quickly. It has two interfaces:
 
-* `ValueWriter`: Essa interface representa como uma instância de Value será escrita dentro do banco de dados.
-* `ValueReader`: Essa interface representa como o valor será lido para ser lido dentro da aplicação Java. Por padrão, o método `<T> T get(Class<T> clazz)` e suas derivações \(_getList_, _getSet_, _getMap_, _getStream_\) utilizam essas implementações para realizar essa conversão.
+* `ValueWriter`: This interface represents a `Value` instance to write in a database.
+* `ValueReader`: This interface represents how the `Value` will convert to Java application. This interface will use on the `<T> T get(Class<T> clazz)` and `<T> T get(TypeSupplier<T> typeSupplier)`.
 
-Ambas as interfaces são carregadas a partir do ServiceLoader do Java SE. Assim, para fazer com que o Diana basta seguir o tal padrão. Para facilitar o entendimento, criará um converter para o seguinte tipo.
+Both class implementations load from Java SE ServiceLoader resource. So, to Diana learn a new type just register on ServiceLoader, e.g., Given a Money type:
 
 ```java
-public class Money { 
+public class Money {
 
-    private final String currency; 
+    private final String currency;
 
-    private final BigDecimal value; 
+    private final BigDecimal value;
 
-    Money(String currency, BigDecimal value) { 
-        this.currency = currency; 
-        this.value = value; 
-    } 
+    Money(String currency, BigDecimal value) {
+        this.currency = currency;
+        this.value = value;
+    }
 
-    public String getCurrency() { 
-        return currency; 
-    } 
+    public String getCurrency() {
+        return currency;
+    }
 
-    public BigDecimal getValue() { 
-        return value; 
-    } 
+    public BigDecimal getValue() {
+        return value;
+    }
 
-    @Override 
-    public String toString() { 
-        return currency + ' ' + value; 
-    } 
+    @Override
+    public String toString() {
+        return currency + ' ' + value;
+    }
 
-    public static Money parse(String text) { 
-        String[] texts = text.split(" "); 
-        return new Money(texts[0], BigDecimal.valueOf(Double.valueOf(texts[1]))); 
-    } 
+    public static Money parse(String text) {
+        String[] texts = text.split(" ");
+        return new Money(texts[0], BigDecimal.valueOf(Double.valueOf(texts[1])));
+    }
 }
 ```
 
-Com o intuito é criar um simples converter foi utilizado a criação dessa simples representação Monetário. Como se sabe que não é uma boa prática reinventar a roda, em sua aplicação utiliza APIs mais maduras como o [moneta](https://github.com/JavaMoney) que é a implementação de referência da money-api, [JSR 354](https://jcp.org/en/jsr/detail?id=354).
+Just to be more didactic the book creates a simple money representation. As everyone knows that is not a good practice reinventing the wheel, so in production the Java Developer must use mature Money APIS such as [moneta](https://github.com/JavaMoney) that is the reference implementation of [JSR 354](https://jcp.org/en/jsr/detail?id=354).
 
-O primeiro passo é a criação da classe que realizará a conversão do tipo para o banco de dados, o `ValueWriter`. Ele possui dois métodos:
+The first step is to create the converter to a custom type to a database, the `ValueWriter`. It has two methods:
 
-* `boolean isCompatible(Class clazz)`: Verifica se a implementação suporta a conversão para esse tipo de classe.
-* `S write(T object)`: Uma vez definido que a implementação está apta para realizar a conversão, o próximo passo é realizar a conversão de uma instância `T` para o tipo desejado `S`.
+* `boolean isCompatible(Class clazz)`: Check if the given class has support for this implementation.
+* `S write(T object)`: Once the implementation supports the type, the next step converts a `T` instance to `S` type.
 
 ```java
-public class MoneyValueWriter implements ValueWriter<Money, String> { 
+public class MoneyValueWriter implements ValueWriter<Money, String> {
 
-    @Override 
-    public boolean isCompatible(Class clazz) { 
-        return Money.class.equals(clazz); 
-    } 
+    @Override
+    public boolean isCompatible(Class clazz) {
+        return Money.class.equals(clazz);
+    }
 
-    @Override 
-    public String write(Money object) { 
-        return object.toString(); 
-    } 
+    @Override
+    public String write(Money money) {
+        return money.toString();
+    }
 }
 ```
 
-Uma vez o valor definido dentro do banco de dados o próximo passo é realizar a leitura dessa informação para a aplicação. Para isso é necessário ter uma especialização do ValueReader. Assim, como o `ValueWriter` ele possui dois métodos:
+With the `MoneyValueWriter` created and the Money type will save as `String`, then the next step is read information to Java application. As can be seen, a `ValueReader` implementation. This interface has two methods:
 
-* `boolean isCompatible(Class clazz)`; Verifica se a implementação está apta para realizar a leitura do tipo desejado.
-* `<T> T read(Class<T> clazz, Object value)`; Uma vez compatível, o próximo passo é realizar a operação de leitura para a classe algo T a partir do objeto origem.
+* `boolean isCompatible(Class clazz)`; Check if the given class has support for this implementation.
+* `<T> T read(Class<T> clazz, Object value)`; Converts to the `T` type from Object instance.
 
 ```java
-public class MoneyValueReader implements ValueReader { 
+public class MoneyValueReader implements ValueReader {
 
-    @Override 
-    public boolean isCompatible(Class clazz) { 
-        return Money.class.equals(clazz); 
-    } 
+    @Override
+    public boolean isCompatible(Class clazz) {
+        return Money.class.equals(clazz);
+    }
 
-    @Override 
-    public <T> T read(Class<T> clazz, Object value) { 
-        return (T) Money.parse(value.toString()); 
-    } 
+    @Override
+    public <T> T read(Class<T> clazz, Object value) {
+        return (T) Money.parse(value.toString());
+    }
 }
 ```
 
-Uma vez criado as implementações o próximo passo é cadastrar as implementações de leitura e escrita. Para isso, é necessário criar dois arquivos:
+After all, the both implementation were done, the last step is to register them into two files:
 
 * `META-INF/services/org.jnosql.diana.api.ValueReader`
 * `META-INF/services/org.jnosql.diana.api.ValueWriter`
 
-Cada arquivo terá o caminho e a classe da respectiva implementação, Assim:
+Each file will have the qualified of this respective implementation:
 
-O arquivo `org.jnosql.diana.api.ValueReader` terá o seguinte conteúdo:
+The file `org.jnosql.diana.api.ValueReader` will have:
 
 ```
 my.company.MoneyValueReader
 ```
 
-O arquivo `org.jnosql.diana.api.ValueWriter` terá o seguinte conteúdo:
+The file `org.jnosql.diana.api.ValueWriter` will have:
 
 ```
 my.company.MoneyValueWriter
@@ -106,6 +106,3 @@ my.company.MoneyValueWriter
         List<Money> list = value.get(new TypeReference<List<Money>>() {});
         Set<Money> set = value.get(new TypeReference<Set<Money>>() {});;
 ```
-
-
-

@@ -1,25 +1,25 @@
-# Sumário
+# Summary
 
 * [Let's talk about standard to NoSQL database in Java](introduction.md)
-* [Crédito](credits.md)
-* [Sobre o Autor](about_me.md)
+* [Credits](credits.md)
+* [About the author](about_me.md)
 
-### Introdução ao JNOSQL
+### Introduction to JNoSQL
 
-* [A principal ideia atrás da API](part1/README.md)
- * [Por que Diana?](part1/chapter1_1.md)
+* [The main idea behind the API](part1/README.md)
+ * [Why Diana?](part1/chapter1_1.md)
 
-### Conhecendo a API de comunicação Diana
+### Talking about the communication layer, aka Diana
 
-* [Introdução ao Diana](part2/README.md)
+* [Diana Introduction](part2/README.md)
   * [Value](part2/chapter2_1.md)
-    * [Criando o seu próprio Writer and Reader](part2/chapter2_1_1.md)
+    * [Make custom Writer and Reader](part2/chapter2_1_1.md)
   * [Element Entity ](part2/chapter2_2.md)
     * [Document](part2/chapter2_2_1.md)
     * [Column](part2/chapter2_2_2.md)
-  * [Entidade](part2/chapter2_3.md)
+  * [Entity](part2/chapter2_3.md)
     * [ColumnFamilyEntity](part2/chapter2_3_1.md)
-    * [DocumentCollectionEntity](part2/chapter2_3_2.md)
+    * [DocumentEntity](part2/chapter2_3_2.md)
     * [KeyValueEntity](part2/chapter2_3_3.md)
   * [Manager](part2/chapter2_4.md)
     * [Document Manager](part2/chapter2_4_1.md)
@@ -33,29 +33,29 @@
      * [Document Configuration](part2/chapter2_6_1.md)
      * [Column Configuration](part2/chapter2_6_2.md)
      * [Key Value Configuration](part2/chapter2_6_3.md)
-* [Diversidade nos bancos não relacionaisDiversidade nos Bancos não relacionais](part3/README.md)
-   * [Utilizando drivers para com o Diana](part3/chapter3_1.md)
-     
-### Conhecendo a API de comunicação do Artemis  
+* [The diversity on NoSQL databases](part3/README.md)
+   * [Using Diana drivers](part3/chapter3_1.md)
 
-* [Introdução ao Artemis](part4/README.md)
-    * [Anotações para o Modelo](part4/chapter4_1.md)
-    * [Classes repositórios](part4/chapter4_2.md)
-       * [Repositório de Documentos](part4/chapter4_2_1.md)
-       * [Repositório de Família de Colunas](part4/chapter4_2_2.md)
-       * [Repositório de Chave valor](part4/chapter4_2_3.md)
-   * [CrudRepisotry](part4/chapter4_3.md)
-   * [Lidando com os eventos da persistência](part4/chapter4_4.md)
+### Talking about the abstraction layer, aka Artemis
+
+* [Artemis introduction](part4/README.md)
+    * [Models Annotation](part4/chapter4_1.md)
+    * [Template classes](part4/chapter4_2.md)
+       * [Document Template](part4/chapter4_2_1.md)
+       * [Column Family Template](part4/chapter4_2_2.md)
+       * [Key-value Template](part4/chapter4_2_3.md)
+   * [Repository](part4/chapter4_3.md)
+   * [Persistence events](part4/chapter4_4.md)
    * [Bean Validation](part4/chapter4_5.md)
-   
-### Estendendo o Artemis
 
-* [Componentes do Artemis](part5/README.md)
+### Extending Artemis
+
+* [Artemis components](part5/README.md)
   * [Workflow](part5/chapter5_1.md)
   * [EventManager](part5/chapter5_2.md)
   * [Converter](part5/chapter5_3.md)
-  * [As classes respositórios](part5/chapter5_4.md)
+  * [The repository class](part5/chapter5_4.md)
 
-### Bibliografia
-     
-* [Bibliografia](bibliography/README.md)
+### Bibliography
+
+* [Bibliography](bibliography/README.md)

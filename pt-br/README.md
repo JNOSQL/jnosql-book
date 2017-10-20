@@ -1,8 +1,6 @@
 ### JNoSQL
 
+O JNoSQL possui várias ferramentas para facilitar a integração entre as aplicações Java e os bancos de dados NoSQL. Para resolver este problema, o projeto tem duas camadas:
 
-
-JNoSQL é uma API flexível e extensível para conectar os bancos não relacionais, os NoSQL. Seu projeto é dividivo em duas camadas, uma para a comunicação entre o banco de dados e a aplicação e outro para abstração e a integração com outras tecnologias. Ambas as camdas são subdividias em quatro tipos, uma para cada tipo de banco de dados.
-
-
-
+* **API de Comunicação: **Uma API para comunicar apenas com o banco de dados, da mesma forma que o JDBC faz com o SQL. Esta API possui quatro tipos, um para cada tipo de banco de dados.
+* **API de Mapeamento: **Uma API para realizar a melhor integração com o desenvolvedor Java, a qual é orientado a anotações e realiza integrações com outras tecnologias, como o Bean Validation, etc., além de utilizar CDI para resolver esta camada.

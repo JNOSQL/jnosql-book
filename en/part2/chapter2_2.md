@@ -1,8 +1,7 @@
 ## **Element Entity **
 
 
-
-O **Element Entity**, é a menor unidade de uma entidade. Apenas com exceção do Key-value, por ser uma estrutura bastante simples. Por exemplo, a estrutura de família de colunas, entidade, é composta por colunas, element entity, cada coluna, por sua vez, é formada por uma tupla em que a chave é o nome da coluna e o valor é o `Value`, explicado no capítulo anterior.
+The **Element entity** is a small piece of a body, except a key-value structure type once this structure is simple. Eg. The column family structure, the entity, has columns, element entity, with column has a tuple where the key is the name, and the value is the information as a `Value` implementation.
 
 
 

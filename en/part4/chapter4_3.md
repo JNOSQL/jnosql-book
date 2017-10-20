@@ -1,18 +1,16 @@
-## 
+# Repository
 
-## CrudRepisotry
+In addition to template class, Artemis has the Repository. This interface helps the Entity repository to save, update, delete and retrieve information.
 
-Além dos repositórios de família de colunas e também de documentos o Artemis também possui o CRUDRepository. Essa interface tem como objetivo auxiliar na criação de classes repositórios específicas para as entidades além de facilitar na criação de uma query.
-
-Para utilizar esse recurso é necessário apenas criar uma interface que extenda de **CrudRepository**.
+To use Repository, just need to create a new interface that extends the **Repository**.
 
 ```java
-    interface PersonRepository extends CrudRepository<Person> {
+    interface PersonRepository extends Repository<Person, String> {
 
     }
 ```
 
-E injete o recurso, é necessário definir também o qualificador Database que será responsável por dizer para qual tipo de banco a informação será enviada.
+The qualifier is mandatory to define the database type that will be used at the injection point moment.
 
 ```java
 @Inject
@@ -23,7 +21,7 @@ private PersonRepository documentRepository;
 private PersonRepository columnRepository;
 ```
 
-Para isso é necessário que a aplicação injete um ColumnFamilyManager ou um DocumentCollectionManager:
+And then, as the repository class, create either a **ColumnFamilyManager** or a **DocumentCollectionManager** with produces method:
 
 ```java
 @Produces
@@ -39,7 +37,7 @@ return manager;
 }
 ```
 
-Caso seja necessário trabalhar mais de um banco de dados, basta utilizar o qualificador Database e ele será elegível para injeção.
+To work with multiple database you can use qualifiers:
 
 ```java
 @Inject
@@ -89,7 +87,7 @@ return manager;
 }
 ```
 
-Com isso o Artemis se encarregará de utilizar o apropriado banco de dados e cuidará de implementar os métodos.
+So, Artemis will inject automatically.
 
 ```java
 PersonRepository repository = //instance
@@ -102,23 +100,19 @@ List<Person> people = Collections.singletonList(person);
 
 repository.save(person);
 repository.save(people);
-repository.save(people, Duration.ofHours(2));
-repository.update(person);
-repository.update(people);
-repository.update(people);
 ```
 
-#### Criando Queries com o CrudRepository
+#### Search information from Repository
 
-Além de salvar e atualizar a informação também é possível recuperar e deletar a informação utilizando queries dinâmicas no método. Com esse intuito o CrudRepository vem com algumas palavras reservadas:
+The Repository also has a method query from the method name. These are the keywords:
 
-* **findBy**: Como prefixo para encontrar alguma informação
-* **deleteBy**: Como prefixo, para deletar alguma informação
+* **findBy**: The prefix to find some information
+* **deleteBy**: The prefix to delete some information
 
-Além dos Operadores:
+Also the operators:
 
-* AND
-* OR
+* And
+* Or
 * Between
 * LessThan
 * GreaterThan
@@ -130,7 +124,7 @@ Além dos Operadores:
 * OrderBy\_\_\_\_\_ASC
 
 ```java
-interface PersonRepository extends CrudRepository<Person> {
+interface PersonRepository extends Repository<Person, Long> {
 
     List<Person> findByAddress(String address);
 
@@ -144,11 +138,11 @@ interface PersonRepository extends CrudRepository<Person> {
 }
 ```
 
-Com isso o artemis cuidará de implementar esses métodos.
+Using these keywords, Artemis will create the queries.
 
-#### Utilizando o CrudRepository de forma assíncrona
+#### Using Repository as asynchronous way
 
-Para trabalhar de forma assíncrona existe a interface CrudRepositoryAsync, seu funcionamento é semelhante ao CrudRepository.
+The RepositoryAsync interface works similarly as Repository but with asynchronous work.
 
 ```java
 @Inject
@@ -160,7 +154,7 @@ private PersonRepositoryAsync documentRepositoryAsync;
 private PersonRepositoryAsync columnRepositoryAsync;
 ```
 
-Ou seja, basta injetá-lo que o Artemis cuidará de implementar os métodos.
+In other words, just inject and then create an Entity Manager async with producers method.
 
 ```java
 PersonRepositoryAsync repositoryAsync = //instance
@@ -174,18 +168,12 @@ List<Person> people = Collections.singletonList(person);
 
 repositoryAsync.save(person);
 repositoryAsync.save(people);
-repositoryAsync.save(person, p -> {});
-repositoryAsync.save(people, Duration.ofHours(2));
-repositoryAsync.update(person);
-repositoryAsync.update(person, p -> {});
-repositoryAsync.update(people);
-repositoryAsync.update(people);
 ```
 
-Também é possível recuperar e deletar a informação de forma assíncrona, a diferença é que na recuperação um callback é obrigatório no fim do método enquanto para deletar ou remover informação o callback é opcional.
+Also, delete and retrieve information with a callback.
 
 ```java
-    interface PersonRepositoryAsync extends CrudRepositoryAsync<Person> {
+    interface PersonRepositoryAsync extends RepositoryAsync<Person, Long> {
 
         void findByNickname(String nickname, Consumer<List<Person>> callback);
 
@@ -195,35 +183,33 @@ Também é possível recuperar e deletar a informação de forma assíncrona, a 
     }
 ```
 
-#### KeyValueCrudRepository
+#### Repository at KeyValue
 
-Assim como a família de co lunas e coleção de documentos, chave valor tem o recurso que auxilia tem como objetivo auxiliar na criação de classes repositórios específicas para as entidades o KeyValueCrudRepository.
-
-Para utilizar esse recurso é necessário apenas criar uma interface que extenda de **KeyValueCrudRepository**.
+Key-value database has support to **Repository**.
 
 ```java
-public interface UserRepository extends KeyValueCrudRepository<User> {
+public interface UserRepository extends Repository<User> {
 }
 ```
 
-E injete o recurso.
+And inject the resource.
 
 ```java
 @Inject
 private UserRepository userRepository;
 ```
 
-Para isso basta produzir um BucketManager.
+Then use a producer to BucketManager
 
 ```java
 @Produces
-public BucketManager getManager() {
-BucketManager manager =//instance
-return manager;
+public BucketManager getManager() {
+BucketManager manager =//instance
+return manager;
 }
 ```
 
-Caso seja necessário trabalhar mais de um banco de dados, basta utilizar o qualificador Database e ele será elegível para injeção.
+You can use qualifier when you want to use a different database in the same application.
 
 ```java
 @Inject
@@ -247,20 +233,19 @@ public BucketManager getManagerB() {
 }
 ```
 
-Uma vez que a busca se dá, por padrão, pela busca da chave essa interface não suporte a geração de query, apenas a implementação dos métodos já existente.
+Once there is not another to both delete and find information, there isn't dynamic query.
 
 ```java
-UserRepository userRepository = null;
+UserRepository userRepository = //instance
 User user = new User("ada", "Ada Lovelace", 30);
 List<User> users = Collections.singletonList(user);
-userRepository.put(user);
-userRepository.put(user, Duration.ofHours(1));
-userRepository.put(users);
-userRepository.put(users, Duration.ofHours(1));
+userRepository.save(user);
+userRepository.save(users);
 
-Optional<User> userOptional = userRepository.get("ada");
-Iterable<User> usersFound = userRepository.get(Collections.singletonList("ada"));
+
+Optional<User> userOptional = userRepository.findById("ada");
+Iterable<User> usersFound = userRepository.findById(Collections.singletonList("ada"));
 ```
 
-
+In the key-value resource, the **Repository** does not support method query resource.
 

@@ -1,12 +1,12 @@
-## Introdução ao Artemis
+## Artemis introduction
 
 ![](../../images/duke-artemis-min.png)
 
-O Artemis é a camada de abstração, ou seja, o seu objetivo é ser algo semelhante ao JPA, realizar o mapeamento do Objeto e convertê-lo para o modelo do Diana.
+The Artemis project is the mapping level, to put it differently, it has the same goals of the either JPA or ORM to NoSQL world, which converts the entity object to Diana model.
 
-É nessa camada que ficará toda a integração com outras tecnologias como Bean Validation, por exemplo. O Artemis é dotado de anotações o que facilita a vida de um desenvolvedor Java. Assim como o Diana, a camada de comunicação, ele precisa ser extensível, uma vez que essa característica é muito importante para os bancos não relacionais, ou seja, ela terá uma API comum, porém, será extensível para adicionar recursos específicos para um determinado banco de dados.
+This level is in charge to do integration among technologies such as Bean Validation. The  Artemis has annotations that make the Java developer life easier. As Diana project, it must be extensible and configurable to keep the diversity on NoSQL database.
 
-Com o intuito de abranger os quatro tipos de banco de dados, essa API é comporta por quatro domínios, cada domínio abrange um tipo de banco de dados.
+To go straight and cover the four NoSQL types, this API has four domains:
 
 * `org.jnosql.artemis.column`
 
@@ -16,23 +16,15 @@ Com o intuito de abranger os quatro tipos de banco de dados, essa API é comport
 
 * `org.jnosql.artemis.key`
 
+#### The Artemis project
 
+Artemis has three parts:
 
-#### Projetos do Artemis
+* **Artemis-core**: This is the Artemis engine where there are events, annotations and the Diana integration.
 
-O Artemis é composto por três partes:
+* **Artemis-validation**: This is the Bean Validation integration as artemis-core plugin.
 
-* **Artemis-core**: É o coração do artemis é onde fica as anotações, eventos básicos  a comunicação com o Diana.
-
-* **Artemis-validation**: É onde fica o suporte com o Bean validation, ele funciona como plugin ao artemis-core. 
-
-* **Artemis-driver**: Assim como o Diana, existe uma grande importância em ter suporte a diversidade dentro do mundo dos bancos de dados não relacionais. A ideia do artemis-driver é criar extensões para que suporte a específico comportamentos de um banco e dados.
-
-
-
-
-
-
+* **Artemis-extension**: Like Diana, there is a support for database diversity. This project has extensions to the each database type on the database mapping level.
 
 
 

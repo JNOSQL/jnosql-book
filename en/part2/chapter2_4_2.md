@@ -1,13 +1,13 @@
 #### Column Manager
 
-A interação com o banco de dados do tipo família de coluna é dado por duas classes:
+The Manager class for the column family type can be synchronous or asynchronous:
 
-* **ColumnFamilyManager**: Para realizar operações no banco de dados de forma síncrona
-* **ColumnFamilyManagerAsync**: Para realizar operações no banco de dados de forma assíncrona.
+* **ColumnFamilyManager**: To do synchronous operations.
+* **ColumnFamilyManagerAsync**: To do asynchronous operations.
 
 ##### **ColumnFamilyManager**
 
-O `ColumnFamilyManager` é classe que realiza as operações de forma síncrona, com ele é possível realizar a criação, editação, remoção e a recuperação dentro dos bancos de dados do tipo família de coluna.
+The `ColumnFamilyManager` is the class that manages the persistence on the synchronous way to column family.
 
 ```java
        ColumnEntity entity = ColumnEntity.of("columnFamily");
@@ -18,10 +18,10 @@ O `ColumnFamilyManager` é classe que realiza as operações de forma síncrona,
         ColumnFamilyManager manager = //instance;
 
 
-        //saves operations
-        manager.save(entity);
-        manager.save(entity, Duration.ofHours(2L));//saves with 2 hours of TTL
-        manager.save(entities, Duration.ofHours(2L));//saves with 2 hours of TTL
+        //inserts operations
+        manager.insert(entity);
+        manager.insert(entity, Duration.ofHours(2L));//inserts with 2 hours of TTL
+        manager.insert(entities, Duration.ofHours(2L));//inserts with 2 hours of TTL
         //updates operations
         manager.update(entity);
         manager.update(entities);
@@ -29,7 +29,7 @@ O `ColumnFamilyManager` é classe que realiza as operações de forma síncrona,
 
 ##### ColumnFamilyManagerAsync
 
-O `ColumnFamilyManagerAsync` é classe que realiza as operações de forma assíncrona, com ele é possível realizar a criação, editação, remoção e a recuperação dentro dos bancos de dados do tipo família de coluna.
+The `ColumnFamilyManagerAsync` is the class that manages the persistence on the asynchronous way to column family.
 
 ```java
         Column diana = Column.of("name", "Diana");
@@ -40,36 +40,36 @@ O `ColumnFamilyManagerAsync` é classe que realiza as operações de forma assí
         ColumnFamilyManagerAsync managerAsync = null;
 
 
-        //saves operations
-        managerAsync.save(entity);
-        managerAsync.save(entity, Duration.ofHours(2L));//saves with 2 hours of TTL
-        managerAsync.save(entities, Duration.ofHours(2L));//saves with 2 hours of TTL
+        //inserts operations
+        managerAsync.insert(entity);
+        managerAsync.insert(entity, Duration.ofHours(2L));//inserts with 2 hours of TTL
+        managerAsync.insert(entities, Duration.ofHours(2L));//inserts with 2 hours of TTL
         //updates operations
         managerAsync.update(entity);
         managerAsync.update(entities);
 ```
 
-Em alguns momentos é necessário saber quando tal operação foi finalizada, mesmo quando é utilizado de forma assíncrona. Com esse objetivo, essa classe também vem com suporte a `callBack`, assim, tão logo a operação seja finalizada.
+Sometimes on an asynchronous process, is important to know when this process is over, so the `ColumnFamilyManagerAsync` also has callback support.
 
 ```java
         Consumer<ColumnEntity> callBack = e -> {};
-        managerAsync.save(entity, callBack);
+        managerAsync.insert(entity, callBack);
         managerAsync.update(entity, callBack);
 ```
 
-##### Buscando as informações dentro de uma família de coluna:
+##### Search information on a column family
 
-##### 
+#### 
 
-No diana, as buscas tanto de forma síncrona e assíncrona são realizadas a partir da classe Column`Query`, com essa classe é possível definir se alguns ou todos os apenas algumas colunas serão retornados, ordenação além da condição para a informação a ser recuperada.
+Diana has support to retrieve information from both ways synchronous and asynchronous from the `ColumnQuery` class. The `ColumnQuery`  has information such as sort type, document and also the condition to retrieve information.
 
-A condição dentro da query é formada por `ColumnCondition`, ele á composta por uma condição e um documento, por exemplo, o a condição abaixo buscará informação em que nome seja igual a “**Ada**”.
+The condition on `ColumnQuery` is given from `ColumnCondition`, whose it has the status and the column. Eg. The condition behind is to find a name equal "**Ada**".
 
 ```java
 ColumnCondition nameEqualsAda = ColumnCondition.eq(Column.of("name", “Ada”));
 ```
 
-Também possível agrupar as informações da condição com operadores **AND**, **OR** e **NOT**.
+Also, the developer can use the aggregators such as **AND**, **OR** e **NOT**.
 
 ```java
 ColumnCondition nameEqualsAda = ColumnCondition.eq(Column.of("name", "Ada"));
@@ -78,9 +78,9 @@ ColumnCondition condition = nameEqualsAda.and(youngerThan2Years);
 ColumnCondition nameNotEqualsAda = nameEqualsAda.negate();
 ```
 
-Caso não seja informado uma condição significa que ele tentará trazer todas as informações no banco de dados, semelhante ao “`select * from database`” em um banco relacional, vale salientar que nem todos os bancos possuem suporte a tal recurso.
+If there isn't condition at the query that means the query will try to retrieve all information from the database, look like a “`select * from database`” in a relational database, just to remember the return depends on from driver. It is important to say that not all NoSQL databases have support for this resource.
 
-Dentro do ColumnQuery também é possível paginar as informações utilizando onde deve começar a busca e o limit máximo de retorno.
+ColumnQuery also has pagination feature to define where the data start, and it limits.
 
 ```java
         ColumnFamilyManager manager = //instance;
@@ -92,21 +92,21 @@ Dentro do ColumnQuery também é possível paginar as informações utilizando o
         query.and(ageBiggerTen);
         query.addSort(Sort.of("name", Sort.SortType.ASC));
 
-        query.setLimit(10);
-        query.setStart(2);
+        query.withMaxResults(10);
+        query.withFirstResult(2);
 
-        List<ColumnEntity> entities = manager.find(query);
+        List<ColumnEntity> entities = manager.select(query);
         Optional<ColumnEntity> entity = manager.singleResult(query);
 
         Consumer<List<ColumnEntity>> callback = e -> {};
-        managerAsync.find(query, callback);
+        managerAsync.select(query, callback);
 ```
 
-##### Removendo as informações dentro de uma família de colunas:
+##### Removing information from Column Family
 
-Semelhante ao `ColumnQuery,`existe uma classe responsável por remover informações dentro da coleção de documentos: A classe `ColumnDeleteQuery`
+Such as `ColumnQuery` there is a class to remove information from the column database type: A `ColumnDeleteQuery` type.
 
-Ela possui uma estrutura bem simples, sem paginação e ordenação, uma vez que o fogo será a remoção de informação dentro do banco de dados.
+It is smoother than `ColumnQuery` because there isn't pagination and sort feature, once this information is unnecessary to remove information from database.
 
 ```java
         ColumnFamilyManager manager = //instance;

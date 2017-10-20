@@ -1,13 +1,11 @@
-## 
+## Repository
 
-## CrudRepisotry
+Além dos repositórios de família de colunas e também de documentos o Artemis também possui o Repository. Essa interface tem como objetivo auxiliar na criação de classes repositórios específicas para as entidades além de facilitar na criação de uma query.
 
-Além dos repositórios de família de colunas e também de documentos o Artemis também possui o CRUDRepository. Essa interface tem como objetivo auxiliar na criação de classes repositórios específicas para as entidades além de facilitar na criação de uma query.
-
-Para utilizar esse recurso é necessário apenas criar uma interface que extenda de **CrudRepository**.
+Para utilizar esse recurso é necessário apenas criar uma interface que extenda de **Repository**.
 
 ```java
-    interface PersonRepository extends CrudRepository<Person> {
+    interface PersonRepository extends Repository<Person, String> {
 
     }
 ```
@@ -102,23 +100,19 @@ List<Person> people = Collections.singletonList(person);
 
 repository.save(person);
 repository.save(people);
-repository.save(people, Duration.ofHours(2));
-repository.update(person);
-repository.update(people);
-repository.update(people);
 ```
 
-#### Criando Queries com o CrudRepository
+#### Criando Queries com o Repository
 
-Além de salvar e atualizar a informação também é possível recuperar e deletar a informação utilizando queries dinâmicas no método. Com esse intuito o CrudRepository vem com algumas palavras reservadas:
+Além de salvar e atualizar a informação também é possível recuperar e deletar a informação utilizando methods queries. Com esse intuito o Repository vem com algumas palavras reservadas:
 
 * **findBy**: Como prefixo para encontrar alguma informação
 * **deleteBy**: Como prefixo, para deletar alguma informação
 
 Além dos Operadores:
 
-* AND
-* OR
+* And
+* Or
 * Between
 * LessThan
 * GreaterThan
@@ -130,7 +124,7 @@ Além dos Operadores:
 * OrderBy\_\_\_\_\_ASC
 
 ```java
-interface PersonRepository extends CrudRepository<Person> {
+interface PersonRepository extends Repository<Person, Long> {
 
     List<Person> findByAddress(String address);
 
@@ -146,9 +140,9 @@ interface PersonRepository extends CrudRepository<Person> {
 
 Com isso o artemis cuidará de implementar esses métodos.
 
-#### Utilizando o CrudRepository de forma assíncrona
+#### Utilizando o Repository de forma assíncrona
 
-Para trabalhar de forma assíncrona existe a interface CrudRepositoryAsync, seu funcionamento é semelhante ao CrudRepository.
+Para trabalhar de forma assíncrona existe a interface RepositoryAsync, seu funcionamento é semelhante ao Repository.
 
 ```java
 @Inject
@@ -174,18 +168,13 @@ List<Person> people = Collections.singletonList(person);
 
 repositoryAsync.save(person);
 repositoryAsync.save(people);
-repositoryAsync.save(person, p -> {});
-repositoryAsync.save(people, Duration.ofHours(2));
-repositoryAsync.update(person);
-repositoryAsync.update(person, p -> {});
-repositoryAsync.update(people);
-repositoryAsync.update(people);
+
 ```
 
 Também é possível recuperar e deletar a informação de forma assíncrona, a diferença é que na recuperação um callback é obrigatório no fim do método enquanto para deletar ou remover informação o callback é opcional.
 
 ```java
-    interface PersonRepositoryAsync extends CrudRepositoryAsync<Person> {
+    interface PersonRepositoryAsync extends RepositoryAsync<Person, Long> {
 
         void findByNickname(String nickname, Consumer<List<Person>> callback);
 
@@ -195,14 +184,14 @@ Também é possível recuperar e deletar a informação de forma assíncrona, a 
     }
 ```
 
-#### KeyValueCrudRepository
+#### Repository no KeyValue
 
-Assim como a família de co lunas e coleção de documentos, chave valor tem o recurso que auxilia tem como objetivo auxiliar na criação de classes repositórios específicas para as entidades o KeyValueCrudRepository.
+Assim como a família de colunas e coleção de documentos, chave valor tem o recurso que auxilia tem como objetivo auxiliar na criação de classes repositórios.
 
-Para utilizar esse recurso é necessário apenas criar uma interface que extenda de **KeyValueCrudRepository**.
+Para utilizar esse recurso é necessário apenas criar uma interface que extenda de **Repository**.
 
 ```java
-public interface UserRepository extends KeyValueCrudRepository<User> {
+public interface UserRepository extends Repository<User> {
 }
 ```
 
@@ -217,9 +206,9 @@ Para isso basta produzir um BucketManager.
 
 ```java
 @Produces
-public BucketManager getManager() {
-BucketManager manager =//instance
-return manager;
+public BucketManager getManager() {
+BucketManager manager =//instance
+return manager;
 }
 ```
 
@@ -250,17 +239,18 @@ public BucketManager getManagerB() {
 Uma vez que a busca se dá, por padrão, pela busca da chave essa interface não suporte a geração de query, apenas a implementação dos métodos já existente.
 
 ```java
-UserRepository userRepository = null;
+UserRepository userRepository = //instance
 User user = new User("ada", "Ada Lovelace", 30);
 List<User> users = Collections.singletonList(user);
-userRepository.put(user);
-userRepository.put(user, Duration.ofHours(1));
-userRepository.put(users);
-userRepository.put(users, Duration.ofHours(1));
+userRepository.save(user);
+userRepository.save(users);
 
-Optional<User> userOptional = userRepository.get("ada");
-Iterable<User> usersFound = userRepository.get(Collections.singletonList("ada"));
+
+Optional<User> userOptional = userRepository.findById("ada");
+Iterable<User> usersFound = userRepository.findById(Collections.singletonList("ada"));
 ```
+
+O recurso do dynamic query não  suportado para o banco de dados do tipo Key-value.
 
 
 

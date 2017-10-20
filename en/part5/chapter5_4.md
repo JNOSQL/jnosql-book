@@ -1,6 +1,6 @@
-## As classes respositórios
+## The repository class
 
-Os “maestros” da persistência é dividida em forma síncrona e assíncrona com Repository e RepositoryAsync respectivamente. Esses recursos serão estendidos principalmente para adicionar recursos que existem especificamente em cada driver do diana, por exemplo, live query no OrientDB ou nível de consistência no Cassandra. Com o intuito de facilitar essa extensão existem as seguintes classes:
+The "maestro" persistence class has synchronous and asynchronous. These interfaces are extended mainly to add a feature that has a Diana driver, but the Artemis API does not support, eg., the live query at OrientDB, consistency level. To make secure an extension there is template method class.
 
 * AbstractKeyValueRepository
 
@@ -12,19 +12,22 @@ Os “maestros” da persistência é dividida em forma síncrona e assíncrona 
 
 * AbstractDocumentRepositoryAsync
 
-Para exemplificar, será criado uma extensão do ColumnRepository para suportar alguns recursos específicos que tem apenas no Cassandra: O Cassandra Query Language e a persistência com nível de consistência.
-
-
+To demonstrate, it will create a `ColumnRepository` extension to supports a Cassandra methods that do exists on diana-driver: Cassandra Query Language and consistency level.
 
 ```java
 public class CassandraColumnRepository extends AbstractColumnRepository {
 
     @Inject
     private ColumnEntityConverter converter;
+    
     @Inject
     private CassandraColumnFamilyManager manager;
+    
     @Inject
     private ColumnWorkflow workflow;
+    
+    @Inject
+    private ColumnEventPersistManager eventManager;
 
     @Override
     protected ColumnEntityConverter getConverter() {
@@ -39,6 +42,11 @@ public class CassandraColumnRepository extends AbstractColumnRepository {
     @Override
     protected ColumnWorkflow getFlow() {
         return workflow;
+    }
+    
+    @Override
+    protected ColumnEventPersistManager getEventManager() {
+        return eventManager;
     }
 
     public <T> T save(T entity, ConsistencyLevel level) {
@@ -67,10 +75,7 @@ public class CassandraColumnRepository extends AbstractColumnRepository {
     }
 
 }
-
 ```
 
-
-
-Assim, herdando a classe AbstractColumnRepository o CassandraColumnRepository terá suporte a todos os recursos já existentes na API do Artemis e pode adicionar os recursos específicos do Cassandra.
+To conclude, extending the AbstractColumnRepository the CassandraColumnRepository will have support to the methods on Artemis interface and also append the Cassandra resources.
 

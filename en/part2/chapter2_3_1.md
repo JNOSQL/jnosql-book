@@ -1,6 +1,6 @@
 #### ColumnFamilyEntity
 
-O `ColumnFamilyEntity` é a representação da entidade que será persistida dentro de um banco de dados família de coluna. Ela é composta por uma ou mais colunas, a coluna por sua vez é um tupla composta por um valor, representado por Value, e o seu respectivo nome.
+The `ColumnFamilyEntity` is an entity to column family database type. It is composed of one or more columns. As a result, the Column is a tuple of name and value.
 
 
 ```java

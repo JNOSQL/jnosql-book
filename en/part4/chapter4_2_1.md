@@ -1,19 +1,19 @@
-## Repositório de Documentos
+## Document Template
 
-O repositório de documentos é responsável para realizar a comunicação da entidade para um banco de dados do tipo documentos. Ele é subdividido em `DocumentRepository` e `DocumentRepositoryAsync`para trabalhos síncronos e assíncronos respectivamente.
+This template has the duty to be a bridge between the entity model and Diana to document collection. It has two classes `DocumentTemplate` and `DocumentTemplateAsync`, one for the synchronous and the other for the asynchronous work.
 
-#### `DocumentRepository`
+#### `DocumentTemplate`
 
-O `DocumentRepository` é responsável pela persistência de uma Entidade em um banco de dados do tipo documento. Ele é composto, basicamente, por três componentes:
+The `DocumentTemplate` is the document template for the synchronous tasks. It has three components:
 
-* **DocumentEntityConverter**: Responsável por converter da entidade, por exemplo, Person para DocumentEntity.
+* **DocumentEntityConverter**: That converts an entity to communication API, e.g., The Person to DocumentEntity.
 
-* **DocumentCollectionManager**: Entidade manager de documentos do Diana.
+* **DocumentCollectionManager**: The Diana document collection entity manager.
 
-* **DocumentWorkflow**: Segue o fluxo de persistência durante os métodos de save e update.
+* **DocumentWorkflow**: The workflow to update and save methods.
 
 ```java
-DocumentRepository repository = //instance
+DocumentTemplate template = //instance
 
 Person person = new Person();
 person.setAddress("Olympus");
@@ -23,36 +23,36 @@ person.setNickname("artemis");
 
 List<Person> people = Collections.singletonList(person);
 
-Person personUpdated = repository.save(person);
-repository.save(people);
-repository.save(person, Duration.ofHours(1L));
+Person personUpdated = template.insert(person);
+template.insert(people);
+template.insert(person, Duration.ofHours(1L));
 
-repository.update(person);
-repository.update(people);
+template.update(person);
+template.update(people);
 ```
 
-Para a busca e a remoção da informação são utilizadas as mesmas classes do Diana para documentos, ou seja, **DocumentQuery** e **DocumentDeleteQuery** respectivamente.
+To do both remove and retrieve information from document collection that uses the same Diana classes, namely,  **DocumentQuery** and **DocumentDeleteQuery**.
 
 ```java
 DocumentQuery query = DocumentQuery.of("Person");
 query.and(DocumentCondition.eq(Document.of("address", "Olympus")));
 
-List<Person> peopleWhoLiveOnOlympus = repository.find(query);
-Optional<Person> artemis = repository.singleResult(DocumentQuery.of("Person")
+List<Person> peopleWhoLiveOnOlympus = template.find(query);
+Optional<Person> artemis = template.singleResult(DocumentQuery.of("Person")
                 .and(DocumentCondition.eq(Document.of("nickname", "artemis"))));
 
 DocumentDeleteQuery deleteQuery = query.toDeleteQuery();
-repository.delete(deleteQuery);
+template.delete(deleteQuery);
 ```
 
-Como o motor do Artemis é CDI para que se posso utilizar o DocumentRepository basta dar um @Inject num campo.
+To use a document template just follow the CDI style and put an `@Inject` on the field.
 
 ```java
 @Inject
-private DocumentRepository repository;
+private DocumentTemplate template;
 ```
 
-Para isso é necessário que a aplicação injete um **DocumentCollectionManager:**
+The next step is to produce a **DocumentCollectionManager:**
 
 ```java
 @Produces
@@ -62,18 +62,18 @@ public DocumentCollectionManager getManager() {
 }
 ```
 
-Para trabalhar com mais de um tipo de DocumentRepository existem duas opções:
+To work with more than one Document Template, there are two approaches:
 
-1\) A primeira é com a utilização dos qualificadores:
+1\) Using qualifieres:
 
 ```java
     @Inject
     @Database(value = DatabaseType.DOCUMENT, provider = "databaseA")
-    private DocumentRepository repositorA;
+    private DocumentTemplate templateA;
 
     @Inject
     @Database(value = DatabaseType.DOCUMENT, provider = "databaseB")
-    private DocumentRepository repositoryB;
+    private DocumentTemplate templateB;
 
 
     //producers methods
@@ -92,30 +92,30 @@ Para trabalhar com mais de um tipo de DocumentRepository existem duas opções:
     }
 ```
 
-2\) A segunda delas é a partir do  **DocumentRepositoryProducer**
+2\) Using the **DocumentTemplateProducer** class
 
 ```java
 @Inject
-private DocumentRepositoryProducer producer;
+private DocumentTemplateProducer producer;
 
 public void sample() {
    DocumentCollectionManager managerA = //instance;
    DocumentCollectionManager managerB = //instance
-   DocumentRepository repositorA = producer.get(managerA);
-   DocumentRepository repositoryB = producer.get(managerB);
+   DocumentTemplate templateA = producer.get(managerA);
+   DocumentTemplate templateB = producer.get(managerB);
 }
 ```
 
-#### `DocumentRepositoryAsync`
+#### `DocumentTemplateAsync`
 
-O`DocumentRepositoryAsync`é responsável pela persistência de uma Entidade em um banco de dados do tipo documento de forma assíncrona. Ele é composto, basicamente, por dois componentes:
+The `DocumentTemplateAsync` is the document template for the asynchronous tasks. It has two components:
 
-* **DocumentEntityConverter:** Responsável por converter da entidade, por exemplo, Person para DocumentEntity.
+* **DocumentEntityConverter:** That converts an entity to communication API, e.g., The Person to DocumentEntity.
 
-* **DocumentCollectionManagerAsync:** Entidade manager de documentos do Diana de forma assíncrona.
+* **DocumentCollectionManagerAsync:** The Diana document collection entity manager asynchronous.
 
 ```java
-DocumentRepositoryAsync repositoryAsync = //instance
+DocumentTemplateAsync templateAsync = //instance
 
 Person person = new Person();
 person.setAddress("Olympus");
@@ -126,35 +126,35 @@ person.setNickname("artemis");
 List<Person> people = Collections.singletonList(person);
 
 Consumer<Person> callback = p -> {};
-repositoryAsync.save(person);
-repositoryAsync.save(person, Duration.ofHours(1L));
-repositoryAsync.save(person, callback);
-repositoryAsync.save(people);
+templateAsync.insert(person);
+templateAsync.insert(person, Duration.ofHours(1L));
+templateAsync.insert(person, callback);
+templateAsync.insert(people);
 
-repositoryAsync.update(person);
-repositoryAsync.update(person, callback);
-repositoryAsync.update(people);
+templateAsync.update(person);
+templateAsync.update(person, callback);
+templateAsync.update(people);
 ```
 
-Para a busca e a remoção da informação são utilizadas as mesmas classes do Diana para documentos, ou seja, **DocumentQuery** e **DocumentDeleteQuery** respectivamente também é possível o uso de callback.
+For information removal and retrieval are used the same classes from Diana for documents,  **DocumentQuery** and **DocumentDeleteQuery**, respectively, also the callback method can be used.
 
 ```java
 Consumer<List<Person>> callBackPeople = p -> {};
 Consumer<Void> voidCallBack = v ->{};
-repositoryAsync.find(query, callBackPeople);
-repositoryAsync.delete(deleteQuery);
-repositoryAsync.delete(deleteQuery, voidCallBack);
+templateAsync.find(query, callBackPeople);
+templateAsync.delete(deleteQuery);
+templateAsync.delete(deleteQuery, voidCallBack);
 ```
 
-Como o motor do Artemis é CDI para que se posso utilizar o DocumentRepository basta dar um @Inject num campo.
+To use a document template just follow the CDI style and put an `@Inject` on the field.
 
 ```java
 @Inject
 private
-DocumentRepositoryAsync repository;
+DocumentTemplateAsync template;
 ```
 
-Para isso é necessário que a aplicação injete um **DocumentCollectionManagerAsync:**
+The next step is produced a **DocumentCollectionManagerAsync:**
 
 ```
 @Produces
@@ -164,18 +164,18 @@ public DocumentCollectionManagerAsync getManager() {
 }
 ```
 
-Para trabalhar com mais de um tipo de DocumentRepository existem duas opções:
+To work with more than one Document Template, there are two approaches:
 
-1\) A primeira é com a utilização dos qualificadores:
+1\) Using qualifieres:
 
 ```java
     @Inject
     @Database(value = DatabaseType.DOCUMENT, provider = "databaseA")
-    private DocumentRepositoryAsync repositorA;
+    private DocumentTemplateAsync templateA;
 
     @Inject
     @Database(value = DatabaseType.DOCUMENT, provider = "databaseB")
-    private DocumentRepositoryAsync repositoryB;
+    private DocumentTemplateAsync templateB;
 
 
     //producers methods
@@ -194,21 +194,16 @@ Para trabalhar com mais de um tipo de DocumentRepository existem duas opções:
     }
 ```
 
-2\) A segunda delas é a partir do  **DocumentRepositoryAsyncProducer**
+2\) Using the **DocumentTemplateAsyncProducer**
 
 ```java
 @Inject
-private DocumentRepositoryAsyncProducer producer;
+private DocumentTemplateAsyncProducer producer;
 
 public void sample() {
    DocumentCollectionManagerAsync managerA = //instance;
    DocumentCollectionManagerAsync managerB = //instance
-   DocumentRepositoryAsync repositorA = producer.get(managerA);
-   DocumentRepositoryAsync repositoryB = producer.get(managerB);
+   DocumentTemplateAsync templateA = producer.get(managerA);
+   DocumentTemplateAsync templateB = producer.get(managerB);
 }
 ```
-
-#### 
-
-
-

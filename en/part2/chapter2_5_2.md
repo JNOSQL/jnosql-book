@@ -1,11 +1,11 @@
 #### Document Collection Factory
 
-As classes fábricas são as responsáveis pela criação de uma classe Manager numa coleção de documentos.
+The factory classes have the duty to create the document collection manager.
 
 * **DocumentCollectionManagerFactory**
 * **DocumentCollectionManagerAsyncFactory**
 
-As classes `DocumentCollectionManagerAsyncFactory` e `DocumentCollectionManagerFactory` são responsáveis pela criação das classes gerentes de forma síncrona e assíncrona respectivamente, para isso, basta passar informar o nome do banco de dados.
+The `DocumentCollectionManagerAsyncFactory` and `DocumentCollectionManagerFactory` creates the manager synchronously and asynchronously respectively.
 
 ```java
 DocumentCollectionManagerFactory factory = //instance
@@ -15,5 +15,4 @@ DocumentCollectionManagerAsync managerAsync = asyncFactory.getAsync("database");
 
 ```
 
-As fábricas foram separadas itencionamente, uma vez, que nem todos os bancos de dados suportam operações síncronas ou assíncronas.
-
+The factories were separated intentionally, as not all databases support synchronous and asynchronous operations.
