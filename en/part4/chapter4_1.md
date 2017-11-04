@@ -87,7 +87,7 @@ On this sample above, when saves a `Dog` instance, it saves the `Animal` case to
 
 ##### Id
 
-Just for the key-value database, it shows which attribute is the key, thus the value will be the remaining information. The way of storing the class will depend on the database driver.
+It shows which attribute is the id, or the key in key-value types, thus the value will be the remaining information. The way of storing the class will depend on the database driver.
 
 ```java
 @Entity
