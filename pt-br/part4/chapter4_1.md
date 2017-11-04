@@ -13,7 +13,7 @@ As anotações para o Modelo tem como objetivo transformar o modelo, orientado a
 * Entity
 * Column
 * MappedSuperclass
-* Key
+* Id
 * Embeddable
 * Convert
 
