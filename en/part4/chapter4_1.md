@@ -14,7 +14,7 @@ The annotation model is to convert the entity model to the entity on communicati
 * Entity
 * Column
 * MappedSuperclass
-* Key
+* Id
 * Embeddable
 * Convert
 
