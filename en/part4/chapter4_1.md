@@ -85,7 +85,7 @@ public class Animal {
 On this sample above, when saves a `Dog` instance, it saves the `Animal` case too, explicitly will save the fields `name`, `race` and `age`.
 
 
-##### Key
+##### Id
 
 Just for the key-value database, it shows which attribute is the key, thus the value will be the remaining information. The way of storing the class will depend on the database driver.
 
