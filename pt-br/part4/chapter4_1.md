@@ -84,9 +84,9 @@ public class Animal {
 
 No exemplo citado, ao salvar a classe `Dog` será levado em consideração também os campos da classe `Animal`, ou seja, serão persistidos três campos, `name`, `race` e `age`.
 
-##### Key
+##### Id
 
-Apenas para o banco de dados do tipo chave-valor, ele indica qual dos atributos é a chave o valor será toda a informação restante. A forma de armazenamento da classe vai depender do driver do banco de dados.
+Ele indica qual dos atributos é o id, ou a chave para banco de dados do tipo chave-valor. A forma de armazenamento da classe vai depender do driver do banco de dados.
 
 ```java
 @Entity
