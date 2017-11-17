@@ -35,14 +35,13 @@ For information removal and retrieval are used the same classes from Diana for d
 
 
 ```java
-ColumnQuery query = DocumentQuery.of("Person");
-query.and(ColumnCondition.eq(Column.of("address", "Olympus")));
+ColumnQuery query = select().from("Person").where("address").eq("Olympus").build()
 
 List<Person> peopleWhoLiveOnOlympus = template.select(query);
-Optional<Person> artemis = template.singleResult(ColumnQuery.of("Person")
-                .and(ColumnCondition.eq(Column.of("nickname", "artemis"))));
-
-ColumnDeleteQuery deleteQuery = query.toDeleteQuery();
+Optional<Person> artemis = template.singleResult(select().from("Person").where("nickname")
+                .eq("artemis").build());
+                
+ColumnDeleteQuery deleteQuery = delete().from("Person").where("address").eq("Olympus").build()
 template.delete(deleteQuery);
 ```
 
