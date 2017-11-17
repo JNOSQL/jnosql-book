@@ -191,7 +191,7 @@ Assim como a família de colunas e coleção de documentos, chave valor tem o re
 Para utilizar esse recurso é necessário apenas criar uma interface que extenda de **Repository**.
 
 ```java
-public interface UserRepository extends Repository<User> {
+public interface UserRepository extends Repository<User, String> {
 }
 ```
 
