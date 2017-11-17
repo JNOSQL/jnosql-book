@@ -188,7 +188,7 @@ Also, delete and retrieve information with a callback.
 Key-value database has support to **Repository**.
 
 ```java
-public interface UserRepository extends Repository<User> {
+public interface UserRepository extends Repository<User, String> {
 }
 ```
 
