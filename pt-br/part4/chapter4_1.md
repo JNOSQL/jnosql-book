@@ -17,6 +17,8 @@ As anotações para o Modelo tem como objetivo transformar o modelo, orientado a
 * Embeddable
 * Convert
 
+O JNoSQL Artemis não requer métodos getter e setter para os campos, no entanto, as classes do tipo entidade precisam ter um construtor padrão ou protegido por pacote.
+
 ##### Entity
 
 Essa anotação tem como objetivo mapear a classe que será utilizada como entidade dentro do Artemis, ela possui um único atributo: name. Esse atributo tem como objetivo informar o nome da Família de coluna, Coleção de documentos, chave valor, etc. Caso ele não seja informado será utilizado o nome simples da classe, por exemplo, a Classe org.jnosql.demo.Person ele usará o Person como nome.
