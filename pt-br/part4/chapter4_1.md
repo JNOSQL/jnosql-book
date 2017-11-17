@@ -179,9 +179,7 @@ public class Money {
 
 ```
 
-
-
-#### Anotação para qualificação
+## Anotação para qualificação
 
 Em alguns momentos é necessário trabalhar com o mesmo tipo de banco de dados, por exemplo, trabalhar com dois bancos do tipo documentos.
 
