@@ -34,14 +34,13 @@ template.update(people);
 Para a busca e a remoção da informação são utilizadas as mesmas classes do Diana para documentos, ou seja, ColumnQuery e **ColumnDeleteQuery** respectivamente.
 
 ```java
-ColumnQuery query = DocumentQuery.of("Person");
-query.and(ColumnCondition.eq(Column.of("address", "Olympus")));
+ColumnQuery query = select().from("Person").where("address").eq("Olympus").build()
 
 List<Person> peopleWhoLiveOnOlympus = template.select(query);
-Optional<Person> artemis = template.singleResult(ColumnQuery.of("Person")
-                .and(ColumnCondition.eq(Column.of("nickname", "artemis"))));
-
-ColumnDeleteQuery deleteQuery = query.toDeleteQuery();
+Optional<Person> artemis = template.singleResult(select().from("Person").where("nickname")
+                .eq("artemis").build());
+                
+ColumnDeleteQuery deleteQuery = delete().from("Person").where("address").eq("Olympus").build()
 template.delete(deleteQuery);
 ```
 
