@@ -264,8 +264,7 @@ Armazenar as configurações do banco de dados como senha e usuário é algo mui
 
 #### Injection the code 
 
-With the configuration file, the next step is to inject the dependency in the application.
-The default behavior supports the following classes:
+Com o arquivo de configuração, o próximo passo é o injetar na aplicação, o Eclipse JNoSQL Artemis, por padrão, tem suporte para as seguintes classes:
 
 * BucketManagerFactory
 * DocumentCollectionManagerAsyncFactory
@@ -289,10 +288,9 @@ The default behavior supports the following classes:
 
 ```
 
-#### ConfigurationUnit Dependency
+#### Dependência do ConfigurationUnit
 
-To configuration unit annotations needs the  JNoSQL Artemis configuration dependency.
-
+Para utilizar a anotação o seu comportamento padrão de ConfigurationUnit, é necessário adicionar a  dependência de configuração.
 
 ```xml
    <dependency>
