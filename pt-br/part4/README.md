@@ -20,7 +20,7 @@ Com o intuito de abranger os quatro tipos de banco de dados, essa API é comport
 
 Artemis has six parts:
 
-* *The **artemis-core**: a parte comum do projeto, é nela que contém, por exemplo, as anotaçes.
+* The **artemis-core**: a parte comum do projeto, é nela que contém, por exemplo, as anotaçes.
 * The **artemis-configuration**: responsável pela leitura de configuração
 * The **artemis-column**: The Eclipse JNoSQL mapping, Artemis, para bancos de dados do tipo colunar
 * The **artemis-document**: The Eclipse JNoSQL mapping, Artemis, para banco de dados do tipo documento
