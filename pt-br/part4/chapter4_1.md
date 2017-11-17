@@ -212,9 +212,9 @@ Um ponto importante é da integração do Artemis com esse qualificador. Caso el
 
 ## ConfigurationUnit
 
-Storage the database's configuration such as password and user outside the code is important, Artemis has the ConfigurationUnit annotation. that reads the configuration from a file such as XML and JSON file and inject to create a factory. The default configuration structure is within either **META-INF** or **WEB-INF** folder.
+Armazenar as configurações do banco de dados como senha e usuário é algo muito importante para uma aplicação. O Eclipse JNoSQL Artemis tem a anotação ConfigurationUnit, ela lê a configuração a partir de arquivos como XML e JSON e o injeta criando uma fábrica. Esse arquivo de configuração pode estar na parta **META-INF** ou **WEB-INF** 
 
-#### JSON file structure
+#### Estrutura de um arquivo JSON
 
 
 ```json
@@ -239,7 +239,7 @@ Storage the database's configuration such as password and user outside the code 
 
 ```
 
-#### XML file structure
+#### Estrutura de um arquivo XML
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
