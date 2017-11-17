@@ -172,7 +172,7 @@ public class Money {
 }
 ```
 
-#### Qualifier annotation
+## Qualifier annotation
 
 That is important to work with more than one type of the same application.
 
