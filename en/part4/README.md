@@ -20,7 +20,7 @@ To go straight and cover the four NoSQL types, this API has four domains:
 
 Artemis has six parts:
 
-* *The **artemis-core**: The Eclipse JNoSQL mapping, Artemis, commons project.
+* The **artemis-core**: The Eclipse JNoSQL mapping, Artemis, commons project.
 * The **artemis-configuration**: The Eclipse JNoSQL reader to Artemis project.
 * The **artemis-column**: The Eclipse JNoSQL mapping, Artemis, to column NoSQL database.
 * The **artemis-document**: The Eclipse JNoSQL mapping, Artemis, to document NoSQL database.
