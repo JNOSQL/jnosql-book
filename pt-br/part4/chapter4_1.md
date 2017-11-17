@@ -209,3 +209,96 @@ Obviamente será necessário a criação de métodos produtores com os mesmos qu
 
 Um ponto importante é da integração do Artemis com esse qualificador. Caso ele seja utilizado para a criação dos Entity Manager do Diana \(ColumnFamilyManager, DocumentCollectionManager, BucketManager, etc.\) o Artemis gerenciará todo o ciclo de vida de classes como DocumentRepository, ColumnRepository, dentro outros que será visto mais a frente.
 
+
+## ConfigurationUnit
+
+The storage a database in a different place, Artemis has the ConfigurationUnit annotation. that reads the configuration from a file such as XML and JSON file and inject to create a factory. The default configuration structure is within either **META-INF** or **WEB-INF** folder.
+
+#### JSON file structure
+
+
+```json
+[
+   {
+      "description":"that is the description",
+      "name":"name",
+      "provider":"class",
+      "settings":{
+         "key":"value"
+      }
+   },
+   {
+      "description":"that is the description",
+      "name":"name-2",
+      "provider":"class",
+      "settings":{
+         "key":"value"
+      }
+   }
+]
+
+```
+
+#### XML file structure
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<configurations>
+   <configuration>
+      <description>that is the description</description>
+      <name>name</name>
+      <provider>class</provider>
+      <settings>
+         <entry>
+            <key>key2</key>
+            <value>value2</value>
+         </entry>
+         <entry>
+            <key>key</key>
+            <value>value</value>
+         </entry>
+      </settings>
+   </configuration>
+</configurations>
+```
+
+#### Injection the code 
+
+With the configuration file, the next step is to inject the dependency in the application.
+The default behavior supports the following classes:
+
+* BucketManagerFactory
+* DocumentCollectionManagerAsyncFactory
+* DocumentCollectionManagerAsyncFactory
+* ColumnFamilyManagerAsyncFactory
+* ColumnFamilyManagerAsyncFactory
+
+```java
+
+    @Inject
+    @ConfigurationUnit(fileName = "column.xml", name = "name")
+    private ColumnFamilyManagerFactory<?> factoryA;
+
+    @Inject
+    @ConfigurationUnit(fileName = "document.json", name = "name-2")
+    private DocumentCollectionManagerFactory factoryB;
+
+    @Inject
+    @ConfigurationUnit
+    private BucketManagerFactory factoryB;
+
+```
+
+#### ConfigurationUnit Dependency
+
+To configuration unit annotations needs the  JNoSQL Artemis configuration dependency.
+
+
+```xml
+   <dependency>
+        <groupId>org.jnosql.artemis</groupId>
+        <artifactId>artemis-configuration</artifactId>
+        <version>0.0.4-SNAPSHOT</version>
+    </<dependency>
+    
+```
