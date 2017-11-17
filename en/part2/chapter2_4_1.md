@@ -101,9 +101,8 @@ It is smoother than `DocumentQuery` because there isn't pagination and sort feat
         DocumentCollectionManager manager = //instance;
         DocumentCollectionManagerAsync managerAsync = //instance;
 
-        DocumentDeleteQuery query = DocumentDeleteQuery.of("collection");
-        DocumentCondition ageBiggerTen = DocumentCondition.gt(Document.of("age", 10));
-        query.and(ageBiggerTen);
+        DocumentDeleteQuery query = DocumentQueryBuilder.delete().from("collection").where("age").gt(10)
+                .build();
 
 
         manager.delete(query);
