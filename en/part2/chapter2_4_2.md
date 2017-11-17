@@ -87,13 +87,8 @@ ColumnQuery also has pagination feature to define where the data start, and it l
 
         ColumnFamilyManagerAsync managerAsync = //instance;
 
-        ColumnQuery query = ColumnQuery.of("collection");
-        ColumnCondition ageBiggerTen = ColumnCondition.gt(Column.of("age", 10));
-        query.and(ageBiggerTen);
-        query.addSort(Sort.of("name", Sort.SortType.ASC));
-
-        query.withMaxResults(10);
-        query.withFirstResult(2);
+        ColumnQuery query = ColumnQuery query = ColumnQueryBuilder.select().from("collection").where("age")
+                .lt(10).and("name").eq("Ada").orderBy(Sort.of("name", ASC)).limit(10).start(2).build();
 
         List<ColumnEntity> entities = manager.select(query);
         Optional<ColumnEntity> entity = manager.singleResult(query);
@@ -112,9 +107,8 @@ It is smoother than `ColumnQuery` because there isn't pagination and sort featur
         ColumnFamilyManager manager = //instance;
         ColumnFamilyManagerAsync managerAsync = //instance;
 
-        ColumnDeleteQuery query = ColumnDeleteQuery.of("collection");
-        ColumnCondition ageBiggerTen = ColumnCondition.gt(Column.of("age", 10));
-        query.and(ageBiggerTen);
+       ColumnDeleteQuery query = ColumnQueryBuilder.delete()
+                .from("collection").where("age").gt(10).build();
 
 
         manager.delete(query);
