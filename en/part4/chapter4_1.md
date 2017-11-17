@@ -18,7 +18,8 @@ The annotation model is to convert the entity model to the entity on communicati
 * Embeddable
 * Convert
 
-The JNoSQL Artemis does not require the getter and setter to the fields, however, the Entity class must have either a default or protected constructor.
+
+The JNoSQL Artemis does not require the getter and setter methods to the fields, however, the Entity class must have either a default or protected constructor.
 
 ##### Entity
 
