@@ -210,7 +210,7 @@ The storage a database in a different place, Artemis has the ConfigurationUnit a
 #### JSON file structure
 
 
-```java
+```json
 [
    {
       "description":"that is the description",
@@ -234,7 +234,9 @@ The storage a database in a different place, Artemis has the ConfigurationUnit a
 
 #### XML file structure
 
-```java
+To configuration unit annotations needs the  JNoSQL Artemis configuration dependency.
+
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <configurations>
    <configuration>
@@ -282,3 +284,14 @@ The default behavior supports the following classes:
 
 ```java
 
+#### Dependency
+
+
+```xml
+   <dependency>
+        <groupId>org.jnosql.artemis</groupId>
+        <artifactId>artemis-configuration</artifactId>
+        <version>0.0.4-SNAPSHOT</version>
+    </<dependency>
+    
+    ```
