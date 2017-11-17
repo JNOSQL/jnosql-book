@@ -18,7 +18,7 @@ Com o intuito de abranger os quatro tipos de banco de dados, essa API é comport
 
 #### Projetos do Artemis
 
-Artemis has six parts:
+Artemis é composta por seis partes:
 
 * The **artemis-core**: a parte comum do projeto, é nela que contém, por exemplo, as anotaçes.
 * The **artemis-configuration**: responsável pela leitura de configuração
