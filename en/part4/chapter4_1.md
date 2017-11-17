@@ -282,7 +282,7 @@ The default behavior supports the following classes:
 
 ```
 
-#### Dependency
+#### ConfigurationUnit Dependency
 
 To configuration unit annotations needs the  JNoSQL Artemis configuration dependency.
 
