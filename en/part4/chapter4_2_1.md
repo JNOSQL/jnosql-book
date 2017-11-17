@@ -34,14 +34,13 @@ template.update(people);
 To do both remove and retrieve information from document collection that uses the same Diana classes, namely,  **DocumentQuery** and **DocumentDeleteQuery**.
 
 ```java
-DocumentQuery query = DocumentQuery.of("Person");
-query.and(DocumentCondition.eq(Document.of("address", "Olympus")));
+DocumentQuery query = select().from("Person").where("address").eq("Olympus").build();
 
 List<Person> peopleWhoLiveOnOlympus = template.find(query);
-Optional<Person> artemis = template.singleResult(DocumentQuery.of("Person")
-                .and(DocumentCondition.eq(Document.of("nickname", "artemis"))));
+Optional<Person> artemis = template.singleResult(select().from("Person")
+                .where("nickname").eq("artemis").build());
 
-DocumentDeleteQuery deleteQuery = query.toDeleteQuery();
+DocumentDeleteQuery deleteQuery = delete().from("Person").where("address").eq("Olympus").build();
 template.delete(deleteQuery);
 ```
 
