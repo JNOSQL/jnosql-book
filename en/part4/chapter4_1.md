@@ -205,7 +205,7 @@ The benefits using this qualifier instead of creating a new one is that if the M
 
 ## ConfigurationUnit
 
-The storage a database in a different place, Artemis has the ConfigurationUnit annotation. that reads the configuration from a file such as XML and JSON file and inject to create a factory. The default configuration structure is within either **META-INF** or **WEB-INF** folder.
+Storage the database's configuration such as password and user outside the code is important, Artemis has the ConfigurationUnit annotation. that reads the configuration from a file such as XML and JSON file and inject to create a factory. The default configuration structure is within either **META-INF** or **WEB-INF** folder.
 
 #### JSON file structure
 
