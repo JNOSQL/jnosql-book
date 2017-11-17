@@ -234,8 +234,6 @@ The storage a database in a different place, Artemis has the ConfigurationUnit a
 
 #### XML file structure
 
-To configuration unit annotations needs the  JNoSQL Artemis configuration dependency.
-
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <configurations>
@@ -282,9 +280,11 @@ The default behavior supports the following classes:
     @ConfigurationUnit
     private BucketManagerFactory factoryB;
 
-```java
+```
 
 #### Dependency
+
+To configuration unit annotations needs the  JNoSQL Artemis configuration dependency.
 
 
 ```xml
@@ -294,4 +294,4 @@ The default behavior supports the following classes:
         <version>0.0.4-SNAPSHOT</version>
     </<dependency>
     
-    ```
+```
