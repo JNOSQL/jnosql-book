@@ -19,8 +19,7 @@ The annotation model is to convert the entity model to the entity on communicati
 * Convert
 
 
-The JNoSQL Artemis does not require the getter and setter methods to the fields, however, the Entity class must have either a default or package constructor.
-
+The JNoSQL Artemis does not require the getter and setter methods to the fields, however, the Entity class must have a non-private constructor with no parameters.
 ##### Entity
 
 This annotation maps the class to Artemis. It has an unique attribute called `name` . This attribute is to inform either the column family name or the document collection name, etc. The default value is the simple name of a class, for example, given the org.jnosql.demo.Person class the default name will `Person`.
