@@ -79,7 +79,7 @@ In computing, a graph database is a database that uses graph structures for sema
 | Column | Vertex and Edge property |
 | Relationship | Edge |
 
-### Muli-model database
+### Multi-model database
 
 Some database has support for more than one kind of model storage this is the multi-model database.
 
