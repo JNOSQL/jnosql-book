@@ -31,7 +31,7 @@ template.update(person);
 template.update(people);
 ```
 
-Para a busca e a remoção da informação são utilizadas as mesmas classes do Diana para documentos, ou seja, ColumnQuery e **ColumnDeleteQuery** respectivamente.
+Para a busca e a remoção da informação são utilizadas as mesmas classes do Diana para documentos, ou seja, **ColumnQuery** e **ColumnDeleteQuery** respectivamente.
 
 ```java
 ColumnQuery query = select().from("Person").where("address").eq("Olympus").build()
@@ -51,7 +51,7 @@ Como o motor do Artemis é CDI para que se posso utilizar o ColumnTemplate basta
 private ColumnTemplate template;
 ```
 
-Para isso é necessário que a aplicação injete um ColumnFamilyManager**:**
+Para isso é necessário que a aplicação injete um **ColumnFamilyManager**:
 
 ```java
 @Produces

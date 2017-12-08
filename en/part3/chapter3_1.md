@@ -6,7 +6,7 @@ In a multi-model database, that has support for more than one NoSQL kind; the pr
 
 There are database drivers ready to test:
 
-[https://github.com/JNOSQL/diana-driver](https://github.com/JNOSQL/diana-driver)
+[https://github.com/eclipse/jnosql-diana-driver](https://github.com/eclipse/jnosql-diana-driver)
 
 
 Some samples:
