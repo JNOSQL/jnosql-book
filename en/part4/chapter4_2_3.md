@@ -4,9 +4,9 @@ The key value is a bridge between the entity and the key-value database.
 
 #### `KeyValueTemplate`
 
-The `KeyValuTemplate` is the column template to synchronous tasks. It has three components:
+The `KeyValueTemplate` is the column template to synchronous tasks. It has three components:
 
-The KeyValuTemplate is responsible for persistency of an entity in a key-value database. It is composed basically for three components.
+The KeyValueTemplate is responsible for persistency of an entity in a key-value database. It is composed basically for three components.
 
 * **KeyValueEntityConverter**: That converts an entity to communication API, e.g., The Person to KeyValueEntity.
 
@@ -15,7 +15,7 @@ The KeyValuTemplate is responsible for persistency of an entity in a key-value d
 * **KeyValueWorkflow**: The workflow to update and save methods.
 
 ```java
-KeyValuTemplate template = null;
+KeyValueTemplate template = null;
 User user = new User();
 user.setNickname("ada");
 user.setAge(10);
@@ -33,7 +33,7 @@ To use a key-value template just follows the CDI style and put an `@Inject` on t
 
 ```java
 @Inject
-private KeyValuTemplate template;
+private KeyValueTemplate template;
 ```
 
 The next step is to produce a **BucketManager**:
