@@ -14,6 +14,7 @@ As anotações para o Modelo tem como objetivo transformar o modelo, orientado a
 * Column
 * MappedSuperclass
 * Id
+* SubEntity
 * Embeddable
 * Convert
 
@@ -125,6 +126,38 @@ public class Book {
 }
 
 @Embeddable
+public class Author {
+
+    @Column
+    private String name;
+
+    @Column
+    private Integer age;
+
+//getter and setter
+
+}
+```
+
+##### SubEntity
+
+Indica que as classes com essa anotação serão persistidas de forma integrada a entidade principal, como parte direta da mesma, assim uma sub entidade.
+
+```java
+@Entity
+public class Book {
+
+    @Column
+    private String name;
+
+    @Column
+    private Author author;
+
+//getter and setter
+
+}
+
+@SubEntity
 public class Author {
 
     @Column
