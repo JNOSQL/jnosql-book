@@ -31,7 +31,7 @@ template.update(person);
 template.update(people);
 ```
 
-For information removal and retrieval are used the same classes from Diana for documents,  **DocumentQuery** and **DocumentDeleteQuery**, respectively, also the callback method can be used.
+For information removal and retrieval are used the same classes from Diana for documents,  **ColumnQuery** and **ColumnDeleteQuery**, respectively, also the callback method can be used.
 
 
 ```java
@@ -138,7 +138,7 @@ templateAsync.update(person, callback);
 templateAsync.update(people);
 ```
 
-For information removal and retrieval are used the same classes from Diana for documents,  **DocumentQuery** and **DocumentDeleteQuery**, respectively, also the callback method can be used.
+For information removal and retrieval are used the same classes from Diana for documents,  **ColumnQuery** and **ColumnDeleteQuery**, respectively, also the callback method can be used.
 
 
 ```java
