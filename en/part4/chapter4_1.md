@@ -15,6 +15,7 @@ The annotation model is to convert the entity model to the entity on communicati
 * Column
 * MappedSuperclass
 * Id
+* Subentity
 * Embeddable
 * Convert
 
@@ -103,6 +104,38 @@ public class User implements Serializable {
     private List<String> phones;
     }
 ```
+##### Subentity
+
+Specifies a class whose instances are stored as an intrinsic part of an owning entity and share the identity of the entity. Each of the persistent properties or fields of the embedded object is mapped to the database table for the entity.
+
+```java
+@Entity
+public class Book {
+
+    @Column
+    private String name;
+
+    @Column
+    private Author author;
+
+//getter and setter
+
+}
+
+@Subentity
+public class Author {
+
+    @Column
+    private String name;
+
+    @Column
+    private Integer age;
+
+//getter and setter
+
+}
+```
+
 ##### Embeddable
 
 Defines a class whose instances are stored as an intrinsic part of an owning entity and share the identity of the object. So when converts an Embeddable instance to either save or update this is going to be either subdocument or subcolumn.
@@ -134,6 +167,8 @@ public class Author {
 
 }
 ```
+
+
 
 ##### Convert
 
