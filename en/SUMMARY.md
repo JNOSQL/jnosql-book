@@ -35,6 +35,7 @@
      * [Key Value Configuration](part2/chapter2_6_3.md)
 * [The diversity on NoSQL databases](part3/README.md)
    * [Using Diana drivers](part3/chapter3_1.md)
+   * [Implementing a Document Driver](part3/chapter3_2.md)
 
 ### Talking about the abstraction layer, aka Artemis
 
