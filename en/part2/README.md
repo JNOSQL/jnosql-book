@@ -8,8 +8,9 @@ To cover the four kinds of database, this API has four packages, one for each da
 
 * `org.jnosql.diana.column`
 * `org.jnosql.diana.document`
-* `org.jnosql.diana.graph`
 * `org.jnosql.diana.key`
+
+There isn't communication API because of the Graph API already does exist, that is Apache TinkerPop. 
 
 So, if a database is multi-model, has support to more than one database, it will implement an API to each database which it supports. Also, each API has the TCK to prove if the database is compatible with the API. Even from differents JSR it tries to use the same nomenclature:
 
