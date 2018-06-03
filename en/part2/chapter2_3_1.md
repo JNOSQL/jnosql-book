@@ -4,7 +4,7 @@ The `ColumnFamilyEntity` is an entity to column family database type. It is comp
 
 
 ```java
-ColumnFamilyEntity entity = ColumnFamilyEntity.of("columnFamily"); 
+ColumnEntity entity = ColumnEntity.of("columnFamily"); 
 entity.add(Column.of("id", Value.of(10L))); 
 entity.add(Column.of("version", 0.001)); 
 entity.add(Column.of("name", "Diana")); 
