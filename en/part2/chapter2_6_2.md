@@ -1,8 +1,6 @@
-## Column Configuration
+# chapter2\_6\_2
 
 On the column family configuration, there are two classes, ColumnConfiguration and ColumnConfigurationAsync to ColumnFamilyManagerFactory and ColumnFamilyManagerAsyncFactory respective.
-
-
 
 ```java
 ColumnConfiguration configuration = //instance
@@ -13,9 +11,9 @@ ColumnFamilyManagerAsyncFactory managerAsyncFactory = configurationAsync.getAsyn
 
 If a database has support to both synchronous and asynchronous, it may use `UnaryColumnConfiguration` that implement both document configuration.
 
-
 ```java
 UnaryColumnConfiguration unaryDocumentConfiguration = //instance
 ColumnFamilyManagerFactory managerFactory = unaryDocumentConfiguration.get();
 ColumnFamilyManagerAsyncFactory managerAsyncFactory = unaryDocumentConfiguration.getAsync();
 ```
+

@@ -1,4 +1,4 @@
-## Lidando com os eventos da persistência
+# chapter4\_4
 
 Como foi mencionado, o Artemis tem suporte a eventos e um ciclo de vida tanto para a inserção e a atualização dos dados. O ciclo de vida é gerenciado pela classe **WorkFlow** que por padrão tem o seguinte fluxo:
 
@@ -11,7 +11,7 @@ Como foi mencionado, o Artemis tem suporte a eventos e um ciclo de vida tanto pa
 
 Para observar esses eventos, basta utilizar o @**Observes**, recurso oriundo do próprio CDI.
 
-#### ColumnWorkFlow
+### ColumnWorkFlow
 
 ```java
 @ApplicationScoped
@@ -46,7 +46,7 @@ public class PersonEvent {
 }
 ```
 
-#### DocumentWorkFlow
+### DocumentWorkFlow
 
 ```java
 @ApplicationScoped
@@ -80,7 +80,7 @@ public class PersonEvent {
 }
 ```
 
-#### KeyValueWorkFlow
+### KeyValueWorkFlow
 
 ```java
 @ApplicationScoped
@@ -115,7 +115,7 @@ public class UserEvent {
 }
 ```
 
-### Eventos para buscar e deletar informações
+## Eventos para buscar e deletar informações
 
 Além dos eventos de inserção e atualização, dentro do das APIs de colunas e documentos, o Artemis tem um evento específico para quando uma query de busca ou uma remoção é efetuada.
 
@@ -151,6 +151,4 @@ public class DocumentQueryEvent {
     }
 }
 ```
-
-
 

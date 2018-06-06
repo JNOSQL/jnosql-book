@@ -1,11 +1,11 @@
-#### Column Manager
+# chapter2\_4\_2
 
 The Manager class for the column family type can be synchronous or asynchronous:
 
 * **ColumnFamilyManager**: To do synchronous operations.
 * **ColumnFamilyManagerAsync**: To do asynchronous operations.
 
-##### **ColumnFamilyManager**
+## **ColumnFamilyManager**
 
 The `ColumnFamilyManager` is the class that manages the persistence on the synchronous way to column family.
 
@@ -27,7 +27,7 @@ The `ColumnFamilyManager` is the class that manages the persistence on the synch
         manager.update(entities);
 ```
 
-##### ColumnFamilyManagerAsync
+## ColumnFamilyManagerAsync
 
 The `ColumnFamilyManagerAsync` is the class that manages the persistence on the asynchronous way to column family.
 
@@ -57,11 +57,9 @@ Sometimes on an asynchronous process, is important to know when this process is 
         managerAsync.update(entity, callBack);
 ```
 
-##### Search information on a column family
+## Search information on a column family
 
-#### 
-
-Diana has support to retrieve information from both ways synchronous and asynchronous from the `ColumnQuery` class. The `ColumnQuery`  has information such as sort type, document and also the condition to retrieve information.
+Diana has support to retrieve information from both ways synchronous and asynchronous from the `ColumnQuery` class. The `ColumnQuery` has information such as sort type, document and also the condition to retrieve information.
 
 The condition on `ColumnQuery` is given from `ColumnCondition`, whose it has the status and the column. Eg. The condition behind is to find a name equal "**Ada**".
 
@@ -97,7 +95,7 @@ ColumnQuery also has pagination feature to define where the data start, and it l
         managerAsync.select(query, callback);
 ```
 
-##### Removing information from Column Family
+## Removing information from Column Family
 
 Such as `ColumnQuery` there is a class to remove information from the column database type: A `ColumnDeleteQuery` type.
 
@@ -116,6 +114,4 @@ It is smoother than `ColumnQuery` because there isn't pagination and sort featur
         managerAsync.delete(query);
         managerAsync.delete(query, v -> {});
 ```
-
-
 

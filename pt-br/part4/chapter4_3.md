@@ -1,4 +1,4 @@
-## Repository
+# chapter4\_3
 
 Além dos repositórios de família de colunas e também de documentos o Artemis também possui o Repository. Essa interface tem como objetivo auxiliar na criação de classes repositórios específicas para as entidades além de facilitar na criação de uma query.
 
@@ -102,7 +102,7 @@ repository.save(person);
 repository.save(people);
 ```
 
-#### Criando Queries com o Repository
+## Criando Queries com o Repository
 
 Além de salvar e atualizar a informação também é possível recuperar e deletar a informação utilizando methods queries. Com esse intuito o Repository vem com algumas palavras reservadas:
 
@@ -140,7 +140,7 @@ interface PersonRepository extends Repository<Person, Long> {
 
 Com isso o artemis cuidará de implementar esses métodos.
 
-#### Utilizando o Repository de forma assíncrona
+## Utilizando o Repository de forma assíncrona
 
 Para trabalhar de forma assíncrona existe a interface RepositoryAsync, seu funcionamento é semelhante ao Repository.
 
@@ -168,7 +168,6 @@ List<Person> people = Collections.singletonList(person);
 
 repositoryAsync.save(person);
 repositoryAsync.save(people);
-
 ```
 
 Também é possível recuperar e deletar a informação de forma assíncrona, a diferença é que na recuperação um callback é obrigatório no fim do método enquanto para deletar ou remover informação o callback é opcional.
@@ -184,7 +183,7 @@ Também é possível recuperar e deletar a informação de forma assíncrona, a 
     }
 ```
 
-#### Repository no KeyValue
+## Repository no KeyValue
 
 Assim como a família de colunas e coleção de documentos, chave valor tem o recurso que auxilia tem como objetivo auxiliar na criação de classes repositórios.
 
@@ -250,7 +249,5 @@ Optional<User> userOptional = userRepository.findById("ada");
 Iterable<User> usersFound = userRepository.findById(Collections.singletonList("ada"));
 ```
 
-O recurso do dynamic query não  suportado para o banco de dados do tipo Key-value.
-
-
+O recurso do dynamic query não suportado para o banco de dados do tipo Key-value.
 

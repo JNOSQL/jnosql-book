@@ -1,4 +1,4 @@
-#### Column Family Manager Factory
+# chapter2\_5\_1
 
 The factory classes have the duty to create the column family manager.
 
@@ -15,3 +15,4 @@ ColumnFamilyManagerAsync managerAsync = asyncFactory.getAsync("database");
 ```
 
 The factories were separated intentionally, as not all databases support synchronous and asynchronous operations.
+

@@ -1,11 +1,11 @@
-#### Document Manager
+# chapter2\_4\_1
 
 The manager class to a document type can be synchronous or asynchronous:
 
 * **DocumentCollectionManager**: To do synchronous operations.
 * **DocumentCollectionManagerAsync**: To do asynchronous operations.
 
-##### **DocumentCollectionManager**
+## **DocumentCollectionManager**
 
 The `DocumentCollectionManager` is the class that manages the persistence on the synchronous way to document collection.
 
@@ -26,7 +26,7 @@ The `DocumentCollectionManager` is the class that manages the persistence on the
         manager.update(entities);
 ```
 
-##### **DocumentCollectionManagerAsync**
+## **DocumentCollectionManagerAsync**
 
 The `DocumentCollectionManagerAsync` is the class that manages the persistence on an asynchronous way to document collection.
 
@@ -55,11 +55,9 @@ Sometimes on an asynchronous process, is important to know when this process is 
         managerAsync.update(entity, callBack);
 ```
 
-##### Search information on a document collection
+## Search information on a document collection
 
-#### 
-
-Diana has support to retrieve information from both ways synchronous and asynchronous from the `DocumentQuery` class. The `DocumentQuery`  has information such as sort type, document and also the condition to retrieve information.
+Diana has support to retrieve information from both ways synchronous and asynchronous from the `DocumentQuery` class. The `DocumentQuery` has information such as sort type, document and also the condition to retrieve information.
 
 The condition on `DocumentQuery` is given from `DocumentCondition`, which has the status and the document. Eg. The condition behind is to find a name equal "**Ada**".
 
@@ -91,7 +89,7 @@ Consumer<List<DocumentEntity>> callback = e -> {};
 managerAsync.select(query, callback);
 ```
 
-##### Removing information from Document Collection
+## Removing information from Document Collection
 
 Such as `DocumentQuery` there is a class to remove information from the document database type: A `DocumentDeleteQuery` type.
 
@@ -110,6 +108,4 @@ It is smoother than `DocumentQuery` because there isn't pagination and sort feat
         managerAsync.delete(query);
         managerAsync.delete(query, v -> {});
 ```
-
-
 

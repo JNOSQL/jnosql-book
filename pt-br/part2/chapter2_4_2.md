@@ -1,11 +1,11 @@
-#### Column Manager
+# chapter2\_4\_2
 
 A interação com o banco de dados do tipo família de coluna é dado por duas classes:
 
 * **ColumnFamilyManager**: Para realizar operações no banco de dados de forma síncrona
 * **ColumnFamilyManagerAsync**: Para realizar operações no banco de dados de forma assíncrona.
 
-##### **ColumnFamilyManager**
+## **ColumnFamilyManager**
 
 O `ColumnFamilyManager` é classe que realiza as operações de forma síncrona, com ele é possível realizar a criação, editação, remoção e a recuperação dentro dos bancos de dados do tipo família de coluna.
 
@@ -27,7 +27,7 @@ O `ColumnFamilyManager` é classe que realiza as operações de forma síncrona,
         manager.update(entities);
 ```
 
-##### ColumnFamilyManagerAsync
+## ColumnFamilyManagerAsync
 
 O `ColumnFamilyManagerAsync` é classe que realiza as operações de forma assíncrona, com ele é possível realizar a criação, editação, remoção e a recuperação dentro dos bancos de dados do tipo família de coluna.
 
@@ -57,9 +57,7 @@ Em alguns momentos é necessário saber quando tal operação foi finalizada, me
         managerAsync.update(entity, callBack);
 ```
 
-##### Buscando as informações dentro de uma família de coluna:
-
-##### 
+## Buscando as informações dentro de uma família de coluna:
 
 No diana, as buscas tanto de forma síncrona e assíncrona são realizadas a partir da classe Column`Query`, com essa classe é possível definir se alguns ou todos os apenas algumas colunas serão retornados, ordenação além da condição para a informação a ser recuperada.
 
@@ -97,7 +95,7 @@ Dentro do ColumnQuery também é possível paginar as informações utilizando o
         managerAsync.select(query, callback);
 ```
 
-##### Removendo as informações dentro de uma família de colunas:
+## Removendo as informações dentro de uma família de colunas:
 
 Semelhante ao `ColumnQuery,`existe uma classe responsável por remover informações dentro da coleção de documentos: A classe `ColumnDeleteQuery`
 
@@ -116,6 +114,4 @@ Ela possui uma estrutura bem simples, sem paginação e ordenação, uma vez que
         managerAsync.delete(query);
         managerAsync.delete(query, v -> {});
 ```
-
-
 

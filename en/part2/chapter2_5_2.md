@@ -1,4 +1,4 @@
-#### Document Collection Factory
+# chapter2\_5\_2
 
 The factory classes have the duty to create the document collection manager.
 
@@ -12,7 +12,7 @@ DocumentCollectionManagerFactory factory = //instance
 DocumentCollectionManagerAsyncFactory asyncFactory = //instance
 DocumentCollectionManager manager = factory.get("database");
 DocumentCollectionManagerAsync managerAsync = asyncFactory.getAsync("database");
-
 ```
 
 The factories were separated intentionally, as not all databases support synchronous and asynchronous operations.
+

@@ -1,15 +1,13 @@
-## Template de Documentos
+# chapter4\_2\_1
 
 O template de documentos é responsável para realizar a comunicação da entidade para um banco de dados do tipo documentos. Ele é subdividido em `DocumentTemplate` e `DocumentTemplateAsync`para trabalhos síncronos e assíncronos respectivamente.
 
-#### `DocumentTemplate`
+## `DocumentTemplate`
 
 O `DocumentTemplate` é responsável pela persistência de uma Entidade em um banco de dados do tipo documento. Ele é composto, basicamente, por três componentes:
 
 * **DocumentEntityConverter**: Responsável por converter da entidade, por exemplo, Person para DocumentEntity.
-
 * **DocumentCollectionManager**: Entidade manager de documentos do Diana.
-
 * **DocumentWorkflow**: Segue o fluxo de persistência durante os métodos de save e update.
 
 ```java
@@ -91,7 +89,7 @@ Para trabalhar com mais de um tipo de TemplateTemplate existem duas opções:
     }
 ```
 
-2\) A segunda delas é a partir do  **DocumentTemplateProducer**
+2\) A segunda delas é a partir do **DocumentTemplateProducer**
 
 ```java
 @Inject
@@ -105,12 +103,11 @@ public void sample() {
 }
 ```
 
-#### `DocumentTemplateAsync`
+## `DocumentTemplateAsync`
 
 O`DocumentTemplateAsync`é responsável pela persistência de uma Entidade em um banco de dados do tipo documento de forma assíncrona. Ele é composto, basicamente, por dois componentes:
 
 * **DocumentEntityConverter:** Responsável por converter da entidade, por exemplo, Person para DocumentEntity.
-
 * **DocumentCollectionManagerAsync:** Entidade manager de documentos do Diana de forma assíncrona.
 
 ```java
@@ -155,7 +152,7 @@ DocumentTemplateAsync template;
 
 Para isso é necessário que a aplicação injete um **DocumentCollectionManagerAsync:**
 
-```
+```text
 @Produces
 public DocumentCollectionManagerAsync getManager() {
     DocumentCollectionManagerAsync managerAsync = //instance
@@ -193,7 +190,7 @@ Para trabalhar com mais de um tipo de DocumentTemplate existem duas opções:
     }
 ```
 
-2\) A segunda delas é a partir do  **DocumentTemplateAsyncProducer**
+2\) A segunda delas é a partir do **DocumentTemplateAsyncProducer**
 
 ```java
 @Inject
@@ -206,6 +203,4 @@ public void sample() {
    DocumentTemplateAsync templateB = producer.get(managerB);
 }
 ```
-
-
 

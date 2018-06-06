@@ -1,12 +1,13 @@
+# chapter4\_1
+
 ## Anotações para o Modelo
 
 Como mencionado anteriormente, o Artemis é orientado a anotações para que facilite a vida do desenvolvedor Java. Essas anotações têm algumas categorias:
 
 * Anotação para modelo
-
 * Anotação para qualificação
 
-#### Anotações para o Modelo
+### Anotações para o Modelo
 
 As anotações para o Modelo tem como objetivo transformar o modelo, orientado a objetos, para a camada de comunicação, Diana. Para mapeamento do modelo existe:
 
@@ -20,7 +21,7 @@ As anotações para o Modelo tem como objetivo transformar o modelo, orientado a
 
 O JNoSQL Artemis não requer métodos getter e setter para os campos, no entanto, as classes do tipo entidade precisam ter um construtor padrão ou protegido por pacote.
 
-##### Entity
+#### Entity
 
 Essa anotação tem como objetivo mapear a classe que será utilizada como entidade dentro do Artemis, ela possui um único atributo: name. Esse atributo tem como objetivo informar o nome da Família de coluna, Coleção de documentos, chave valor, etc. Caso ele não seja informado será utilizado o nome simples da classe, por exemplo, a Classe org.jnosql.demo.Person ele usará o Person como nome.
 
@@ -36,7 +37,7 @@ public class Person {
 }
 ```
 
-##### Column
+#### Column
 
 Essa anotação observada os atributos dentro da classe, anotada com Entity.
 
@@ -55,7 +56,7 @@ public class Person {
 }
 ```
 
-##### MappedSuperclass
+#### MappedSuperclass
 
 Faz com que o Artemis olhe para os atributos da classe pai, cujo os atributos sejam anotados com Column,
 
@@ -83,11 +84,9 @@ public class Animal {
 }
 ```
 
-
-
 No exemplo citado, ao salvar a classe `Dog` será levado em consideração também os campos da classe `Animal`, ou seja, serão persistidos três campos, `name`, `race` e `age`.
 
-##### Id
+#### Id
 
 Ele indica qual dos atributos é o id, ou a chave para banco de dados do tipo chave-valor. A forma de armazenamento da classe vai depender do driver do banco de dados.
 
@@ -105,9 +104,7 @@ public class User implements Serializable {
         }
 ```
 
-
-
-##### Embeddable
+#### Embeddable
 
 Indica que as classes com essa anotação serão persistidas de forma embarcada, ou seja, na conversão de uma entidade para o tipo documentos o tipo embarcado será um suddocumento.
 
@@ -139,7 +136,7 @@ public class Author {
 }
 ```
 
-##### SubEntity
+#### SubEntity
 
 Indica que as classes com essa anotação serão persistidas de forma integrada a entidade principal, como parte direta da mesma, assim uma sub entidade.
 
@@ -171,11 +168,7 @@ public class Author {
 }
 ```
 
-
-
-##### Convert
-
-
+#### Convert
 
 Assim como o Diana, o Artemis também possui o recurso para realizar conversão de tipos. Esse tipo de recurso é interessante também para, por exemplo, criptografar uma informação texto, de String para String. Como parâmetro essa anotação precisa de uma classe que implemente AttributeConverter. No exemplo abaixo, foi criado a classe salário com um converter para a classe criada Money.
 
@@ -209,7 +202,6 @@ public class Money {
 
 //....
 }
-
 ```
 
 ## Anotação para qualificação
@@ -226,7 +218,6 @@ private DocumentRepository repositoryB;
 Como nos dois casos ele implementa a mesma interface será retornado em tempo de execução pelo CDI um problema de ambiguidade de injeção. Para resolver esse problema existe o qualificador que a API já traz, o qualificador `Database`. Essa API possui dois atributos:
 
 * **DatabaseType**: O tipo de banco de dados, por exemplo, chave-valor documentos, grafo ou família de coluna
-
 * **provider**: O nome do provedor do banco de dados, por exemplo, “cassandra”, “hbase”, “mongoDB”, etc. Assim, para resolver o problema mencionado anteriormente existe é necessário anotar com o qualificador.
 
 ```java
@@ -242,15 +233,13 @@ Obviamente será necessário a criação de métodos produtores com os mesmos qu
 
 Um ponto importante é da integração do Artemis com esse qualificador. Caso ele seja utilizado para a criação dos Entity Manager do Diana \(ColumnFamilyManager, DocumentCollectionManager, BucketManager, etc.\) o Artemis gerenciará todo o ciclo de vida de classes como DocumentRepository, ColumnRepository, dentro outros que será visto mais a frente.
 
-
 ## ConfigurationUnit
 
-Armazenar as configurações do banco de dados como senha e usuário é algo muito importante para uma aplicação. O Eclipse JNoSQL Artemis tem a anotação ConfigurationUnit, ela lê a configuração a partir de arquivos como XML e JSON e o injeta criando uma fábrica. Esse arquivo de configuração pode estar na parta **META-INF** ou **WEB-INF** 
+Armazenar as configurações do banco de dados como senha e usuário é algo muito importante para uma aplicação. O Eclipse JNoSQL Artemis tem a anotação ConfigurationUnit, ela lê a configuração a partir de arquivos como XML e JSON e o injeta criando uma fábrica. Esse arquivo de configuração pode estar na parta **META-INF** ou **WEB-INF**
 
-#### Estrutura de um arquivo JSON
+### Estrutura de um arquivo JSON
 
-
-```json
+```javascript
 [
    {
       "description":"that is the description",
@@ -269,12 +258,11 @@ Armazenar as configurações do banco de dados como senha e usuário é algo mui
       }
    }
 ]
-
 ```
 
-#### Estrutura de um arquivo XML
+### Estrutura de um arquivo XML
 
-```xml
+```markup
 <?xml version="1.0" encoding="UTF-8"?>
 <configurations>
    <configuration>
@@ -295,7 +283,7 @@ Armazenar as configurações do banco de dados como senha e usuário é algo mui
 </configurations>
 ```
 
-#### Injection the code 
+### Injection the code
 
 Com o arquivo de configuração, o próximo passo é o injetar na aplicação, o Eclipse JNoSQL Artemis, por padrão, tem suporte para as seguintes classes:
 
@@ -306,7 +294,6 @@ Com o arquivo de configuração, o próximo passo é o injetar na aplicação, o
 * ColumnFamilyManagerAsyncFactory
 
 ```java
-
     @Inject
     @ConfigurationUnit(fileName = "column.xml", name = "name")
     private ColumnFamilyManagerFactory<?> factoryA;
@@ -318,18 +305,17 @@ Com o arquivo de configuração, o próximo passo é o injetar na aplicação, o
     @Inject
     @ConfigurationUnit
     private BucketManagerFactory factoryB;
-
 ```
 
-#### Dependência do ConfigurationUnit
+### Dependência do ConfigurationUnit
 
-Para utilizar a anotação o seu comportamento padrão de ConfigurationUnit, é necessário adicionar a  dependência de configuração.
+Para utilizar a anotação o seu comportamento padrão de ConfigurationUnit, é necessário adicionar a dependência de configuração.
 
-```xml
+```markup
    <dependency>
         <groupId>org.jnosql.artemis</groupId>
         <artifactId>artemis-configuration</artifactId>
         <version>0.0.4-SNAPSHOT</version>
     </<dependency>
-    
 ```
+

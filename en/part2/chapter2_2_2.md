@@ -1,4 +1,4 @@
-#### Column
+# chapter2\_2\_2
 
 The Column is a small piece of the column family entity. Each column has a tuple where the name represents a key and the value itself as a `Value` implementation.
 
@@ -24,3 +24,4 @@ String ageString = age.get(String.class);
 List<Integer> ages = age.get(new TypeReference<List<Integer>>() {});
 Object ageObject = age.get();
 ```
+

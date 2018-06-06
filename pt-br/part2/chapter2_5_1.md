@@ -1,4 +1,4 @@
-#### Column Family Manager Factory
+# chapter2\_5\_1
 
 As classes fábricas são as responsáveis pela criação de uma classe Manager numa família de colunas.
 

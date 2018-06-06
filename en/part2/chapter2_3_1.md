@@ -1,7 +1,6 @@
-#### ColumnFamilyEntity
+# chapter2\_3\_1
 
 The `ColumnFamilyEntity` is an entity to column family database type. It is composed of one or more columns. As a result, the Column is a tuple of name and value.
-
 
 ```java
 ColumnEntity entity = ColumnEntity.of("columnFamily"); 
@@ -13,3 +12,4 @@ entity.add(Column.of("options", Arrays.asList(1, 2, 3)));
 List<Column> columns = entity.getColumns(); 
 Optional<Column> id = entity.find("id");
 ```
+

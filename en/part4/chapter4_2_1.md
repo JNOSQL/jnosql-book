@@ -1,15 +1,13 @@
-## Document Template
+# chapter4\_2\_1
 
 This template has the duty to be a bridge between the entity model and Diana to document collection. It has two classes `DocumentTemplate` and `DocumentTemplateAsync`, one for the synchronous and the other for the asynchronous work.
 
-#### `DocumentTemplate`
+## `DocumentTemplate`
 
 The `DocumentTemplate` is the document template for the synchronous tasks. It has three components:
 
 * **DocumentEntityConverter**: That converts an entity to communication API, e.g., The Person to DocumentEntity.
-
 * **DocumentCollectionManager**: The Diana document collection entity manager.
-
 * **DocumentWorkflow**: The workflow to update and save methods.
 
 ```java
@@ -31,7 +29,7 @@ template.update(person);
 template.update(people);
 ```
 
-To do both remove and retrieve information from document collection that uses the same Diana classes, namely,  **DocumentQuery** and **DocumentDeleteQuery**.
+To do both remove and retrieve information from document collection that uses the same Diana classes, namely, **DocumentQuery** and **DocumentDeleteQuery**.
 
 ```java
 DocumentQuery query = select().from("Person").where("address").eq("Olympus").build();
@@ -105,12 +103,11 @@ public void sample() {
 }
 ```
 
-#### `DocumentTemplateAsync`
+## `DocumentTemplateAsync`
 
 The `DocumentTemplateAsync` is the document template for the asynchronous tasks. It has two components:
 
 * **DocumentEntityConverter:** That converts an entity to communication API, e.g., The Person to DocumentEntity.
-
 * **DocumentCollectionManagerAsync:** The Diana document collection entity manager asynchronous.
 
 ```java
@@ -135,7 +132,7 @@ templateAsync.update(person, callback);
 templateAsync.update(people);
 ```
 
-For information removal and retrieval are used the same classes from Diana for documents,  **DocumentQuery** and **DocumentDeleteQuery**, respectively, also the callback method can be used.
+For information removal and retrieval are used the same classes from Diana for documents, **DocumentQuery** and **DocumentDeleteQuery**, respectively, also the callback method can be used.
 
 ```java
 Consumer<List<Person>> callBackPeople = p -> {};
@@ -155,7 +152,7 @@ DocumentTemplateAsync template;
 
 The next step is produced a **DocumentCollectionManagerAsync:**
 
-```
+```text
 @Produces
 public DocumentCollectionManagerAsync getManager() {
     DocumentCollectionManagerAsync managerAsync = //instance
@@ -206,3 +203,4 @@ public void sample() {
    DocumentTemplateAsync templateB = producer.get(managerB);
 }
 ```
+

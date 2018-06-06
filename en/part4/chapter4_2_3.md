@@ -1,17 +1,15 @@
-## Key-Value template
+# chapter4\_2\_3
 
 The key value is a bridge between the entity and the key-value database.
 
-#### `KeyValueTemplate`
+## `KeyValueTemplate`
 
 The `KeyValueTemplate` is the column template to synchronous tasks. It has three components:
 
 The KeyValueTemplate is responsible for persistency of an entity in a key-value database. It is composed basically for three components.
 
 * **KeyValueEntityConverter**: That converts an entity to communication API, e.g., The Person to KeyValueEntity.
-
 * **BucketManager**: The Diana column key-value entity manager.
-
 * **KeyValueWorkflow**: The workflow to update and save methods.
 
 ```java
@@ -28,8 +26,8 @@ template.put(users);
 Optional<Person> ada = template.get("ada", Person.class);
 Iterable<Person> usersFound = template.get(Collections.singletonList("ada"), Person.class);
 ```
-To use a key-value template just follows the CDI style and put an `@Inject` on the field.
 
+To use a key-value template just follows the CDI style and put an `@Inject` on the field.
 
 ```java
 @Inject
@@ -76,7 +74,7 @@ To work with more than one key-value Template, there are two approaches:
     }
 ```
 
-2\)  Using the **KeyValueTemplateProducer** class
+2\) Using the **KeyValueTemplateProducer** class
 
 ```java
 @Inject
@@ -89,3 +87,4 @@ public void sample() {
    KeyValueTemplate templateB = producer.get(managerB);
 }
 ```
+

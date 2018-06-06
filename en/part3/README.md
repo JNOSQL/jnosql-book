@@ -1,4 +1,4 @@
-## The diversity on NoSQL database
+# README
 
 On NoSQL world beyond the several types, it's trivial a particular database has features that do exist on this provider.
 
@@ -37,6 +37,4 @@ try(CassandraDocumentEntityManagerFactory managerFactory = condition.get()) {
     System.out.println(entities);
 }
 ```
-
-
 

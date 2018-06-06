@@ -1,4 +1,4 @@
-## Persistence events
+# chapter4\_4
 
 As mentioned previously, Artemis has support to persistence lifecycle to update and save an Entity. This lifecycle order is managed by a **WorkFlow** class. The default workflow is:
 
@@ -11,7 +11,7 @@ As mentioned previously, Artemis has support to persistence lifecycle to update 
 
 Tha watch this event, just need to use an @**Observes**, a form of CDI itself.
 
-#### ColumnWorkFlow
+### ColumnWorkFlow
 
 ```java
 @ApplicationScoped
@@ -45,7 +45,7 @@ public class PersonEvent {
 }
 ```
 
-#### DocumentWorkFlow
+### DocumentWorkFlow
 
 ```java
 @ApplicationScoped
@@ -79,7 +79,7 @@ public class PersonEvent {
 }
 ```
 
-#### KeyValueWorkFlow
+### KeyValueWorkFlow
 
 ```java
 @ApplicationScoped
@@ -114,18 +114,11 @@ public class UserEvent {
 }
 ```
 
-
-
-### Events to search and remove information
-
-
+## Events to search and remove information
 
 Beyond the events for insert and update, in the document and column APIs, Artemis has also a specific event for search queries and deletions.
 
-
-
 ```java
-
 public class ColumnQueryEvent {
 
     private static final Logger LOGGER = Logger.getLogger(ColumnQueryEvent.class.getName());
@@ -156,8 +149,5 @@ public class DocumentQueryEvent {
         LOGGER.info("Event to pre persistence" + query);
     }
 }
-
 ```
-
-
 

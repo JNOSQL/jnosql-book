@@ -1,4 +1,4 @@
-#### DocumentEntity
+# chapter2\_3\_2
 
 The `DocumentEntity` is an entity to document collection database type. It is composed of one or more document. As a result, the Document is a tuple of name and value.
 
@@ -14,3 +14,4 @@ The `DocumentEntity` is an entity to document collection database type. It is co
         Optional<Document> id = entity.find("id");
         entity.remove("options");
 ```
+

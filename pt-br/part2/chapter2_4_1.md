@@ -1,11 +1,11 @@
-#### Document Manager
+# chapter2\_4\_1
 
 A interação com o banco de dados do tipo documento é dado por duas classes:
 
 * **DocumentCollectionManager**: Para realizar operações no banco de dados de forma síncrona
 * **DocumentCollectionManagerAsync**: Para realizar operações no banco de dados de forma assíncrona.
 
-##### **DocumentCollectionManager**
+## **DocumentCollectionManager**
 
 O `DocumentCollectionManager` é classe que realiza as operações de forma síncrona, com ele é possível realizar a criação, editação, remoção e a recuperação dentro dos bancos de dados do tipo documento.
 
@@ -26,7 +26,7 @@ O `DocumentCollectionManager` é classe que realiza as operações de forma sín
         manager.update(entities);
 ```
 
-##### **DocumentCollectionManagerAsync**
+## **DocumentCollectionManagerAsync**
 
 O `DocumentCollectionManagerAsync` é classe que realiza as operações de forma assíncrona, com ele é possível realizar a criação, editação, remoção e a recuperação dentro dos bancos de dados do tipo documento.
 
@@ -55,9 +55,7 @@ Em alguns momentos é necessário saber quando tal operação foi finalizada, me
         managerAsync.update(entity, callBack);
 ```
 
-##### Buscando as informações dentro de uma coleção de documentos:
-
-##### 
+## Buscando as informações dentro de uma coleção de documentos:
 
 No diana, as buscas tanto de forma síncrona e assíncrona são realizadas a partir da classe `DocumentQuery`, com essa classe é possível definir se alguns ou todos os apenas alguns documentos serão retornados, ordenação além da condição para a informação ser recuperada.
 
@@ -91,7 +89,7 @@ Consumer<List<DocumentEntity>> callback = e -> {};
 managerAsync.select(query, callback);
 ```
 
-##### Removendo as informações dentro de uma coleção de documentos:
+## Removendo as informações dentro de uma coleção de documentos:
 
 Semelhante ao `DocumentQuery,`existe uma classe responsável por remover informações dentro da coleção de documentos: A classe `DocumentDeleteQuery`
 
@@ -110,6 +108,4 @@ Ela possui uma estrutura bem simples, sem paginação e ordenação, uma vez que
         managerAsync.delete(query);
         managerAsync.delete(query, v -> {});
 ```
-
-
 

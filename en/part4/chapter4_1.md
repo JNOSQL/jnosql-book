@@ -1,15 +1,15 @@
+# chapter4\_1
+
 ## Models Annotation
 
 As mentioned previously, Artemis has annotations that make the Java developer life easier; these annotations have two categories:
 
 * Annotation Models
-
 * Qualifier annotation
 
-#### Annotation Models
+### Annotation Models
 
 The annotation model is to convert the entity model to the entity on communication, the Diana entity:
-
 
 * Entity
 * Column
@@ -19,9 +19,9 @@ The annotation model is to convert the entity model to the entity on communicati
 * Embeddable
 * Convert
 
-
 The JNoSQL Artemis does not require the getter and setter methods to the fields, however, the Entity class must have a non-private constructor with no parameters.
-##### Entity
+
+#### Entity
 
 This annotation maps the class to Artemis. It has an unique attribute called `name` . This attribute is to inform either the column family name or the document collection name, etc. The default value is the simple name of a class, for example, given the org.jnosql.demo.Person class the default name will `Person`.
 
@@ -37,7 +37,7 @@ public class Person {
 }
 ```
 
-##### Column
+#### Column
 
 This annotation it to define which fields on an Entity will be persisted. It also has a unique attribute name to specify that name on Database, and the default value is the field name.
 
@@ -56,10 +56,9 @@ public class Person {
 }
 ```
 
-##### MappedSuperclass
+#### MappedSuperclass
 
 If this annotation is on the parent class, Artemis will persist its information as well. So beyond the son class, Artemis will store any field that is in Parent class with Column annotation.
-
 
 ```java
 @Entity
@@ -87,8 +86,7 @@ public class Animal {
 
 On this sample above, when saves a `Dog` instance, it saves the `Animal` case too, explicitly will save the fields `name`, `race` and `age`.
 
-
-##### Id
+#### Id
 
 It shows which attribute is the id, or the key in key-value types, thus the value will be the remaining information. The way of storing the class will depend on the database driver.
 
@@ -104,7 +102,8 @@ public class User implements Serializable {
     private List<String> phones;
     }
 ```
-##### Subentity
+
+#### Subentity
 
 Specifies a class whose instances are stored as an intrinsic part of an owning entity and share the identity of the entity. Each of the persistent properties or fields of the embedded object is mapped to the database table for the entity.
 
@@ -136,7 +135,7 @@ public class Author {
 }
 ```
 
-##### Embeddable
+#### Embeddable
 
 Defines a class whose instances are stored as an intrinsic part of an owning entity and share the identity of the object. So when converts an Embeddable instance to either save or update this is going to be either subdocument or subcolumn.
 
@@ -168,9 +167,7 @@ public class Author {
 }
 ```
 
-
-
-##### Convert
+#### Convert
 
 As Diana, Artemis has a converter at abstraction level. This feature is useful, e.g., to cipher a field, String to String, or just to do a converter to a custom type using annotation. The `Converter` annotation has a parameter, and an AttributeConverter implementation class can be used. Eg. The sample bellow shows how to create a converter to a custom Money class.
 
@@ -220,9 +217,7 @@ private DocumentRepository repositoryB;
 Two injections with the same interface, CDI throws an ambiguous exception. There is the `Database` qualifier to fix this problem. It has two attributes:
 
 * **DatabaseType**: The database type, key-value, document, column, graph.
-
 * **provider**: The provider database name, eg. "cassandra, "hbase", "mongodb". So using the `Database` qualifier:
-
 
 ```java
 @Inject
@@ -241,10 +236,9 @@ The benefits using this qualifier instead of creating a new one is that if the M
 
 Storage the database's configuration such as password and user outside the code is important, Eclipse JNoSQL Artemis has the ConfigurationUnit annotation. that reads the configuration from a file such as XML and JSON file and inject to create a factory. The default configuration structure is within either **META-INF** or **WEB-INF** folder.
 
-#### JSON file structure
+### JSON file structure
 
-
-```json
+```javascript
 [
    {
       "description":"that is the description",
@@ -263,12 +257,11 @@ Storage the database's configuration such as password and user outside the code 
       }
    }
 ]
-
 ```
 
-#### XML file structure
+### XML file structure
 
-```xml
+```markup
 <?xml version="1.0" encoding="UTF-8"?>
 <configurations>
    <configuration>
@@ -289,10 +282,9 @@ Storage the database's configuration such as password and user outside the code 
 </configurations>
 ```
 
-#### Injection the code 
+### Injection the code
 
-With the configuration file, the next step is to inject the dependency in the application.
-The default behavior supports the following classes:
+With the configuration file, the next step is to inject the dependency in the application. The default behavior supports the following classes:
 
 * BucketManagerFactory
 * DocumentCollectionManagerAsyncFactory
@@ -301,7 +293,6 @@ The default behavior supports the following classes:
 * ColumnFamilyManagerAsyncFactory
 
 ```java
-
     @Inject
     @ConfigurationUnit(fileName = "column.xml", name = "name")
     private ColumnFamilyManagerFactory<?> factoryA;
@@ -313,19 +304,17 @@ The default behavior supports the following classes:
     @Inject
     @ConfigurationUnit
     private BucketManagerFactory factoryB;
-
 ```
 
-#### ConfigurationUnit Dependency
+### ConfigurationUnit Dependency
 
-To configuration unit annotations needs the  JNoSQL Artemis configuration dependency.
+To configuration unit annotations needs the JNoSQL Artemis configuration dependency.
 
-
-```xml
+```markup
    <dependency>
         <groupId>org.jnosql.artemis</groupId>
         <artifactId>artemis-configuration</artifactId>
         <version>0.0.4-SNAPSHOT</version>
     </<dependency>
-    
 ```
+

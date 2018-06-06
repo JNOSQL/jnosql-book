@@ -1,15 +1,11 @@
-## The repository class
+# chapter5\_4
 
 The "maestro" persistence class has synchronous and asynchronous. These interfaces are extended mainly to add a feature that has a Diana driver, but the Artemis API does not support, eg., the live query at OrientDB, consistency level. To make secure an extension there is template method class.
 
 * AbstractKeyValueRepository
-
 * AbstractColumnRepository
-
 * AbstractColumnRepositoryAsync
-
 * AbstractDocumentRepository
-
 * AbstractDocumentRepositoryAsync
 
 To demonstrate, it will create a `ColumnRepository` extension to supports a Cassandra methods that do exists on diana-driver: Cassandra Query Language and consistency level.
@@ -19,13 +15,13 @@ public class CassandraColumnRepository extends AbstractColumnRepository {
 
     @Inject
     private ColumnEntityConverter converter;
-    
+
     @Inject
     private CassandraColumnFamilyManager manager;
-    
+
     @Inject
     private ColumnWorkflow workflow;
-    
+
     @Inject
     private ColumnEventPersistManager eventManager;
 
@@ -43,7 +39,7 @@ public class CassandraColumnRepository extends AbstractColumnRepository {
     protected ColumnWorkflow getFlow() {
         return workflow;
     }
-    
+
     @Override
     protected ColumnEventPersistManager getEventManager() {
         return eventManager;

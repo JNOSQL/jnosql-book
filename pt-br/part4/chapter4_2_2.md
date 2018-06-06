@@ -1,15 +1,13 @@
-## Template de Família de Colunas
+# chapter4\_2\_2
 
 O template de família de coluna é responsável para realizar a comunicação da entidade para um banco de dados do tipo família de coluna. Ele é subdividido em `ColumnTemplate` e `ColumnTemplateAsync` para trabalhos síncronos e assíncronos respectivamente.
 
-#### ColumnTemplate
+## ColumnTemplate
 
 O ColumnTemplate é responsável pela persistência de uma Entidade em um banco de dados do tipo coluna. Ele é composto, basicamente, por três componentes:
 
 * **ColumnEntityConverter**: Responsável por converter da entidade, por exemplo, Person para ColumnEntity.
-
 * **ColumnCollectionManager**: Entidade manager de documentos do Diana.
-
 * **ColumnWorkflow**: Segue o fluxo de persistência durante os métodos de save e update.
 
 ```java
@@ -39,7 +37,7 @@ ColumnQuery query = select().from("Person").where("address").eq("Olympus").build
 List<Person> peopleWhoLiveOnOlympus = template.select(query);
 Optional<Person> artemis = template.singleResult(select().from("Person").where("nickname")
                 .eq("artemis").build());
-                
+
 ColumnDeleteQuery deleteQuery = delete().from("Person").where("address").eq("Olympus").build()
 template.delete(deleteQuery);
 ```
@@ -91,7 +89,7 @@ Para trabalhar com mais de um tipo de ColumnTemplate existem duas opções:
     }
 ```
 
-2\) A segunda delas é a partir do  **ColumnTemplateProducer**
+2\) A segunda delas é a partir do **ColumnTemplateProducer**
 
 ```java
 @Inject
@@ -105,12 +103,11 @@ public void sample() {
 }
 ```
 
-#### ColumnTemplateAsync
+## ColumnTemplateAsync
 
 O `ColumnTemplateAsync` é responsável pela persistência de uma Entidade em um banco de dados do tipo família de colunas de forma assíncrona. Ele é composto, basicamente, por dois componentes:
 
 * **ColumnEntityConverter:** Responsável por converter da entidade, por exemplo, Person para ColumnEntity.
-
 * **ColumnFamilyManagerAsync:** Entidade manager de documentos do Diana de forma assíncrona.
 
 ```java
@@ -154,7 +151,7 @@ private ColumnTemplateAsync template;
 
 Para isso é necessário que a aplicação injete um **ColumnFamilyManagerAsync:**
 
-```
+```text
 @Produces
 public ColumnFamilyManagerAsync getManager() {
     ColumnFamilyManagerAsync managerAsync = //instance
@@ -192,7 +189,7 @@ Para trabalhar com mais de um tipo de ColumnTemplateAsync existem duas opções:
     }
 ```
 
-2\) A segunda delas é a partir do  **ColumnTemplateAsyncProducer**
+2\) A segunda delas é a partir do **ColumnTemplateAsyncProducer**
 
 ```java
 @Inject
@@ -205,6 +202,4 @@ public void sample() {
    ColumnTemplateAsync templateB = producer.get(managerB);
 }
 ```
-
-
 

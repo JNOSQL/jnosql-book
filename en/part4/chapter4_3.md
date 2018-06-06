@@ -1,4 +1,4 @@
-# Repository
+# chapter4\_3
 
 In addition to template class, Artemis has the Repository. This interface helps the Entity repository to save, update, delete and retrieve information.
 
@@ -102,7 +102,7 @@ repository.save(person);
 repository.save(people);
 ```
 
-#### Search information from Repository
+## Search information from Repository
 
 The Repository also has a method query from the method name. These are the keywords:
 
@@ -140,7 +140,7 @@ interface PersonRepository extends Repository<Person, Long> {
 
 Using these keywords, Artemis will create the queries.
 
-#### Using Repository as asynchronous way
+## Using Repository as asynchronous way
 
 The RepositoryAsync interface works similarly as Repository but with asynchronous work.
 
@@ -183,7 +183,7 @@ Also, delete and retrieve information with a callback.
     }
 ```
 
-#### Repository at KeyValue
+## Repository at KeyValue
 
 Key-value database has support to **Repository**.
 

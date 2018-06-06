@@ -1,6 +1,6 @@
-## JNOSQL
+# README
 
-## 
+## JNOSQL
 
 The JNoSQL is a framework whose has the goal to help Java developers to create Java EE applications with NoSQL, whereby they can make scalable application beyond enjoy the polyglot persistence. It has two layers/API.
 
@@ -24,14 +24,11 @@ The API's focus is on simplicity and ease of use. Developers should only have to
 
 The Diana Project has as the goal just be the flat layer, in other words, just the communication layer to NoSQL database. This project works as a database driver. Diana has four APIs, one for each database type, and its TCK respective. The test compatibility kit affirms if a driver implements an API correctively. So an X database of key-value implements and run all tests correctively that means this X database has support to key-value Diana API.
 
-
-
 ## Artemis
-
 
 Artemis is an integration layer, in other words, it has the goal to communicate with the communication layer, Diana, and it does integrations with other technologies such as Bean Validation. The Artemis engine has CDI. So it formula is really simple:
 
-#### Diana plus CDI equals to Artemis
+### Diana plus CDI equals to Artemis
 
 Look like Diana; it has a different package to each NoSQL database. Using CDI as heart, Artemis is highly customizable also observe events on the persistence flow. Artemis has a nice feature such as:
 

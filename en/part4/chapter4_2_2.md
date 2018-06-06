@@ -1,15 +1,13 @@
-## Column Family Template
+# chapter4\_2\_2
 
 This template has the duty to be a bridge between the entity model and Diana to a column family. It has two classes `ColumnTemplate` and `ColumnTemplateAsync`, one for the synchronous and the other for the asynchronous work.
 
-#### ColumnTemplate
+## ColumnTemplate
 
 The `ColumnTemplate` is the column template for the synchronous tasks. It has three components:
 
 * **ColumnEntityConverter**: That converts an entity to communication API, e.g., The Person to ColumnFamilyEntity.
-
 * **ColumnCollectionManager**: The Diana column famiy entity manager.
-
 * **ColumnWorkflow**: The workflow to update and save methods.
 
 ```java
@@ -31,8 +29,7 @@ template.update(person);
 template.update(people);
 ```
 
-For information removal and retrieval are used the same classes from Diana for documents,  **ColumnQuery** and **ColumnDeleteQuery**, respectively, also the callback method can be used.
-
+For information removal and retrieval are used the same classes from Diana for documents, **ColumnQuery** and **ColumnDeleteQuery**, respectively, also the callback method can be used.
 
 ```java
 ColumnQuery query = select().from("Person").where("address").eq("Olympus").build()
@@ -40,7 +37,7 @@ ColumnQuery query = select().from("Person").where("address").eq("Olympus").build
 List<Person> peopleWhoLiveOnOlympus = template.select(query);
 Optional<Person> artemis = template.singleResult(select().from("Person").where("nickname")
                 .eq("artemis").build());
-                
+
 ColumnDeleteQuery deleteQuery = delete().from("Person").where("address").eq("Olympus").build()
 template.delete(deleteQuery);
 ```
@@ -92,7 +89,7 @@ To work with more than one Column Template, there are two approaches:
     }
 ```
 
-2\)  Using the **ColumnTemplateProducer** class
+2\) Using the **ColumnTemplateProducer** class
 
 ```java
 @Inject
@@ -106,15 +103,12 @@ public void sample() {
 }
 ```
 
-#### ColumnTemplateAsync
-
+## ColumnTemplateAsync
 
 The `ColumnTemplateAsync` is the document template for the asynchronous tasks. It has two components:
 
 * **ColumnEntityConverter:** That converts an entity to communication API, e.g., The Person to ColumnFamilyEntity.
-
 * **ColumnFamilyManagerAsync:** The Diana column family entity manager asynchronous.
-
 
 ```java
 ColumnTemplateAsync templateAsync = //instance
@@ -138,8 +132,7 @@ templateAsync.update(person, callback);
 templateAsync.update(people);
 ```
 
-For information removal and retrieval are used the same classes from Diana for documents,  **ColumnQuery** and **ColumnDeleteQuery**, respectively, also the callback method can be used.
-
+For information removal and retrieval are used the same classes from Diana for documents, **ColumnQuery** and **ColumnDeleteQuery**, respectively, also the callback method can be used.
 
 ```java
 Consumer<List<Person>> callBackPeople = p -> {};
@@ -156,10 +149,9 @@ To use a column template just follow the CDI style and put an `@Inject` on the f
 private ColumnTemplateAsync template;
 ```
 
-
 The next step is to produce a **ColumnFamilyManagerAsync:**
 
-```
+```text
 @Produces
 public ColumnFamilyManagerAsync getManager() {
     ColumnFamilyManagerAsync managerAsync = //instance
@@ -197,7 +189,7 @@ To work with more than one Column Template, there are two approaches:
     }
 ```
 
-2\) Using the  **ColumnTemplateAsyncProducer**
+2\) Using the **ColumnTemplateAsyncProducer**
 
 ```java
 @Inject
@@ -210,3 +202,4 @@ public void sample() {
    ColumnTemplateAsync templateB = producer.get(managerB);
 }
 ```
+

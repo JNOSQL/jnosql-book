@@ -1,4 +1,4 @@
-## Factory
+# chapter2\_5
 
 The factory class creates the **Managers**.
 
@@ -7,3 +7,4 @@ The factory class creates the **Managers**.
 * **BucketManagerFactory**
 * **DocumentCollectionManagerFactory**
 * **DocumentCollectionManagerAsyncFactory**
+

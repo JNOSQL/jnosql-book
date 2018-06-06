@@ -1,10 +1,10 @@
-## A principal ideia atrás da API
+# README
 
 Uma vez discutido da importância da padronização das APIs dos bancos não relacionais, o próximo passo é discutir mais detalhes sobre elas. Porém, para facilitar a explicação da solução deste projeto, primeiro é importante entender que geralmente uma aplicação é divida em camadas para facilitar a sua organização, manutenção e divisão das responsabilidades da aplicação, é muito comum encontrar uma aplicação dividida em camadas quando ela é muito complexa.
 
 Está nova API Java será responsável por realizar a comunicação entre a camada lógica e a de dados, para isso, ela será dividida em duas partes, uma para comunicação entre o banco e outra responsável pela alta abstração na aplicação.
 
-![Camada Física](../../images/01.png)
+![Camada F&#xED;sica](../../.gitbook/assets/01.png)
 
 Acima podemos visualizar uma abstração da camada física de uma aplicação, é muito comum encontrar uma aplicação que possua multi-camadas físicas, geralmente dividida em três:
 
@@ -31,13 +31,9 @@ No mundo relacional existem dois mecanismo, além do DAO, que são o JDBC e o JP
   No mundo dos bancos NoSQL, infelizmente, isso não acontece. Como todas as APIs são diferentes toda mudança de banco resulta na troca de API e assim temos uma grande perda de código. As soluções de hoje em dia \(Spring Data, Hibernate OGM, TopLink NOSQL, etc.\) estão atuando em uma camada de alto nível, logo elas são responsáveis por realizar a comunicação entre o banco de dados e a aplicação Java, por isso temos alguns problemas:
 
 * O distribuidor de banco de dados, precisa se preocupar com o código de alta mapeamento de acesso de Java.
-
 * O distribuidor da solução Java, precisa se preocupar com o código de baixo nível para realizar o acesso ao banco de dados.
-
 * O distribuidor do banco de dados, precisa replicar a solução para todos provedores de solução Java.
-
 * O desenvolvedor Java, fica preso a uma solução de alto nível para facilitar o seu código.
-
 * Caso a camada de alto nível não tenha suporte para o banco de dados o desenvolvedor terá que ou mudar de solução Java ou mesmo fazer a chamada diretamente pela API do banco de dados, ou seja, haverá uma grande perda de código.
 
 A solução para esse problema é , assim como no mundo relacional, ter duas camadas de API:
@@ -53,17 +49,16 @@ Com essa abordagem temos algumas vantagens:
 
 Essas APIs serão opcionais uma da outra, em outras palavras, um distribuidor só precisa se preocupar com a camada do seu interesse.
 
-### Nasce o Projeto JNoSQL
+## Nasce o Projeto JNoSQL
 
 O JNoSQL é uma API Java flexível e extensiva cujo o objetivo é realizar comunicações entre a aplicação e o banco de dados NoSQL. Assim, o seu foco será criar uma API comum, porém, olhando para a diversidade que existe dentro do mundo NoSQL, mesmo para os bancos do mesmo tipo. Atualmente sabemos que mesmo um banco de dados sendo do mesmo tipo, família de colunas, existem recursos que são específicos de um determinado banco de dados é o caso, por exemplo, do Cassandra Query Language ou mesmo nível de consistência que existe apenas no Cassandra. A API terá como missão ser extensível e configurável sendo apta para utilizar recursos específicos de um banco de dados. Para atacar esse problema o projeto será composto de duas camadas core:
 
 * **A camada de comunicação:** A API que realiza a comunicação com o banco de dados, em analogia, seria o que o JDBC faz para o SQL. Essa API será subcomposta inicialmente de quatro partes, uma para cada tipo de banco de dados NoSQL.
-
 * **A camada de mapeamento:** Uma API que realiza a integração entre outras ferramentas, assim será o melhor amigo para o desenvolvedor Java. Essa API será focada em anotações e integração com outras tecnologias, por exemplo, Bean validation. O seu coração será baseado em CDI.
 
-#### Diana
+### Diana
 
-![](../../images/duke-diana-min.png)
+![](../../.gitbook/assets/duke-diana-min.png)
 
 O projeto Diana tem como objetivo tratar apenas da camada de baixo nível, ou seja, a camada de comunicação com os bancos não relacionais. A ideia que esse projeto funcione como um driver para os bancos de dados não relacionais. De modo geral ela possuirá quatro APIs, uma para cada tipo de banco de dados, além do seu respectivo TCK. O Kit de teste de compatibilidade tem como objetivo afirmar que um determinado banco de dados implementa uma das APIs corretamente, por exemplo, caso o banco X implemente a API de chave valor e passar nos testes de compatibilidade quer dizer que ele está compatível. O motivo que o projeto abrangerá apenas a API de comunicação são:
 
@@ -71,11 +66,9 @@ O projeto Diana tem como objetivo tratar apenas da camada de baixo nível, ou se
 * O objetivo da camada de comunicação é um escopo bem grande uma vez que se tem diversos tipos de bancos de dados e diversas implementações.
 * Facilitar a implementação com as camadas de mapeamento já existentes, além de iniciar as conversas sobre esse tipo de padronização.
 
+### Artemis
 
-
-#### Artemis
-
-![](../../images/artemis-integration.png)
+![](../../.gitbook/assets/artemis-integration.png)
 
 O Artemis é a camada de integração, ou seja, ele será responsável por se comunicar com a camada de comunicação, o diana, e realizar a integração com outras tecnologias, como Bean Validation, por exemplo. O seu coração é composto com CDI. Assim, sua fórmula é simples:
 
@@ -84,16 +77,13 @@ Diana mais CDI igual ao Artemis.
 Assim como o Diana, ela também possui, de maneira geral, um pacote para cada tipo de banco de dados. Utilizando como base o CDI ele se caracteriza por ser compartimentalizável além de ser possível criar eventos para cada momento da persistência do objeto. Com Artemis será possível:
 
 * Persistir seu objeto utilizando simples anotações
-
 * Substituir o grande número de componentes \(reflections, a conversão da entidade para o banco de dados, como armazena o cache, ciclo de eventos ao persistir uma informação, dentre outros\).
-
 * Ouvir eventos para cada ciclo de persistência no banco de dados \(Diferentes eventos para cada tipo de banco de dados\).
-
 * Criar classes interceptadoras para as classes repositório.
 
 Um ponto importante sobre os eventos no CDI é a facilidade de adicionar novo recursos ou funcionalidades de maneira transparente ao código. Por exemplo, é possível injetar a validação das entidades, bean validation, sem ser necessário mudar nenhum fluxo do código atual. Por padrão, o fluxo de evento segue o seguinte fluxo:
 
-![](../../images/integration-artemis.png)
+![](../../.gitbook/assets/integration-artemis.png)
 
 Cada tipo de banco de dados, possui os seus próprios interceptors e eventos, ou seja, é possível realizar a mudança apenas dos eventos do chave-valor sem modificar escutar os eventos do tipo grafo.
 

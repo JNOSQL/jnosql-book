@@ -1,4 +1,4 @@
-## Bean Validation
+# chapter4\_5
 
 O Artemis tem suporte o uso de bean validation, ele suporta como um plugin que, basicamente, escuta o evento de preEntity e executa o bean validation. O artemis-validation tem suporte ao bean validation, mas ele não o implementa, em outras palavras, é necessário adicionar tanto a API quanto a uma implementação do bean validation no projeto.
 
@@ -39,6 +39,4 @@ Caso seja encontrado um problema na validação no projeto ele lançará uma exc
                 .build();
 repository.save(person);//throws a ConstraintViolationException
 ```
-
-
 

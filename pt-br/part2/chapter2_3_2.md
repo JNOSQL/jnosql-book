@@ -1,4 +1,4 @@
-#### DocumentEntity
+# chapter2\_3\_2
 
 O `DocumentEntity` é a representação da entidade que será presentado dentro de um banco de dados do tipo documentos. Ela é composta por um ou mais documentos, o documento por sua vez, assim como a coluna, é composta por um valor, representado Value, e o seu respectivo nome.
 
@@ -14,3 +14,4 @@ O `DocumentEntity` é a representação da entidade que será presentado dentro 
         Optional<Document> id = entity.find("id");
         entity.remove("options");
 ```
+

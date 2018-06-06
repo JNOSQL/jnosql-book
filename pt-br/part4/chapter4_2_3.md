@@ -1,13 +1,12 @@
-## Template de Chave Valor
+# chapter4\_2\_3
 
 O template de chave valor é responsável para realizar a comunicação da entidade para um banco de dados do tipochave valor.
 
-#### `KeyValueTemplate`
+## `KeyValueTemplate`
 
 O KeyValuTemplate é responsável pela persistência de uma Entidade em um banco de dados do tipo chave valor. Ele é composto, basicamente, por três componentes:
 
 * **KeyValueEntityConverter**: Responsável por converter uma entidade, por exemplo, User para KeyValueEntity
-
 * **BucketManager**: entidade manager de chave valor do Diana.
 * **KeyValueWorkflow**: O workflow para os bancos do tipo chave valor.
 
@@ -86,6 +85,4 @@ public void sample() {
    KeyValueTemplate templateB = producer.get(managerB);
 }
 ```
-
-
 
