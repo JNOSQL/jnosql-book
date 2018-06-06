@@ -1,4 +1,4 @@
-# chapter2\_3\_1
+# ColumnFamilyEntity
 
 O `ColumnFamilyEntity` é a representação da entidade que será persistida dentro de um banco de dados família de coluna. Ela é composta por uma ou mais colunas, a coluna por sua vez é um tupla composta por um valor, representado por Value, e o seu respectivo nome.
 

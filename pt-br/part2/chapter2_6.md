@@ -1,4 +1,4 @@
-# chapter2\_6
+# Configuration
 
 As classes de configurações são as responsáveis pela criação das fábricas de Manager. É dentro dessa classe que ficará toda a configuração inicial para a conexão com o banco de dados.
 

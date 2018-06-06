@@ -1,4 +1,4 @@
-# chapter2\_5\_3
+# Bucket Manager Factory
 
 O Bucket Manager Factory é a classe responsável pela criação do BucketManager.
 

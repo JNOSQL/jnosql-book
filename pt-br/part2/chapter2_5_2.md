@@ -1,4 +1,4 @@
-# chapter2\_5\_2
+# Document Family Manager Factory
 
 As classes fábricas são as responsáveis pela criação de uma classe Manager numa coleção de documentos.
 

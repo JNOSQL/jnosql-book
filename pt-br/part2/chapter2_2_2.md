@@ -1,4 +1,4 @@
-# chapter2\_2\_2
+# Column
 
 O Column, é a menor parte de uma entidade de uma entidade de família de coluna. Cada coluna possui uma tupla em que a chave é o nome do documento e o valor é a informação representado pela classe `Value`.
 

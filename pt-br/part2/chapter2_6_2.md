@@ -1,4 +1,4 @@
-# chapter2\_6\_2
+# Column Configuration
 
 Dentro da configuração para os bancos de dados do tipo família de colunas existem o `ColumnConfiguration` e `ColumnConfigurationAsync` para a criação do Manager factory síncrono e assíncrono respectivamente.
 

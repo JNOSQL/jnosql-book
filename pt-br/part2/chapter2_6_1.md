@@ -1,4 +1,4 @@
-# chapter2\_6\_1
+# Document Configuration
 
 Dentro da configuração para os bancos de dados do tipo documentos existem o `DocumentConfiguration` e `DocumentConfigurationAsync` para a criação do Manager factory síncrono e assíncrono respectivamente.
 

@@ -1,4 +1,4 @@
-# chapter2\_4\_3
+# Bucket Manager
 
 O `BucketManager` é responsável por realizar as operações de forma síncrona dentro do banco de dados de chave-valor. Com ele é possível realizar as operações de criação, edição, remação e recuperação dentro desse tipo de banco de dados.
 

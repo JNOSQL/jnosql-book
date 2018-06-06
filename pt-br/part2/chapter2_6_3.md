@@ -1,4 +1,4 @@
-# chapter2\_6\_3
+# Key Value Configuration
 
 Dentro da configuração para os bancos de dados chave valor existe a classe `KeyValueConfiguration`.
 

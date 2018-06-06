@@ -1,4 +1,4 @@
-# chapter2\_3\_3
+# KeyValueEntity
 
 O `KeyValueEntity` é a estrutura mais simples, uma vez que ele representa uma tupla, uma chave para o seu respectivo valor. Sendo que o tipo não se restringe apenas para String. Assim, como os outros ele tem métodos para acessar os métodos do `Value`.
 
