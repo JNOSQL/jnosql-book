@@ -1,4 +1,4 @@
-# chapter4\_2\_2
+# Template de Família de Colunas
 
 O template de família de coluna é responsável para realizar a comunicação da entidade para um banco de dados do tipo família de coluna. Ele é subdividido em `ColumnTemplate` e `ColumnTemplateAsync` para trabalhos síncronos e assíncronos respectivamente.
 

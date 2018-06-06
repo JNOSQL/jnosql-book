@@ -1,4 +1,4 @@
-# chapter3\_1
+# Utilizando drivers para com o Diana
 
 Um importante ponto sobre o Diana é que ele é apenas uma API subdivida em quatro, uma para cada banco de dados NoSQL. Ou seja, sem uma implementação essa API não é útil, Uma vez o um banco de dados implemente uma dessas APIs, e aprovado no TCK, é dito que o Diana possui o driver daquele banco de dados para um determinado tipo, por exemplo, o Cassandra possui o driver para colunas.
 
