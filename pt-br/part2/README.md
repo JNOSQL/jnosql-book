@@ -1,4 +1,4 @@
-# README
+# Introdução ao Diana
 
 ![](../../.gitbook/assets/duke-diana-min.png)
 
