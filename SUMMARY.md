@@ -49,7 +49,7 @@
   * [SUMMARY](pt-br/summary.md)
   * [introduction](pt-br/introduction.md)
 * [Eclipse JNoSQL one API to many NoSQL databases](en/README.md)
-  * [README](en/part1/README.md)
+  * [The main idea behind the API](en/part1/README.md)
     * [chapter1\_1](en/part1/chapter1_1.md)
   * [Diana Introduction](en/part2/README.md)
     * [chapter2\_5\_3](en/part2/chapter2_5_3.md)
