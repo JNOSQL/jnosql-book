@@ -1,6 +1,6 @@
-# chapter1\_1
+# Por que Diana?
 
-![Diana mitologia](../../.gitbook/assets/12.jpg)
+![Diana mitologia](../.gitbook/assets/12.jpg)
 
 Diana, na mitologia romana, era a deusa da lua e da caça, muito poderosa e forte. Mais conhecida como deusa pura, filha de Júpiter e de Latona, e irmã gêmea de Febo. Era muito ciosa de sua virgindade. Na mais famosa de suas aventuras, transformou em um cervo o caçador Acteão, que a viu nua durante o banho.
 

@@ -6,8 +6,8 @@
 
 ## Introdução ao JNOSQL
 
-* [A principal ideia atrás da API](part1/)
-  * [Por que Diana?](part1/chapter1_1.md)
+* [A principal ideia atrás da API](part1.md)
+  * [Por que Diana?](chapter1_1.md)
 
 ## Conhecendo a API de comunicação Diana
 
