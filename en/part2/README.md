@@ -28,3 +28,6 @@ Diana has four parts:
 * The **diana-key-value:** The JNoSQL communication API layer to key-value database.
 * The **diana-column:** The JNoSQL communication API layer to column database.
 * The **diana-document:** The JNoSQL communication API layer to document database.
+
+
+To the Graph communication API, there is the [Apache TinkerPop](http://tinkerpop.apache.org/) that won't be covered in this documentation.
