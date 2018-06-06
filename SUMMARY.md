@@ -48,7 +48,7 @@
     * [chapter1\_1](pt-br/part1/chapter1_1.md)
   * [SUMMARY](pt-br/summary.md)
   * [introduction](pt-br/introduction.md)
-* [README](en/README.md)
+* [Eclipse JNoSQL one API to many NoSQL databases](en/README.md)
   * [README](en/part1/README.md)
     * [chapter1\_1](en/part1/chapter1_1.md)
   * [Diana Introduction](en/part2/README.md)
