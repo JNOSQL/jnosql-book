@@ -1,4 +1,4 @@
-# chapter1\_1
+# Why Diana?
 
 In Roman mythology, Diana was the goddess of the hunt, the moon and nature being associated with wild animals and woodland, and having the power to talk to and control animals. She was eventually equated with the Greek goddess Artemis, though she had an independent origin in Italy. Diana was worshiped in ancient Roman religion and is revered in Roman Neopaganism and Stregheria. Diana was known to be the virgin goddess of childbirth and women. She was one of the three maiden goddesses — along with Minerva and Vesta — who swore never to marry.
 
