@@ -1,4 +1,4 @@
-# README
+# Eclipse JNoSQL
 
 ## JNOSQL
 

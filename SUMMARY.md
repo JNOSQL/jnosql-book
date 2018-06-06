@@ -1,6 +1,6 @@
 # Table of contents
 
-* [README](README.md)
+* [Eclipse JNoSQL](README.md)
 * [LANGS](langs.md)
 * [Eclipse JNoSQL one API to many NoSQL databases](pt-br/README.md)
   * [About me](pt-br/about_me.md)
