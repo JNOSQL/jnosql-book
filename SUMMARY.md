@@ -1,9 +1,9 @@
 # Table of contents
 
 * [README](README.md)
-* [LANGS](langs/README.md)
-  * [about\_me](langs/about_me.md)
+* [LANGS](langs.md)
 * [Eclipse JNoSQL one API to many NoSQL databases](pt-br/README.md)
+  * [About me](pt-br/about_me.md)
   * [A principal ideia atrás da AP](pt-br/part1.md)
   * [Por que Diana?](pt-br/chapter1_1.md)
   * [Bibliografia](pt-br/bibliography.md)

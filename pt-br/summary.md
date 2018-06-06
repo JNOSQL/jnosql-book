@@ -2,7 +2,7 @@
 
 * [Está na hora de falar de padrões para o NOSQL em Java](introduction.md)
 * [Créditos](credits.md)
-* [Sobre o Autor](../langs/about_me.md)
+* [Sobre o Autor](about_me.md)
 
 ## Introdução ao JNOSQL
 
