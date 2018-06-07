@@ -1,4 +1,4 @@
-# chapter2\_5
+# Factory
 
 The factory class creates the **Managers**.
 

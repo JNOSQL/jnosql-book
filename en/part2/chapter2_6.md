@@ -1,4 +1,4 @@
-# chapter2\_6
+# Configuration
 
 The configuration classes create a Manager Factory. This class has all the configuration to build the database connection.
 

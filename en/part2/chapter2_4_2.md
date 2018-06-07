@@ -1,4 +1,4 @@
-# chapter2\_4\_2
+# Column Manager
 
 The Manager class for the column family type can be synchronous or asynchronous:
 

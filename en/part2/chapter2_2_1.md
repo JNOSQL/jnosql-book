@@ -1,4 +1,4 @@
-# chapter2\_2\_1
+# Document
 
 The `Document` is a small piece of a Document entity. Each document has a tuple where the key is the document name, and the value is the information itself as `Value`.
 

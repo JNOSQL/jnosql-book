@@ -1,4 +1,4 @@
-# chapter2\_3\_2
+# DocumentEntity
 
 The `DocumentEntity` is an entity to document collection database type. It is composed of one or more document. As a result, the Document is a tuple of name and value.
 

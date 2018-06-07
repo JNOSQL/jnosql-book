@@ -1,4 +1,4 @@
-# chapter2\_6\_1
+# Document Configuration
 
 On the document collection configuration, there are two classes, `DocumentConfiguration` and `DocumentConfigurationAsync` to `DocumentCollectionManagerFactory` and `DocumentCollectionManagerAsyncFactory` respectively.
 

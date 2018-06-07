@@ -1,4 +1,4 @@
-# chapter2\_4\_3
+# Bucket Manager
 
 The `BucketManager`is the class which saves the KeyValueEntity on a synchronous way in key-value database.
 

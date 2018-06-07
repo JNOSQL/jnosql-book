@@ -1,4 +1,4 @@
-# chapter2\_2\_2
+# Column
 
 The Column is a small piece of the column family entity. Each column has a tuple where the name represents a key and the value itself as a `Value` implementation.
 

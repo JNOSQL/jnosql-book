@@ -1,4 +1,4 @@
-# chapter2\_1
+# Value
 
 This interface represents the value that will store, that is a wrapper to be a bridge between the database and the application. Eg. If a database does not support a Java type, it may do the conversion with easily.
 

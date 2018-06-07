@@ -1,4 +1,4 @@
-# chapter2\_6\_2
+# Column Configuration
 
 On the column family configuration, there are two classes, ColumnConfiguration and ColumnConfigurationAsync to ColumnFamilyManagerFactory and ColumnFamilyManagerAsyncFactory respective.
 

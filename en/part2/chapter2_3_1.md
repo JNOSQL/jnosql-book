@@ -1,4 +1,4 @@
-# chapter2\_3\_1
+# ColumnFamilyEntity
 
 The `ColumnFamilyEntity` is an entity to column family database type. It is composed of one or more columns. As a result, the Column is a tuple of name and value.
 

@@ -1,4 +1,4 @@
-# chapter2\_5\_3
+# Bucket Manager Factory
 
 The factory classes have the duty to create the bucket manager.
 

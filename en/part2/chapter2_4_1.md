@@ -1,4 +1,4 @@
-# chapter2\_4\_1
+# Document Manager
 
 The manager class to a document type can be synchronous or asynchronous:
 

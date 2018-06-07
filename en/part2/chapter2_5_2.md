@@ -1,4 +1,4 @@
-# chapter2\_5\_2
+# Document Collection Factory
 
 The factory classes have the duty to create the document collection manager.
 

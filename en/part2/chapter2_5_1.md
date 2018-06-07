@@ -1,4 +1,4 @@
-# chapter2\_5\_1
+# \[Column Family Manager Factory
 
 The factory classes have the duty to create the column family manager.
 

@@ -1,4 +1,4 @@
-# chapter2\_6\_3
+# Key Value Configuration
 
 On the key-value configuration, there is KeyValueConfiguration to BucketManagerFactory.
 

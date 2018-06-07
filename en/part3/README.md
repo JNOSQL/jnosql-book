@@ -1,4 +1,4 @@
-# README
+# The diversity on NoSQL databases
 
 On NoSQL world beyond the several types, it's trivial a particular database has features that do exist on this provider.
 
