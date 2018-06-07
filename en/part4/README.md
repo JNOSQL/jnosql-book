@@ -1,4 +1,4 @@
-# README
+# Artemis introduction
 
 ![](../../.gitbook/assets/duke-artemis-min.png)
 

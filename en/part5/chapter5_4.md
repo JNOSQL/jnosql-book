@@ -1,4 +1,4 @@
-# chapter5\_4
+# The repository class
 
 The "maestro" persistence class has synchronous and asynchronous. These interfaces are extended mainly to add a feature that has a Diana driver, but the Artemis API does not support, eg., the live query at OrientDB, consistency level. To make secure an extension there is template method class.
 

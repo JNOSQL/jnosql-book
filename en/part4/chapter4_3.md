@@ -1,4 +1,4 @@
-# chapter4\_3
+# Repository
 
 In addition to template class, Artemis has the Repository. This interface helps the Entity repository to save, update, delete and retrieve information.
 

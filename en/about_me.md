@@ -1,4 +1,4 @@
-# about\_me
+# About me
 
 ## Otavio Santana
 

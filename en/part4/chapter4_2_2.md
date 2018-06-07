@@ -1,4 +1,4 @@
-# chapter4\_2\_2
+# Column Family Template
 
 This template has the duty to be a bridge between the entity model and Diana to a column family. It has two classes `ColumnTemplate` and `ColumnTemplateAsync`, one for the synchronous and the other for the asynchronous work.
 

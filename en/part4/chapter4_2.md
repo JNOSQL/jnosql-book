@@ -1,4 +1,4 @@
-# chapter4\_2
+# Template classes
 
 The template offers convenience operations to create, update, delete, query and provides a mapping between your domain objects and Diana API. The templates classes have the goal to persist an Entity Model through Diana API. It has three components:
 

@@ -1,4 +1,4 @@
-# chapter4\_2\_3
+# Key-value Template
 
 The key value is a bridge between the entity and the key-value database.
 

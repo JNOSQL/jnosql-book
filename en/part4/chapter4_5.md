@@ -1,4 +1,4 @@
-# chapter4\_5
+# Bean Validation
 
 Artemis has support to use Bean Validation \(BV\), which supports a plugin that, basically, listens an event from preEntity and executes the BV. The artemis-validation has the support for BV, but does not implement it, thus, is necessary to add either the API and an implementation of BV in the project.
 

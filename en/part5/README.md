@@ -1,4 +1,4 @@
-# README
+# Artemis components
 
 Everything is configurable on Artemis, to solve the massive number of databases in NoSQL world. The components are replaceable, just defining the Alternative, from CDI. Also, a developer can wrapper without a conflict without change the source core.
 

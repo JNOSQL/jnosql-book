@@ -1,4 +1,4 @@
-# chapter4\_2\_1
+# Document Template
 
 This template has the duty to be a bridge between the entity model and Diana to document collection. It has two classes `DocumentTemplate` and `DocumentTemplateAsync`, one for the synchronous and the other for the asynchronous work.
 
