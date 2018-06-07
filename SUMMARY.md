@@ -48,7 +48,7 @@
     * [As classes respositórios](pt-br/part5/chapter5_4.md)
   * [SUMMARY](pt-br/summary.md)
   * [introduction](pt-br/introduction.md)
-* [Eclipse JNoSQL one API to many NoSQL databases](en/README.md)
+* [Eclipse JNoSQL one API para vários bancos NoSQL](en/README.md)
   * [introduction](en/introduction.md)
   * [The main idea behind the API](en/part1/README.md)
     * [Why Diana?](en/part1/chapter1_1.md)
