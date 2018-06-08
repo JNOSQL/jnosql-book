@@ -1,41 +1,38 @@
-# Eclipse JNoSQL
+# Eclipse JNoSQL one API para vários bancos NoSQL
 
-## JNOSQL
+### JNoSQL
 
-The JNoSQL is a framework whose has the goal to help Java developers to create Java EE applications with NoSQL, whereby they can make scalable application beyond enjoy the polyglot persistence. It has two layers/API.
+Eclipse JNoSQL is a Java framework that streamlines the integration of Java applications with NoSQL databases. It defines a set of APIs to interact with NoSQL databases and provides a standard implementation for most NoSQL databases. This clearly helps to achieve very low coupling with the underlying NoSQL technologies used.
 
-* **Communication API**: An API just to communicate with the database, exactly what JDBC does to SQL. This API has four specializations, one for each kind of database.
-* **Mapping API**: An API to do integration and do the best integration with the Java developer. It's annotation driven and integrated with other technologies like Bean Validation, etc. 
+The project has two layers:
 
-The basic building blocks hereby are:
+* **Communication Layer**: This is a set of APIs that defines communication with NoSQL databases. In traditional SQL/RDBMS world, these can be compared with the JDBC APIs. This API set contains four modules, with each one representing a NoSQL database storage type: Key-Value, Column Family, Document and Graph.
+* **Mapping Layer**: These are the APIs that help developers to map Java objects to NoSQL databases. This layer is annotation driven and uses technologies like CDI and Bean Validations to make it simple for the developer. In traditional SQL/RDBMS world, this layer can be compared to JPA and ORM frameworks.
 
-* A simple API to support Column NoSQL Database
-* A simple API to support Key-value NoSQL Database
-* A simple API to support Graph NoSQL Database
-* A simple API to support Document Database
-* Convention over configuration
-* Support for asynchronous queries
-* Support for asynchronous write operations
-* An easy API to implement, so that NoSQL vendors can comply with it and test by themselves.
+## Key features
 
-The API's focus is on simplicity and ease of use. Developers should only have to know a minimal set of artifacts to work with the solution. The API is built on latest Java 8 features and therefore fit perfectly with the functional features of Java 8.
+* Simple APIs supporting all well-known NoSQL storage types - Column Family, Key-Value Pair, Graph and Document databases.
+* Use of Convention Over Configuration
+* Support for Asynchronous Queries
+* Support for Asynchronous Write operations
+* Easy-to-implement API Specification and Test Compatibility Kit \(TCK\) for NoSQL Vendors
+* The API's focus is on simplicity and ease of use. Developers should only have to know a minimal set of artifacts to work with JNoSQL. The API is built on Java 8 features like Lambdas and Streams and therefore fits perfectly with the functional features of Java 8+.
 
-## Diana
+### Eclipse JNoSQL - Diana
 
-The Diana Project has as the goal just be the flat layer, in other words, just the communication layer to NoSQL database. This project works as a database driver. Diana has four APIs, one for each database type, and its TCK respective. The test compatibility kit affirms if a driver implements an API correctively. So an X database of key-value implements and run all tests correctively that means this X database has support to key-value Diana API.
+The Eclipse JNoSQL - Diana project defines the standard APIs to communicate with NoSQL databases - this project works as a NoSQL Database jDriver.
 
-## Artemis
+Diana has four APIs, one for each NoSQL database storage type, and a TCK for each one. The Test Compatibility Kit \(TCK\) helps ensure that driver implementations adhere to API specifications. So if a key-value database driver implements and pass all its tests, it means that this database driver support the Diana key-value API.
 
-Artemis is an integration layer, in other words, it has the goal to communicate with the communication layer, Diana, and it does integrations with other technologies such as Bean Validation. The Artemis engine has CDI. So it formula is really simple:
+### Eclipse JNoSQL - Artemis
 
-### Diana plus CDI equals to Artemis
+The Eclipse JNoSQL - Artemis project is an integration and mapping layer that helps developers integrate applications and works with Diana. The Artemis layer uses technologies such as Bean Validations and incorporates CDI capabilities, making integrations very simple and effective. In other words:
 
-Look like Diana; it has a different package to each NoSQL database. Using CDI as heart, Artemis is highly customizable also observe events on the persistence flow. Artemis has a nice feature such as:
+Diana + CDI = Artemis
 
-* Annotation based
-* Highly customizable \\(reflection component, how to save the cache, persistence workflow, etc.\\)
-* Listen to an event to each kind of persistence workflow \\(it has differents kind of events to each database\\).
-* Use interceptors
+Similar to Diana, Artemis also has separate modules for all well known NoSQL Database Storage types. With CDI at its heart, Artemis is a very powerful, yet simple, framework.
 
-Using CDI events to add a new feature on Artemis is easy and you also can it on transparency way, you don't need to change the repositories. E.g., Using events can add bean validation on the workflow, without the DAO layer know.
+Key features of Artemis:
+
+Annotation Driven. Highly Customizable \(reflection, caching, persistence flow, etc.\) Observable events on the persistence flow Support for Interceptors, Injection and Validation
 
