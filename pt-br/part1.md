@@ -1,6 +1,6 @@
 # A principal ideia atrás da AP
 
-Uma vez discutido da importância da padronização das APIs dos bancos não relacionais, o próximo passo é discutir mais detalhes sobre elas. Porém, para facilitar a explicação da solução deste projeto, primeiro é importante entender que geralmente uma aplicação é divida em camadas para facilitar a sua organização, manutenção e divisão das responsabilidades da aplicação, é muito comum encontrar uma aplicação dividida em camadas quando ela é muito complexa.
+Uma vez discutido da importância da padronização das APIs dos bancos não relacionais, o próximo passo é discutir mais detalhes sobre elas. Porém, para facilitar a explicação da solução deste projeto, primeiro é importante entender que geralmente uma aplicação é dividida em camadas para facilitar a sua organização, manutenção e divisão das responsabilidades da aplicação, é muito comum encontrar uma aplicação dividida em camadas quando ela é muito complexa.
 
 Está nova API Java será responsável por realizar a comunicação entre a camada lógica e a de dados, para isso, ela será dividida em duas partes, uma para comunicação entre o banco e outra responsável pela alta abstração na aplicação.
 
@@ -21,7 +21,7 @@ Falando precisamente da camada física, tier, lógica. Para se separar as respon
 
 Olhando para a camada de persistência, ela possui suas próprias camadas: O DAO, Data Access Object, que é a camada responsável por realizar a ligação entre a camada de persistência e a de negócio. É nela que contém a API e as chamadas para o banco de dados. Atualmente existe uma diferença entre os bancos relacionais e não relacionais:
 
-No mundo relacional existem dois mecanismo, além do DAO, que são o JDBC e o JPA:
+No mundo relacional existem dois mecanismos, além do DAO, que são o JDBC e o JPA:
 
 * **JDBC:** Responsável por uma camada de baixo nível com o banco de dados. É nela que contém a transação, os parses, a comunicação com o banco de dados em si, basicamente é o “driver” do banco de dados etc.
 * **JPA:** É a camada de alto nível com o banco de dados. É nela que fica a comunicação entre o JDBC e a aplicação Java. Boa parte dessa camada é definida por anotações e é nela também que contém a integração/comunicação com as outras especificações como o CDI e o bean validation.
@@ -30,7 +30,7 @@ No mundo relacional existem dois mecanismo, além do DAO, que são o JDBC e o JP
 
   No mundo dos bancos NoSQL, infelizmente, isso não acontece. Como todas as APIs são diferentes toda mudança de banco resulta na troca de API e assim temos uma grande perda de código. As soluções de hoje em dia \(Spring Data, Hibernate OGM, TopLink NOSQL, etc.\) estão atuando em uma camada de alto nível, logo elas são responsáveis por realizar a comunicação entre o banco de dados e a aplicação Java, por isso temos alguns problemas:
 
-* O distribuidor de banco de dados, precisa se preocupar com o código de alta mapeamento de acesso de Java.
+* O distribuidor de banco de dados, precisa se preocupar com o código de alto nível e mapeamento com Java.
 * O distribuidor da solução Java, precisa se preocupar com o código de baixo nível para realizar o acesso ao banco de dados.
 * O distribuidor do banco de dados, precisa replicar a solução para todos provedores de solução Java.
 * O desenvolvedor Java, fica preso a uma solução de alto nível para facilitar o seu código.
@@ -43,7 +43,7 @@ A solução para esse problema é , assim como no mundo relacional, ter duas cam
 
 Com essa abordagem temos algumas vantagens:
 
-* O distribuidor do banco de dados, precisa se preocupar com a comunicação e o parser para o Java.
+* O distribuidor do banco de dados, precisa se preocupar apenas com a comunicação e o parser para o Java.
 * O distribuidor da solução Java, precisa se preocupar apenas com a API de mapeamento.
 * O desenvolvedor Java não fica preso nem ao banco de dados e nem a API de mapeamento.
 
