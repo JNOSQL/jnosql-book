@@ -21,7 +21,7 @@ Falando precisamente da camada física, tier, lógica. Para se separar as respon
 
 Olhando para a camada de persistência, ela possui suas próprias camadas: O DAO, Data Access Object, que é a camada responsável por realizar a ligação entre a camada de persistência e a de negócio. É nela que contém a API e as chamadas para o banco de dados. Atualmente existe uma diferença entre os bancos relacionais e não relacionais:
 
-No mundo relacional existem dois mecanismo, além do DAO, que são o JDBC e o JPA:
+No mundo relacional existem dois mecanismos, além do DAO, que são o JDBC e o JPA:
 
 * **JDBC:** Responsável por uma camada de baixo nível com o banco de dados. É nela que contém a transação, os parses, a comunicação com o banco de dados em si, basicamente é o “driver” do banco de dados etc.
 * **JPA:** É a camada de alto nível com o banco de dados. É nela que fica a comunicação entre o JDBC e a aplicação Java. Boa parte dessa camada é definida por anotações e é nela também que contém a integração/comunicação com as outras especificações como o CDI e o bean validation.
