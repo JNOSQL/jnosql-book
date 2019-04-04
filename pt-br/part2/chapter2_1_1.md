@@ -5,7 +5,7 @@ O real propósito da interface `Value`, como foi dito, é facilitar a comunicaç
 * `ValueWriter`: Essa interface representa como uma instância de Value será escrita dentro do banco de dados.
 * `ValueReader`: Essa interface representa como o valor será lido para ser lido dentro da aplicação Java. Por padrão, o método `<T> T get(Class<T> clazz)` e suas derivações,  T get\(TypeSupplier typeSupplier\), utilizam essas implementações para realizar essa conversão.
 
-Ambas as interfaces são carregadas a partir do ServiceLoader do Java SE. Assim, para fazer com que o Diana basta seguir o tal padrão. Para facilitar o entendimento, criará um converter para o seguinte tipo.
+Ambas as interfaces são carregadas a partir do ServiceLoader do Java SE. De modo que, basta seguir exatamente o mesmo princípio já existente no mundo Java. Para facilitar o entendimento, criará um converter para o seguinte tipo.
 
 ```java
 public class Money { 
