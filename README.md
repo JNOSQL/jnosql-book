@@ -1,4 +1,4 @@
-# Eclipse JNoSQL one API para vários bancos NoSQL
+# Eclipse JNoSQL One API to many NoSQL databases
 
 ### JNoSQL
 
